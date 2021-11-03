@@ -1,0 +1,16 @@
+[submodule "Fitervari_iOS"]
+	path = Fitervari_iOS
+	url = https://github.com/Fitervari/Fitervari_iOS
+	fetchrecursesubmodules = true
+[submodule "Fitervari_Flutter"]
+	path = Fitervari_Flutter
+	url = https://github.com/Fitervari/Fitervari_Flutter
+	fetchrecursesubmodules = true
+[submodule "Fitervari_Backend"]
+	path = Fitervari_Backend
+	url = https://github.com/Fitervari/Fitervari_Backend
+	fetchrecursesubmodules = true
+[submodule "Fitervari_Web"]
+	path = Fitervari_Web
+	url = https://github.com/Fitervari/Fitervari_Web
+	fetchrecursesubmodules = true
