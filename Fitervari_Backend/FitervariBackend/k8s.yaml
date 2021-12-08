@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fitervari-demo-deployment
+  namespace: student-m-rausch-schott
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fitervari-backend-demo
+  template:
+    metadata:
+      labels:
+        app: fitervari-backend-demo
+    spec:
+      containers:
+        - name: fitervari-backend-demo
+          image: registry.cloud.htl-leonding.ac.at/m.rausch-schott/fitervari-backend-demo:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+      imagePullSecrets:
+        - name: registry-auth-secrets
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fitervari-backend-demo-service
+  namespace: student-m-rausch-schott
+spec:
+  ports:
+    - port: 8080
+      targetPort: 8080
+      protocol: TCP
+      name: http
+  selector:
+    app: fitervari-backend-demo
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: fitervari-backend-demo-ingress
+  namespace: student-m-rausch-schott
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+spec:
+  rules:
+    - host: student.cloud.htl-leonding.ac.at
+      http:
+        paths:
+          - path: /m.rausch-schott/fitervari-backend-demo(.*)$
+            pathType: Prefix
+            backend:
+              service:
+                name: fitervari-backend-demo-service
+                port:
+                  number: 8080

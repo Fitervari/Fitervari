@@ -1,0 +1,1267 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		543A0CD1273935D000D36D70 /* StackedCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543A0CD0273935D000D36D70 /* StackedCard.swift */; };
+		543A0CD427393C1500D36D70 /* DynamicColor in Frameworks */ = {isa = PBXBuildFile; productRef = 543A0CD327393C1500D36D70 /* DynamicColor */; };
+		543A0CD6273983BA00D36D70 /* WorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543A0CD5273983BA00D36D70 /* WorkoutView.swift */; };
+		544FCC2626F3622600DEDB79 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 544FCC2526F3622600DEDB79 /* SignInView.swift */; };
+		544FCC2826F36A8100DEDB79 /* HelloView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 544FCC2726F36A8100DEDB79 /* HelloView.swift */; };
+		544FCC2B26F36DCD00DEDB79 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 544FCC2A26F36DCD00DEDB79 /* CodeScanner */; };
+		54646E8326F35DD700C8C2D5 /* FitervariApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54646E8226F35DD700C8C2D5 /* FitervariApp.swift */; };
+		54646E8526F35DD700C8C2D5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54646E8426F35DD700C8C2D5 /* ContentView.swift */; };
+		54646E8726F35DD900C8C2D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54646E8626F35DD900C8C2D5 /* Assets.xcassets */; };
+		54646E8A26F35DD900C8C2D5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54646E8926F35DD900C8C2D5 /* Preview Assets.xcassets */; };
+		54646E9426F35DD900C8C2D5 /* FitervariTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54646E9326F35DD900C8C2D5 /* FitervariTests.swift */; };
+		54646E9E26F35DD900C8C2D5 /* FitervariUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54646E9D26F35DD900C8C2D5 /* FitervariUITests.swift */; };
+		54646EA026F35DD900C8C2D5 /* FitervariUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54646E9F26F35DD900C8C2D5 /* FitervariUITestsLaunchTests.swift */; };
+		54CBEF6426FC5E29009A7B68 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CBEF6326FC5E29009A7B68 /* MainView.swift */; };
+		54CBEF6626FC5E85009A7B68 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CBEF6526FC5E85009A7B68 /* AccountView.swift */; };
+		54CBEF6826FC5E92009A7B68 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CBEF6726FC5E92009A7B68 /* DashboardView.swift */; };
+		54CBEF6A26FC6308009A7B68 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CBEF6926FC6308009A7B68 /* Card.swift */; };
+		54CBEF6C26FC97E3009A7B68 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CBEF6B26FC97E3009A7B68 /* Color.swift */; };
+		54CC0F522710BE4100112EE3 /* BasicCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CC0F512710BE4100112EE3 /* BasicCard.swift */; };
+		54CF60E42711C4A100E29DC5 /* TrainingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CF60E32711C4A100E29DC5 /* TrainingView.swift */; };
+		54F521BB273BBEAF00AA75DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54F521BA273BBEAF00AA75DD /* Assets.xcassets */; };
+		54F521C1273BBEAF00AA75DD /* FitervariHealth WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 54F521C0273BBEAF00AA75DD /* FitervariHealth WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		54F521C6273BBEAF00AA75DD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F521C5273BBEAF00AA75DD /* ContentView.swift */; };
+		54F521C8273BBEAF00AA75DD /* FitervariApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F521C7273BBEAF00AA75DD /* FitervariApp.swift */; };
+		54F521CA273BBEAF00AA75DD /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F521C9273BBEAF00AA75DD /* ComplicationController.swift */; };
+		54F521CC273BBEB000AA75DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54F521CB273BBEB000AA75DD /* Assets.xcassets */; };
+		54F521CF273BBEB000AA75DD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54F521CE273BBEB000AA75DD /* Preview Assets.xcassets */; };
+		54F521DA273BBEB000AA75DD /* FitervariHealthTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F521D9273BBEB000AA75DD /* FitervariHealthTests.swift */; };
+		54F521E4273BBEB000AA75DD /* FitervariHealthUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F521E3273BBEB000AA75DD /* FitervariHealthUITests.swift */; };
+		54F521E6273BBEB000AA75DD /* FitervariHealthUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F521E5273BBEB000AA75DD /* FitervariHealthUITestsLaunchTests.swift */; };
+		54F521E9273BBEB000AA75DD /* FitervariHealth.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 54F521B8273BBEAE00AA75DD /* FitervariHealth.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		54646E9026F35DD900C8C2D5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 54646E7726F35DD700C8C2D5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 54646E7E26F35DD700C8C2D5;
+			remoteInfo = Fitervari;
+		};
+		54646E9A26F35DD900C8C2D5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 54646E7726F35DD700C8C2D5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 54646E7E26F35DD700C8C2D5;
+			remoteInfo = Fitervari;
+		};
+		54F521C2273BBEAF00AA75DD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 54646E7726F35DD700C8C2D5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 54F521BF273BBEAF00AA75DD;
+			remoteInfo = "FitervariHealth WatchKit Extension";
+		};
+		54F521D6273BBEB000AA75DD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 54646E7726F35DD700C8C2D5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 54F521BF273BBEAF00AA75DD;
+			remoteInfo = "FitervariHealth WatchKit Extension";
+		};
+		54F521E0273BBEB000AA75DD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 54646E7726F35DD700C8C2D5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 54F521B7273BBEAE00AA75DD;
+			remoteInfo = FitervariHealth;
+		};
+		54F521E7273BBEB000AA75DD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 54646E7726F35DD700C8C2D5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 54F521B7273BBEAE00AA75DD;
+			remoteInfo = FitervariHealth;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		54F521EA273BBEB000AA75DD /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				54F521E9273BBEB000AA75DD /* FitervariHealth.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		54F521ED273BBEB000AA75DD /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				54F521C1273BBEAF00AA75DD /* FitervariHealth WatchKit Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		543A0CD0273935D000D36D70 /* StackedCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackedCard.swift; sourceTree = "<group>"; };
+		543A0CD5273983BA00D36D70 /* WorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutView.swift; sourceTree = "<group>"; };
+		544FCC2526F3622600DEDB79 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		544FCC2726F36A8100DEDB79 /* HelloView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelloView.swift; sourceTree = "<group>"; };
+		54646E7F26F35DD700C8C2D5 /* Fitervari.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fitervari.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		54646E8226F35DD700C8C2D5 /* FitervariApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitervariApp.swift; sourceTree = "<group>"; };
+		54646E8426F35DD700C8C2D5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		54646E8626F35DD900C8C2D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		54646E8926F35DD900C8C2D5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		54646E8F26F35DD900C8C2D5 /* FitervariTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FitervariTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		54646E9326F35DD900C8C2D5 /* FitervariTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitervariTests.swift; sourceTree = "<group>"; };
+		54646E9926F35DD900C8C2D5 /* FitervariUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FitervariUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		54646E9D26F35DD900C8C2D5 /* FitervariUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitervariUITests.swift; sourceTree = "<group>"; };
+		54646E9F26F35DD900C8C2D5 /* FitervariUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitervariUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		54C5EC2526F3AC9700DFFE5E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		54CBEF6326FC5E29009A7B68 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		54CBEF6526FC5E85009A7B68 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
+		54CBEF6726FC5E92009A7B68 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
+		54CBEF6926FC6308009A7B68 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		54CBEF6B26FC97E3009A7B68 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		54CC0F512710BE4100112EE3 /* BasicCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicCard.swift; sourceTree = "<group>"; };
+		54CF60E32711C4A100E29DC5 /* TrainingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingView.swift; sourceTree = "<group>"; };
+		54F521B8273BBEAE00AA75DD /* FitervariHealth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FitervariHealth.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		54F521BA273BBEAF00AA75DD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		54F521C0273BBEAF00AA75DD /* FitervariHealth WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "FitervariHealth WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		54F521C5273BBEAF00AA75DD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		54F521C7273BBEAF00AA75DD /* FitervariApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitervariApp.swift; sourceTree = "<group>"; };
+		54F521C9273BBEAF00AA75DD /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
+		54F521CB273BBEB000AA75DD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		54F521CE273BBEB000AA75DD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		54F521D0273BBEB000AA75DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		54F521D5273BBEB000AA75DD /* FitervariHealthTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FitervariHealthTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		54F521D9273BBEB000AA75DD /* FitervariHealthTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitervariHealthTests.swift; sourceTree = "<group>"; };
+		54F521DF273BBEB000AA75DD /* FitervariHealthUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FitervariHealthUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		54F521E3273BBEB000AA75DD /* FitervariHealthUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitervariHealthUITests.swift; sourceTree = "<group>"; };
+		54F521E5273BBEB000AA75DD /* FitervariHealthUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitervariHealthUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		54646E7C26F35DD700C8C2D5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				543A0CD427393C1500D36D70 /* DynamicColor in Frameworks */,
+				544FCC2B26F36DCD00DEDB79 /* CodeScanner in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		54646E8C26F35DD900C8C2D5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		54646E9626F35DD900C8C2D5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		54F521BD273BBEAF00AA75DD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		54F521D2273BBEB000AA75DD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		54F521DC273BBEB000AA75DD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		54646E7626F35DD700C8C2D5 = {
+			isa = PBXGroup;
+			children = (
+				54646E8126F35DD700C8C2D5 /* Fitervari */,
+				54646E9226F35DD900C8C2D5 /* FitervariTests */,
+				54646E9C26F35DD900C8C2D5 /* FitervariUITests */,
+				54F521B9273BBEAE00AA75DD /* FitervariHealth */,
+				54F521C4273BBEAF00AA75DD /* FitervariHealth WatchKit Extension */,
+				54F521D8273BBEB000AA75DD /* FitervariHealthTests */,
+				54F521E2273BBEB000AA75DD /* FitervariHealthUITests */,
+				54646E8026F35DD700C8C2D5 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		54646E8026F35DD700C8C2D5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				54646E7F26F35DD700C8C2D5 /* Fitervari.app */,
+				54646E8F26F35DD900C8C2D5 /* FitervariTests.xctest */,
+				54646E9926F35DD900C8C2D5 /* FitervariUITests.xctest */,
+				54F521B8273BBEAE00AA75DD /* FitervariHealth.app */,
+				54F521C0273BBEAF00AA75DD /* FitervariHealth WatchKit Extension.appex */,
+				54F521D5273BBEB000AA75DD /* FitervariHealthTests.xctest */,
+				54F521DF273BBEB000AA75DD /* FitervariHealthUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		54646E8126F35DD700C8C2D5 /* Fitervari */ = {
+			isa = PBXGroup;
+			children = (
+				54CC0F502710BE2400112EE3 /* Card */,
+				54C5EC2526F3AC9700DFFE5E /* Info.plist */,
+				54646E8226F35DD700C8C2D5 /* FitervariApp.swift */,
+				54646E8426F35DD700C8C2D5 /* ContentView.swift */,
+				54646E8626F35DD900C8C2D5 /* Assets.xcassets */,
+				54646E8826F35DD900C8C2D5 /* Preview Content */,
+				544FCC2526F3622600DEDB79 /* SignInView.swift */,
+				544FCC2726F36A8100DEDB79 /* HelloView.swift */,
+				54CBEF6326FC5E29009A7B68 /* MainView.swift */,
+				54CBEF6526FC5E85009A7B68 /* AccountView.swift */,
+				54CBEF6726FC5E92009A7B68 /* DashboardView.swift */,
+				54CBEF6B26FC97E3009A7B68 /* Color.swift */,
+				54CF60E32711C4A100E29DC5 /* TrainingView.swift */,
+				543A0CD5273983BA00D36D70 /* WorkoutView.swift */,
+			);
+			path = Fitervari;
+			sourceTree = "<group>";
+		};
+		54646E8826F35DD900C8C2D5 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				54646E8926F35DD900C8C2D5 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		54646E9226F35DD900C8C2D5 /* FitervariTests */ = {
+			isa = PBXGroup;
+			children = (
+				54646E9326F35DD900C8C2D5 /* FitervariTests.swift */,
+			);
+			path = FitervariTests;
+			sourceTree = "<group>";
+		};
+		54646E9C26F35DD900C8C2D5 /* FitervariUITests */ = {
+			isa = PBXGroup;
+			children = (
+				54646E9D26F35DD900C8C2D5 /* FitervariUITests.swift */,
+				54646E9F26F35DD900C8C2D5 /* FitervariUITestsLaunchTests.swift */,
+			);
+			path = FitervariUITests;
+			sourceTree = "<group>";
+		};
+		54CC0F502710BE2400112EE3 /* Card */ = {
+			isa = PBXGroup;
+			children = (
+				54CBEF6926FC6308009A7B68 /* Card.swift */,
+				54CC0F512710BE4100112EE3 /* BasicCard.swift */,
+				543A0CD0273935D000D36D70 /* StackedCard.swift */,
+			);
+			path = Card;
+			sourceTree = "<group>";
+		};
+		54F521B9273BBEAE00AA75DD /* FitervariHealth */ = {
+			isa = PBXGroup;
+			children = (
+				54F521BA273BBEAF00AA75DD /* Assets.xcassets */,
+			);
+			path = FitervariHealth;
+			sourceTree = "<group>";
+		};
+		54F521C4273BBEAF00AA75DD /* FitervariHealth WatchKit Extension */ = {
+			isa = PBXGroup;
+			children = (
+				54F521C5273BBEAF00AA75DD /* ContentView.swift */,
+				54F521C7273BBEAF00AA75DD /* FitervariApp.swift */,
+				54F521C9273BBEAF00AA75DD /* ComplicationController.swift */,
+				54F521CB273BBEB000AA75DD /* Assets.xcassets */,
+				54F521D0273BBEB000AA75DD /* Info.plist */,
+				54F521CD273BBEB000AA75DD /* Preview Content */,
+			);
+			path = "FitervariHealth WatchKit Extension";
+			sourceTree = "<group>";
+		};
+		54F521CD273BBEB000AA75DD /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				54F521CE273BBEB000AA75DD /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		54F521D8273BBEB000AA75DD /* FitervariHealthTests */ = {
+			isa = PBXGroup;
+			children = (
+				54F521D9273BBEB000AA75DD /* FitervariHealthTests.swift */,
+			);
+			path = FitervariHealthTests;
+			sourceTree = "<group>";
+		};
+		54F521E2273BBEB000AA75DD /* FitervariHealthUITests */ = {
+			isa = PBXGroup;
+			children = (
+				54F521E3273BBEB000AA75DD /* FitervariHealthUITests.swift */,
+				54F521E5273BBEB000AA75DD /* FitervariHealthUITestsLaunchTests.swift */,
+			);
+			path = FitervariHealthUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		54646E7E26F35DD700C8C2D5 /* Fitervari */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 54646EA326F35DD900C8C2D5 /* Build configuration list for PBXNativeTarget "Fitervari" */;
+			buildPhases = (
+				54646E7B26F35DD700C8C2D5 /* Sources */,
+				54646E7C26F35DD700C8C2D5 /* Frameworks */,
+				54646E7D26F35DD700C8C2D5 /* Resources */,
+				54F521EA273BBEB000AA75DD /* Embed Watch Content */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				54F521E8273BBEB000AA75DD /* PBXTargetDependency */,
+			);
+			name = Fitervari;
+			packageProductDependencies = (
+				544FCC2A26F36DCD00DEDB79 /* CodeScanner */,
+				543A0CD327393C1500D36D70 /* DynamicColor */,
+			);
+			productName = Fitervari;
+			productReference = 54646E7F26F35DD700C8C2D5 /* Fitervari.app */;
+			productType = "com.apple.product-type.application";
+		};
+		54646E8E26F35DD900C8C2D5 /* FitervariTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 54646EA626F35DD900C8C2D5 /* Build configuration list for PBXNativeTarget "FitervariTests" */;
+			buildPhases = (
+				54646E8B26F35DD900C8C2D5 /* Sources */,
+				54646E8C26F35DD900C8C2D5 /* Frameworks */,
+				54646E8D26F35DD900C8C2D5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				54646E9126F35DD900C8C2D5 /* PBXTargetDependency */,
+			);
+			name = FitervariTests;
+			productName = FitervariTests;
+			productReference = 54646E8F26F35DD900C8C2D5 /* FitervariTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		54646E9826F35DD900C8C2D5 /* FitervariUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 54646EA926F35DD900C8C2D5 /* Build configuration list for PBXNativeTarget "FitervariUITests" */;
+			buildPhases = (
+				54646E9526F35DD900C8C2D5 /* Sources */,
+				54646E9626F35DD900C8C2D5 /* Frameworks */,
+				54646E9726F35DD900C8C2D5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				54646E9B26F35DD900C8C2D5 /* PBXTargetDependency */,
+			);
+			name = FitervariUITests;
+			productName = FitervariUITests;
+			productReference = 54646E9926F35DD900C8C2D5 /* FitervariUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		54F521B7273BBEAE00AA75DD /* FitervariHealth */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 54F521F5273BBEB000AA75DD /* Build configuration list for PBXNativeTarget "FitervariHealth" */;
+			buildPhases = (
+				54F521B6273BBEAE00AA75DD /* Resources */,
+				54F521ED273BBEB000AA75DD /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				54F521C3273BBEAF00AA75DD /* PBXTargetDependency */,
+			);
+			name = FitervariHealth;
+			productName = FitervariHealth;
+			productReference = 54F521B8273BBEAE00AA75DD /* FitervariHealth.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		54F521BF273BBEAF00AA75DD /* FitervariHealth WatchKit Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 54F521F4273BBEB000AA75DD /* Build configuration list for PBXNativeTarget "FitervariHealth WatchKit Extension" */;
+			buildPhases = (
+				54F521BC273BBEAF00AA75DD /* Sources */,
+				54F521BD273BBEAF00AA75DD /* Frameworks */,
+				54F521BE273BBEAF00AA75DD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "FitervariHealth WatchKit Extension";
+			productName = "FitervariHealth WatchKit Extension";
+			productReference = 54F521C0273BBEAF00AA75DD /* FitervariHealth WatchKit Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
+		54F521D4273BBEB000AA75DD /* FitervariHealthTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 54F521F6273BBEB000AA75DD /* Build configuration list for PBXNativeTarget "FitervariHealthTests" */;
+			buildPhases = (
+				54F521D1273BBEB000AA75DD /* Sources */,
+				54F521D2273BBEB000AA75DD /* Frameworks */,
+				54F521D3273BBEB000AA75DD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				54F521D7273BBEB000AA75DD /* PBXTargetDependency */,
+			);
+			name = FitervariHealthTests;
+			productName = FitervariHealthTests;
+			productReference = 54F521D5273BBEB000AA75DD /* FitervariHealthTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		54F521DE273BBEB000AA75DD /* FitervariHealthUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 54F521F7273BBEB000AA75DD /* Build configuration list for PBXNativeTarget "FitervariHealthUITests" */;
+			buildPhases = (
+				54F521DB273BBEB000AA75DD /* Sources */,
+				54F521DC273BBEB000AA75DD /* Frameworks */,
+				54F521DD273BBEB000AA75DD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				54F521E1273BBEB000AA75DD /* PBXTargetDependency */,
+			);
+			name = FitervariHealthUITests;
+			productName = FitervariHealthUITests;
+			productReference = 54F521DF273BBEB000AA75DD /* FitervariHealthUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		54646E7726F35DD700C8C2D5 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1320;
+				LastUpgradeCheck = 1300;
+				TargetAttributes = {
+					54646E7E26F35DD700C8C2D5 = {
+						CreatedOnToolsVersion = 13.0;
+					};
+					54646E8E26F35DD900C8C2D5 = {
+						CreatedOnToolsVersion = 13.0;
+						TestTargetID = 54646E7E26F35DD700C8C2D5;
+					};
+					54646E9826F35DD900C8C2D5 = {
+						CreatedOnToolsVersion = 13.0;
+						TestTargetID = 54646E7E26F35DD700C8C2D5;
+					};
+					54F521B7273BBEAE00AA75DD = {
+						CreatedOnToolsVersion = 13.2;
+					};
+					54F521BF273BBEAF00AA75DD = {
+						CreatedOnToolsVersion = 13.2;
+					};
+					54F521D4273BBEB000AA75DD = {
+						CreatedOnToolsVersion = 13.2;
+						TestTargetID = 54F521BF273BBEAF00AA75DD;
+					};
+					54F521DE273BBEB000AA75DD = {
+						CreatedOnToolsVersion = 13.2;
+						TestTargetID = 54F521B7273BBEAE00AA75DD;
+					};
+				};
+			};
+			buildConfigurationList = 54646E7A26F35DD700C8C2D5 /* Build configuration list for PBXProject "Fitervari" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 54646E7626F35DD700C8C2D5;
+			packageReferences = (
+				544FCC2926F36DCD00DEDB79 /* XCRemoteSwiftPackageReference "CodeScanner" */,
+				543A0CD227393C1500D36D70 /* XCRemoteSwiftPackageReference "DynamicColor" */,
+			);
+			productRefGroup = 54646E8026F35DD700C8C2D5 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				54646E7E26F35DD700C8C2D5 /* Fitervari */,
+				54646E8E26F35DD900C8C2D5 /* FitervariTests */,
+				54646E9826F35DD900C8C2D5 /* FitervariUITests */,
+				54F521B7273BBEAE00AA75DD /* FitervariHealth */,
+				54F521BF273BBEAF00AA75DD /* FitervariHealth WatchKit Extension */,
+				54F521D4273BBEB000AA75DD /* FitervariHealthTests */,
+				54F521DE273BBEB000AA75DD /* FitervariHealthUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		54646E7D26F35DD700C8C2D5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				54646E8A26F35DD900C8C2D5 /* Preview Assets.xcassets in Resources */,
+				54646E8726F35DD900C8C2D5 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		54646E8D26F35DD900C8C2D5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		54646E9726F35DD900C8C2D5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		54F521B6273BBEAE00AA75DD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				54F521BB273BBEAF00AA75DD /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		54F521BE273BBEAF00AA75DD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				54F521CF273BBEB000AA75DD /* Preview Assets.xcassets in Resources */,
+				54F521CC273BBEB000AA75DD /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		54F521D3273BBEB000AA75DD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		54F521DD273BBEB000AA75DD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		54646E7B26F35DD700C8C2D5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				54CBEF6626FC5E85009A7B68 /* AccountView.swift in Sources */,
+				543A0CD1273935D000D36D70 /* StackedCard.swift in Sources */,
+				543A0CD6273983BA00D36D70 /* WorkoutView.swift in Sources */,
+				544FCC2626F3622600DEDB79 /* SignInView.swift in Sources */,
+				54CF60E42711C4A100E29DC5 /* TrainingView.swift in Sources */,
+				544FCC2826F36A8100DEDB79 /* HelloView.swift in Sources */,
+				54CBEF6826FC5E92009A7B68 /* DashboardView.swift in Sources */,
+				54646E8526F35DD700C8C2D5 /* ContentView.swift in Sources */,
+				54CBEF6426FC5E29009A7B68 /* MainView.swift in Sources */,
+				54CC0F522710BE4100112EE3 /* BasicCard.swift in Sources */,
+				54646E8326F35DD700C8C2D5 /* FitervariApp.swift in Sources */,
+				54CBEF6A26FC6308009A7B68 /* Card.swift in Sources */,
+				54CBEF6C26FC97E3009A7B68 /* Color.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		54646E8B26F35DD900C8C2D5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				54646E9426F35DD900C8C2D5 /* FitervariTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		54646E9526F35DD900C8C2D5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				54646E9E26F35DD900C8C2D5 /* FitervariUITests.swift in Sources */,
+				54646EA026F35DD900C8C2D5 /* FitervariUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		54F521BC273BBEAF00AA75DD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				54F521C8273BBEAF00AA75DD /* FitervariApp.swift in Sources */,
+				54F521C6273BBEAF00AA75DD /* ContentView.swift in Sources */,
+				54F521CA273BBEAF00AA75DD /* ComplicationController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		54F521D1273BBEB000AA75DD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				54F521DA273BBEB000AA75DD /* FitervariHealthTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		54F521DB273BBEB000AA75DD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				54F521E4273BBEB000AA75DD /* FitervariHealthUITests.swift in Sources */,
+				54F521E6273BBEB000AA75DD /* FitervariHealthUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		54646E9126F35DD900C8C2D5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 54646E7E26F35DD700C8C2D5 /* Fitervari */;
+			targetProxy = 54646E9026F35DD900C8C2D5 /* PBXContainerItemProxy */;
+		};
+		54646E9B26F35DD900C8C2D5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 54646E7E26F35DD700C8C2D5 /* Fitervari */;
+			targetProxy = 54646E9A26F35DD900C8C2D5 /* PBXContainerItemProxy */;
+		};
+		54F521C3273BBEAF00AA75DD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 54F521BF273BBEAF00AA75DD /* FitervariHealth WatchKit Extension */;
+			targetProxy = 54F521C2273BBEAF00AA75DD /* PBXContainerItemProxy */;
+		};
+		54F521D7273BBEB000AA75DD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 54F521BF273BBEAF00AA75DD /* FitervariHealth WatchKit Extension */;
+			targetProxy = 54F521D6273BBEB000AA75DD /* PBXContainerItemProxy */;
+		};
+		54F521E1273BBEB000AA75DD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 54F521B7273BBEAE00AA75DD /* FitervariHealth */;
+			targetProxy = 54F521E0273BBEB000AA75DD /* PBXContainerItemProxy */;
+		};
+		54F521E8273BBEB000AA75DD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 54F521B7273BBEAE00AA75DD /* FitervariHealth */;
+			targetProxy = 54F521E7273BBEB000AA75DD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		54646EA126F35DD900C8C2D5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		54646EA226F35DD900C8C2D5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		54646EA426F35DD900C8C2D5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Fitervari/Preview Content\"";
+				DEVELOPMENT_TEAM = CVE9PM7E9Q;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Fitervari/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Zum Scannen von QR Codes benötigen wir den Zugriff zur Kamera.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fitervari.Fitervari;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		54646EA526F35DD900C8C2D5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Fitervari/Preview Content\"";
+				DEVELOPMENT_TEAM = CVE9PM7E9Q;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Fitervari/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Zum Scannen von QR Codes benötigen wir den Zugriff zur Kamera.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fitervari.Fitervari;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		54646EA726F35DD900C8C2D5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CVE9PM7E9Q;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fitervari.FitervariTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Fitervari.app/Fitervari";
+			};
+			name = Debug;
+		};
+		54646EA826F35DD900C8C2D5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CVE9PM7E9Q;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fitervari.FitervariTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Fitervari.app/Fitervari";
+			};
+			name = Release;
+		};
+		54646EAA26F35DD900C8C2D5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CVE9PM7E9Q;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fitervari.FitervariUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Fitervari;
+			};
+			name = Debug;
+		};
+		54646EAB26F35DD900C8C2D5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CVE9PM7E9Q;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fitervari.FitervariUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Fitervari;
+			};
+			name = Release;
+		};
+		54F521EB273BBEB000AA75DD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CVE9PM7E9Q;
+				GENERATE_INFOPLIST_FILE = YES;
+				IBSC_MODULE = FitervariHealth_WatchKit_Extension;
+				INFOPLIST_KEY_CFBundleDisplayName = FitervariHealth;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.fitervari.Fitervari;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fitervari.Fitervari.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 8.3;
+			};
+			name = Debug;
+		};
+		54F521EC273BBEB000AA75DD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CVE9PM7E9Q;
+				GENERATE_INFOPLIST_FILE = YES;
+				IBSC_MODULE = FitervariHealth_WatchKit_Extension;
+				INFOPLIST_KEY_CFBundleDisplayName = FitervariHealth;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.fitervari.Fitervari;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fitervari.Fitervari.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 8.3;
+			};
+			name = Release;
+		};
+		54F521EE273BBEB000AA75DD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"FitervariHealth WatchKit Extension/Preview Content\"";
+				DEVELOPMENT_TEAM = CVE9PM7E9Q;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "FitervariHealth WatchKit Extension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "FitervariHealth WatchKit Extension";
+				INFOPLIST_KEY_CLKComplicationPrincipalClass = "$(PRODUCT_MODULE_NAME).ComplicationController";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fitervari.Fitervari.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 8.3;
+			};
+			name = Debug;
+		};
+		54F521EF273BBEB000AA75DD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"FitervariHealth WatchKit Extension/Preview Content\"";
+				DEVELOPMENT_TEAM = CVE9PM7E9Q;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "FitervariHealth WatchKit Extension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "FitervariHealth WatchKit Extension";
+				INFOPLIST_KEY_CLKComplicationPrincipalClass = "$(PRODUCT_MODULE_NAME).ComplicationController";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fitervari.Fitervari.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 8.3;
+			};
+			name = Release;
+		};
+		54F521F0273BBEB000AA75DD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CVE9PM7E9Q;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fitervari.Fitervari.FitervariHealthTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FitervariHealth WatchKit Extension.appex/FitervariHealth WatchKit Extension";
+				WATCHOS_DEPLOYMENT_TARGET = 8.3;
+			};
+			name = Debug;
+		};
+		54F521F1273BBEB000AA75DD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CVE9PM7E9Q;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fitervari.Fitervari.FitervariHealthTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FitervariHealth WatchKit Extension.appex/FitervariHealth WatchKit Extension";
+				WATCHOS_DEPLOYMENT_TARGET = 8.3;
+			};
+			name = Release;
+		};
+		54F521F2273BBEB000AA75DD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CVE9PM7E9Q;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fitervari.Fitervari.FitervariHealthUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_TARGET_NAME = FitervariHealth;
+				WATCHOS_DEPLOYMENT_TARGET = 8.3;
+			};
+			name = Debug;
+		};
+		54F521F3273BBEB000AA75DD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CVE9PM7E9Q;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fitervari.Fitervari.FitervariHealthUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_TARGET_NAME = FitervariHealth;
+				WATCHOS_DEPLOYMENT_TARGET = 8.3;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		54646E7A26F35DD700C8C2D5 /* Build configuration list for PBXProject "Fitervari" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				54646EA126F35DD900C8C2D5 /* Debug */,
+				54646EA226F35DD900C8C2D5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		54646EA326F35DD900C8C2D5 /* Build configuration list for PBXNativeTarget "Fitervari" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				54646EA426F35DD900C8C2D5 /* Debug */,
+				54646EA526F35DD900C8C2D5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		54646EA626F35DD900C8C2D5 /* Build configuration list for PBXNativeTarget "FitervariTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				54646EA726F35DD900C8C2D5 /* Debug */,
+				54646EA826F35DD900C8C2D5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		54646EA926F35DD900C8C2D5 /* Build configuration list for PBXNativeTarget "FitervariUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				54646EAA26F35DD900C8C2D5 /* Debug */,
+				54646EAB26F35DD900C8C2D5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		54F521F4273BBEB000AA75DD /* Build configuration list for PBXNativeTarget "FitervariHealth WatchKit Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				54F521EE273BBEB000AA75DD /* Debug */,
+				54F521EF273BBEB000AA75DD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		54F521F5273BBEB000AA75DD /* Build configuration list for PBXNativeTarget "FitervariHealth" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				54F521EB273BBEB000AA75DD /* Debug */,
+				54F521EC273BBEB000AA75DD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		54F521F6273BBEB000AA75DD /* Build configuration list for PBXNativeTarget "FitervariHealthTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				54F521F0273BBEB000AA75DD /* Debug */,
+				54F521F1273BBEB000AA75DD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		54F521F7273BBEB000AA75DD /* Build configuration list for PBXNativeTarget "FitervariHealthUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				54F521F2273BBEB000AA75DD /* Debug */,
+				54F521F3273BBEB000AA75DD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		543A0CD227393C1500D36D70 /* XCRemoteSwiftPackageReference "DynamicColor" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/yannickl/DynamicColor.git";
+			requirement = {
+				kind = exactVersion;
+				version = 5.0.1;
+			};
+		};
+		544FCC2926F36DCD00DEDB79 /* XCRemoteSwiftPackageReference "CodeScanner" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/twostraws/CodeScanner";
+			requirement = {
+				kind = exactVersion;
+				version = 1.0.7;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		543A0CD327393C1500D36D70 /* DynamicColor */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 543A0CD227393C1500D36D70 /* XCRemoteSwiftPackageReference "DynamicColor" */;
+			productName = DynamicColor;
+		};
+		544FCC2A26F36DCD00DEDB79 /* CodeScanner */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 544FCC2926F36DCD00DEDB79 /* XCRemoteSwiftPackageReference "CodeScanner" */;
+			productName = CodeScanner;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 54646E7726F35DD700C8C2D5 /* Project object */;
+}
