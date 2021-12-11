@@ -1,6 +1,7 @@
 package com.fitervari.model.FitervariHealth;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity(name="healthDataType")
 public class HealthDataType {
@@ -13,6 +14,6 @@ public class HealthDataType {
     @Column(name="name", nullable = false)
     private String name;
 
-    @OneToOne(mappedBy = "healthDataType")
-    private HealthData healthData;
+    @OneToMany(mappedBy = "healthDataType")
+    private List<HealthData> healthData;
 }
