@@ -15,4 +15,5 @@ Die Swagger Spezifikation für *Fitervari* kann unter folgendem Link aufgerufen 
 
 API-Spezifikation
 ---
-Die Swagger Spezifikation für *Fitervari Health* kann unter folgendem Link aufgerufen werden: [Fitervari Health API-Spezifikation](Swagger%20API-Spezifikation/swagger-fv_health.yaml)
+Die Swagger Spezifikation für *Fitervari Health* kann unter folgendem Link aufgerufen werden: [Fitervari Health API-Spezifikation](FitervariBackend/src/main/resources/fv-health-swagger.yaml)
+<!-- [Fitervari Health API-Spezifikation](Swagger%20API-Spezifikation/swagger-fv_health.yaml) -->
