@@ -10,6 +10,7 @@
 		543A0CD1273935D000D36D70 /* StackedCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543A0CD0273935D000D36D70 /* StackedCard.swift */; };
 		543A0CD427393C1500D36D70 /* DynamicColor in Frameworks */ = {isa = PBXBuildFile; productRef = 543A0CD327393C1500D36D70 /* DynamicColor */; };
 		543A0CD6273983BA00D36D70 /* WorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543A0CD5273983BA00D36D70 /* WorkoutView.swift */; };
+		543A3538275BE3740034019E /* FinishedWorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543A3537275BE3740034019E /* FinishedWorkoutView.swift */; };
 		544FCC2626F3622600DEDB79 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 544FCC2526F3622600DEDB79 /* SignInView.swift */; };
 		544FCC2826F36A8100DEDB79 /* HelloView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 544FCC2726F36A8100DEDB79 /* HelloView.swift */; };
 		544FCC2B26F36DCD00DEDB79 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 544FCC2A26F36DCD00DEDB79 /* CodeScanner */; };
@@ -113,6 +114,7 @@
 /* Begin PBXFileReference section */
 		543A0CD0273935D000D36D70 /* StackedCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackedCard.swift; sourceTree = "<group>"; };
 		543A0CD5273983BA00D36D70 /* WorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutView.swift; sourceTree = "<group>"; };
+		543A3537275BE3740034019E /* FinishedWorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishedWorkoutView.swift; sourceTree = "<group>"; };
 		544FCC2526F3622600DEDB79 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		544FCC2726F36A8100DEDB79 /* HelloView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelloView.swift; sourceTree = "<group>"; };
 		54646E7F26F35DD700C8C2D5 /* Fitervari.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fitervari.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -242,6 +244,7 @@
 				54CBEF6B26FC97E3009A7B68 /* Color.swift */,
 				54CF60E32711C4A100E29DC5 /* TrainingView.swift */,
 				543A0CD5273983BA00D36D70 /* WorkoutView.swift */,
+				543A3537275BE3740034019E /* FinishedWorkoutView.swift */,
 			);
 			path = Fitervari;
 			sourceTree = "<group>";
@@ -592,6 +595,7 @@
 				544FCC2626F3622600DEDB79 /* SignInView.swift in Sources */,
 				54CF60E42711C4A100E29DC5 /* TrainingView.swift in Sources */,
 				544FCC2826F36A8100DEDB79 /* HelloView.swift in Sources */,
+				543A3538275BE3740034019E /* FinishedWorkoutView.swift in Sources */,
 				54CBEF6826FC5E92009A7B68 /* DashboardView.swift in Sources */,
 				54646E8526F35DD700C8C2D5 /* ContentView.swift in Sources */,
 				54CBEF6426FC5E29009A7B68 /* MainView.swift in Sources */,

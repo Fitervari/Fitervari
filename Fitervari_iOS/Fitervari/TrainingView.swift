@@ -8,29 +8,29 @@
 import SwiftUI
 
 struct TrainingView: View {
+    @Binding var rootNavigate: Bool
+    
     @State private var navigate = false
     
     var body: some View {
         VStack {
             ScrollView {
                 if #available(iOS 15.0, *) {
-                    Card(title: "Übung 1", action: {
-                    }) {
-                        Text("")
+                    StackedCard(title: "15x Crunches Arme seitlich", stackedTitle: "2 Sets") {
+                        EmptyView()
                     } background: {
-                        Color.accentColor
+                        Color.orange
                     }
                     .frame(height: 170)
                     
-                    Card(title: "Übung 2", action: {
-                    }) {
-                        Text("")
+                    StackedCard(title: "20x Käfer-Übung", stackedTitle: "2 Sets") {
+                        EmptyView()
                     } background: {
-                        Color.accentColor
+                        Color.orange
                     }
                     .frame(height: 170)
                     
-                    StackedCard(title: "Übung 3", stackedTitle: "Set 1/2") {
+                    StackedCard(title: "15s Frontstütz mit angehobenem Bein", stackedTitle: "2 Sets") {
                         EmptyView()
                     } background: {
                         Color.orange
@@ -52,18 +52,20 @@ struct TrainingView: View {
                 .controlSize(.large)
                 .buttonStyle(.borderedProminent)
                 
-                NavigationLink(destination: WorkoutView(), isActive: $navigate) {
+                NavigationLink(destination: WorkoutView(rootNavigate: $rootNavigate), isActive: $navigate) {
                     EmptyView()
                 }
             }
         }
         .padding(.horizontal)
-        .navigationTitle("Training X")
+        .navigationTitle("Bauch")
     }
 }
 
 struct TrainingView_Previews: PreviewProvider {
+    @State private static var navigate = true
+    
     static var previews: some View {
-        TrainingView()
+        TrainingView(rootNavigate: $navigate)
     }
 }

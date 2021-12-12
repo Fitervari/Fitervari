@@ -38,7 +38,7 @@ struct Card<Content, Background>: View where Content: View, Background: View {
                     HStack {
                         Text(title)
                             .bold()
-                            .lineLimit(1)
+                            // .lineLimit(1)
                             .frame(maxWidth: .infinity, alignment: .leading)
                         
                         Text("")

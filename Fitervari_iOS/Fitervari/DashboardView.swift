@@ -8,22 +8,28 @@
 import SwiftUI
 
 struct DashboardView: View {
+    @State private var navigate = false
+    
     var body: some View {
 		ScrollView {
 			if #available(iOS 15.0, *) {
-                NavigationLink(destination: TrainingView()) {
-                    Card(title: "Training 1", action: {
-                        print("training 1")
-                    }) {
-                        Text("")
-                    } background: {
-                        Color.accentColor
-                    }
-                    .frame(height: 170)
+                Card(title: "Bauch", subtitle: "Woche 1, Tag 1-3") {
+                    EmptyView()
+                } background: {
+                    Color.accentColor
+                }
+                .frame(height: 170)
+                .onTapGesture {
+                    navigate = true
                 }
                 
+                NavigationLink(destination: TrainingView(rootNavigate: $navigate), isActive: $navigate) {
+                    EmptyView()
+                }
+                
+                /*
                 NavigationLink(destination: TrainingView()) {
-                    Card(title: "Training 2", action: {
+                    Card(title: "Oberschenkel", action: {
                         print("training 2")
                     }) {
                         Text("")
@@ -32,6 +38,7 @@ struct DashboardView: View {
                     }
                     .frame(height: 170)
                 }
+                */
 			}
 		}
         .padding(.horizontal)
