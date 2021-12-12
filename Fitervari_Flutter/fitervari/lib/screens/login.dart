@@ -12,7 +12,7 @@ class LoginScreenState extends State<LoginScreen> {
   void initState() {
     super.initState();
     if ('qrcodeabfrage' == null) {
-      Navigator.pushReplacementNamed(context, '/topics');
+      Navigator.pushReplacementNamed(context, '/training');
     }
   }
 
@@ -87,7 +87,7 @@ class LoginButton extends StatelessWidget {
             MaterialPageRoute(builder: (context) => const QRViewExample()),
           );
           if (QRViewExample == null) {
-            Navigator.pushReplacementNamed(context, '/topics');
+            Navigator.pushReplacementNamed(context, '/training');
           }
         },
         label: Expanded(

@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
 
       // Named Routes
       routes: {
-        '/': (context) => ExerciseScreen(),
+        '/': (context) => LoginScreen(),
         '/training': (context) => PlanScreen(),
         '/profile': (context) => PlanScreen(),
         '/about': (context) => PlanScreen(),
