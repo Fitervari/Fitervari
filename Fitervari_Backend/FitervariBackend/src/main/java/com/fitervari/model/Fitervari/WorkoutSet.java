@@ -25,4 +25,44 @@ public class WorkoutSet implements Serializable {
 
     @OneToMany(mappedBy = "workoutSet")
     private List<HealthData> healthData;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getRepetitions() {
+        return repetitions;
+    }
+
+    public void setRepetitions(String repetitions) {
+        this.repetitions = repetitions;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Workout getWorkout() {
+        return workout;
+    }
+
+    public void setWorkout(Workout workout) {
+        this.workout = workout;
+    }
+
+    public List<HealthData> getHealthData() {
+        return healthData;
+    }
+
+    public void setHealthData(List<HealthData> healthData) {
+        this.healthData = healthData;
+    }
 }

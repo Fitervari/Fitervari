@@ -11,14 +11,13 @@ import java.time.LocalDateTime;
 @NamedQueries({
         @NamedQuery(name = HealthData.GETALLFORTRAINING,
                 query = "SELECT h FROM healthdata h JOIN FETCH h.healthDataType WHERE h.training.id=:trainingsId and (:type=-1L or h.healthDataType.id=:type)"),
-        @NamedQuery(name = HealthData.GETALLFORWORKOUTSET,
-                query = "SELECT h FROM healthdata h WHERE h.workoutSet=:workoutSetId")
+        @NamedQuery(name = HealthData.GETALLWITHCRITERIA,
+                query = "SELECT h FROM healthdata h WHERE (:workoutSetId=-1L or h.workoutSet=:workoutSetId) and (:trainingsId=-1L or h.training.id=:trainingsId) and (:type=-1L or h.healthDataType.id=:type)")
 })
 public class HealthData {
 
     public static final String GETALLFORTRAINING = "HealthData.GetAllForTraining";
-    public static final String GETALLFORWORKOUTSET = "HealthData.GetAllForWorkoutSet";
-    public static final String GETALLWITH = "HealthData.GetAllForTraining";
+    public static final String GETALLWITHCRITERIA = "HealthData.GetAllWithCriteria";
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
