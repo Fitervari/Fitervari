@@ -12,8 +12,8 @@ struct FitervariApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationView {
-                // HelloView()
-                MainView()
+                HelloView()
+                // MainView()
             }
         }
     }
