@@ -15,6 +15,7 @@ struct FitervariApp: App {
         WindowGroup {
             NavigationView {
                 ContentView()
+                    .environmentObject(connectivityProvider)
             }
         }
     }
