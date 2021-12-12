@@ -21,6 +21,10 @@
 		54646E9426F35DD900C8C2D5 /* FitervariTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54646E9326F35DD900C8C2D5 /* FitervariTests.swift */; };
 		54646E9E26F35DD900C8C2D5 /* FitervariUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54646E9D26F35DD900C8C2D5 /* FitervariUITests.swift */; };
 		54646EA026F35DD900C8C2D5 /* FitervariUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54646E9F26F35DD900C8C2D5 /* FitervariUITestsLaunchTests.swift */; };
+		54BBF995276625C40067431C /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54BBF994276625C40067431C /* HealthKit.framework */; };
+		54BBF998276626B80067431C /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54BBF997276626B80067431C /* HealthKit.framework */; };
+		54BBF99A2766299C0067431C /* ConnectivityProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BBF9992766299C0067431C /* ConnectivityProvider.swift */; };
+		54BBF99C276632EB0067431C /* ConnectivityProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BBF99B276632EB0067431C /* ConnectivityProvider.swift */; };
 		54CBEF6426FC5E29009A7B68 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CBEF6326FC5E29009A7B68 /* MainView.swift */; };
 		54CBEF6626FC5E85009A7B68 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CBEF6526FC5E85009A7B68 /* AccountView.swift */; };
 		54CBEF6826FC5E92009A7B68 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CBEF6726FC5E92009A7B68 /* DashboardView.swift */; };
@@ -127,6 +131,11 @@
 		54646E9926F35DD900C8C2D5 /* FitervariUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FitervariUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		54646E9D26F35DD900C8C2D5 /* FitervariUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitervariUITests.swift; sourceTree = "<group>"; };
 		54646E9F26F35DD900C8C2D5 /* FitervariUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitervariUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		54BBF994276625C40067431C /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		54BBF996276626B80067431C /* FitervariHealth WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "FitervariHealth WatchKit Extension.entitlements"; sourceTree = "<group>"; };
+		54BBF997276626B80067431C /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS8.3.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
+		54BBF9992766299C0067431C /* ConnectivityProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectivityProvider.swift; sourceTree = "<group>"; };
+		54BBF99B276632EB0067431C /* ConnectivityProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectivityProvider.swift; sourceTree = "<group>"; };
 		54C5EC2526F3AC9700DFFE5E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		54CBEF6326FC5E29009A7B68 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		54CBEF6526FC5E85009A7B68 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
@@ -156,6 +165,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54BBF995276625C40067431C /* HealthKit.framework in Frameworks */,
 				543A0CD427393C1500D36D70 /* DynamicColor in Frameworks */,
 				544FCC2B26F36DCD00DEDB79 /* CodeScanner in Frameworks */,
 			);
@@ -179,6 +189,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54BBF998276626B80067431C /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -210,6 +221,7 @@
 				54F521D8273BBEB000AA75DD /* FitervariHealthTests */,
 				54F521E2273BBEB000AA75DD /* FitervariHealthUITests */,
 				54646E8026F35DD700C8C2D5 /* Products */,
+				54BBF993276625C40067431C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -245,6 +257,7 @@
 				54CF60E32711C4A100E29DC5 /* TrainingView.swift */,
 				543A0CD5273983BA00D36D70 /* WorkoutView.swift */,
 				543A3537275BE3740034019E /* FinishedWorkoutView.swift */,
+				54BBF9992766299C0067431C /* ConnectivityProvider.swift */,
 			);
 			path = Fitervari;
 			sourceTree = "<group>";
@@ -274,6 +287,15 @@
 			path = FitervariUITests;
 			sourceTree = "<group>";
 		};
+		54BBF993276625C40067431C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				54BBF997276626B80067431C /* HealthKit.framework */,
+				54BBF994276625C40067431C /* HealthKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		54CC0F502710BE2400112EE3 /* Card */ = {
 			isa = PBXGroup;
 			children = (
@@ -295,12 +317,14 @@
 		54F521C4273BBEAF00AA75DD /* FitervariHealth WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
+				54BBF996276626B80067431C /* FitervariHealth WatchKit Extension.entitlements */,
 				54F521C5273BBEAF00AA75DD /* ContentView.swift */,
 				54F521C7273BBEAF00AA75DD /* FitervariApp.swift */,
 				54F521C9273BBEAF00AA75DD /* ComplicationController.swift */,
 				54F521CB273BBEB000AA75DD /* Assets.xcassets */,
 				54F521D0273BBEB000AA75DD /* Info.plist */,
 				54F521CD273BBEB000AA75DD /* Preview Content */,
+				54BBF99B276632EB0067431C /* ConnectivityProvider.swift */,
 			);
 			path = "FitervariHealth WatchKit Extension";
 			sourceTree = "<group>";
@@ -597,6 +621,7 @@
 				544FCC2826F36A8100DEDB79 /* HelloView.swift in Sources */,
 				543A3538275BE3740034019E /* FinishedWorkoutView.swift in Sources */,
 				54CBEF6826FC5E92009A7B68 /* DashboardView.swift in Sources */,
+				54BBF99A2766299C0067431C /* ConnectivityProvider.swift in Sources */,
 				54646E8526F35DD700C8C2D5 /* ContentView.swift in Sources */,
 				54CBEF6426FC5E29009A7B68 /* MainView.swift in Sources */,
 				54CC0F522710BE4100112EE3 /* BasicCard.swift in Sources */,
@@ -630,6 +655,7 @@
 				54F521C8273BBEAF00AA75DD /* FitervariApp.swift in Sources */,
 				54F521C6273BBEAF00AA75DD /* ContentView.swift in Sources */,
 				54F521CA273BBEAF00AA75DD /* ComplicationController.swift in Sources */,
+				54BBF99C276632EB0067431C /* ConnectivityProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -807,6 +833,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Fitervari/Fitervari.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Fitervari/Preview Content\"";
@@ -840,6 +867,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Fitervari/Fitervari.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Fitervari/Preview Content\"";
@@ -1020,6 +1048,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "FitervariHealth WatchKit Extension/FitervariHealth WatchKit Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"FitervariHealth WatchKit Extension/Preview Content\"";
@@ -1051,6 +1080,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "FitervariHealth WatchKit Extension/FitervariHealth WatchKit Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"FitervariHealth WatchKit Extension/Preview Content\"";

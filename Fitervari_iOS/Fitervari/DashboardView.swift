@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct DashboardView: View {
+    @EnvironmentObject var connectivityProvider: ConnectivityProvider
+    
     @State private var navigate = false
     
     var body: some View {
@@ -20,6 +22,7 @@ struct DashboardView: View {
                 }
                 .frame(height: 170)
                 .onTapGesture {
+                    connectivityProvider.session.sendMessage(["training" : "Bauch"], replyHandler: nil)
                     navigate = true
                 }
                 

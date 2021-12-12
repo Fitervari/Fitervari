@@ -8,9 +8,31 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var connectivityProvider: ConnectivityProvider
+    
+    @State var running = false
+    
     var body: some View {
-        Text("Hello, World!")
-            .padding()
+        if(connectivityProvider.training != nil) {
+            VStack {
+                Text("Training: \(connectivityProvider.training ?? "")")
+                
+                if(!running) {
+                    Button {
+                        connectivityProvider.session.sendMessage(["startTraining" : true], replyHandler: nil)
+                        running = true
+                    } label: {
+                        Text("Starten")
+                    }
+                } else {
+                    Text("RUNNING")
+                }
+            }
+        } else {
+            Text("Wähle ein Training auf deinem iPhone aus.")
+            // Reachable: \(String(connectivityProvider.session.isReachable))
+                .padding()
+        }
     }
 }
 

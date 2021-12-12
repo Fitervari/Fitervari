@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct TrainingView: View {
+    @EnvironmentObject var connectivityProvider: ConnectivityProvider
+    
     @Binding var rootNavigate: Bool
     
     @State private var navigate = false
@@ -39,6 +41,14 @@ struct TrainingView: View {
                 }
             }
             
+            if(connectivityProvider.session.isPaired) {
+                if(connectivityProvider.session.isReachable) {
+                    Text("Oder starte das Training auf deiner Apple Watch.")
+                } else {
+                    Text("Apple Watch App nicht erreichbar.")
+                }
+            }
+            
             if #available(iOS 15.0, *) {
                 Button {
                     navigate = true;
@@ -54,6 +64,9 @@ struct TrainingView: View {
                 
                 NavigationLink(destination: WorkoutView(rootNavigate: $rootNavigate), isActive: $navigate) {
                     EmptyView()
+                }
+                .onChange(of: connectivityProvider.start) { newValue in
+                    navigate = true
                 }
             }
         }
