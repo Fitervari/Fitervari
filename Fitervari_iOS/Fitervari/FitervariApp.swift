@@ -10,14 +10,22 @@ import WatchConnectivity
 
 @main
 struct FitervariApp: App {
-    @StateObject var connectivityProvider = ConnectivityProvider()
+    @StateObject private var viewRouter = ViewRouter()
+    @StateObject private var navigationModel = NavigationModel()
+    @StateObject private var connectivityProvider = ConnectivityProvider()
     
     var body: some Scene {
         WindowGroup {
             NavigationView {
-                HelloView()
-                // MainView()
+                switch viewRouter.currentView {
+                    case .signin:
+                        HelloView()
+                    case .main:
+                        MainView()
+                }
             }
+            .environmentObject(viewRouter)
+            .environmentObject(navigationModel)
             .environmentObject(connectivityProvider)
         }
     }

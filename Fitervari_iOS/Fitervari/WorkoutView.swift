@@ -10,15 +10,11 @@ import SwiftUI
 struct WorkoutView: View {
     // iOS 15 & above: @Environment(\.dismiss) private var dismiss
     @Environment(\.presentationMode) var presentationMode
-    
-    @Binding var rootNavigate: Bool
-    
-    @State private var secondsElapsed = 0
-    @State private var navigate = false
+    @EnvironmentObject private var navigationModel: NavigationModel
     
     @State private var set = 1
     @State private var title = "15x Crunches Arme seitlich"
-    
+    @State private var secondsElapsed = 0
     @State private var continueButtonLabel = "Weiter"
     
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
@@ -66,7 +62,8 @@ struct WorkoutView: View {
             
             if #available(iOS 15.0, *) {
                 Button {
-                    presentationMode.wrappedValue.dismiss()
+                    navigationModel.workoutView = false
+                    // presentationMode.wrappedValue.dismiss()
                 } label: {
                     Text("Abbrechen")
                         .frame(height: 50)
@@ -94,7 +91,7 @@ struct WorkoutView: View {
                         title = "15s Frontstütz mit angehobenem Bein"
                         continueButtonLabel = "Beenden"
                     } else if(title == "15s Frontstütz mit angehobenem Bein") {
-                        navigate = true;
+                        navigationModel.finishedWorkoutView = true
                     } else {
                         // set = 1;
                         title = "20x Käfer-Übung"
@@ -130,9 +127,10 @@ struct WorkoutView: View {
                 .controlSize(.large)
                 .buttonStyle(.borderedProminent)
                 
-                NavigationLink(destination: FinishedWorkoutView(rootNavigate: $rootNavigate), isActive: $navigate) {
+                NavigationLink(destination: FinishedWorkoutView(), isActive: $navigationModel.finishedWorkoutView) {
                     EmptyView()
                 }
+                .isDetailLink(false)
             }
         }
         .padding(.horizontal)
@@ -148,6 +146,6 @@ struct WorkoutView_Previews: PreviewProvider {
     @State private static var navigate = true
     
     static var previews: some View {
-        WorkoutView(rootNavigate: $navigate)
+        WorkoutView()
     }
 }

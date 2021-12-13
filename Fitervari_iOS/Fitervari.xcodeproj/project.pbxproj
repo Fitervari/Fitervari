@@ -25,6 +25,8 @@
 		54BBF998276626B80067431C /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54BBF997276626B80067431C /* HealthKit.framework */; };
 		54BBF99A2766299C0067431C /* ConnectivityProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BBF9992766299C0067431C /* ConnectivityProvider.swift */; };
 		54BBF99C276632EB0067431C /* ConnectivityProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BBF99B276632EB0067431C /* ConnectivityProvider.swift */; };
+		54BBF9A0276750220067431C /* ViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BBF99F276750220067431C /* ViewRouter.swift */; };
+		54BBF9A227675BF00067431C /* NavigationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BBF9A127675BF00067431C /* NavigationModel.swift */; };
 		54CBEF6426FC5E29009A7B68 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CBEF6326FC5E29009A7B68 /* MainView.swift */; };
 		54CBEF6626FC5E85009A7B68 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CBEF6526FC5E85009A7B68 /* AccountView.swift */; };
 		54CBEF6826FC5E92009A7B68 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CBEF6726FC5E92009A7B68 /* DashboardView.swift */; };
@@ -136,6 +138,8 @@
 		54BBF997276626B80067431C /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS8.3.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
 		54BBF9992766299C0067431C /* ConnectivityProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectivityProvider.swift; sourceTree = "<group>"; };
 		54BBF99B276632EB0067431C /* ConnectivityProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectivityProvider.swift; sourceTree = "<group>"; };
+		54BBF99F276750220067431C /* ViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRouter.swift; sourceTree = "<group>"; };
+		54BBF9A127675BF00067431C /* NavigationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationModel.swift; sourceTree = "<group>"; };
 		54C5EC2526F3AC9700DFFE5E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		54CBEF6326FC5E29009A7B68 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		54CBEF6526FC5E85009A7B68 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
@@ -258,6 +262,8 @@
 				543A0CD5273983BA00D36D70 /* WorkoutView.swift */,
 				543A3537275BE3740034019E /* FinishedWorkoutView.swift */,
 				54BBF9992766299C0067431C /* ConnectivityProvider.swift */,
+				54BBF99F276750220067431C /* ViewRouter.swift */,
+				54BBF9A127675BF00067431C /* NavigationModel.swift */,
 			);
 			path = Fitervari;
 			sourceTree = "<group>";
@@ -618,6 +624,7 @@
 				543A0CD6273983BA00D36D70 /* WorkoutView.swift in Sources */,
 				544FCC2626F3622600DEDB79 /* SignInView.swift in Sources */,
 				54CF60E42711C4A100E29DC5 /* TrainingView.swift in Sources */,
+				54BBF9A227675BF00067431C /* NavigationModel.swift in Sources */,
 				544FCC2826F36A8100DEDB79 /* HelloView.swift in Sources */,
 				543A3538275BE3740034019E /* FinishedWorkoutView.swift in Sources */,
 				54CBEF6826FC5E92009A7B68 /* DashboardView.swift in Sources */,
@@ -625,6 +632,7 @@
 				54646E8526F35DD700C8C2D5 /* ContentView.swift in Sources */,
 				54CBEF6426FC5E29009A7B68 /* MainView.swift in Sources */,
 				54CC0F522710BE4100112EE3 /* BasicCard.swift in Sources */,
+				54BBF9A0276750220067431C /* ViewRouter.swift in Sources */,
 				54646E8326F35DD700C8C2D5 /* FitervariApp.swift in Sources */,
 				54CBEF6A26FC6308009A7B68 /* Card.swift in Sources */,
 				54CBEF6C26FC97E3009A7B68 /* Color.swift in Sources */,

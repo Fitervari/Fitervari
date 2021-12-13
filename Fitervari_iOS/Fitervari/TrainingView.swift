@@ -8,11 +8,8 @@
 import SwiftUI
 
 struct TrainingView: View {
-    @EnvironmentObject var connectivityProvider: ConnectivityProvider
-    
-    @Binding var rootNavigate: Bool
-    
-    @State private var navigate = false
+    @EnvironmentObject private var navigationModel: NavigationModel
+    @EnvironmentObject private var connectivityProvider: ConnectivityProvider
     
     var body: some View {
         VStack {
@@ -51,7 +48,7 @@ struct TrainingView: View {
             
             if #available(iOS 15.0, *) {
                 Button {
-                    navigate = true;
+                    navigationModel.workoutView = true
                 } label: {
                     Text("Starten")
                         .bold()
@@ -62,11 +59,12 @@ struct TrainingView: View {
                 .controlSize(.large)
                 .buttonStyle(.borderedProminent)
                 
-                NavigationLink(destination: WorkoutView(rootNavigate: $rootNavigate), isActive: $navigate) {
+                NavigationLink(destination: WorkoutView(), isActive: $navigationModel.workoutView) {
                     EmptyView()
                 }
+                .isDetailLink(false)
                 .onChange(of: connectivityProvider.start) { newValue in
-                    navigate = true
+                    navigationModel.workoutView = true
                 }
             }
         }
@@ -79,6 +77,6 @@ struct TrainingView_Previews: PreviewProvider {
     @State private static var navigate = true
     
     static var previews: some View {
-        TrainingView(rootNavigate: $navigate)
+        TrainingView()
     }
 }

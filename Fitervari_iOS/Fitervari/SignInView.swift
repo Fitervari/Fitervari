@@ -9,20 +9,16 @@ import SwiftUI
 import CodeScanner
 
 struct SignInView: View {
-	@State private var navigate = false
+    @EnvironmentObject private var viewRouter: ViewRouter
 	
 	var body: some View {
 		GeometryReader { geometrics in
 			ZStack(alignment: .top) {
 				VStack {
-					NavigationLink(destination: MainView(), isActive: $navigate) {
-						EmptyView()
-					}
-					
 					CodeScannerView(codeTypes: [.qr], scanMode: .continuous, simulatedData: "http://en.m.wikipedia.org") { result in
 						result.map({ success in
 							if(success == "http://en.m.wikipedia.org") {
-								navigate = true;
+                                viewRouter.currentView = .main
 							}
 						})
 					}

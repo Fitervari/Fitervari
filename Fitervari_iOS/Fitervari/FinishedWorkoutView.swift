@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct FinishedWorkoutView: View {
-    @Binding var rootNavigate: Bool
+    @EnvironmentObject private var navigationModel: NavigationModel
     
     var body: some View {
         VStack {
@@ -17,7 +17,7 @@ struct FinishedWorkoutView: View {
             
             if #available(iOS 15.0, *) {
                 Button {
-                    rootNavigate = false
+                    navigationModel.returnToDashboard()
                 } label: {
                     Text("Zum Homebildschirm")
                         .frame(height: 50)
@@ -34,9 +34,7 @@ struct FinishedWorkoutView: View {
 }
 
 struct FinishedWorkoutView_Previews: PreviewProvider {
-    @State private static var navigate = true
-    
     static var previews: some View {
-        FinishedWorkoutView(rootNavigate: $navigate)
+        FinishedWorkoutView()
     }
 }

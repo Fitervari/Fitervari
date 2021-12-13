@@ -8,9 +8,8 @@
 import SwiftUI
 
 struct DashboardView: View {
-    @EnvironmentObject var connectivityProvider: ConnectivityProvider
-    
-    @State private var navigate = false
+    @EnvironmentObject private var navigationModel: NavigationModel
+    @EnvironmentObject private var connectivityProvider: ConnectivityProvider
     
     var body: some View {
 		ScrollView {
@@ -22,13 +21,17 @@ struct DashboardView: View {
                 }
                 .frame(height: 170)
                 .onTapGesture {
-                    connectivityProvider.session.sendMessage(["training" : "Bauch"], replyHandler: nil)
-                    navigate = true
+                    if connectivityProvider.session.isReachable {
+                        connectivityProvider.session.sendMessage(["training" : "Bauch"], replyHandler: nil)
+                    }
+                    
+                    navigationModel.trainingView = true
                 }
                 
-                NavigationLink(destination: TrainingView(rootNavigate: $navigate), isActive: $navigate) {
+                NavigationLink(destination: TrainingView(), isActive: $navigationModel.trainingView) {
                     EmptyView()
                 }
+                .isDetailLink(false)
                 
                 /*
                 NavigationLink(destination: TrainingView()) {
