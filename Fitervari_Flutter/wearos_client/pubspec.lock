@@ -219,6 +219,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.1.1"
+  wearable_communicator:
+    dependency: "direct main"
+    description:
+      name: wearable_communicator
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.1"
   workout:
     dependency: "direct main"
     description:

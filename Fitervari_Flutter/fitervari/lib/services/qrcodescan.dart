@@ -45,7 +45,7 @@ class _QRViewExampleState extends State<QRViewExample> {
                   if (result == null)
                     ElevatedButton(
                       onPressed: () async {
-                        Navigator.pushReplacementNamed(context, '/plan');
+                        Navigator.pushReplacementNamed(context, '/training');
                       },
                       child: Text('WEITER'),
                     )

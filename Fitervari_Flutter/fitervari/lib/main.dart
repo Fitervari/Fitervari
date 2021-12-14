@@ -19,6 +19,8 @@ class MyApp extends StatelessWidget {
         '/training': (context) => PlanScreen(),
         '/profile': (context) => PlanScreen(),
         '/about': (context) => PlanScreen(),
+        '/plan': (context) => PlanScreen(),
+        '/statistic': (context) => PlanScreen(),
       },
 
       // Theme
