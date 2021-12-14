@@ -4,6 +4,7 @@ info:
   description: Syp Projekt als Erweiterung des Fitervari Projekts.
   version: 1.0.0
 servers:
+  - url: 'http://localhost:8080/healthdata'
   - url: 'https://localhost:8080/api/fitervari/healthdata'
 paths:
   /:
@@ -52,14 +53,10 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/HealthDataDTO'
+              $ref: '#/components/schemas/PostHealtDataExample'
       responses:
         201:
           description: "Health data added"
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/HealthDataDTO'
         400:
           description: "Malformed body"
 
@@ -134,3 +131,10 @@ components:
             id: 1420
             description: "7kg Bankdrücken"
             repetitions: "10"
+    PostHealtDataExample:
+      type: object
+      example:
+        - type: 1
+          value: '120'
+          workoutSet: 2
+          training: 1
