@@ -15,7 +15,6 @@ fileprivate class ViewModel: ObservableObject {
 	init() {
 		ConnectivityProvider.shared.getProvider(for: SelectedTrainingMessage.self)
 			.map(\.name)
-			.map(Optional.some)
 			.assign(to: &$trainingName)
 	}
 }
@@ -28,15 +27,15 @@ struct ContentView: View {
 			VStack {
 				Text("Training: \(trainingName)")
 				
-				if !viewModel.trainingState {
-					Button {
-						ConnectivityProvider.shared.sendMessage(data: StartTrainingMessage())
-						viewModel.trainingState = true
-					} label: {
+				Button {
+					viewModel.trainingState.toggle()
+					ConnectivityProvider.shared.sendMessage(data: SetWorkoutStateMessage(state: viewModel.trainingState))
+				} label: {
+					if !viewModel.trainingState {
 						Text("Starten")
+					} else {
+						Text("Abbrechen")
 					}
-				} else {
-					Text("RUNNING")
 				}
 			}
 		} else {

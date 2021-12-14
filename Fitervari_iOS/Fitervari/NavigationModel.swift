@@ -13,12 +13,20 @@ class NavigationModel: ObservableObject {
     @Published var workoutView = false
     @Published var finishedWorkoutView = false
 	
+	private var cancel = Set<AnyCancellable>()
+	
 	init() {
-		ConnectivityProvider.shared.getProvider(for: StartTrainingMessage.self)
+		ConnectivityProvider.shared.getProvider(for: SetWorkoutStateMessage.self)
 			.map { msg in
-				return true
+				return msg.state
 			}
 			.assign(to: &$workoutView)
+		
+		cancel.insert($trainingView.sink { state in
+			if !state {
+				ConnectivityProvider.shared.sendMessage(data: SelectedTrainingMessage(name: nil))
+			}
+		})
 	}
     
     func returnToDashboard() {

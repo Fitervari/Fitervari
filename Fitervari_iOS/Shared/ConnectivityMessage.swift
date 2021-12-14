@@ -7,8 +7,10 @@
 
 import Foundation
 
-struct StartTrainingMessage: Codable {}
+struct SetWorkoutStateMessage: Codable {
+	var state: Bool
+}
 
 struct SelectedTrainingMessage: Codable {
-	var name: String
+	var name: String?
 }
