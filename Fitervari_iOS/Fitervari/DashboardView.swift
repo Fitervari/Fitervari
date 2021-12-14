@@ -6,10 +6,10 @@
 //
 
 import SwiftUI
+import Communicator
 
 struct DashboardView: View {
     @EnvironmentObject private var navigationModel: NavigationModel
-    @EnvironmentObject private var connectivityProvider: ConnectivityProvider
     
     var body: some View {
 		ScrollView {
@@ -21,30 +21,13 @@ struct DashboardView: View {
                 }
                 .frame(height: 170)
                 .onTapGesture {
-                    if connectivityProvider.session.isReachable {
-                        connectivityProvider.session.sendMessage(["training" : "Bauch"], replyHandler: nil)
-                    }
-                    
+					ConnectivityProvider.shared.sendMessage(data: SelectedTrainingMessage(name: "Bauch"))
                     navigationModel.trainingView = true
                 }
                 
                 NavigationLink(destination: TrainingView(), isActive: $navigationModel.trainingView) {
                     EmptyView()
                 }
-                .isDetailLink(false)
-                
-                /*
-                NavigationLink(destination: TrainingView()) {
-                    Card(title: "Oberschenkel", action: {
-                        print("training 2")
-                    }) {
-                        Text("")
-                    } background: {
-                        Color.accentColor
-                    }
-                    .frame(height: 170)
-                }
-                */
 			}
 		}
         .padding(.horizontal)

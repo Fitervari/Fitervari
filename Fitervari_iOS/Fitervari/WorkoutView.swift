@@ -130,7 +130,6 @@ struct WorkoutView: View {
                 NavigationLink(destination: FinishedWorkoutView(), isActive: $navigationModel.finishedWorkoutView) {
                     EmptyView()
                 }
-                .isDetailLink(false)
             }
         }
         .padding(.horizontal)

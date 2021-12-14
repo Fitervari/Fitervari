@@ -21,12 +21,15 @@
 		54646E9426F35DD900C8C2D5 /* FitervariTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54646E9326F35DD900C8C2D5 /* FitervariTests.swift */; };
 		54646E9E26F35DD900C8C2D5 /* FitervariUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54646E9D26F35DD900C8C2D5 /* FitervariUITests.swift */; };
 		54646EA026F35DD900C8C2D5 /* FitervariUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54646E9F26F35DD900C8C2D5 /* FitervariUITestsLaunchTests.swift */; };
-		54BBF995276625C40067431C /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54BBF994276625C40067431C /* HealthKit.framework */; };
 		54BBF998276626B80067431C /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54BBF997276626B80067431C /* HealthKit.framework */; };
-		54BBF99A2766299C0067431C /* ConnectivityProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BBF9992766299C0067431C /* ConnectivityProvider.swift */; };
-		54BBF99C276632EB0067431C /* ConnectivityProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BBF99B276632EB0067431C /* ConnectivityProvider.swift */; };
 		54BBF9A0276750220067431C /* ViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BBF99F276750220067431C /* ViewRouter.swift */; };
 		54BBF9A227675BF00067431C /* NavigationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BBF9A127675BF00067431C /* NavigationModel.swift */; };
+		54BBF9B42767BE3D0067431C /* Communicator in Frameworks */ = {isa = PBXBuildFile; productRef = 54BBF9B32767BE3D0067431C /* Communicator */; };
+		54BBF9B62767C1760067431C /* ConnectivityProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BBF9B52767C1760067431C /* ConnectivityProvider.swift */; };
+		54BBF9B72767C1760067431C /* ConnectivityProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BBF9B52767C1760067431C /* ConnectivityProvider.swift */; };
+		54BBF9B92768049D0067431C /* Communicator in Frameworks */ = {isa = PBXBuildFile; productRef = 54BBF9B82768049D0067431C /* Communicator */; };
+		54BBF9BB27687D0E0067431C /* ConnectivityMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BBF9BA27687D0E0067431C /* ConnectivityMessage.swift */; };
+		54BBF9BC27687D0E0067431C /* ConnectivityMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BBF9BA27687D0E0067431C /* ConnectivityMessage.swift */; };
 		54CBEF6426FC5E29009A7B68 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CBEF6326FC5E29009A7B68 /* MainView.swift */; };
 		54CBEF6626FC5E85009A7B68 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CBEF6526FC5E85009A7B68 /* AccountView.swift */; };
 		54CBEF6826FC5E92009A7B68 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CBEF6726FC5E92009A7B68 /* DashboardView.swift */; };
@@ -133,13 +136,12 @@
 		54646E9926F35DD900C8C2D5 /* FitervariUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FitervariUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		54646E9D26F35DD900C8C2D5 /* FitervariUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitervariUITests.swift; sourceTree = "<group>"; };
 		54646E9F26F35DD900C8C2D5 /* FitervariUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitervariUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		54BBF994276625C40067431C /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		54BBF996276626B80067431C /* FitervariHealth WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "FitervariHealth WatchKit Extension.entitlements"; sourceTree = "<group>"; };
 		54BBF997276626B80067431C /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS8.3.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
-		54BBF9992766299C0067431C /* ConnectivityProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectivityProvider.swift; sourceTree = "<group>"; };
-		54BBF99B276632EB0067431C /* ConnectivityProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectivityProvider.swift; sourceTree = "<group>"; };
 		54BBF99F276750220067431C /* ViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRouter.swift; sourceTree = "<group>"; };
 		54BBF9A127675BF00067431C /* NavigationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationModel.swift; sourceTree = "<group>"; };
+		54BBF9B52767C1760067431C /* ConnectivityProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectivityProvider.swift; sourceTree = "<group>"; };
+		54BBF9BA27687D0E0067431C /* ConnectivityMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectivityMessage.swift; sourceTree = "<group>"; };
 		54C5EC2526F3AC9700DFFE5E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		54CBEF6326FC5E29009A7B68 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		54CBEF6526FC5E85009A7B68 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
@@ -169,9 +171,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				54BBF995276625C40067431C /* HealthKit.framework in Frameworks */,
 				543A0CD427393C1500D36D70 /* DynamicColor in Frameworks */,
 				544FCC2B26F36DCD00DEDB79 /* CodeScanner in Frameworks */,
+				54BBF9B42767BE3D0067431C /* Communicator in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -194,6 +196,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				54BBF998276626B80067431C /* HealthKit.framework in Frameworks */,
+				54BBF9B92768049D0067431C /* Communicator in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -217,6 +220,7 @@
 		54646E7626F35DD700C8C2D5 = {
 			isa = PBXGroup;
 			children = (
+				54BBF9A3276772780067431C /* Shared */,
 				54646E8126F35DD700C8C2D5 /* Fitervari */,
 				54646E9226F35DD900C8C2D5 /* FitervariTests */,
 				54646E9C26F35DD900C8C2D5 /* FitervariUITests */,
@@ -228,6 +232,8 @@
 				54BBF993276625C40067431C /* Frameworks */,
 			);
 			sourceTree = "<group>";
+			tabWidth = 4;
+			usesTabs = 1;
 		};
 		54646E8026F35DD700C8C2D5 /* Products */ = {
 			isa = PBXGroup;
@@ -261,7 +267,6 @@
 				54CF60E32711C4A100E29DC5 /* TrainingView.swift */,
 				543A0CD5273983BA00D36D70 /* WorkoutView.swift */,
 				543A3537275BE3740034019E /* FinishedWorkoutView.swift */,
-				54BBF9992766299C0067431C /* ConnectivityProvider.swift */,
 				54BBF99F276750220067431C /* ViewRouter.swift */,
 				54BBF9A127675BF00067431C /* NavigationModel.swift */,
 			);
@@ -297,10 +302,19 @@
 			isa = PBXGroup;
 			children = (
 				54BBF997276626B80067431C /* HealthKit.framework */,
-				54BBF994276625C40067431C /* HealthKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
+		};
+		54BBF9A3276772780067431C /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				54BBF9B52767C1760067431C /* ConnectivityProvider.swift */,
+				54BBF9BA27687D0E0067431C /* ConnectivityMessage.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+			usesTabs = 1;
 		};
 		54CC0F502710BE2400112EE3 /* Card */ = {
 			isa = PBXGroup;
@@ -330,7 +344,6 @@
 				54F521CB273BBEB000AA75DD /* Assets.xcassets */,
 				54F521D0273BBEB000AA75DD /* Info.plist */,
 				54F521CD273BBEB000AA75DD /* Preview Content */,
-				54BBF99B276632EB0067431C /* ConnectivityProvider.swift */,
 			);
 			path = "FitervariHealth WatchKit Extension";
 			sourceTree = "<group>";
@@ -381,6 +394,7 @@
 			packageProductDependencies = (
 				544FCC2A26F36DCD00DEDB79 /* CodeScanner */,
 				543A0CD327393C1500D36D70 /* DynamicColor */,
+				54BBF9B32767BE3D0067431C /* Communicator */,
 			);
 			productName = Fitervari;
 			productReference = 54646E7F26F35DD700C8C2D5 /* Fitervari.app */;
@@ -452,6 +466,9 @@
 			dependencies = (
 			);
 			name = "FitervariHealth WatchKit Extension";
+			packageProductDependencies = (
+				54BBF9B82768049D0067431C /* Communicator */,
+			);
 			productName = "FitervariHealth WatchKit Extension";
 			productReference = 54F521C0273BBEAF00AA75DD /* FitervariHealth WatchKit Extension.appex */;
 			productType = "com.apple.product-type.watchkit2-extension";
@@ -541,6 +558,7 @@
 			packageReferences = (
 				544FCC2926F36DCD00DEDB79 /* XCRemoteSwiftPackageReference "CodeScanner" */,
 				543A0CD227393C1500D36D70 /* XCRemoteSwiftPackageReference "DynamicColor" */,
+				54BBF9B22767BE3D0067431C /* XCRemoteSwiftPackageReference "Communicator" */,
 			);
 			productRefGroup = 54646E8026F35DD700C8C2D5 /* Products */;
 			projectDirPath = "";
@@ -621,14 +639,15 @@
 			files = (
 				54CBEF6626FC5E85009A7B68 /* AccountView.swift in Sources */,
 				543A0CD1273935D000D36D70 /* StackedCard.swift in Sources */,
+				54BBF9BB27687D0E0067431C /* ConnectivityMessage.swift in Sources */,
 				543A0CD6273983BA00D36D70 /* WorkoutView.swift in Sources */,
 				544FCC2626F3622600DEDB79 /* SignInView.swift in Sources */,
 				54CF60E42711C4A100E29DC5 /* TrainingView.swift in Sources */,
+				54BBF9B62767C1760067431C /* ConnectivityProvider.swift in Sources */,
 				54BBF9A227675BF00067431C /* NavigationModel.swift in Sources */,
 				544FCC2826F36A8100DEDB79 /* HelloView.swift in Sources */,
 				543A3538275BE3740034019E /* FinishedWorkoutView.swift in Sources */,
 				54CBEF6826FC5E92009A7B68 /* DashboardView.swift in Sources */,
-				54BBF99A2766299C0067431C /* ConnectivityProvider.swift in Sources */,
 				54646E8526F35DD700C8C2D5 /* ContentView.swift in Sources */,
 				54CBEF6426FC5E29009A7B68 /* MainView.swift in Sources */,
 				54CC0F522710BE4100112EE3 /* BasicCard.swift in Sources */,
@@ -662,8 +681,9 @@
 			files = (
 				54F521C8273BBEAF00AA75DD /* FitervariApp.swift in Sources */,
 				54F521C6273BBEAF00AA75DD /* ContentView.swift in Sources */,
+				54BBF9BC27687D0E0067431C /* ConnectivityMessage.swift in Sources */,
 				54F521CA273BBEAF00AA75DD /* ComplicationController.swift in Sources */,
-				54BBF99C276632EB0067431C /* ConnectivityProvider.swift in Sources */,
+				54BBF9B72767C1760067431C /* ConnectivityProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1290,6 +1310,14 @@
 				version = 1.0.7;
 			};
 		};
+		54BBF9B22767BE3D0067431C /* XCRemoteSwiftPackageReference "Communicator" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/KaneCheshire/Communicator.git";
+			requirement = {
+				kind = exactVersion;
+				version = 4.1.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1302,6 +1330,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 544FCC2926F36DCD00DEDB79 /* XCRemoteSwiftPackageReference "CodeScanner" */;
 			productName = CodeScanner;
+		};
+		54BBF9B32767BE3D0067431C /* Communicator */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 54BBF9B22767BE3D0067431C /* XCRemoteSwiftPackageReference "Communicator" */;
+			productName = Communicator;
+		};
+		54BBF9B82768049D0067431C /* Communicator */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 54BBF9B22767BE3D0067431C /* XCRemoteSwiftPackageReference "Communicator" */;
+			productName = Communicator;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -12,7 +12,6 @@ import WatchConnectivity
 struct FitervariApp: App {
     @StateObject private var viewRouter = ViewRouter()
     @StateObject private var navigationModel = NavigationModel()
-    @StateObject private var connectivityProvider = ConnectivityProvider()
     
     var body: some Scene {
         WindowGroup {
@@ -24,9 +23,9 @@ struct FitervariApp: App {
                         MainView()
                 }
             }
+			.navigationViewStyle(.stack)
             .environmentObject(viewRouter)
             .environmentObject(navigationModel)
-            .environmentObject(connectivityProvider)
         }
     }
 }

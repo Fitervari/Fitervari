@@ -6,33 +6,44 @@
 //
 
 import SwiftUI
+import Combine
+
+fileprivate class ViewModel: ObservableObject {
+	@Published var trainingName: String? = nil
+	@Published var trainingState = false
+	
+	init() {
+		ConnectivityProvider.shared.getProvider(for: SelectedTrainingMessage.self)
+			.map(\.name)
+			.map(Optional.some)
+			.assign(to: &$trainingName)
+	}
+}
 
 struct ContentView: View {
-    @EnvironmentObject var connectivityProvider: ConnectivityProvider
-    
-    @State var running = false
+	@ObservedObject private var viewModel = ViewModel()
     
     var body: some View {
-        if(connectivityProvider.training != nil) {
-            VStack {
-                Text("Training: \(connectivityProvider.training ?? "")")
-                
-                if(!running) {
-                    Button {
-                        connectivityProvider.session.sendMessage(["startTraining" : true], replyHandler: nil)
-                        running = true
-                    } label: {
-                        Text("Starten")
-                    }
-                } else {
-                    Text("RUNNING")
-                }
-            }
-        } else {
-            Text("Wähle ein Training auf deinem iPhone aus.")
-            // Reachable: \(String(connectivityProvider.session.isReachable))
-                .padding()
-        }
+		if let trainingName = viewModel.trainingName {
+			VStack {
+				Text("Training: \(trainingName)")
+				
+				if !viewModel.trainingState {
+					Button {
+						ConnectivityProvider.shared.sendMessage(data: StartTrainingMessage())
+						viewModel.trainingState = true
+					} label: {
+						Text("Starten")
+					}
+				} else {
+					Text("RUNNING")
+				}
+			}
+		} else {
+			Text("Wähle ein Training auf deinem iPhone aus.")
+			// Reachable: \(String(connectivityProvider.session.isReachable))
+				.padding()
+		}
     }
 }
 

@@ -6,10 +6,34 @@
 //
 
 import SwiftUI
+import Communicator
+
+fileprivate class ViewModel: ObservableObject {
+	@Published var watchPaired: Bool
+	@Published var watchReachable: Bool
+	
+	init() {
+		let getPairingState = { (state: WatchState) -> Bool in
+			if case .paired = state { return true } else { return false }
+		}
+		
+		watchPaired = getPairingState(Communicator.shared.currentWatchState)
+		watchReachable = Communicator.shared.currentReachability == .immediatelyReachable
+		
+		WatchState.observe(queue: DispatchQueue.main) { state in
+			self.watchPaired = getPairingState(state)
+		}
+		
+		Reachability.observe(queue: DispatchQueue.main) { reachability in
+			self.watchReachable = reachability == .immediatelyReachable
+		}
+	}
+}
 
 struct TrainingView: View {
     @EnvironmentObject private var navigationModel: NavigationModel
-    @EnvironmentObject private var connectivityProvider: ConnectivityProvider
+	
+	@ObservedObject private var viewModel = ViewModel()
     
     var body: some View {
         VStack {
@@ -38,13 +62,13 @@ struct TrainingView: View {
                 }
             }
             
-            if(connectivityProvider.session.isPaired) {
-                if(connectivityProvider.session.isReachable) {
-                    Text("Oder starte das Training auf deiner Apple Watch.")
-                } else {
-                    Text("Apple Watch App nicht erreichbar.")
-                }
-            }
+			if viewModel.watchPaired {
+				if viewModel.watchReachable {
+					Text("Oder starte das Training auf deiner Apple Watch.")
+				} else {
+					Text("Apple Watch App nicht erreichbar.")
+				}
+			}
             
             if #available(iOS 15.0, *) {
                 Button {
@@ -61,10 +85,6 @@ struct TrainingView: View {
                 
                 NavigationLink(destination: WorkoutView(), isActive: $navigationModel.workoutView) {
                     EmptyView()
-                }
-                .isDetailLink(false)
-                .onChange(of: connectivityProvider.start) { newValue in
-                    navigationModel.workoutView = true
                 }
             }
         }
