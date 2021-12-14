@@ -7,7 +7,12 @@ import java.io.Serializable;
 import java.util.List;
 
 @Entity(name="workoutSet")
+@NamedQueries(
+        @NamedQuery(name=WorkoutSet.GETONEBYID, query = "SELECT ws FROM workoutSet ws WHERE ws.id=:id")
+)
 public class WorkoutSet implements Serializable {
+
+    public static final String GETONEBYID = "WorkoutSet.GetOneById";
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

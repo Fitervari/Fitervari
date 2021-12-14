@@ -1,6 +1,5 @@
 package com.fitervari.model.FitervariHealth;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fitervari.model.Fitervari.Training;
 import com.fitervari.model.Fitervari.WorkoutSet;
 
@@ -9,14 +8,11 @@ import java.time.LocalDateTime;
 
 @Entity(name="healthdata")
 @NamedQueries({
-        @NamedQuery(name = HealthData.GETALLFORTRAINING,
-                query = "SELECT h FROM healthdata h JOIN FETCH h.healthDataType WHERE h.training.id=:trainingsId and (:type=-1L or h.healthDataType.id=:type)"),
         @NamedQuery(name = HealthData.GETALLWITHCRITERIA,
                 query = "SELECT h FROM healthdata h WHERE (:workoutSetId=-1L or h.workoutSet=:workoutSetId) and (:trainingsId=-1L or h.training.id=:trainingsId) and (:type=-1L or h.healthDataType.id=:type)")
 })
 public class HealthData {
 
-    public static final String GETALLFORTRAINING = "HealthData.GetAllForTraining";
     public static final String GETALLWITHCRITERIA = "HealthData.GetAllWithCriteria";
 
     @Id
@@ -34,7 +30,6 @@ public class HealthData {
     private WorkoutSet workoutSet;
 
     @ManyToOne
-    @JsonIgnore
     private Training training;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
@@ -90,6 +85,14 @@ public class HealthData {
 
     public HealthData() {
 
+    }
+
+    public HealthData(String value, LocalDateTime time, HealthDataType type, WorkoutSet set, Training training) {
+        this.value = value;
+        this.time = time;
+        this.healthDataType = type;
+        this.workoutSet = set;
+        this.training = training;
     }
 
 }

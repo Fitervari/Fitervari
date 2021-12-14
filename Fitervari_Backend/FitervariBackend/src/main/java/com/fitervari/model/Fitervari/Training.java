@@ -8,7 +8,13 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Entity(name="training")
+@NamedQueries(
+        @NamedQuery(name=Training.GETONEBYID, query = "SELECT t FROM training t WHERE t.id=:id")
+)
 public class Training implements Serializable {
+
+    public static final String GETONEBYID = "Training.GetOneById";
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id", nullable = false)

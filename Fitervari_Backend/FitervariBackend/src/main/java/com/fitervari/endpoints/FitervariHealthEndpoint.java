@@ -2,10 +2,10 @@ package com.fitervari.endpoints;
 
 import com.fitervari.endpoints.dtos.HealthDataDTO;
 import com.fitervari.endpoints.dtos.HealthDataTypeDTO;
+import com.fitervari.endpoints.dtos.PostHealthDataDTO;
 import com.fitervari.endpoints.dtos.WorkoutSetDTO;
 import com.fitervari.model.FitervariHealth.HealthData;
 import com.fitervari.repositories.FitervariHealthRepository;
-import org.jboss.resteasy.annotations.Body;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 import java.util.LinkedList;
 import java.util.List;
 
-@Path("/fitervari/healthdata")
+@Path("/healthdata")
 @ApplicationScoped
 public class FitervariHealthEndpoint {
 
@@ -78,55 +78,17 @@ public class FitervariHealthEndpoint {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response postDataInDB(HealthData data) {
-        return Response.ok().build();
+    public Response postDataInDB(PostHealthDataDTO data) {
+        var result = repo.postHealthData(data);
+        switch(result) {
+            case -1:
+                return Response.status(Response.Status.BAD_REQUEST.getStatusCode(), "Wrong type specified").build();
+            case -2:
+                return Response.status(Response.Status.BAD_REQUEST.getStatusCode(), "Wrong workoutSet specified").build();
+            case -3:
+                return Response.status(Response.Status.BAD_REQUEST.getStatusCode(), "Wrong training specified").build();
+            default:
+                return Response.created(null).build();
+        }
     }
-
-
-    /*@GET
-    @Produces(MediaType.TEXT_PLAIN)
-    public String hello() {
-        return "Hello Fitervari Health";
-    }*/
-
-    /*@GET
-    @Path("user")
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response getAllDataByUser(@QueryParam("id") Long id) {
-
-        // TODO: RESPONSE: 200 (OK) / 400 (BAD REQUEST: Invalid user id)
-
-        String response = "You received all the Health Data from the user: " + id;
-
-        return Response.ok(response).build();
-    }
-
-    @GET
-    @Path("user/{date}")
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response getAllDataByUser(@PathParam("date") LocalDate date) {
-
-        // TODO: RESPONSE: 200 (OK) / 400 (BAD REQUEST)
-
-        String response = "You received all the Health Data from the date: " + date;
-
-        return Response.ok(response).build();
-    }
-
-    @POST
-    @Path("user")
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response addHealthDataForUser(String healthData) {
-
-        // TODO: RESPONSE: 201 (CREATED) / 400 (BAD REQUEST: Invalid Input)
-
-        String response = "You successfully added health data for the user: " + healthData;
-
-        return Response.ok(response).build();
-    }
-
-    */
-
-
 }

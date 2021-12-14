@@ -4,7 +4,12 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity(name="healthDataType")
+@NamedQueries(
+        @NamedQuery(name=HealthDataType.GETONEBYID, query = "SELECT t FROM healthDataType t WHERE t.id=:id")
+)
 public class HealthDataType {
+
+    public static final String GETONEBYID = "HealthDataType.GetOneById";
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
