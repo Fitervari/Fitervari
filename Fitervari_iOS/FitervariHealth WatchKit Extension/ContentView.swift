@@ -21,6 +21,10 @@ fileprivate class ViewModel: ObservableObject {
 
 struct ContentView: View {
 	@ObservedObject private var viewModel = ViewModel()
+	
+	@State private var secondsElapsed = 0
+	let timer = Timer.publish(every: 1, on: .main, in: .common)
+	@State var cancel: Cancellable?
     
     var body: some View {
 		if let trainingName = viewModel.trainingName {
@@ -28,14 +32,30 @@ struct ContentView: View {
 				Text("Training: \(trainingName)")
 				
 				Button {
+					if !viewModel.trainingState {
+						cancel = timer.connect()
+					} else {
+						cancel?.cancel()
+						cancel = nil
+						secondsElapsed = 0
+					}
+					
 					viewModel.trainingState.toggle()
 					ConnectivityProvider.shared.sendMessage(data: SetWorkoutStateMessage(state: viewModel.trainingState))
+					
 				} label: {
 					if !viewModel.trainingState {
 						Text("Starten")
 					} else {
 						Text("Abbrechen")
 					}
+				}
+				
+				if viewModel.trainingState {
+					Text("\(String(format: "%02d", secondsElapsed % 3600 / 60)):\(String(format: "%02d", secondsElapsed % 60))")
+						.onReceive(timer) { _ in
+							secondsElapsed += 1
+						}
 				}
 			}
 		} else {
