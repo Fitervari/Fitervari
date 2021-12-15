@@ -134,7 +134,7 @@ components:
     PostHealtDataExample:
       type: object
       example:
-        - type: 1
-          value: '120'
-          workoutSet: 2
-          training: 1
+        type: 1
+        value: '120'
+        workoutSet: 2
+        training: 1
