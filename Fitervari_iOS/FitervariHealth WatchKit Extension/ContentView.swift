@@ -23,10 +23,6 @@ struct ContentView: View {
 	@EnvironmentObject private var healthKitController: HealthKitController
 	
 	@ObservedObject private var viewModel = ViewModel()
-	
-	@State private var secondsElapsed = 0
-	let timer = Timer.publish(every: 1, on: .main, in: .common)
-	@State var cancel: Cancellable?
     
     var body: some View {
 		if let trainingName = viewModel.trainingName {
@@ -35,12 +31,8 @@ struct ContentView: View {
 				
 				Button {
 					if !viewModel.trainingState {
-						cancel = timer.connect()
 						healthKitController.startWorkout()
 					} else {
-						cancel?.cancel()
-						cancel = nil
-						secondsElapsed = 0
 						healthKitController.stopWorkout()
 					}
 					
@@ -55,17 +47,13 @@ struct ContentView: View {
 					}
 				}
 				
-				if viewModel.trainingState {
-					Text("\(String(format: "%02d", secondsElapsed % 3600 / 60)):\(String(format: "%02d", secondsElapsed % 60))")
-						.onReceive(timer) { _ in
-							secondsElapsed += 1
-						}
+				NavigationLink(destination: WorkoutView(), isActive: $viewModel.trainingState) {
+					EmptyView()
 				}
 			}
 		} else {
 			Text("Wähle ein Training auf deinem iPhone aus.")
-			// Reachable: \(String(connectivityProvider.session.isReachable))
-				.padding()
+				.scenePadding()
 		}
     }
 }

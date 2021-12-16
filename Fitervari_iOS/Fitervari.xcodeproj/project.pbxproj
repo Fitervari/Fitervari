@@ -31,6 +31,8 @@
 		54BBF9B92768049D0067431C /* Communicator in Frameworks */ = {isa = PBXBuildFile; productRef = 54BBF9B82768049D0067431C /* Communicator */; };
 		54BBF9BB27687D0E0067431C /* ConnectivityMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BBF9BA27687D0E0067431C /* ConnectivityMessage.swift */; };
 		54BBF9BC27687D0E0067431C /* ConnectivityMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BBF9BA27687D0E0067431C /* ConnectivityMessage.swift */; };
+		54C8AE3F276BE7E7008399E1 /* CommonUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C8AE3E276BE7E7008399E1 /* CommonUI.swift */; };
+		54C8AE40276BE7E7008399E1 /* CommonUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C8AE3E276BE7E7008399E1 /* CommonUI.swift */; };
 		54CBEF6426FC5E29009A7B68 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CBEF6326FC5E29009A7B68 /* MainView.swift */; };
 		54CBEF6626FC5E85009A7B68 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CBEF6526FC5E85009A7B68 /* AccountView.swift */; };
 		54CBEF6826FC5E92009A7B68 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CBEF6726FC5E92009A7B68 /* DashboardView.swift */; };
@@ -49,6 +51,8 @@
 		54F521E4273BBEB000AA75DD /* FitervariHealthUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F521E3273BBEB000AA75DD /* FitervariHealthUITests.swift */; };
 		54F521E6273BBEB000AA75DD /* FitervariHealthUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F521E5273BBEB000AA75DD /* FitervariHealthUITestsLaunchTests.swift */; };
 		54F521E9273BBEB000AA75DD /* FitervariHealth.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 54F521B8273BBEAE00AA75DD /* FitervariHealth.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		54FEC6BB276B33950002DBB1 /* WorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FEC6BA276B33950002DBB1 /* WorkoutView.swift */; };
+		54FEC6BD276B35940002DBB1 /* HelloView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FEC6BC276B35940002DBB1 /* HelloView.swift */; };
 		54FEC6C0276B3D320002DBB1 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 54FEC6BF276B3D320002DBB1 /* KeychainAccess */; };
 		54FEC6C2276B3D750002DBB1 /* KeychainHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FEC6C1276B3D750002DBB1 /* KeychainHandler.swift */; };
 		54FEC6C3276B3D750002DBB1 /* KeychainHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FEC6C1276B3D750002DBB1 /* KeychainHandler.swift */; };
@@ -153,6 +157,7 @@
 		54BBF9B52767C1760067431C /* ConnectivityProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectivityProvider.swift; sourceTree = "<group>"; };
 		54BBF9BA27687D0E0067431C /* ConnectivityMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectivityMessage.swift; sourceTree = "<group>"; };
 		54C5EC2526F3AC9700DFFE5E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		54C8AE3E276BE7E7008399E1 /* CommonUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonUI.swift; sourceTree = "<group>"; };
 		54CBEF6326FC5E29009A7B68 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		54CBEF6526FC5E85009A7B68 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		54CBEF6726FC5E92009A7B68 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
@@ -174,6 +179,8 @@
 		54F521DF273BBEB000AA75DD /* FitervariHealthUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FitervariHealthUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		54F521E3273BBEB000AA75DD /* FitervariHealthUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitervariHealthUITests.swift; sourceTree = "<group>"; };
 		54F521E5273BBEB000AA75DD /* FitervariHealthUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitervariHealthUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		54FEC6BA276B33950002DBB1 /* WorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutView.swift; sourceTree = "<group>"; };
+		54FEC6BC276B35940002DBB1 /* HelloView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelloView.swift; sourceTree = "<group>"; };
 		54FEC6C1276B3D750002DBB1 /* KeychainHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHandler.swift; sourceTree = "<group>"; };
 		54FEC6C4276B44200002DBB1 /* AuthenticationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationHandler.swift; sourceTree = "<group>"; };
 		54FEC6C7276B57200002DBB1 /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
@@ -329,6 +336,7 @@
 				54FEC6C1276B3D750002DBB1 /* KeychainHandler.swift */,
 				54FEC6C4276B44200002DBB1 /* AuthenticationHandler.swift */,
 				54FEC6C7276B57200002DBB1 /* Common.swift */,
+				54C8AE3E276BE7E7008399E1 /* CommonUI.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -363,6 +371,8 @@
 				54F521D0273BBEB000AA75DD /* Info.plist */,
 				54F521CD273BBEB000AA75DD /* Preview Content */,
 				54B5DCDE2768C89C00C18F9B /* HealthKitController.swift */,
+				54FEC6BA276B33950002DBB1 /* WorkoutView.swift */,
+				54FEC6BC276B35940002DBB1 /* HelloView.swift */,
 			);
 			path = "FitervariHealth WatchKit Extension";
 			sourceTree = "<group>";
@@ -675,6 +685,7 @@
 				54FEC6C8276B57200002DBB1 /* Common.swift in Sources */,
 				54CBEF6426FC5E29009A7B68 /* MainView.swift in Sources */,
 				54CC0F522710BE4100112EE3 /* BasicCard.swift in Sources */,
+				54C8AE3F276BE7E7008399E1 /* CommonUI.swift in Sources */,
 				54BBF9A0276750220067431C /* ViewRouter.swift in Sources */,
 				54FEC6C2276B3D750002DBB1 /* KeychainHandler.swift in Sources */,
 				54646E8326F35DD700C8C2D5 /* FitervariApp.swift in Sources */,
@@ -704,12 +715,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54FEC6BB276B33950002DBB1 /* WorkoutView.swift in Sources */,
+				54FEC6BD276B35940002DBB1 /* HelloView.swift in Sources */,
 				54F521C8273BBEAF00AA75DD /* FitervariApp.swift in Sources */,
 				54F521C6273BBEAF00AA75DD /* ContentView.swift in Sources */,
 				54FEC6C9276B57200002DBB1 /* Common.swift in Sources */,
 				54FEC6C6276B44200002DBB1 /* AuthenticationHandler.swift in Sources */,
 				54B5DCDF2768C89C00C18F9B /* HealthKitController.swift in Sources */,
 				54BBF9BC27687D0E0067431C /* ConnectivityMessage.swift in Sources */,
+				54C8AE40276BE7E7008399E1 /* CommonUI.swift in Sources */,
 				54F521CA273BBEAF00AA75DD /* ComplicationController.swift in Sources */,
 				54BBF9B72767C1760067431C /* ConnectivityProvider.swift in Sources */,
 				54FEC6C3276B3D750002DBB1 /* KeychainHandler.swift in Sources */,
