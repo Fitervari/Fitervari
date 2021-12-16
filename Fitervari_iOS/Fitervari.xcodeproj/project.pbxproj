@@ -56,6 +56,7 @@
 		54FEC6C6276B44200002DBB1 /* AuthenticationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FEC6C4276B44200002DBB1 /* AuthenticationHandler.swift */; };
 		54FEC6C8276B57200002DBB1 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FEC6C7276B57200002DBB1 /* Common.swift */; };
 		54FEC6C9276B57200002DBB1 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FEC6C7276B57200002DBB1 /* Common.swift */; };
+		54FEC6CB276B6E610002DBB1 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 54FEC6CA276B6E610002DBB1 /* KeychainAccess */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -210,6 +211,7 @@
 			files = (
 				54BBF998276626B80067431C /* HealthKit.framework in Frameworks */,
 				54BBF9B92768049D0067431C /* Communicator in Frameworks */,
+				54FEC6CB276B6E610002DBB1 /* KeychainAccess in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -486,6 +488,7 @@
 			name = "FitervariHealth WatchKit Extension";
 			packageProductDependencies = (
 				54BBF9B82768049D0067431C /* Communicator */,
+				54FEC6CA276B6E610002DBB1 /* KeychainAccess */,
 			);
 			productName = "FitervariHealth WatchKit Extension";
 			productReference = 54F521C0273BBEAF00AA75DD /* FitervariHealth WatchKit Extension.appex */;
@@ -1380,6 +1383,11 @@
 			productName = Communicator;
 		};
 		54FEC6BF276B3D320002DBB1 /* KeychainAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 54FEC6BE276B3D320002DBB1 /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			productName = KeychainAccess;
+		};
+		54FEC6CA276B6E610002DBB1 /* KeychainAccess */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 54FEC6BE276B3D320002DBB1 /* XCRemoteSwiftPackageReference "KeychainAccess" */;
 			productName = KeychainAccess;
