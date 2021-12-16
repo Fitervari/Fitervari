@@ -8,17 +8,24 @@
 import Foundation
 import Communicator
 import Combine
-import CoreMedia
+import WatchConnectivity
 
 class ConnectivityProvider: ObservableObject {
 	static let shared = ConnectivityProvider()
 	
 	init() {
-		ImmediateMessage.observe { msg in
-			debugPrint("incoming: \(msg.identifier)")
-			debugPrint(msg.content)
+		ImmediateMessage.observe(queue: DispatchQueue.main) { message in
+			debugPrint("incoming: \(message.identifier)")
+			debugPrint(message.content)
 			
-			NotificationCenter.default.post(name: Notification.Name.init(rawValue: msg.identifier), object: msg.content)
+			NotificationCenter.default.post(name: Notification.Name.init(rawValue: message.identifier), object: message.content)
+		}
+		
+		GuaranteedMessage.observe(queue: DispatchQueue.main) { message in
+			debugPrint("incoming (g): \(message.identifier)")
+			debugPrint(message.content)
+			
+			NotificationCenter.default.post(name: Notification.Name.init(rawValue: message.identifier), object: message.content)
 		}
 	}
 	
@@ -39,6 +46,18 @@ class ConnectivityProvider: ObservableObject {
 		
 		Communicator.shared.send(ImmediateMessage(identifier: "WatchConnectivity.\(String(describing: T.self))", content: try! (JSONSerialization.jsonObject(with: try JSONEncoder().encode(data)) as? [String: Any])!)) { result in
 			//
+		}
+	}
+	
+	func sendMessageWithFallback<T: Encodable>(data: T) {
+		if Communicator.shared.currentReachability == .immediatelyReachable {
+			sendMessage(data: data)
+		} else {
+			debugPrint("sendMsg (g): WatchConnectivity.\(String(describing: T.self))")
+			
+			Communicator.shared.send(GuaranteedMessage(identifier: "WatchConnectivity.\(String(describing: T.self))", content: try! (JSONSerialization.jsonObject(with: try JSONEncoder().encode(data)) as? [String: Any])!)) { result in
+				//
+			}
 		}
 	}
 }
