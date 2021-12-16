@@ -13,7 +13,18 @@ class AuthenticationHandler: ObservableObject {
 	
 	private var observerCancellable: AnyCancellable?
 	
+	private var tokenKey = "authToken"
+	var token: String? {
+		get {
+			KeychainHandler.shared.get(key: tokenKey)
+		}
+	}
+	
+	@Published var authenticated: Bool
+	
 	private init() {
+		authenticated = KeychainHandler.shared.get(key: tokenKey) != nil
+		
 		observerCancellable = ConnectivityProvider.shared.getProvider(for: AuthTokenChangedMessage.self)
 			.sink { message in
 				if case .success = KeychainHandler.shared.set(key: self.tokenKey, value: message.newToken) {
@@ -22,17 +33,8 @@ class AuthenticationHandler: ObservableObject {
 			}
 	}
 	
-	private var tokenKey = "authToken"
-	var token: String? {
-		get {
-			KeychainHandler.shared.get(key: tokenKey)
-		}
-	}
-	
-	@Published var authenticated: Bool = false
-	
 	func verifyAndSave(token: String) -> VoidResult<AuthenticationError> {
-		guard verify(token: token) else {
+		guard AuthenticationHandler.verify(token: token) else {
 			return .failure(AuthenticationError.invalidToken)
 		}
 		
@@ -44,7 +46,11 @@ class AuthenticationHandler: ObservableObject {
 	}
 	
 	// TODO: not yet implemented, requires API call to backend
-	func verify(token: String) -> Bool {
+	static func verify(token: String?) -> Bool {
+		guard token != nil else {
+			return false
+		}
+		
 		return true
 	}
 	
@@ -55,7 +61,7 @@ class AuthenticationHandler: ObservableObject {
 			return .failure(error)
 		}
 		
-		ConnectivityProvider.shared.sendMessage(data: AuthTokenChangedMessage(newToken: token))
+		ConnectivityProvider.shared.sendMessageWithFallback(data: AuthTokenChangedMessage(newToken: token))
 		authenticated = (token != nil)
 		return .success
 	}

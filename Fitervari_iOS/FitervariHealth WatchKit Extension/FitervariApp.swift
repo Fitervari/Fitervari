@@ -10,13 +10,18 @@ import HealthKit
 
 @main
 struct FitervariApp: App {
-	@StateObject var healthKitController = HealthKitController()
+	@StateObject private var healthKitController = HealthKitController()
+	@ObservedObject private var authenticationHandler = AuthenticationHandler.shared
     
     var body: some Scene {
         WindowGroup {
             NavigationView {
-                ContentView()
-					.environmentObject(healthKitController)
+				if authenticationHandler.authenticated {
+					ContentView()
+						.environmentObject(healthKitController)
+				} else {
+					HelloView()
+				}
             }
         }
     }
