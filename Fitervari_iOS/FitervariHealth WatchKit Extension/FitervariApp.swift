@@ -6,16 +6,17 @@
 //
 
 import SwiftUI
+import HealthKit
 
 @main
 struct FitervariApp: App {
-    @StateObject var connectivityProvider = ConnectivityProvider()
+	@StateObject var healthKitController = HealthKitController()
     
     var body: some Scene {
         WindowGroup {
             NavigationView {
                 ContentView()
-                    .environmentObject(connectivityProvider)
+					.environmentObject(healthKitController)
             }
         }
     }

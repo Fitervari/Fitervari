@@ -21,6 +21,7 @@
 		54646E9426F35DD900C8C2D5 /* FitervariTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54646E9326F35DD900C8C2D5 /* FitervariTests.swift */; };
 		54646E9E26F35DD900C8C2D5 /* FitervariUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54646E9D26F35DD900C8C2D5 /* FitervariUITests.swift */; };
 		54646EA026F35DD900C8C2D5 /* FitervariUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54646E9F26F35DD900C8C2D5 /* FitervariUITestsLaunchTests.swift */; };
+		54B5DCDF2768C89C00C18F9B /* HealthKitController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B5DCDE2768C89C00C18F9B /* HealthKitController.swift */; };
 		54BBF998276626B80067431C /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54BBF997276626B80067431C /* HealthKit.framework */; };
 		54BBF9A0276750220067431C /* ViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BBF99F276750220067431C /* ViewRouter.swift */; };
 		54BBF9A227675BF00067431C /* NavigationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BBF9A127675BF00067431C /* NavigationModel.swift */; };
@@ -136,6 +137,7 @@
 		54646E9926F35DD900C8C2D5 /* FitervariUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FitervariUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		54646E9D26F35DD900C8C2D5 /* FitervariUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitervariUITests.swift; sourceTree = "<group>"; };
 		54646E9F26F35DD900C8C2D5 /* FitervariUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitervariUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		54B5DCDE2768C89C00C18F9B /* HealthKitController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitController.swift; sourceTree = "<group>"; };
 		54BBF996276626B80067431C /* FitervariHealth WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "FitervariHealth WatchKit Extension.entitlements"; sourceTree = "<group>"; };
 		54BBF997276626B80067431C /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS8.3.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
 		54BBF99F276750220067431C /* ViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRouter.swift; sourceTree = "<group>"; };
@@ -344,6 +346,7 @@
 				54F521CB273BBEB000AA75DD /* Assets.xcassets */,
 				54F521D0273BBEB000AA75DD /* Info.plist */,
 				54F521CD273BBEB000AA75DD /* Preview Content */,
+				54B5DCDE2768C89C00C18F9B /* HealthKitController.swift */,
 			);
 			path = "FitervariHealth WatchKit Extension";
 			sourceTree = "<group>";
@@ -681,6 +684,7 @@
 			files = (
 				54F521C8273BBEAF00AA75DD /* FitervariApp.swift in Sources */,
 				54F521C6273BBEAF00AA75DD /* ContentView.swift in Sources */,
+				54B5DCDF2768C89C00C18F9B /* HealthKitController.swift in Sources */,
 				54BBF9BC27687D0E0067431C /* ConnectivityMessage.swift in Sources */,
 				54F521CA273BBEAF00AA75DD /* ComplicationController.swift in Sources */,
 				54BBF9B72767C1760067431C /* ConnectivityProvider.swift in Sources */,
@@ -1086,6 +1090,8 @@
 				INFOPLIST_FILE = "FitervariHealth WatchKit Extension/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "FitervariHealth WatchKit Extension";
 				INFOPLIST_KEY_CLKComplicationPrincipalClass = "$(PRODUCT_MODULE_NAME).ComplicationController";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Reading workout data to send to server.";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Running workout from app.";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1118,6 +1124,8 @@
 				INFOPLIST_FILE = "FitervariHealth WatchKit Extension/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "FitervariHealth WatchKit Extension";
 				INFOPLIST_KEY_CLKComplicationPrincipalClass = "$(PRODUCT_MODULE_NAME).ComplicationController";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Reading workout data to send to server.";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Running workout from app.";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

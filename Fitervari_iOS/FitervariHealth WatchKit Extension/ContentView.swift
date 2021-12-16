@@ -20,6 +20,8 @@ fileprivate class ViewModel: ObservableObject {
 }
 
 struct ContentView: View {
+	@EnvironmentObject private var healthKitController: HealthKitController
+	
 	@ObservedObject private var viewModel = ViewModel()
 	
 	@State private var secondsElapsed = 0
@@ -34,10 +36,12 @@ struct ContentView: View {
 				Button {
 					if !viewModel.trainingState {
 						cancel = timer.connect()
+						healthKitController.startWorkout()
 					} else {
 						cancel?.cancel()
 						cancel = nil
 						secondsElapsed = 0
+						healthKitController.stopWorkout()
 					}
 					
 					viewModel.trainingState.toggle()
