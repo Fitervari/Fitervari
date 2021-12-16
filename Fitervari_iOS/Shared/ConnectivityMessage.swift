@@ -7,6 +7,10 @@
 
 import Foundation
 
+struct AuthTokenChangedMessage: Codable {
+	var newToken: String?
+}
+
 struct SetWorkoutStateMessage: Codable {
 	var state: Bool
 }

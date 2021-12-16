@@ -49,6 +49,13 @@
 		54F521E4273BBEB000AA75DD /* FitervariHealthUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F521E3273BBEB000AA75DD /* FitervariHealthUITests.swift */; };
 		54F521E6273BBEB000AA75DD /* FitervariHealthUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F521E5273BBEB000AA75DD /* FitervariHealthUITestsLaunchTests.swift */; };
 		54F521E9273BBEB000AA75DD /* FitervariHealth.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 54F521B8273BBEAE00AA75DD /* FitervariHealth.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		54FEC6C0276B3D320002DBB1 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 54FEC6BF276B3D320002DBB1 /* KeychainAccess */; };
+		54FEC6C2276B3D750002DBB1 /* KeychainHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FEC6C1276B3D750002DBB1 /* KeychainHandler.swift */; };
+		54FEC6C3276B3D750002DBB1 /* KeychainHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FEC6C1276B3D750002DBB1 /* KeychainHandler.swift */; };
+		54FEC6C5276B44200002DBB1 /* AuthenticationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FEC6C4276B44200002DBB1 /* AuthenticationHandler.swift */; };
+		54FEC6C6276B44200002DBB1 /* AuthenticationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FEC6C4276B44200002DBB1 /* AuthenticationHandler.swift */; };
+		54FEC6C8276B57200002DBB1 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FEC6C7276B57200002DBB1 /* Common.swift */; };
+		54FEC6C9276B57200002DBB1 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FEC6C7276B57200002DBB1 /* Common.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -166,6 +173,9 @@
 		54F521DF273BBEB000AA75DD /* FitervariHealthUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FitervariHealthUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		54F521E3273BBEB000AA75DD /* FitervariHealthUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitervariHealthUITests.swift; sourceTree = "<group>"; };
 		54F521E5273BBEB000AA75DD /* FitervariHealthUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitervariHealthUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		54FEC6C1276B3D750002DBB1 /* KeychainHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHandler.swift; sourceTree = "<group>"; };
+		54FEC6C4276B44200002DBB1 /* AuthenticationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationHandler.swift; sourceTree = "<group>"; };
+		54FEC6C7276B57200002DBB1 /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +183,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54FEC6C0276B3D320002DBB1 /* KeychainAccess in Frameworks */,
 				543A0CD427393C1500D36D70 /* DynamicColor in Frameworks */,
 				544FCC2B26F36DCD00DEDB79 /* CodeScanner in Frameworks */,
 				54BBF9B42767BE3D0067431C /* Communicator in Frameworks */,
@@ -313,6 +324,9 @@
 			children = (
 				54BBF9B52767C1760067431C /* ConnectivityProvider.swift */,
 				54BBF9BA27687D0E0067431C /* ConnectivityMessage.swift */,
+				54FEC6C1276B3D750002DBB1 /* KeychainHandler.swift */,
+				54FEC6C4276B44200002DBB1 /* AuthenticationHandler.swift */,
+				54FEC6C7276B57200002DBB1 /* Common.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -398,6 +412,7 @@
 				544FCC2A26F36DCD00DEDB79 /* CodeScanner */,
 				543A0CD327393C1500D36D70 /* DynamicColor */,
 				54BBF9B32767BE3D0067431C /* Communicator */,
+				54FEC6BF276B3D320002DBB1 /* KeychainAccess */,
 			);
 			productName = Fitervari;
 			productReference = 54646E7F26F35DD700C8C2D5 /* Fitervari.app */;
@@ -562,6 +577,7 @@
 				544FCC2926F36DCD00DEDB79 /* XCRemoteSwiftPackageReference "CodeScanner" */,
 				543A0CD227393C1500D36D70 /* XCRemoteSwiftPackageReference "DynamicColor" */,
 				54BBF9B22767BE3D0067431C /* XCRemoteSwiftPackageReference "Communicator" */,
+				54FEC6BE276B3D320002DBB1 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 			);
 			productRefGroup = 54646E8026F35DD700C8C2D5 /* Products */;
 			projectDirPath = "";
@@ -644,6 +660,7 @@
 				543A0CD1273935D000D36D70 /* StackedCard.swift in Sources */,
 				54BBF9BB27687D0E0067431C /* ConnectivityMessage.swift in Sources */,
 				543A0CD6273983BA00D36D70 /* WorkoutView.swift in Sources */,
+				54FEC6C5276B44200002DBB1 /* AuthenticationHandler.swift in Sources */,
 				544FCC2626F3622600DEDB79 /* SignInView.swift in Sources */,
 				54CF60E42711C4A100E29DC5 /* TrainingView.swift in Sources */,
 				54BBF9B62767C1760067431C /* ConnectivityProvider.swift in Sources */,
@@ -652,9 +669,11 @@
 				543A3538275BE3740034019E /* FinishedWorkoutView.swift in Sources */,
 				54CBEF6826FC5E92009A7B68 /* DashboardView.swift in Sources */,
 				54646E8526F35DD700C8C2D5 /* ContentView.swift in Sources */,
+				54FEC6C8276B57200002DBB1 /* Common.swift in Sources */,
 				54CBEF6426FC5E29009A7B68 /* MainView.swift in Sources */,
 				54CC0F522710BE4100112EE3 /* BasicCard.swift in Sources */,
 				54BBF9A0276750220067431C /* ViewRouter.swift in Sources */,
+				54FEC6C2276B3D750002DBB1 /* KeychainHandler.swift in Sources */,
 				54646E8326F35DD700C8C2D5 /* FitervariApp.swift in Sources */,
 				54CBEF6A26FC6308009A7B68 /* Card.swift in Sources */,
 				54CBEF6C26FC97E3009A7B68 /* Color.swift in Sources */,
@@ -684,10 +703,13 @@
 			files = (
 				54F521C8273BBEAF00AA75DD /* FitervariApp.swift in Sources */,
 				54F521C6273BBEAF00AA75DD /* ContentView.swift in Sources */,
+				54FEC6C9276B57200002DBB1 /* Common.swift in Sources */,
+				54FEC6C6276B44200002DBB1 /* AuthenticationHandler.swift in Sources */,
 				54B5DCDF2768C89C00C18F9B /* HealthKitController.swift in Sources */,
 				54BBF9BC27687D0E0067431C /* ConnectivityMessage.swift in Sources */,
 				54F521CA273BBEAF00AA75DD /* ComplicationController.swift in Sources */,
 				54BBF9B72767C1760067431C /* ConnectivityProvider.swift in Sources */,
+				54FEC6C3276B3D750002DBB1 /* KeychainHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1326,6 +1348,14 @@
 				version = 4.1.0;
 			};
 		};
+		54FEC6BE276B3D320002DBB1 /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess.git";
+			requirement = {
+				kind = exactVersion;
+				version = 4.2.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1348,6 +1378,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 54BBF9B22767BE3D0067431C /* XCRemoteSwiftPackageReference "Communicator" */;
 			productName = Communicator;
+		};
+		54FEC6BF276B3D320002DBB1 /* KeychainAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 54FEC6BE276B3D320002DBB1 /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			productName = KeychainAccess;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
