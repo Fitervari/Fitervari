@@ -18,27 +18,17 @@ void httptest() async {
   print('Response body: ${response.body}');
 }*/
 
-void sendHealthData(var healthval, double healthdata) async {
+void getHealthData(var healthval, double healthdata) async {
   Uri url = Uri.parse(
       'https://student.cloud.htl-leonding.ac.at/m.rausch-schott/fitervari/api/healthdata');
   Map data = {"id": healthval, "value": healthdata};
   counter++;
   //encode Map to JSON
   var body = json.encode(data);
-  http.Response response = await http.put(url,
-      headers: {"Content-Type": "application/json"}, body: body);
+  http.Response response =
+      await http.get(url, headers: {"Content-Type": "application/json"});
   print('Response status: ${response.statusCode}');
   print('Response body: ${response.body}');
 }
 
 var counter = 0;
-/*
-void httptest() async {
-  var url = Uri.parse('');
-  var response =
-      await http.put(url, body: {"id": 0, "value": "frontend value"});
-  print('Response status: ${response.statusCode}');
-  print('Response body: ${response.body}');
-  print(await http.read(Uri.parse('https://example.com/foobar.txt')));
-}
-*/
