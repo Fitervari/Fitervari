@@ -1,0 +1,140 @@
+openapi: 3.0.3
+info:
+  title: Fitervari Health
+  description: Syp Projekt als Erweiterung des Fitervari Projekts.
+  version: 1.0.0
+servers:
+  - url: 'http://localhost:8080/healthdata'
+  - url: 'https://localhost:8080/api/fitervari/healthdata'
+paths:
+  /:
+    get:
+      tags:
+        - HealthApi
+      summary: "Returns the health data for training and/or workoutSet"
+      description: "Returns the health data either from a specific training or a specific workoutSet (at least of them has to be specified) and also only the specific types (if specified)."
+      parameters:
+        - in: query
+          name: "training"
+          required: false
+          description: "Represents the id of a training for which the data should be returned."
+          schema:
+            type: integer
+            minimum: 0
+        - in: query
+          name: "workoutSet"
+          required: false
+          description: "Represents the id of a workoutSet for which the data should be returned."
+          schema:
+            type: integer
+            minimum: 0
+        - in: query
+          name: "type"
+          required: false
+          description: "Specifies the type of data to be returned."
+          schema:
+            type: integer?
+            minimum: 0
+      responses:
+        200:
+          description: "Ok"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetHealthDataExample'
+        400:
+          description: "training, workoutSet or  type not found"
+    post:
+      tags:
+        - HealthApi
+      summary: "Stores new health data"
+      description: "Adds the specified health data to the db."
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostHealtDataExample'
+      responses:
+        201:
+          description: "Health data added"
+        400:
+          description: "Malformed body"
+
+
+components:
+  schemas:
+    WorkoutSetDTO:
+      type: object
+      properties:
+        id:
+          type: number
+        description:
+          type: string
+        repetitions:
+          type: string
+      example:
+        - id: 1763
+          description: "10kg Hantel"
+          repetitions: "5"
+    HealthDataType:
+      type: object
+      properties:
+        id:
+          type: number
+        name:
+          type: string
+    HealthDataDTO:
+      type: object
+      properties:
+        id:
+          type: number
+        time:
+          type: string
+        healthDataType:
+          $ref: '#/components/schemas/HealthDataType'
+        value:
+          type: string
+        workoutSet:
+          $ref: '#/components/schemas/WorkoutSetDTO'
+      example:
+        - id: 64271
+          time: "2021-10-22 10:45"
+          healthDataType:
+            id: 12
+            name: "Puls"
+          value: "112"
+          workoutSet:
+            id: 1763
+            description: "10kg Langhantel"
+            repetitions: "5"
+
+    GetHealthDataExample:
+      type: object
+      example:
+        - id: 64271
+          time: "2021-10-22 10:45"
+          healthDataType:
+            id: 12
+            name: "Puls"
+          value: "112"
+          workoutSet:
+            id: 1763
+            description: "10kg Langhantel"
+            repetitions: "5"
+        - id: 69420
+          time: "2021-12-08 17:23"
+          healthDataType:
+            id: 11
+            name: "Blutdruck"
+          value: "80"
+          workoutSet:
+            id: 1420
+            description: "7kg Bankdrücken"
+            repetitions: "10"
+    PostHealtDataExample:
+      type: object
+      example:
+        type: 1
+        value: '120'
+        workoutSet: 2
+        training: 1

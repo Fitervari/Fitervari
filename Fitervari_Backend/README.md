@@ -9,10 +9,10 @@ Ein Deployment in der LeoCloud ist ebenfalls vorhanden.
 
 API-Spezifikation
 ---
-Die Swagger Spezifikation für *Fitervari* kann unter folgendem Link aufgerufen werden: [Fitervari API-Spezifikation](Swagger%20API-Spezifikation/swagger-fv.yaml)
+Die Swagger Spezifikation für *Fitervari* kann unter folgendem Link aufgerufen werden: *coming soon*<!-- [Fitervari API-Spezifikation](Swagger%20API-Spezifikation/swagger-fv.yaml) -->
 
 ## Fitervari Health
 
 API-Spezifikation
 ---
-Die Swagger Spezifikation für *Fitervari Health* kann unter folgendem Link aufgerufen werden: [Fitervari Health API-Spezifikation](Swagger%20API-Spezifikation/swagger-fv_health.yaml)
+Die Swagger Spezifikation für *Fitervari Health* kann unter folgendem Link aufgerufen werden: [Fitervari Health API-Spezifikation](fv-health-swagger.yaml)
