@@ -10,21 +10,35 @@ import SwiftUI
 struct WorkoutView: View {
     // iOS 15 & above: @Environment(\.dismiss) private var dismiss
     @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject private var navigationModel: NavigationModel
     
-    @State private var navigate = false
+    @State private var set = 1
+    @State private var title = "15x Crunches Arme seitlich"
+    @State private var secondsElapsed = 0
+    @State private var continueButtonLabel = "Weiter"
+    
+    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     var body: some View {
         VStack {
             // Spacer()
             
             if #available(iOS 15.0, *) {
-                Card(title: "Übung 1", action: {
-                }) {
-                    Text("")
+                StackedCard(title: title, stackedTitle: "2 Sets") {
+                    EmptyView()
                 } background: {
-                    Color.accentColor
+                    Color.orange
                 }
                 .frame(height: 170)
+                
+                /*
+                StackedCard(title: title, stackedTitle: "Set \(set)/2") {
+                    EmptyView()
+                } background: {
+                    Color.orange
+                }
+                .frame(height: 170)
+                */
                 
                 /*
                 Card(title: "Übung 2", action: {
@@ -48,7 +62,8 @@ struct WorkoutView: View {
             
             if #available(iOS 15.0, *) {
                 Button {
-                    presentationMode.wrappedValue.dismiss()
+                    navigationModel.workoutView = false
+                    // presentationMode.wrappedValue.dismiss()
                 } label: {
                     Text("Abbrechen")
                         .frame(height: 50)
@@ -63,21 +78,72 @@ struct WorkoutView: View {
                 } label: {
                     Text("Pausieren")
                         .bold()
-                        .frame(height: 90)
+                        .frame(height: 70)
                         .frame(maxWidth: .infinity)
                 }
                 .tint(.yellow)
                 .controlSize(.large)
                 .buttonStyle(.borderedProminent)
+                
+                Button {
+                    if(title == "20x Käfer-Übung") {
+                        // set = 1;
+                        title = "15s Frontstütz mit angehobenem Bein"
+                        continueButtonLabel = "Beenden"
+                    } else if(title == "15s Frontstütz mit angehobenem Bein") {
+                        navigationModel.finishedWorkoutView = true
+                    } else {
+                        // set = 1;
+                        title = "20x Käfer-Übung"
+                    }
+                    
+                    /*
+                    if(set < 2) {
+                        set += 1;
+                        
+                        if(title == "20x Käfer-Übung") {
+                            continueButtonLabel = "Beenden"
+                        }
+                        
+                    } else {
+                        if(title == "20x Käfer-Übung") {
+                            set = 1;
+                            title = "15s Frontstütz mit angehobenem Bein"
+                        } else if(title == "15s Frontstütz mit angehobenem Bein") {
+                            navigate = true;
+                        } else {
+                            set = 1;
+                            title = "20x Käfer-Übung"
+                        }
+                    }
+                    */
+                } label: {
+                    Text(continueButtonLabel)
+                        .bold()
+                        .frame(height: 90)
+                        .frame(maxWidth: .infinity)
+                }
+                .tint(.green)
+                .controlSize(.large)
+                .buttonStyle(.borderedProminent)
+                
+                NavigationLink(destination: FinishedWorkoutView(), isActive: $navigationModel.finishedWorkoutView) {
+                    EmptyView()
+                }
             }
         }
         .padding(.horizontal)
         .navigationBarBackButtonHidden(true)
-        .navigationTitle("Training X • 10:30")
+        .navigationTitle("Bauch • \(String(format: "%02d", secondsElapsed % 3600 / 60)):\(String(format: "%02d", secondsElapsed % 60))")
+        .onReceive(timer) { _ in
+            secondsElapsed += 1
+        }
     }
 }
 
 struct WorkoutView_Previews: PreviewProvider {
+    @State private static var navigate = true
+    
     static var previews: some View {
         WorkoutView()
     }
