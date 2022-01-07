@@ -84,22 +84,22 @@ INSERT INTO studio(address, name, city_id)
 VALUES('Albrechtstraße 12', 'SPEED.FIT Berlin Mitte', 5);
 
 -- INSERT Devicegroups
-INSERT INTO devicegroup(name) VALUES('Monkeybar');
-INSERT INTO devicegroup(name) VALUES('Trainingsmatte');
-INSERT INTO devicegroup(name) VALUES('Beinpresse');
-INSERT INTO devicegroup(name) VALUES('Laufband');
-INSERT INTO devicegroup(name) VALUES('Indoorbike');
-INSERT INTO devicegroup(name) VALUES('Ergometer');
+INSERT INTO devicegroup(name, description) VALUES('Monkeybar', 'Eine Monkeybar ist eine um 90 Grad gedrehte Hantelbank.');
+INSERT INTO devicegroup(name, description) VALUES('Trainingsmatte', 'Eine Trainingsmatte wird genutzt, um auf weicherem Untergrund trainieren zu können.');
+INSERT INTO devicegroup(name, description) VALUES('Beinpresse', 'Die Beinpresse wird genutzt, um die Beinmuskeln zu stärken.');
+INSERT INTO devicegroup(name, description) VALUES('Laufband', 'Ein Laufband ist als Ersatz zum physischen Laufen gedacht bzw. wenn das Wetter nichts anderes zulässt.');
+INSERT INTO devicegroup(name, description) VALUES('Indoorbike', 'Ein Indoorbike ist als Ersatz zum physischen Rad fahren gedacht bzw. wenn das Wetter nichts anderes zulässt.');
+INSERT INTO devicegroup(name, description) VALUES('Ergometer', 'Auch Fahrradergometer wird ebenfalls ähnlich wie das Indoorbike genutzt.');
 
 -- INSERT Devices
-INSERT INTO device(description, name, devicegroup_id, studio_id)
-VALUES('', 'Monkeybar Mini', 1, 1);
-INSERT INTO device(description, name, devicegroup_id, studio_id)
-VALUES('', '45 Grad Beinpresse', 3, 1);
-INSERT INTO device(description, name, devicegroup_id, studio_id)
-VALUES('Die Fußplatte bewegt sich parallel zum Boden.', 'horizontale Beinpresse', 3, 2);
-INSERT INTO device(description, name, devicegroup_id, studio_id)
-VALUES('', 'vertikale Beinpresse', 3, 2);
+INSERT INTO device(description, name, uniqueNumber, devicegroup_id, studio_id)
+VALUES('Die Monkeybar ist quasi eine um 90 Grad gedrehte Hantelbank.', 'Monkeybar Mini', 22, 1, 1);
+INSERT INTO device(description, name, uniqueNumber, devicegroup_id, studio_id)
+VALUES('Die Beinpresse wird genutzt, um die Beinmuskeln zu stärken.', '45 Grad Beinpresse', 15, 3, 1);
+INSERT INTO device(description, name, uniqueNumber, devicegroup_id, studio_id)
+VALUES('Die Fußplatte bewegt sich parallel zum Boden.', 'horizontale Beinpresse', 16, 3, 2);
+INSERT INTO device(description, name, uniqueNumber, devicegroup_id, studio_id)
+VALUES('Die Beinpresse wird genutzt, um die Beinmuskeln zu stärken.', 'vertikale Beinpresse', 17, 3, 2);
 
 -- INSERT Workoutplans
 INSERT INTO workoutplan(archived, name, valid_from, valid_till, customer_id)

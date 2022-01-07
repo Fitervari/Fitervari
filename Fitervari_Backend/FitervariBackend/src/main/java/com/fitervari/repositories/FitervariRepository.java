@@ -3,6 +3,7 @@ package com.fitervari.repositories;
 import com.fitervari.endpoints.dtos.DeviceDTO;
 import com.fitervari.endpoints.dtos.DeviceGroupDTO;
 import com.fitervari.model.Fitervari.Device;
+import com.fitervari.model.Fitervari.DeviceGroup;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -18,9 +19,8 @@ public class FitervariRepository {
     EntityManager em;
 
     public List<DeviceGroupDTO> getAllDevices() {
-        TypedQuery<Device> q = em.createNamedQuery(Device.GETALL, Device.class);
+        /*TypedQuery<Device> q = em.createNamedQuery(Device.GETALL, Device.class);
         var queryResult = q.getResultList();
-
         var deviceGroups = queryResult.stream().map(Device::getDeviceGroup).distinct().collect(Collectors.toList());
 
         for(Device d: queryResult) {
@@ -30,6 +30,18 @@ public class FitervariRepository {
             }
         }
 
-        return deviceGroups.stream().map(d -> new DeviceGroupDTO(d.getId(), d.getName(), "", d.getDevices().stream().map(dev -> new DeviceDTO(dev.getId())).collect(Collectors.toList()))).collect(Collectors.toList());
+        return deviceGroups.stream().map(d -> new DeviceGroupDTO(d.getId(), d.getName(), d.getDevices().get(0).getDescription(), d.getDevices().stream().map(dev -> new DeviceDTO(dev.getId())).collect(Collectors.toList()))).collect(Collectors.toList());
+        */
+        var query = em.createNamedQuery(DeviceGroup.GETALL, DeviceGroup.class);
+        var deviceGroups = query.getResultList();
+        return deviceGroups.stream().map(dg ->
+                new DeviceGroupDTO(
+                        dg.getId(),
+                        dg.getName(),
+                        dg.getDescription(),
+                        dg.getDevices().stream().map(d ->
+                                new DeviceDTO(d.getUniqueNumber())
+                        ).collect(Collectors.toList()))
+                ).collect(Collectors.toList());
     }
 }

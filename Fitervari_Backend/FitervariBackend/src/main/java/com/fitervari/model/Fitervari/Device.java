@@ -21,6 +21,9 @@ public class Device implements Serializable {
     @Column(name="description")
     private String description;
 
+    @Column(name="uniqueNumber", nullable = false)
+    private int uniqueNumber;
+
     @ManyToOne
     private Studio studio;
 
@@ -49,6 +52,13 @@ public class Device implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+    public int getUniqueNumber() {
+        return uniqueNumber;
+    }
+
+    public void setUniqueNumber(int uniqueNumber) {
+        this.uniqueNumber = uniqueNumber;
     }
 
     public Studio getStudio() {
