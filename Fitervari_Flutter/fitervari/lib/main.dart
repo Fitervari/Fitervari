@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+/*import 'package:flutter/material.dart';
 import 'package:wearable_communicator/wearable_communicator.dart';
 
 void main() {
@@ -85,7 +85,7 @@ class _MyAppState extends State<MyApp> {
   }
 }
 
-/*import 'package:flutter/foundation.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:client_server_lan/client_server_lan.dart';
 import 'package:device_info/device_info.dart';
@@ -375,7 +375,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
-
+*/
 import 'package:fitervari/screens/plan.dart';
 import 'package:flutter/material.dart';
 import 'screens/screens.dart';
@@ -420,4 +420,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-*/
