@@ -18,6 +18,9 @@ public class Workout implements Serializable {
     @Column(name="description")
     private String description;
 
+    @Column(name="sort_identifier")
+    private int sortIdentifier;
+
     @OneToOne
     private DeviceGroup deviceGroup;
 

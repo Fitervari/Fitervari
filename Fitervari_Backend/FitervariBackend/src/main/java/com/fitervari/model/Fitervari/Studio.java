@@ -23,4 +23,7 @@ public class Studio implements Serializable {
 
     @OneToMany(mappedBy = "studio")
     private List<Device> devices;
+
+    @OneToMany(mappedBy = "studio")
+    private List<Customer> customers;
 }

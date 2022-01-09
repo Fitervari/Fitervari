@@ -28,6 +28,9 @@ public class Customer implements Serializable {
     @Column(name="email")
     private String email;
 
+    @ManyToOne
+    private Studio studio;
+
     @OneToMany(mappedBy = "customer")
     private List<WorkoutPlan> workoutPlans;
 

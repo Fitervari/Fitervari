@@ -25,6 +25,9 @@ public class WorkoutSet implements Serializable {
     @Column(name="description")
     private String description;
 
+    @Column(name="sort_identifier")
+    private int sortIdentifier;
+
     @ManyToOne
     private Workout workout;
 

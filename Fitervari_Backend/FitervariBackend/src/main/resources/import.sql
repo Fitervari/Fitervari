@@ -35,19 +35,27 @@ VALUES('Scharten', '4612', 1);
 INSERT INTO city(city, postalcode, country_id)
 VALUES('Freistadt', '4240', 1);
 
+-- INSERT Studios
+INSERT INTO studio(address, name, city_id)
+VALUES('Gewerbestraße 2', 'FitIn Eferding', 3);
+INSERT INTO studio(address, name, city_id)
+VALUES('Pulvermühlstraße 30', 'InJoy Linz', 1);
+INSERT INTO studio(address, name, city_id)
+VALUES('Albrechtstraße 12', 'SPEED.FIT Berlin Mitte', 5);
+
 -- INSERT Customers
-INSERT INTO customer(address, birthdate, email, firstname, lastname, city_id)
-VALUES('Grießmayerstraße 23', '1995-04-22', 'foo@bar.at', 'Foo', 'Bar', 1);
-INSERT INTO customer(address, birthdate, email, firstname, lastname, city_id)
-VALUES('Wiener Straße 182', '1989-02-06', 'h.aiden@livest.at', 'Hunter', 'Aiden', 1);
-INSERT INTO customer(address, birthdate, email, firstname, lastname, city_id)
-VALUES('Limesstraße 12', '1999-10-01', 'mark.steiner@gmx.com', 'Mark', 'Steiner', 2);
-INSERT INTO customer(address, birthdate, email, firstname, lastname, city_id)
-VALUES('Karl-Schachinger-Straße 4', '2000-02-22', 'klaus.civi@outlook.at', 'Klaus', 'Civi', 3);
-INSERT INTO customer(address, birthdate, email, firstname, lastname, city_id)
-VALUES('Alsterdorfer Straße 99', '2096-11-30', 'patrick.mayer@outlook.de', 'Patrick', 'Mayer', 4);
-INSERT INTO customer(address, birthdate, email, firstname, lastname, city_id)
-VALUES('Scharten 161', '2010-08-12', 'ju.strasser10@gmail.com', 'Julia', 'Strasser', 7);
+INSERT INTO customer(address, birthdate, email, firstname, lastname, city_id, studio_id)
+VALUES('Grießmayerstraße 23', '1995-04-22', 'foo@bar.at', 'Foo', 'Bar', 1, 1);
+INSERT INTO customer(address, birthdate, email, firstname, lastname, city_id, studio_id)
+VALUES('Wiener Straße 182', '1989-02-06', 'h.aiden@livest.at', 'Hunter', 'Aiden', 1, 1);
+INSERT INTO customer(address, birthdate, email, firstname, lastname, city_id, studio_id)
+VALUES('Limesstraße 12', '1999-10-01', 'mark.steiner@gmx.com', 'Mark', 'Steiner', 2, 1);
+INSERT INTO customer(address, birthdate, email, firstname, lastname, city_id, studio_id)
+VALUES('Karl-Schachinger-Straße 4', '2000-02-22', 'klaus.civi@outlook.at', 'Klaus', 'Civi', 3, 2);
+INSERT INTO customer(address, birthdate, email, firstname, lastname, city_id, studio_id)
+VALUES('Alsterdorfer Straße 99', '2096-11-30', 'patrick.mayer@outlook.de', 'Patrick', 'Mayer', 4, 2);
+INSERT INTO customer(address, birthdate, email, firstname, lastname, city_id, studio_id)
+VALUES('Scharten 161', '2010-08-12', 'ju.strasser10@gmail.com', 'Julia', 'Strasser', 7, 3);
 
 -- INSERT ActivationCodes
 INSERT INTO activationcode(code, valid, customer_id)
@@ -75,14 +83,6 @@ VALUES ('ec1ff1c34fd0eaaae77411d48f387daf', false, 3);
 INSERT INTO activationcode(code, valid, customer_id)
 VALUES ('2313abf64e71f0072400fa32aba5be15', true, 6);
 
--- INSERT Studios
-INSERT INTO studio(address, name, city_id)
-VALUES('Gewerbestraße 2', 'FitIn Eferding', 3);
-INSERT INTO studio(address, name, city_id)
-VALUES('Pulvermühlstraße 30', 'InJoy Linz', 1);
-INSERT INTO studio(address, name, city_id)
-VALUES('Albrechtstraße 12', 'SPEED.FIT Berlin Mitte', 5);
-
 -- INSERT Devicegroups
 INSERT INTO devicegroup(name, description) VALUES('Monkeybar', 'Eine Monkeybar ist eine um 90 Grad gedrehte Hantelbank.');
 INSERT INTO devicegroup(name, description) VALUES('Trainingsmatte', 'Eine Trainingsmatte wird genutzt, um auf weicherem Untergrund trainieren zu können.');
@@ -108,38 +108,38 @@ INSERT INTO workoutplan(archived, name, valid_from, valid_till, customer_id)
 VALUES(true, 'Demo-Trainingsplan 2', '2021-01-10', '2021-02-15', 2);
 
 -- INSERT Workouts
-INSERT INTO workout(description, name, devicegroup_id, workoutplan_id)
-VALUES('', 'Beinpresse', 3, 1);
-INSERT INTO workout(description, name, devicegroup_id, workoutplan_id)
-VALUES('', 'Beinpresse', 3, 1);
-INSERT INTO workout(description, name, devicegroup_id, workoutplan_id)
-VALUES('', 'Liegestütze', 2, 1);
-INSERT INTO workout(description, name, devicegroup_id, workoutplan_id)
-VALUES('', 'Push Ups', 2, 2);
-INSERT INTO workout(description, name, devicegroup_id, workoutplan_id)
-VALUES('', 'Laufen', 4, 1);
-INSERT INTO workout(description, name, devicegroup_id, workoutplan_id)
-VALUES('', 'Gehen', 4, 1);
-INSERT INTO workout(description, name, devicegroup_id, workoutplan_id)
-VALUES('', 'Sprint', 4, 1);
-INSERT INTO workout(description, name, devicegroup_id, workoutplan_id)
-VALUES('', 'Rad fahren', 5, 1);
-INSERT INTO workout(description, name, devicegroup_id, workoutplan_id)
-VALUES('', 'Beinpresse', 3, 1);
-INSERT INTO workout(description, name, devicegroup_id, workoutplan_id)
-VALUES('', 'Beinpresse', 3, 1);
+INSERT INTO workout(description, name, devicegroup_id, workoutplan_id, sort_identifier)
+VALUES('', 'Beinpresse', 3, 1, 1);
+INSERT INTO workout(description, name, devicegroup_id, workoutplan_id, sort_identifier)
+VALUES('', 'Beinpresse', 3, 1, 2);
+INSERT INTO workout(description, name, devicegroup_id, workoutplan_id, sort_identifier)
+VALUES('', 'Liegestütze', 2, 1, 3);
+INSERT INTO workout(description, name, devicegroup_id, workoutplan_id, sort_identifier)
+VALUES('', 'Push Ups', 2, 2, 1);
+INSERT INTO workout(description, name, devicegroup_id, workoutplan_id, sort_identifier)
+VALUES('', 'Laufen', 4, 1, 4);
+INSERT INTO workout(description, name, devicegroup_id, workoutplan_id, sort_identifier)
+VALUES('', 'Gehen', 4, 1, 5);
+INSERT INTO workout(description, name, devicegroup_id, workoutplan_id, sort_identifier)
+VALUES('', 'Sprint', 4, 1, 6);
+INSERT INTO workout(description, name, devicegroup_id, workoutplan_id, sort_identifier)
+VALUES('', 'Rad fahren', 5, 1, 7);
+INSERT INTO workout(description, name, devicegroup_id, workoutplan_id, sort_identifier)
+VALUES('', 'Beinpresse', 3, 1, 8);
+INSERT INTO workout(description, name, devicegroup_id, workoutplan_id, sort_identifier)
+VALUES('', 'Beinpresse', 3, 1, 9);
 
 -- INSERT WorkoutSets
-INSERT INTO workoutset(description, repetitions, workout_id) VALUES('30kg', '5', 1);
-INSERT INTO workoutset(description, repetitions, workout_id) VALUES('40kg', '10', 1);
-INSERT INTO workoutset(description, repetitions, workout_id) VALUES('10kg', '20', 1);
-INSERT INTO workoutset(description, repetitions, workout_id) VALUES('30kg', '7', 2);
-INSERT INTO workoutset(description, repetitions, workout_id) VALUES('', '100m', 7);
-INSERT INTO workoutset(description, repetitions, workout_id) VALUES('15kg', '15', 2);
-INSERT INTO workoutset(description, repetitions, workout_id) VALUES('', '20km', 8);
-INSERT INTO workoutset(description, repetitions, workout_id) VALUES('', '15km', 8);
-INSERT INTO workoutset(description, repetitions, workout_id) VALUES('', '10km', 8);
-INSERT INTO workoutset(description, repetitions, workout_id) VALUES('', '10', 3);
+INSERT INTO workoutset(description, repetitions, workout_id, sort_identifier) VALUES('30kg', '5', 1, 1);
+INSERT INTO workoutset(description, repetitions, workout_id, sort_identifier) VALUES('40kg', '10', 1, 2);
+INSERT INTO workoutset(description, repetitions, workout_id, sort_identifier) VALUES('10kg', '20', 1, 3);
+INSERT INTO workoutset(description, repetitions, workout_id, sort_identifier) VALUES('30kg', '7', 2, 1);
+INSERT INTO workoutset(description, repetitions, workout_id, sort_identifier) VALUES('', '100m', 7, 1);
+INSERT INTO workoutset(description, repetitions, workout_id, sort_identifier) VALUES('15kg', '15', 2, 2);
+INSERT INTO workoutset(description, repetitions, workout_id, sort_identifier) VALUES('', '20km', 8, 1);
+INSERT INTO workoutset(description, repetitions, workout_id, sort_identifier) VALUES('', '15km', 8, 2);
+INSERT INTO workoutset(description, repetitions, workout_id, sort_identifier) VALUES('', '10km', 8, 3);
+INSERT INTO workoutset(description, repetitions, workout_id, sort_identifier) VALUES('', '10', 3, 1);
 
 -- INSERT Trainings
 INSERT INTO training(date, workoutplan_id) VALUES('2020-12-30', 1);
