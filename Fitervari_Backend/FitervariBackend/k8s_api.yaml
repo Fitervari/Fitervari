@@ -18,7 +18,10 @@ spec:
           image: registry.cloud.htl-leonding.ac.at/m.rausch-schott/fitervari-backend:latest
           imagePullPolicy: Always
           ports:
-            - containerPort: 8080
+            - name: port8080
+              containerPort: 8080
+            - name: port5432
+              containerPort: 5432
       imagePullSecrets:
         - name: registry-auth-secrets
 ---
