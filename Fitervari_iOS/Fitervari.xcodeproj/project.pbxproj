@@ -31,6 +31,7 @@
 		54BBF9B92768049D0067431C /* Communicator in Frameworks */ = {isa = PBXBuildFile; productRef = 54BBF9B82768049D0067431C /* Communicator */; };
 		54BBF9BB27687D0E0067431C /* ConnectivityMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BBF9BA27687D0E0067431C /* ConnectivityMessage.swift */; };
 		54BBF9BC27687D0E0067431C /* ConnectivityMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BBF9BA27687D0E0067431C /* ConnectivityMessage.swift */; };
+		54BDADBB2798235C008B8DFA /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BDADBA2798235C008B8DFA /* ExtensionDelegate.swift */; };
 		54C8AE3F276BE7E7008399E1 /* CommonUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C8AE3E276BE7E7008399E1 /* CommonUI.swift */; };
 		54C8AE40276BE7E7008399E1 /* CommonUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C8AE3E276BE7E7008399E1 /* CommonUI.swift */; };
 		54CBEF6426FC5E29009A7B68 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CBEF6326FC5E29009A7B68 /* MainView.swift */; };
@@ -156,6 +157,7 @@
 		54BBF9A127675BF00067431C /* NavigationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationModel.swift; sourceTree = "<group>"; };
 		54BBF9B52767C1760067431C /* ConnectivityProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectivityProvider.swift; sourceTree = "<group>"; };
 		54BBF9BA27687D0E0067431C /* ConnectivityMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectivityMessage.swift; sourceTree = "<group>"; };
+		54BDADBA2798235C008B8DFA /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
 		54C5EC2526F3AC9700DFFE5E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		54C8AE3E276BE7E7008399E1 /* CommonUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonUI.swift; sourceTree = "<group>"; };
 		54CBEF6326FC5E29009A7B68 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -373,6 +375,7 @@
 				54B5DCDE2768C89C00C18F9B /* HealthKitController.swift */,
 				54FEC6BA276B33950002DBB1 /* WorkoutView.swift */,
 				54FEC6BC276B35940002DBB1 /* HelloView.swift */,
+				54BDADBA2798235C008B8DFA /* ExtensionDelegate.swift */,
 			);
 			path = "FitervariHealth WatchKit Extension";
 			sourceTree = "<group>";
@@ -718,6 +721,7 @@
 				54FEC6BB276B33950002DBB1 /* WorkoutView.swift in Sources */,
 				54FEC6BD276B35940002DBB1 /* HelloView.swift in Sources */,
 				54F521C8273BBEAF00AA75DD /* FitervariApp.swift in Sources */,
+				54BDADBB2798235C008B8DFA /* ExtensionDelegate.swift in Sources */,
 				54F521C6273BBEAF00AA75DD /* ContentView.swift in Sources */,
 				54FEC6C9276B57200002DBB1 /* Common.swift in Sources */,
 				54FEC6C6276B44200002DBB1 /* AuthenticationHandler.swift in Sources */,
@@ -904,7 +908,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Fitervari/Fitervari.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Fitervari/Preview Content\"";
@@ -938,7 +942,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Fitervari/Fitervari.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Fitervari/Preview Content\"";

@@ -25,35 +25,38 @@ struct ContentView: View {
 	@ObservedObject private var viewModel = ViewModel()
     
     var body: some View {
-		if let trainingName = viewModel.trainingName {
-			VStack {
-				Text("Training: \(trainingName)")
-				
-				Button {
-					if !viewModel.trainingState {
-						healthKitController.startWorkout()
-					} else {
-						healthKitController.stopWorkout()
-					}
+		ZStack {
+			if let trainingName = viewModel.trainingName {
+				VStack {
+					Text("Training: \(trainingName)")
 					
-					viewModel.trainingState.toggle()
-					ConnectivityProvider.shared.sendMessage(data: SetWorkoutStateMessage(state: viewModel.trainingState))
-					
-				} label: {
-					if !viewModel.trainingState {
-						Text("Starten")
-					} else {
-						Text("Abbrechen")
+					Button {
+						if !viewModel.trainingState {
+							healthKitController.startWorkout()
+						} else {
+							healthKitController.stopWorkout()
+						}
+						
+						viewModel.trainingState.toggle()
+						ConnectivityProvider.shared.sendMessage(data: SetWorkoutStateMessage(state: viewModel.trainingState))
+						
+					} label: {
+						if !viewModel.trainingState {
+							Text("Starten")
+						} else {
+							Text("Abbrechen")
+						}
 					}
 				}
-				
-				NavigationLink(destination: WorkoutView(), isActive: $viewModel.trainingState) {
-					EmptyView()
-				}
+			} else {
+				Text("Wähle ein Training auf deinem iPhone aus.")
+					.scenePadding()
 			}
-		} else {
-			Text("Wähle ein Training auf deinem iPhone aus.")
-				.scenePadding()
+			
+			NavigationLink(destination: WorkoutView(), isActive: $viewModel.trainingState) {
+				EmptyView()
+			}
+			.opacity(0)
 		}
     }
 }
