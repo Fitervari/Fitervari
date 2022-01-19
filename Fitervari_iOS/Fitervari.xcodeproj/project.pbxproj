@@ -52,6 +52,7 @@
 		54F521E4273BBEB000AA75DD /* FitervariHealthUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F521E3273BBEB000AA75DD /* FitervariHealthUITests.swift */; };
 		54F521E6273BBEB000AA75DD /* FitervariHealthUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F521E5273BBEB000AA75DD /* FitervariHealthUITestsLaunchTests.swift */; };
 		54F521E9273BBEB000AA75DD /* FitervariHealth.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 54F521B8273BBEAE00AA75DD /* FitervariHealth.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		54FD961C2794723D0009F9A7 /* OpenAPIClient in Frameworks */ = {isa = PBXBuildFile; productRef = 54FD961B2794723D0009F9A7 /* OpenAPIClient */; };
 		54FEC6BB276B33950002DBB1 /* WorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FEC6BA276B33950002DBB1 /* WorkoutView.swift */; };
 		54FEC6BD276B35940002DBB1 /* HelloView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FEC6BC276B35940002DBB1 /* HelloView.swift */; };
 		54FEC6C0276B3D320002DBB1 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 54FEC6BF276B3D320002DBB1 /* KeychainAccess */; };
@@ -181,6 +182,7 @@
 		54F521DF273BBEB000AA75DD /* FitervariHealthUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FitervariHealthUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		54F521E3273BBEB000AA75DD /* FitervariHealthUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitervariHealthUITests.swift; sourceTree = "<group>"; };
 		54F521E5273BBEB000AA75DD /* FitervariHealthUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitervariHealthUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		54FD961A2794715C0009F9A7 /* ApiClient */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = ApiClient; sourceTree = "<group>"; };
 		54FEC6BA276B33950002DBB1 /* WorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutView.swift; sourceTree = "<group>"; };
 		54FEC6BC276B35940002DBB1 /* HelloView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelloView.swift; sourceTree = "<group>"; };
 		54FEC6C1276B3D750002DBB1 /* KeychainHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHandler.swift; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 			files = (
 				54FEC6C0276B3D320002DBB1 /* KeychainAccess in Frameworks */,
 				543A0CD427393C1500D36D70 /* DynamicColor in Frameworks */,
+				54FD961C2794723D0009F9A7 /* OpenAPIClient in Frameworks */,
 				544FCC2B26F36DCD00DEDB79 /* CodeScanner in Frameworks */,
 				54BBF9B42767BE3D0067431C /* Communicator in Frameworks */,
 			);
@@ -244,6 +247,7 @@
 		54646E7626F35DD700C8C2D5 = {
 			isa = PBXGroup;
 			children = (
+				54FD96192794715C0009F9A7 /* Packages */,
 				54BBF9A3276772780067431C /* Shared */,
 				54646E8126F35DD700C8C2D5 /* Fitervari */,
 				54646E9226F35DD900C8C2D5 /* FitervariTests */,
@@ -405,6 +409,14 @@
 			path = FitervariHealthUITests;
 			sourceTree = "<group>";
 		};
+		54FD96192794715C0009F9A7 /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				54FD961A2794715C0009F9A7 /* ApiClient */,
+			);
+			name = Packages;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -428,6 +440,7 @@
 				543A0CD327393C1500D36D70 /* DynamicColor */,
 				54BBF9B32767BE3D0067431C /* Communicator */,
 				54FEC6BF276B3D320002DBB1 /* KeychainAccess */,
+				54FD961B2794723D0009F9A7 /* OpenAPIClient */,
 			);
 			productName = Fitervari;
 			productReference = 54646E7F26F35DD700C8C2D5 /* Fitervari.app */;
@@ -1399,6 +1412,10 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 54BBF9B22767BE3D0067431C /* XCRemoteSwiftPackageReference "Communicator" */;
 			productName = Communicator;
+		};
+		54FD961B2794723D0009F9A7 /* OpenAPIClient */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = OpenAPIClient;
 		};
 		54FEC6BF276B3D320002DBB1 /* KeychainAccess */ = {
 			isa = XCSwiftPackageProductDependency;

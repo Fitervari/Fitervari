@@ -1,0 +1,554 @@
+openapi: 3.0.0
+info:
+  title: Fitervari
+  version: '1.0'
+servers:
+  - url: 'http://localhost:3000'
+tags:
+  - User
+  - WorkoutPlan
+  - Authentication
+paths:
+  /users:
+    get:
+      summary: Get all users
+      tags:
+        - User
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+        '401':
+          description: Unauthorized
+      operationId: get-users
+    post:
+      summary: Activate user
+      operationId: post-users
+      responses:
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not Found
+      tags:
+        - User
+  '/users/{userId}':
+    get:
+      summary: Get specific user
+      operationId: get-user
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not Found
+      parameters: []
+      tags:
+        - User
+    parameters:
+      - schema:
+          type: string
+        name: userId
+        in: path
+        required: true
+    put:
+      summary: Update specific user
+      operationId: put-users-userId
+      responses:
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not Found
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      tags:
+        - User
+    delete:
+      summary: Delete specific user
+      operationId: delete-users-userId
+      responses:
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      tags:
+        - User
+  /authToken:
+    parameters: []
+    get:
+      summary: Generate authToken from activationToken
+      tags:
+        - Authentication
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Token'
+        '401':
+          description: Unauthorized
+      operationId: get-users-userId-authToken
+      parameters:
+        - schema:
+            type: string
+            format: uuid
+          in: query
+          name: activationToken
+          required: true
+  /adminToken:
+    get:
+      summary: Get auth token for trainer
+      tags:
+        - Authentication
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Token'
+        '401':
+          description: Unauthorized
+      operationId: get-adminToken
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: username
+          required: true
+        - schema:
+            type: string
+          in: query
+          name: password
+          required: true
+  '/users/{userId}/activationToken':
+    parameters:
+      - schema:
+          type: string
+        name: userId
+        in: path
+        required: true
+    get:
+      summary: Generate activationToken for user
+      tags:
+        - Authentication
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Token'
+              examples: {}
+        '401':
+          description: Unauthorized
+          headers: {}
+        '404':
+          description: Not Found
+      operationId: get-users-userId-activationToken
+  '/users/{userId}/workoutPlans/':
+    get:
+      summary: Get workout plans of user
+      tags:
+        - User
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/WorkoutPlan'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not Found
+      operationId: get-user-workoutPlans
+    parameters:
+      - schema:
+          type: string
+        name: userId
+        in: path
+        required: true
+    post:
+      summary: Add workout plan for user
+      operationId: post-users-userId-workoutPlans
+      responses:
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not Found
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WorkoutPlan'
+      tags:
+        - User
+  '/workoutPlans/{workoutPlanId}/':
+    parameters:
+      - schema:
+          type: number
+        name: workoutPlanId
+        in: path
+        required: true
+    get:
+      summary: Get specific workout plan
+      tags:
+        - WorkoutPlan
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkoutPlan'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not Found
+      operationId: get-workoutPlans-workoutId
+    delete:
+      summary: Delete specific workout plan
+      operationId: delete-workoutPlans-workoutPlanId
+      responses:
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not Found
+      tags:
+        - WorkoutPlan
+    put:
+      summary: Update specific workout plan
+      operationId: put-workoutPlans-workoutPlanId
+      responses:
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not Found
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WorkoutPlan'
+      tags:
+        - WorkoutPlan
+  '/workoutPlans/{workoutPlanId}/workoutSessions/':
+    parameters:
+      - schema:
+          type: number
+        name: workoutPlanId
+        in: path
+        required: true
+    get:
+      summary: Get workout sessions of workout plan
+      tags:
+        - WorkoutPlan
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not Found
+      operationId: get-workoutPlans-workoutId-workoutSessions
+    post:
+      summary: Add workout sessions of workout plan
+      operationId: post-workoutPlans-workoutPlanId-workoutSessions
+      responses:
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WorkoutSession'
+      tags:
+        - WorkoutPlan
+  '/workoutSessions/{workoutSessionId}':
+    parameters:
+      - schema:
+          type: number
+        name: workoutSessionId
+        in: path
+        required: true
+    get:
+      summary: Get specific workout session
+      tags:
+        - WorkoutPlan
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkoutSession'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not Found
+      operationId: get-workoutSessions-workoutSessionId
+    delete:
+      summary: Delete specific workout session
+      operationId: delete-workoutSessions-workoutSessionId
+      responses:
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not Found
+      tags:
+        - WorkoutPlan
+  /devices:
+    get:
+      summary: Get all devices
+      tags:
+        - Device
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+      operationId: get-devices
+    post:
+      summary: Add device
+      operationId: post-devices
+      responses:
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+      tags:
+        - Device
+  '/devices/{deviceId}':
+    parameters:
+      - schema:
+          type: number
+        name: deviceId
+        in: path
+        required: true
+    get:
+      summary: Get specific device
+      tags:
+        - Device
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not Found
+      operationId: get-devices-deviceId
+    put:
+      summary: Update specific device
+      operationId: put-devices-deviceId
+      responses:
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not Found
+      tags:
+        - Device
+    delete:
+      summary: Delete specific device
+      operationId: delete-devices-deviceId
+      responses:
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not Found
+      tags:
+        - Device
+  /deviceGroups:
+    get:
+      summary: Get all device groups
+      tags:
+        - Device
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DeviceGroup'
+        '401':
+          description: Unauthorized
+      operationId: get-deviceGroups
+components:
+  schemas:
+    User:
+      type: object
+      title: User
+      examples:
+        - id: 1
+          name: Tobias Kern
+          trainer: 0
+          creationDate: 1640005950
+      properties:
+        id:
+          type: integer
+          format: int64
+          minimum: 0
+          readOnly: true
+        firstname:
+          type: string
+          readOnly: true
+        lastname:
+          type: string
+          readOnly: true
+        trainer:
+          type: integer
+          format: int64
+          minimum: 0
+        creationDate:
+          type: integer
+          format: int64
+          minimum: 0
+          readOnly: true
+      required:
+        - id
+        - firstname
+        - lastname
+        - trainer
+        - creationDate
+    Token:
+      type: string
+      title: Token
+      format: uuid
+      readOnly: true
+      examples:
+        - 497f6eca-6276-4993-bfeb-53cbbbba6f08
+    Exercise:
+      title: Exercise
+      type: object
+      properties:
+        id:
+          type: string
+        sets:
+          type: integer
+        repetitions:
+          type: integer
+        description:
+          type: string
+    WorkoutPlan:
+      title: WorkoutPlan
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          minimum: 0
+          readOnly: true
+        name:
+          type: string
+        description:
+          type: string
+        valid_from:
+          type: string
+        valid_till:
+          type: string
+      required:
+        - id
+        - name
+        - description
+    WorkoutSession:
+      title: WorkoutSession
+      type: object
+      properties:
+        id:
+          type: string
+        plan:
+          type: integer
+        date:
+          type: string
+        healthData:
+          type: array
+          items:
+            $ref: '#/components/schemas/HealthData'
+    HealthData:
+      title: HealthData
+      type: object
+      properties:
+        time:
+          type: integer
+        type:
+          type: string
+        value:
+          type: string
+    Device:
+      title: Device
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        studio:
+          type: integer
+        group:
+          $ref: '#/components/schemas/DeviceGroup'
+      required:
+        - name
+        - description
+        - group
+    DeviceGroup:
+      title: DeviceGroup
+      type: object
+      properties:
+        name:
+          type: string
+    Studio:
+      title: Studio
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        address:
+          type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+  parameters: {}
+  responses: {}
+security:
+  - bearerAuth: []
