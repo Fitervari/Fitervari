@@ -20,4 +20,36 @@ public class DeviceGroup implements Serializable {
 
     @OneToMany(mappedBy = "deviceGroup")
     private List<Device> devices;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Workout getWorkout() {
+        return workout;
+    }
+
+    public void setWorkout(Workout workout) {
+        this.workout = workout;
+    }
+
+    public List<Device> getDevices() {
+        return devices;
+    }
+
+    public void setDevices(List<Device> devices) {
+        this.devices = devices;
+    }
 }

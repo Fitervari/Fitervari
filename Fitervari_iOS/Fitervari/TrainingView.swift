@@ -6,31 +6,54 @@
 //
 
 import SwiftUI
+import Communicator
+
+fileprivate class ViewModel: ObservableObject {
+	@Published var watchPaired: Bool
+	@Published var watchReachable: Bool
+	
+	init() {
+		let getPairingState = { (state: WatchState) -> Bool in
+			if case .paired = state { return true } else { return false }
+		}
+		
+		watchPaired = getPairingState(Communicator.shared.currentWatchState)
+		watchReachable = Communicator.shared.currentReachability == .immediatelyReachable
+		
+		WatchState.observe(queue: DispatchQueue.main) { state in
+			self.watchPaired = getPairingState(state)
+		}
+		
+		Reachability.observe(queue: DispatchQueue.main) { reachability in
+			self.watchReachable = reachability == .immediatelyReachable
+		}
+	}
+}
 
 struct TrainingView: View {
-    @State private var navigate = false
+    @EnvironmentObject private var navigationModel: NavigationModel
+	
+	@ObservedObject private var viewModel = ViewModel()
     
     var body: some View {
         VStack {
             ScrollView {
                 if #available(iOS 15.0, *) {
-                    Card(title: "Übung 1", action: {
-                    }) {
-                        Text("")
+                    StackedCard(title: "15x Crunches Arme seitlich", stackedTitle: "2 Sets") {
+                        EmptyView()
                     } background: {
-                        Color.accentColor
+                        Color.orange
                     }
                     .frame(height: 170)
                     
-                    Card(title: "Übung 2", action: {
-                    }) {
-                        Text("")
+                    StackedCard(title: "20x Käfer-Übung", stackedTitle: "2 Sets") {
+                        EmptyView()
                     } background: {
-                        Color.accentColor
+                        Color.orange
                     }
                     .frame(height: 170)
                     
-                    StackedCard(title: "Übung 3", stackedTitle: "Set 1/2") {
+                    StackedCard(title: "15s Frontstütz mit angehobenem Bein", stackedTitle: "2 Sets") {
                         EmptyView()
                     } background: {
                         Color.orange
@@ -39,9 +62,17 @@ struct TrainingView: View {
                 }
             }
             
+			if viewModel.watchPaired {
+				if viewModel.watchReachable {
+					Text("Oder starte das Training auf deiner Apple Watch.")
+				} else {
+					Text("Apple Watch App nicht erreichbar.")
+				}
+			}
+            
             if #available(iOS 15.0, *) {
                 Button {
-                    navigate = true;
+                    navigationModel.workoutView = true
                 } label: {
                     Text("Starten")
                         .bold()
@@ -52,17 +83,19 @@ struct TrainingView: View {
                 .controlSize(.large)
                 .buttonStyle(.borderedProminent)
                 
-                NavigationLink(destination: WorkoutView(), isActive: $navigate) {
+                NavigationLink(destination: WorkoutView(), isActive: $navigationModel.workoutView) {
                     EmptyView()
                 }
             }
         }
         .padding(.horizontal)
-        .navigationTitle("Training X")
+        .navigationTitle("Bauch")
     }
 }
 
 struct TrainingView_Previews: PreviewProvider {
+    @State private static var navigate = true
+    
     static var previews: some View {
         TrainingView()
     }

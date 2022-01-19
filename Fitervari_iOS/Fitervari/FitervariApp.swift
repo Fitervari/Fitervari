@@ -6,15 +6,26 @@
 //
 
 import SwiftUI
+import WatchConnectivity
 
 @main
 struct FitervariApp: App {
+    @StateObject private var viewRouter = ViewRouter()
+    @StateObject private var navigationModel = NavigationModel()
+	@ObservedObject private var authenticationHandler = AuthenticationHandler.shared
+    
     var body: some Scene {
         WindowGroup {
             NavigationView {
-                // HelloView()
-                MainView()
+				if authenticationHandler.authenticated {
+					MainView()
+				} else {
+					HelloView()
+				}
             }
+			.navigationViewStyle(.stack)
+            .environmentObject(viewRouter)
+            .environmentObject(navigationModel)
         }
     }
 }

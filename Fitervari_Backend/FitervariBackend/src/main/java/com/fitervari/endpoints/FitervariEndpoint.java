@@ -1,13 +1,27 @@
 package com.fitervari.endpoints;
 
+import com.fitervari.repositories.FitervariRepository;
+
+import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-@Path("/fitervari")
+@Path("/")
 public class FitervariEndpoint {
 
+    @Inject
+    FitervariRepository repo;
+
     @GET
+    @Path("devices")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getAllDevices() {
+        var result = repo.getAllDevices();
+        return Response.ok(result).build();
+    }
+
+    /*@GET
     @Produces(MediaType.TEXT_PLAIN)
     public String hello() {
         return "Hello Fitervari";
@@ -18,7 +32,7 @@ public class FitervariEndpoint {
                                 Android/iOS APP
         --------------------------------------------------------------
      */
-    @PUT
+    /*@PUT
     @Path("users")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
@@ -36,7 +50,7 @@ public class FitervariEndpoint {
                                   WebApp
         --------------------------------------------------------------
      */
-    @GET
+    /*@GET
     @Path("users")
     @Consumes(MediaType.TEXT_PLAIN)
     @Produces(MediaType.APPLICATION_JSON)
@@ -93,7 +107,7 @@ public class FitervariEndpoint {
                                 Android/iOS APP & WebApp
         --------------------------------------------------------------
      */
-    @GET
+    /*@GET
     @Path("workoutPlans")
     @Consumes(MediaType.TEXT_PLAIN)
     @Produces(MediaType.APPLICATION_JSON)
