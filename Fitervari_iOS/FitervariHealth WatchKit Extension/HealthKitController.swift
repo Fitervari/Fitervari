@@ -21,7 +21,6 @@ class HealthKitController: ObservableObject {
 	private let reading: Set = [
 		HKQuantityType.quantityType(forIdentifier: .heartRate)!,
 		HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned)!,
-		HKQuantityType.quantityType(forIdentifier: .oxygenSaturation)!,
 	]
 	
 	private var session: HKWorkoutSession?
@@ -31,7 +30,7 @@ class HealthKitController: ObservableObject {
 	private var ebObserverQuery: HKObserverQuery?
 	
 	let heartRate = PassthroughSubject<Int, Error>()
-	let energyBurned = PassthroughSubject<Int, Error>()
+	let energyBurned = PassthroughSubject<Double, Error>()
 	
 	private init() {
 		healthStore.requestAuthorization(toShare: writing, read: reading) { success, error in
@@ -85,15 +84,16 @@ class HealthKitController: ObservableObject {
 		
 		builder?.dataSource = HKLiveWorkoutDataSource(healthStore: healthStore, workoutConfiguration: configuration)
 		
-		let hr = HKQuantityType.init(HKQuantityTypeIdentifier.heartRate)
-		let eb = HKQuantityType.init(HKQuantityTypeIdentifier.activeEnergyBurned)
+		let sort = NSSortDescriptor(key: HKSampleSortIdentifierStartDate, ascending: false)
 		
+		let hr = HKQuantityType.init(.heartRate)
 		hrObserverQuery = HKObserverQuery(sampleType: hr, predicate: nil) { (query, completionHandler, errorOrNil) in
+			if let error = errorOrNil {
+				debugPrint(error)
+				return
+			}
 			
-			print(errorOrNil)
-			debugPrint(errorOrNil)
-			/*
-			let q = HKSampleQuery(sampleType: hr, predicate: nil, limit: 1, sortDescriptors: nil) { query, sample, error in
+			let q = HKSampleQuery(sampleType: hr, predicate: nil, limit: 1, sortDescriptors: [sort]) { query, sample, error in
 				if let sample = sample {
 					if !sample.isEmpty {
 						let data = (sample.first! as! HKQuantitySample).quantity.doubleValue(for: HKUnit(from: "count/min"))
@@ -103,34 +103,33 @@ class HealthKitController: ObservableObject {
 					}
 				}
 			}
-			*/
 			
-			print("hr received")
-			// self.healthStore.execute(q)
+			self.healthStore.execute(q)
 		}
 		
+		healthStore.execute(hrObserverQuery!)
+		
+		let eb = HKQuantityType.init(.activeEnergyBurned)
 		ebObserverQuery = HKObserverQuery(sampleType: eb, predicate: nil) { (query, completionHandler, errorOrNil) in
+			if let error = errorOrNil {
+				debugPrint(error)
+				return
+			}
 			
-			print(errorOrNil)
-			debugPrint(errorOrNil)
-			/*
-			let q = HKSampleQuery(sampleType: eb, predicate: nil, limit: 1, sortDescriptors: nil) { query, sample, error in
+			let q = HKSampleQuery(sampleType: eb, predicate: nil, limit: 1, sortDescriptors: [sort]) { query, sample, error in
 				if let sample = sample {
 					if !sample.isEmpty {
 						let data = (sample.first! as! HKQuantitySample).quantity.doubleValue(for: HKUnit.kilocalorie())
 						DispatchQueue.main.async {
-							self.energyBurned.send(Int(data))
+							self.energyBurned.send(data)
 						}
 					}
 				}
 			}
-			*/
 			
-			print("eb received")
-			// self.healthStore.execute(q)
+			self.healthStore.execute(q)
 		}
 		
-		healthStore.execute(hrObserverQuery!)
 		healthStore.execute(ebObserverQuery!)
 		
 		session?.startActivity(with: Date())

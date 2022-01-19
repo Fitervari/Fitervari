@@ -20,7 +20,7 @@ struct WorkoutView: View {
 	
 	@EnvironmentObject private var healthKitController: HealthKitController
 	@State private var hr = -1
-	@State private var eb = 0
+	@State private var eb = 0.0
 	
     var body: some View {
 		TabView(selection: $activeTab) {
@@ -46,7 +46,7 @@ struct WorkoutView: View {
 					}
 					
 					Label {
-						Text(String(eb) + " kcal")
+						Text(String(Int(eb)) + " kcal")
 					} icon: {
 						Image(systemName: "flame.fill")
 							.foregroundColor(.orange)
