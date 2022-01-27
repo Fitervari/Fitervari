@@ -68,15 +68,15 @@ public class FitervariHealthEndpoint {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getDataForTrainingOrWorkoutSet(@DefaultValue("-1") @QueryParam("training") long training,
-                                                   @DefaultValue("-1") @QueryParam("workoutSet") long workoutSet,
+                                                   @DefaultValue("-1") @QueryParam("exerciseSet") long exerciseSet,
                                                    @DefaultValue("-1") @QueryParam("type") long type) {
-        if(training == -1 && workoutSet == -1)
+        if(training == -1 && exerciseSet == -1)
             return Response.status(
                     Response.Status.BAD_REQUEST.getStatusCode(),
-                    "Neither training nor workoutSet specified! At least one of them needs to be specified."
+                    "Neither training nor exerciseSet specified! At least one of them needs to be specified."
                     ).build();
 
-        List<HealthDataDTO> result = repo.getDataByCriteria(training, workoutSet, type);
+        List<HealthDataDTO> result = repo.getDataByCriteria(training, exerciseSet, type);
         return Response.ok(result).build();
     }
 
@@ -92,7 +92,7 @@ public class FitervariHealthEndpoint {
             case -1:
                 return Response.status(Response.Status.BAD_REQUEST.getStatusCode(), "Wrong type specified").build();
             case -2:
-                return Response.status(Response.Status.BAD_REQUEST.getStatusCode(), "Wrong workoutSet specified").build();
+                return Response.status(Response.Status.BAD_REQUEST.getStatusCode(), "Wrong exerciseSet specified").build();
             case -3:
                 return Response.status(Response.Status.BAD_REQUEST.getStatusCode(), "Wrong training specified").build();
             default:
