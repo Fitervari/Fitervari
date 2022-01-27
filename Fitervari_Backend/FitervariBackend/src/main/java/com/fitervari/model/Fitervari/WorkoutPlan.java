@@ -1,10 +1,13 @@
 package com.fitervari.model.Fitervari;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 
+@Data
 @Entity(name="workoutPlan")
 public class WorkoutPlan implements Serializable {
 
@@ -23,13 +26,13 @@ public class WorkoutPlan implements Serializable {
     private String name;
 
     @Column(name="archived", nullable = false)
-    private boolean isArchived;
+    private boolean archived;
 
     @ManyToOne
     private Customer customer;
 
     @OneToMany(mappedBy = "workoutPlan")
-    private List<Workout> workouts;
+    private List<Exercise> exercises;
 
     @OneToMany(mappedBy = "workoutPlan")
     private List<Training> trainings;

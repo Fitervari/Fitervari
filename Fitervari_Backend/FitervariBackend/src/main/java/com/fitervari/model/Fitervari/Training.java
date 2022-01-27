@@ -1,6 +1,7 @@
 package com.fitervari.model.Fitervari;
 
 import com.fitervari.model.FitervariHealth.HealthData;
+import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -8,12 +9,8 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Entity(name="training")
-@NamedQueries(
-        @NamedQuery(name=Training.GETONEBYID, query = "SELECT t FROM training t WHERE t.id=:id")
-)
+@Data
 public class Training implements Serializable {
-
-    public static final String GETONEBYID = "Training.GetOneById";
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

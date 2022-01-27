@@ -1,10 +1,13 @@
 package com.fitervari.model.Fitervari;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
 @Entity(name="country")
+@Data
 public class Country implements Serializable {
 
     @Id

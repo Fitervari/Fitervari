@@ -1,19 +1,23 @@
 package com.fitervari.model.Fitervari;
 
+import com.fitervari.model.FitervariHealth.HealthData;
+import lombok.Data;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
-@Entity(name="workout")
-public class Workout implements Serializable {
+@Entity(name="exerciseSet")
+@Data
+public class ExerciseSet implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id", nullable = false)
     private long id;
 
-    @Column(name="name", nullable = false)
-    private String name;
+    @Column(name="repetitions", nullable = false)
+    private String repetitions;
 
     @Column(name="description")
     private String description;
@@ -21,12 +25,9 @@ public class Workout implements Serializable {
     @Column(name="sort_identifier")
     private int sortIdentifier;
 
-    @OneToOne
-    private DeviceGroup deviceGroup;
-
     @ManyToOne
-    private WorkoutPlan workoutPlan;
+    private Exercise exercise;
 
-    @OneToMany(mappedBy = "workout")
-    private List<WorkoutSet> workoutSets;
+    @OneToMany(mappedBy = "exerciseSet")
+    private List<HealthData> healthData;
 }

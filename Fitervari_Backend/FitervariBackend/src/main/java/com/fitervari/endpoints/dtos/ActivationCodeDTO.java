@@ -9,8 +9,9 @@ import java.io.Serializable;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class HealthDataTypeDTO implements Serializable {
+public class ActivationCodeDTO implements Serializable {
 
     private long id;
-    private String name;
+    private String code;
+    private boolean valid;
 }

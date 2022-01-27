@@ -9,8 +9,8 @@ import java.io.Serializable;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class HealthDataTypeDTO implements Serializable {
-
+public class ExerciseSetDTO implements Serializable {
     private long id;
-    private String name;
+    private String description;
+    private String repetitions;
 }

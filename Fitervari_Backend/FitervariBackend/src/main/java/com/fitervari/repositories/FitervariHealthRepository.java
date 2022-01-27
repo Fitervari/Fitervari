@@ -1,11 +1,10 @@
 package com.fitervari.repositories;
 
 import com.fitervari.endpoints.dtos.HealthDataDTO;
-import com.fitervari.endpoints.dtos.HealthDataTypeDTO;
 import com.fitervari.endpoints.dtos.PostHealthDataDTO;
-import com.fitervari.endpoints.dtos.WorkoutSetDTO;
+import com.fitervari.endpoints.dtos.ExerciseSetDTO;
 import com.fitervari.model.Fitervari.Training;
-import com.fitervari.model.Fitervari.WorkoutSet;
+import com.fitervari.model.Fitervari.ExerciseSet;
 import com.fitervari.model.FitervariHealth.HealthData;
 import com.fitervari.model.FitervariHealth.HealthDataType;
 
@@ -24,46 +23,45 @@ public class FitervariHealthRepository {
     @Inject
     EntityManager em;
 
-    public List<HealthDataDTO> getDataByCriteria(long training, long workoutSet, long type) {
+    public List<HealthDataDTO> getDataByCriteria(long training, long exerciseSet, long type) {
         TypedQuery<HealthData> healthDataTQ = em.createNamedQuery(HealthData.GETALLWITHCRITERIA, HealthData.class);
 
         healthDataTQ.setParameter("trainingsId", training);
-        healthDataTQ.setParameter("workoutSetId", workoutSet);
+        healthDataTQ.setParameter("exerciseSetId", exerciseSet);
         healthDataTQ.setParameter("type", type);
 
         var queryResult = healthDataTQ.getResultList();
 
-        var result = queryResult.stream().map(d ->
+        return queryResult.stream().map(d ->
                 new HealthDataDTO(d.getId(),
                     d.getTime(),
-                    new HealthDataTypeDTO(d.getHealthDataType().getId(), d.getHealthDataType().getName()),
+                    d.getHealthDataType().getName(),
+                    //new HealthDataTypeDTO(d.getHealthDataType().getId(), d.getHealthDataType().getName()),
                     d.getValue(),
-                    new WorkoutSetDTO(d.getWorkoutSet().getId(), d.getWorkoutSet().getDescription(), d.getWorkoutSet().getRepetitions())
+                    new ExerciseSetDTO(d.getExerciseSet().getId(), d.getExerciseSet().getDescription(), d.getExerciseSet().getRepetitions())
         )).collect(Collectors.toList());
-
-        return result;
     }
 
     @Transactional
     public int postHealthData(PostHealthDataDTO dto) {
         var healthType = getHealthType(dto.getType());
-        var workoutSet = getWorkoutSet(dto.getWorkoutSet());
+        var exerciseSet = getWorkoutSet(dto.getExerciseSet());
         var training = getTraining(dto.getTraining());
 
         if(healthType == null)
             return -1;
-        if(workoutSet == null)
+        if(exerciseSet == null)
             return -2;
         if(training == null)
             return -3;
-        var data = new HealthData(dto.getValue(), LocalDateTime.now(), healthType, workoutSet, training);
+        var data = new HealthData(dto.getValue(), LocalDateTime.now(), healthType, exerciseSet, training);
 
         em.persist(data);
         return 1;
     }
 
     private HealthDataType getHealthType(long id) {
-        var tq = em.createNamedQuery(HealthDataType.GETONEBYID, HealthDataType.class);
+        var tq = em.createQuery("SELECT hdt FROM healthDataType hdt WHERE hdt.id = :id", HealthDataType.class);
         tq.setParameter("id", id);
         var healthDataType = tq.getResultList().stream().findFirst();
         if(healthDataType.isEmpty())
@@ -71,17 +69,17 @@ public class FitervariHealthRepository {
         return healthDataType.get();
     }
 
-    private WorkoutSet getWorkoutSet(long id) {
-        var tq = em.createNamedQuery(WorkoutSet.GETONEBYID, WorkoutSet.class);
+    private ExerciseSet getWorkoutSet(long id) {
+        var tq = em.createQuery("SELECT exs FROM exerciseSet exs WHERE exs.id = :id", ExerciseSet.class);
         tq.setParameter("id", id);
-        var workoutSet = tq.getResultList().stream().findFirst();
-        if(workoutSet.isEmpty())
+        var exerciseSet = tq.getResultList().stream().findFirst();
+        if(exerciseSet.isEmpty())
             return null;
-        return workoutSet.get();
+        return exerciseSet.get();
     }
 
     private Training getTraining(long id) {
-        var tq = em.createNamedQuery(Training.GETONEBYID, Training.class);
+        var tq = em.createQuery("SELECT t FROM training t WHERE t.id = :id", Training.class);
         tq.setParameter("id", id);
         var training = tq.getResultList().stream().findFirst();
         if(training.isEmpty())

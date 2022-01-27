@@ -1,11 +1,10 @@
 package com.fitervari.endpoints;
 
 import com.fitervari.endpoints.dtos.HealthDataDTO;
-import com.fitervari.endpoints.dtos.HealthDataTypeDTO;
 import com.fitervari.endpoints.dtos.PostHealthDataDTO;
-import com.fitervari.endpoints.dtos.WorkoutSetDTO;
-import com.fitervari.model.FitervariHealth.HealthData;
+import com.fitervari.endpoints.dtos.ExerciseSetDTO;
 import com.fitervari.repositories.FitervariHealthRepository;
+import org.jboss.logging.Logger;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -21,6 +20,9 @@ import java.util.List;
 public class FitervariHealthEndpoint {
 
     @Inject
+    Logger log;
+
+    @Inject
     FitervariHealthRepository repo;
 
     @GET
@@ -30,25 +32,28 @@ public class FitervariHealthEndpoint {
         var healthData1 = new HealthDataDTO(
                 69420L,
                 LocalDateTime.now(),
-                new HealthDataTypeDTO(4L, "Puls"),
+                "Puls",
+                //new HealthDataTypeDTO(4L, "Puls"),
                 "127",
-                new WorkoutSetDTO(420L, "20kg", "5")
+                new ExerciseSetDTO(420L, "20kg", "5")
         );
 
         var healthData2 = new HealthDataDTO(
                 420L,
                 LocalDateTime.now(),
-                new HealthDataTypeDTO(2L, "Blutdruck"),
+                "Blutdruck",
+                //new HealthDataTypeDTO(2L, "Blutdruck"),
                 "80",
-                new WorkoutSetDTO(69L, "5kg", "15")
+                new ExerciseSetDTO(69L, "5kg", "15")
         );
 
         var healthData3 = new HealthDataDTO(
                 69L,
                 LocalDateTime.now(),
-                new HealthDataTypeDTO(4L, "Puls"),
+                "Puls",
+                //new HealthDataTypeDTO(4L, "Puls"),
                 "121",
-                new WorkoutSetDTO(69L, "5kg", "15")
+                new ExerciseSetDTO(69L, "5kg", "15")
         );
 
         var healthDataList = new LinkedList<HealthDataDTO>();
@@ -79,6 +84,9 @@ public class FitervariHealthEndpoint {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response postDataInDB(PostHealthDataDTO data) {
+
+        log.info("POST HealthData: " + data.toString());
+
         var result = repo.postHealthData(data);
         switch(result) {
             case -1:

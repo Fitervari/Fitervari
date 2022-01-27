@@ -1,9 +1,12 @@
 package com.fitervari.model.Fitervari;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity(name="activationCode")
+@Data
 public class ActivationCode implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,7 +17,7 @@ public class ActivationCode implements Serializable {
     private String code;
 
     @Column(name="valid", nullable = false)
-    private boolean isValid;
+    private boolean valid;
 
     @ManyToOne
     private Customer customer;

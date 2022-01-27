@@ -9,8 +9,8 @@ import java.io.Serializable;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class HealthDataTypeDTO implements Serializable {
-
+public class CountryDTO implements Serializable {
     private long id;
+    private String code;
     private String name;
 }

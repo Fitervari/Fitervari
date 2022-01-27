@@ -3,6 +3,7 @@ package com.fitervari.endpoints;
 import com.fitervari.repositories.FitervariRepository;
 
 import javax.inject.Inject;
+import javax.persistence.NoResultException;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -13,141 +14,131 @@ public class FitervariEndpoint {
     @Inject
     FitervariRepository repo;
 
+    /*
+        --------------------------------------------------------------
+                                Users
+        --------------------------------------------------------------
+     */
+
+    @GET
+    @Path("users")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getAllUsers() {
+        var users = repo.getUsers(null);
+        return Response.ok(users).build();
+    }
+
+    @GET
+    @Path("users/{userId}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getSpecificUser(@PathParam("userId") long id) {
+        try {
+            var user = repo.getUsers(id);
+            return Response.ok(user).build();
+        } catch(NoResultException e) {
+            return Response.status(Response.Status.NOT_FOUND.getStatusCode(), "The user with the given id was not found!").build();
+        }
+    }
+
+    /*
+        --------------------------------------------------------------
+                                Auth
+        --------------------------------------------------------------
+     */
+
+    @GET
+    @Path("authToken")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response genAuthTokenFromActivationToken(@QueryParam("activationToken") String activationToken) {
+        var token = repo.genAuthTokenFromActivationToken(activationToken);
+        return Response.ok(token).build();
+    }
+
+    @GET
+    @Path("adminToken")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getAuthTokenForTrainer(@QueryParam("username") String username, @QueryParam("password") String password) {
+        var token = repo.getAuthTokenForTrainer(username, password);
+        return Response.ok(token).build();
+    }
+
+    @GET
+    @Path("users/{userId}/activationToken")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response generateActivationTokenForUser(@PathParam("userId") long id) {
+        var token = repo.genActivationTokenForUser(id);
+        return Response.ok(token).build();
+    }
+
+    /*
+        --------------------------------------------------------------
+                                WorkoutPlans
+        --------------------------------------------------------------
+     */
+
+    @GET
+    @Path("users/{userId}/workoutPlans")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getWorkoutPlansFromSpecificUser(@PathParam("userId") long id) {
+        var workoutPlans = repo.getWorkoutPlansForSpecificUser(id);
+        return Response.ok(workoutPlans).build();
+    }
+
+    @GET
+    @Path("workoutPlans/{workoutPlanId}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getSpecificWorkoutPlan(@PathParam("workoutPlanId") long id) {
+        try {
+            var workoutPlan = repo.getSpecificWorkoutPlan(id);
+            return Response.ok(workoutPlan).build();
+        } catch(NoResultException e) {
+            return Response.status(Response.Status.NOT_FOUND.getStatusCode(), "The workoutPlan with the given id was not found!").build();
+        }
+    }
+
+    @GET
+    @Path("workoutPlans/{workoutPlanId}/workoutSessions")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getWorkoutSessionsForSpecificWorkoutPlan(@PathParam("workoutPlanId") long id) {
+        try {
+            var trainings = repo.getTrainingsFromSpecificWorkoutPlan(id);
+            return Response.ok(trainings).build();
+        } catch (NoResultException e) {
+            return Response.status(Response.Status.NOT_FOUND.getStatusCode(), "The specified workout plan id is invalid!").build();
+        }
+    }
+
+    @GET
+    @Path("workoutSessions/{workoutSessionId}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getSpecificWorkoutSession(@PathParam("workoutSessionId") long id) {
+        try {
+            var training = repo.getSpecificTraining(id);
+            return Response.ok(training).build();
+        } catch(NoResultException e) {
+            return Response.status(Response.Status.NOT_FOUND.getStatusCode(), "The session with the given id was not found!").build();
+        }
+    }
+
+    /*
+        --------------------------------------------------------------
+                                Devices / DeviceGroups
+        --------------------------------------------------------------
+     */
+
     @GET
     @Path("devices")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAllDevices() {
-        var result = repo.getAllDevices();
-        return Response.ok(result).build();
-    }
-
-    /*@GET
-    @Produces(MediaType.TEXT_PLAIN)
-    public String hello() {
-        return "Hello Fitervari";
-    }
-
-    /*
-        --------------------------------------------------------------
-                                Android/iOS APP
-        --------------------------------------------------------------
-     */
-    /*@PUT
-    @Path("users")
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response alterUser(String user) {
-
-        // TODO: RESPONSE: 200 (OK) / 404 (NOT FOUND)
-
-        String response = "You altered the user : " + user;
-
-        return Response.ok(response).build();
-    }
-
-    /*
-        --------------------------------------------------------------
-                                  WebApp
-        --------------------------------------------------------------
-     */
-    /*@GET
-    @Path("users")
-    @Consumes(MediaType.TEXT_PLAIN)
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response getAllUsers() {
-
-        // TODO: RESPONSE: 200 (OK) / 404 (NOT FOUND)
-
-        String response = "You received all users";
-
-        return Response.ok(response).build();
+        var devices = repo.getAllDevices();
+        return Response.ok(devices).build();
     }
 
     @GET
-    @Path("token")
-    @Consumes(MediaType.TEXT_PLAIN)
+    @Path("deviceGroups")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getNewTokenForUser(@QueryParam("user") Long id) {
-
-        // TODO: RESPONSE: 200 (OK) / 404 (NOT FOUND)
-
-        String response = "You received a new token for the user: " + id;
-
-        return Response.ok(response).build();
+    public Response getAllDeviceGroups() {
+        var deviceGroups = repo.getAllDeviceGroups();
+        return Response.ok(deviceGroups).build();
     }
-
-    @PUT
-    @Path("workoutPlans")
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response alterWorkoutPlan(String workoutPlan) {
-
-        // TODO: RESPONSE: 200 (OK) / 201 (CREATED) / 400 (BAD REQUEST: Invalid Input)
-
-        String response = "You altered the workoutPlan: " + workoutPlan;
-
-        return Response.ok(response).build();
-    }
-
-    @DELETE
-    @Path("workoutPlans/{id}")
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response deleteWorkoutPlanById(@PathParam("id") Long id) {
-
-        // TODO: RESPONSE: 200 (OK) / 404 (NOT FOUND)
-
-        String response = "You deleted the following workout plan: " + id;
-
-        return Response.ok(response).build();
-    }
-
-    /*
-        --------------------------------------------------------------
-                                Android/iOS APP & WebApp
-        --------------------------------------------------------------
-     */
-    /*@GET
-    @Path("workoutPlans")
-    @Consumes(MediaType.TEXT_PLAIN)
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response getWorkoutPlanByUser(@QueryParam("user") Long id) {
-
-        // TODO: RESPONSE: 200 (OK) / 404 (NOT FOUND)
-
-        String response = "You received all workout plans for user: " + id;
-
-        return Response.ok(response).build();
-    }
-
-    @GET
-    @Path("workoutPlans/{id}")
-    @Consumes(MediaType.TEXT_PLAIN)
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response getWorkoutPlanById(@PathParam("id") Long id) {
-
-        // TODO: RESPONSE: 200 (OK) / 404 (NOT FOUND)
-
-        String response = "You received the workout plan with the id: " + id;
-
-        return Response.ok(response).build();
-    }
-
-    @GET
-    @Path("users/{id}")
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response getUserById(@PathParam("id") Long id) {
-
-        // TODO: RESPONSE: 200 (OK) / 404 (NOT FOUND)
-
-        String response = "You received the user with the id: " + id;
-
-        return Response.ok(response).build();
-    }
-
-    /*
-        --------------------------------------------------------------
-                                Miscellaneous
-        --------------------------------------------------------------
-     */
 }

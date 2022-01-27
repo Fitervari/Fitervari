@@ -1,10 +1,13 @@
 package com.fitervari.model.Fitervari;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
 @Entity(name="studio")
+@Data
 public class Studio implements Serializable {
 
     @Id

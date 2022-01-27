@@ -1,11 +1,14 @@
 package com.fitervari.model.Fitervari;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 
 @Entity(name="customer")
+@Data
 public class Customer implements Serializable {
 
     @Id

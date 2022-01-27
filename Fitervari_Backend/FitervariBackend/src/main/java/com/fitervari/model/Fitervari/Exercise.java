@@ -6,9 +6,9 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
-@Entity(name="deviceGroup")
 @Data
-public class DeviceGroup implements Serializable {
+@Entity(name="exercise")
+public class Exercise implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,10 +21,15 @@ public class DeviceGroup implements Serializable {
     @Column(name="description")
     private String description;
 
-    @OneToOne(mappedBy = "deviceGroup", fetch = FetchType.LAZY)
-    @Transient
-    private Exercise exercise;
+    @Column(name="sort_identifier")
+    private int sortIdentifier;
 
-    @OneToMany(mappedBy = "deviceGroup")
-    private List<Device> devices;
+    @OneToOne(fetch = FetchType.EAGER)
+    private DeviceGroup deviceGroup;
+
+    @ManyToOne
+    private WorkoutPlan workoutPlan;
+
+    @OneToMany(mappedBy = "exercise")
+    private List<ExerciseSet> exerciseSets;
 }
