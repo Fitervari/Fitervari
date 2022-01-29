@@ -1,3 +1,5 @@
+import 'package:fitervari_flutter/custom_code/widgets/http.dart';
+import 'package:fitervari_flutter/data/workoutplan.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'flutter_flow/lat_lng.dart';
@@ -14,6 +16,11 @@ class FFAppState {
   }
   late final SharedPreferences prefs;
   Future initializePersistedState() async {
+    /*Map<String, dynamic> jsUser = await httpget("users/1", Map());
+    _firstname = jsUser["firstname"];
+    _lastname = jsUser["lastname"];
+    _email = jsUser["email"];
+    _userid = jsUser["id"];*/
     prefs = await SharedPreferences.getInstance();
     _firstname = prefs.getString('ff_firstname') ?? _firstname;
     _lastname = prefs.getString('ff_lastname') ?? _lastname;
@@ -79,6 +86,11 @@ class FFAppState {
     _systemColor = _value;
     setInt('ff_systemColor', _value);
   }
+
+  //Map<dynamic, dynamic> workoutplans = getCards();
+  Future<List<Workoutplan>> _workoutplans = httpgetWorkoutplans("urlstr", {});
+  Future<List<Workoutplan>> get workoutplans => _workoutplans;
+  Workoutplan? currentworkoutplan = null;
 }
 
 LatLng? _latLngFromString(String val) {

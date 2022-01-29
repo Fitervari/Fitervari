@@ -1,3 +1,5 @@
+import 'package:fitervari_flutter/data/exercise.dart';
+
 import '../components/workout_card_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -8,8 +10,11 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ExercisePageWidget extends StatefulWidget {
-  const ExercisePageWidget({Key? key}) : super(key: key);
-
+  ExercisePageWidget({
+    Key? key,
+    required this.exercises,
+  }) : super(key: key);
+  List<Exercise> exercises;
   @override
   _ExercisePageWidgetState createState() => _ExercisePageWidgetState();
 }
@@ -37,7 +42,7 @@ class _ExercisePageWidgetState extends State<ExercisePageWidget> {
                       Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
                         child: Text(
-                          FFAppState().workoutname,
+                          widget.exercises.first.name,
                           style: FlutterFlowTheme.title2,
                         ),
                       ),
@@ -59,8 +64,9 @@ class _ExercisePageWidgetState extends State<ExercisePageWidget> {
                             padding:
                                 EdgeInsetsDirectional.fromSTEB(10, 0, 10, 0),
                             child: WorkoutCardWidget(
-                              workoutName: 'exercise',
-                              workoutDescription: 'exerdisc',
+                              workoutName: widget.exercises.first.name,
+                              workoutDescription:
+                                  widget.exercises.first.description,
                             ),
                           ),
                         ),
@@ -160,8 +166,19 @@ class _ExercisePageWidgetState extends State<ExercisePageWidget> {
                   child: FFButtonWidget(
                     onPressed: () async {
                       setState(() => FFAppState().started = false);
+                      widget.exercises.removeAt(0);
                       setState(() => FFAppState().workoutToDo =
-                          FFAppState().workoutToDo - 1);
+                          widget.exercises.length - 1);
+                      await Navigator.pushAndRemoveUntil(
+                          context,
+                          PageTransition(
+                            type: PageTransitionType.fade,
+                            duration: Duration(milliseconds: 0),
+                            reverseDuration: Duration(milliseconds: 0),
+                            child:
+                                ExercisePageWidget(exercises: widget.exercises),
+                          ),
+                          (r) => true);
                     },
                     text: 'Fertig',
                     options: FFButtonOptions(
@@ -190,12 +207,20 @@ class _ExercisePageWidgetState extends State<ExercisePageWidget> {
                     onPressed: () async {
                       setState(() => FFAppState().started = false);
                       setState(() => FFAppState().workoutToDo = 0);
-                      await Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => PlanPageWidget(),
-                        ),
-                      );
+                      widget.exercises.removeAt(0);
+
+                      await Navigator.pushAndRemoveUntil(
+                          context,
+                          /*MaterialPageRoute(
+                              builder: (context) => PlanPageWidget()),
+                          (r) => true);*/
+                          PageTransition(
+                            type: PageTransitionType.fade,
+                            duration: Duration(milliseconds: 0),
+                            reverseDuration: Duration(milliseconds: 0),
+                            child: PlanPageWidget(),
+                          ),
+                          (r) => true);
                     },
                     text: 'Beenden',
                     options: FFButtonOptions(

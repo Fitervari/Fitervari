@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+<<<<<<< Updated upstream
 import 'package:wearable_communicator/wearable_communicator.dart';
 
 void main() {
@@ -191,6 +192,9 @@ class _MyAppState extends State<MyApp> {
 }/*
 import 'package:flutter/material.dart';
 import 'package:wear/wear.dart';
+=======
+//import 'package:wear/wear.dart';
+>>>>>>> Stashed changes
 import 'package:wearos_client/http.dart';
 import 'http.dart';
 
@@ -202,30 +206,14 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         body: Center(
-          child: WatchShape(
-            builder: (context, shape, child) {
-              return Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Text(
-                    'Shape: ${shape == WearShape.round ? 'round' : 'square'}',
-                  ),
-                  child,
-                ],
-              );
-            },
-            child: AmbientMode(
-              builder: (context, mode, child) {
-                return TextButton(
-                  onPressed: () => httptest(),
-                  child: const Text(
-                    'http',
-                  ),
-                );
-              },
-            ),
+            child: TextButton(
+          onPressed: () => {
+            httpget("users/1/workoutPlans", {}),
+          },
+          child: const Text(
+            'http',
           ),
-        ),
+        )),
       ),
     );
   }

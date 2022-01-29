@@ -1,3 +1,6 @@
+import 'package:fitervari_flutter/plan_page/plan_page_widget.dart';
+import 'package:fitervari_flutter/workout_page/workout_page_widget.dart';
+
 import '../exercise_page/exercise_page_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -24,14 +27,14 @@ class _WorkoutCardWidgetState extends State<WorkoutCardWidget> {
     return Padding(
       padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 20),
       child: InkWell(
-        onTap: () async {
+        /*onTap: () async {
           await Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => ExercisePageWidget(),
+              builder: (context) => WorkoutPageWidget(),
             ),
           );
-        },
+        },*/
         child: Container(
           width: MediaQuery.of(context).size.width,
           height: 184,

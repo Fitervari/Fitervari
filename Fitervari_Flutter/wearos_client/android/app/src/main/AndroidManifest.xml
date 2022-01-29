@@ -38,5 +38,9 @@
             android:name="flutterEmbedding"
             android:value="2" />
     </application>
+<<<<<<< Updated upstream
     <uses-permission android:name="android.permission.WAKE_LOCK" />
+=======
+    <uses-permission android:name="android.permission.INTERNET"/>
+>>>>>>> Stashed changes
 </manifest>

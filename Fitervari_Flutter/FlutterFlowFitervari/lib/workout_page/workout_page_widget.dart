@@ -1,14 +1,22 @@
+import 'package:fitervari_flutter/data/exercise.dart';
+import 'package:fitervari_flutter/data/workoutplan.dart';
+import 'package:fitervari_flutter/plan_page/plan_page_widget.dart';
+
 import '../components/workout_card_widget.dart';
 import '../exercise_page/exercise_page_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
+import '../app_state.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class WorkoutPageWidget extends StatefulWidget {
-  const WorkoutPageWidget({Key? key}) : super(key: key);
-
+  WorkoutPageWidget({
+    Key? key,
+    required this.workoutplan,
+  }) : super(key: key);
+  Workoutplan workoutplan;
   @override
   _WorkoutPageWidgetState createState() => _WorkoutPageWidgetState();
 }
@@ -25,48 +33,12 @@ class _WorkoutPageWidgetState extends State<WorkoutPageWidget> {
         mainAxisSize: MainAxisSize.max,
         children: [
           Expanded(
-            child: SingleChildScrollView(
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Row(
+            child: Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(12, 0, 12, 0),
+              child: SingleChildScrollView(
+                child: Column(
                     mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
-                        child: Text(
-                          FFAppState().workoutname,
-                          style: FlutterFlowTheme.title2,
-                        ),
-                      ),
-                    ],
-                  ),
-                  Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Container(
-                          width: MediaQuery.of(context).size.width,
-                          height: MediaQuery.of(context).size.height * 0.25,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                          ),
-                          child: Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(10, 0, 10, 0),
-                            child: WorkoutCardWidget(
-                              workoutName: 'Example',
-                              workoutDescription: 'disc',
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
+                    children: getCards(widget.workoutplan)),
               ),
             ),
           ),
@@ -82,7 +54,9 @@ class _WorkoutPageWidgetState extends State<WorkoutPageWidget> {
                       await Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => ExercisePageWidget(),
+                          builder: (context) => ExercisePageWidget(
+                            exercises: widget.workoutplan.exercises,
+                          ),
                         ),
                       );
                     },
@@ -105,7 +79,7 @@ class _WorkoutPageWidgetState extends State<WorkoutPageWidget> {
                     ),
                   ),
                 ),
-              if ((FFAppState().workoutToDo) == 0)
+              if ((FFAppState().workoutToDo) != 0)
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(10, 0, 10, 34),
                   child: FFButtonWidget(
@@ -113,7 +87,8 @@ class _WorkoutPageWidgetState extends State<WorkoutPageWidget> {
                       await Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => ExercisePageWidget(),
+                          builder: (context) => ExercisePageWidget(
+                              exercises: widget.workoutplan.exercises),
                         ),
                       );
                     },
@@ -142,4 +117,15 @@ class _WorkoutPageWidgetState extends State<WorkoutPageWidget> {
       ),
     );
   }
+}
+
+List<Widget> getCards(Workoutplan workoutplan) {
+  List<Widget> childs = [];
+  for (Exercise exercise in workoutplan.exercises) {
+    childs.add(new WorkoutCardWidget(
+      workoutName: exercise.name,
+      workoutDescription: exercise.description,
+    ));
+  }
+  return childs;
 }
