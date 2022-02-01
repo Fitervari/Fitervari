@@ -6,7 +6,6 @@ info:
 servers:
   - url: 'https://student.cloud.htl-leonding.ac.at/m.rausch-schott/fitervari/api'
   - url: 'http://localhost:8080/healthdata'
-  - url: 'https://localhost:8080/api/fitervari/healthdata'
 paths:
   /:
     get:
@@ -104,7 +103,7 @@ components:
             id: 12
             name: "Puls"
           value: "112"
-          workoutSet:
+          exerciseSet:
             id: 1763
             description: "10kg Langhantel"
             repetitions: "5"

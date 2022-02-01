@@ -139,7 +139,13 @@ TODO:   --------------------------------------------------------------
                                                 exS.getDescription(),
                                                 exS.getRepetitions()
                                         )
-                                ).collect(Collectors.toList())
+                                ).collect(Collectors.toList()),
+                                new DeviceGroupDTO(
+                                        ex.getDeviceGroup().getId(),
+                                        ex.getDeviceGroup().getName(),
+                                        ex.getDeviceGroup().getDescription(),
+                                        getConvertedDevices(ex.getDeviceGroup())
+                                )
                         )
                 ).collect(Collectors.toList())
         );

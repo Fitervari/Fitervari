@@ -45,7 +45,7 @@ public class FitervariHealthRepository {
     @Transactional
     public int postHealthData(PostHealthDataDTO dto) {
         var healthType = getHealthType(dto.getType());
-        var exerciseSet = getWorkoutSet(dto.getExerciseSet());
+        var exerciseSet = getExerciseSet(dto.getExerciseSet());
         var training = getTraining(dto.getTraining());
 
         if(healthType == null)
@@ -69,7 +69,7 @@ public class FitervariHealthRepository {
         return healthDataType.get();
     }
 
-    private ExerciseSet getWorkoutSet(long id) {
+    private ExerciseSet getExerciseSet(long id) {
         var tq = em.createQuery("SELECT exs FROM exerciseSet exs WHERE exs.id = :id", ExerciseSet.class);
         tq.setParameter("id", id);
         var exerciseSet = tq.getResultList().stream().findFirst();

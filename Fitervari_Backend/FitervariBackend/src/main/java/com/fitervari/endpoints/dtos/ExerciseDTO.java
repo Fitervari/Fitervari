@@ -14,4 +14,5 @@ public class ExerciseDTO implements Serializable {
     private long id;
     private String name, description;
     private List<ExerciseSetDTO> exerciseSets;
+    private DeviceGroupDTO deviceGroups;
 }
