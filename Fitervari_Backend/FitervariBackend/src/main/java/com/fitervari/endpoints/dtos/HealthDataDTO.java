@@ -14,7 +14,6 @@ public class HealthDataDTO implements Serializable {
 
     private long id;
     private LocalDateTime time;
-    //private HealthDataTypeDTO healthDataType;
     private String type;
     private String value;
     private ExerciseSetDTO exerciseSet;

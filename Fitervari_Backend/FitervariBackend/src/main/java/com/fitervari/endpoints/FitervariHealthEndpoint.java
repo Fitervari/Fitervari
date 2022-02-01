@@ -69,14 +69,15 @@ public class FitervariHealthEndpoint {
     @Produces(MediaType.APPLICATION_JSON)
     public Response getDataForTrainingOrWorkoutSet(@DefaultValue("-1") @QueryParam("training") long training,
                                                    @DefaultValue("-1") @QueryParam("exerciseSet") long exerciseSet,
+                                                   @DefaultValue("-1") @QueryParam("exercise") long exercise,
                                                    @DefaultValue("-1") @QueryParam("type") long type) {
-        if(training == -1 && exerciseSet == -1)
+        if(training == -1 && exerciseSet == -1 && exercise == -1)
             return Response.status(
                     Response.Status.BAD_REQUEST.getStatusCode(),
-                    "Neither training nor exerciseSet specified! At least one of them needs to be specified."
+                    "Neither one of training, exercise or exerciseSet specified! At least one of them needs to be specified."
                     ).build();
 
-        List<HealthDataDTO> result = repo.getDataByCriteria(training, exerciseSet, type);
+        List<HealthDataDTO> result = repo.getDataByCriteria(training, exerciseSet, exercise, type);
         return Response.ok(result).build();
     }
 

@@ -142,11 +142,11 @@ INSERT INTO exerciseset(description, repetitions, exercise_id, sort_identifier) 
 INSERT INTO exerciseset(description, repetitions, exercise_id, sort_identifier) VALUES('', '10', 3, 1);
 
 -- INSERT Trainings
-INSERT INTO training(date, workoutplan_id) VALUES('2020-12-30', 1);
-INSERT INTO training(date, workoutplan_id) VALUES('2021-01-5', 1);
-INSERT INTO training(date, workoutplan_id) VALUES('2021-01-10', 1);
-INSERT INTO training(date, workoutplan_id) VALUES('2021-01-10', 2);
-INSERT INTO training(date, workoutplan_id) VALUES('2021-01-15', 2);
+INSERT INTO training(date, starttime, endtime, workoutplan_id) VALUES('2020-12-30', '12:43:33', '13:43:33', 1);
+INSERT INTO training(date, starttime, endtime, workoutplan_id) VALUES('2021-01-5', '09:21:10', '12:43:33', 1);
+INSERT INTO training(date, starttime, endtime, workoutplan_id) VALUES('2021-01-10', '22:22:22', '22:59:50', 1);
+INSERT INTO training(date, starttime, endtime, workoutplan_id) VALUES('2021-01-10', '01:00:00', '01:49:10', 2);
+INSERT INTO training(date, starttime, endtime, workoutplan_id) VALUES('2021-01-15', '12:10:00', '12:14:56', 2);
 
 -- INSERT HealthDataType
 INSERT INTO healthdatatype(name) VALUES('Puls');

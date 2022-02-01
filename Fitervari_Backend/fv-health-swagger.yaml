@@ -11,8 +11,8 @@ paths:
     get:
       tags:
         - HealthApi
-      summary: "Returns the health data for training and/or exerciseSet"
-      description: "Returns the health data either from a specific training or a specific exerciseSet (at least of them has to be specified) and also only the specific types (if specified)."
+      summary: "Returns the health data for training and/or exerciseSet and/or exercise"
+      description: "Returns the health data either from a specific training, a specific exercise or a specific exerciseSet (at least of them has to be specified) and also only the specific types (if specified)."
       parameters:
         - in: query
           name: "training"
@@ -25,6 +25,13 @@ paths:
           name: "exerciseSet"
           required: false
           description: "Represents the id of a exerciseSet for which the data should be returned."
+          schema:
+            type: integer
+            minimum: 0
+        - in: query
+          name: "exercise"
+          required: false
+          description: "Represents the id of a exercise for which the data should be returned."
           schema:
             type: integer
             minimum: 0
@@ -43,7 +50,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/GetHealthDataExample'
         400:
-          description: "training, exerciseSet or  type not found"
+          description: "training, exercise, exerciseSet or  type not found"
     post:
       tags:
         - HealthApi

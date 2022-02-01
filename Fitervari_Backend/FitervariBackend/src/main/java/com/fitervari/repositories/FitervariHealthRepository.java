@@ -23,11 +23,12 @@ public class FitervariHealthRepository {
     @Inject
     EntityManager em;
 
-    public List<HealthDataDTO> getDataByCriteria(long training, long exerciseSet, long type) {
+    public List<HealthDataDTO> getDataByCriteria(long training, long exerciseSet, long exercise, long type) {
         TypedQuery<HealthData> healthDataTQ = em.createNamedQuery(HealthData.GETALLWITHCRITERIA, HealthData.class);
 
         healthDataTQ.setParameter("trainingsId", training);
         healthDataTQ.setParameter("exerciseSetId", exerciseSet);
+        healthDataTQ.setParameter("exerciseId", exercise);
         healthDataTQ.setParameter("type", type);
 
         var queryResult = healthDataTQ.getResultList();
@@ -36,7 +37,6 @@ public class FitervariHealthRepository {
                 new HealthDataDTO(d.getId(),
                     d.getTime(),
                     d.getHealthDataType().getName(),
-                    //new HealthDataTypeDTO(d.getHealthDataType().getId(), d.getHealthDataType().getName()),
                     d.getValue(),
                     new ExerciseSetDTO(d.getExerciseSet().getId(), d.getExerciseSet().getDescription(), d.getExerciseSet().getRepetitions())
         )).collect(Collectors.toList());

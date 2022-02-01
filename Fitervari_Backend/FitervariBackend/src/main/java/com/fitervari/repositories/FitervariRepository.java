@@ -185,6 +185,8 @@ TODO:   --------------------------------------------------------------
         return new TrainingDTO(
                 t.getId(),
                 t.getDate(),
+                t.getStartTime(),
+                t.getEndTime(),
                 getConvertedWorkoutPlan(t.getWorkoutPlan()),
                 t.getHealthData().stream().map(h ->
                         new HealthDataDTO(
@@ -209,6 +211,8 @@ TODO:   --------------------------------------------------------------
                 new TrainingDTO(
                         t.getId(),
                         t.getDate(),
+                        t.getStartTime(),
+                        t.getEndTime(),
                         t.getHealthData().stream().map(h ->
                                 new HealthDataDTO(
                                         h.getId(),
