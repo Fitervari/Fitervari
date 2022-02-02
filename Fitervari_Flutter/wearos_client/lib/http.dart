@@ -1,7 +1,9 @@
 import 'dart:convert' as convert;
 import 'dart:async';
 import 'dart:convert';
+import 'package:health/health.dart';
 import 'package:http/http.dart' as http;
+import 'package:wearos_client/healthdata.dart';
 import 'package:wearos_client/workoutplan.dart';
 
 String baseurl =
@@ -24,17 +26,28 @@ void httptest() async {
   print('Response body: ${response.body}');
 }*/
 
-void sendHealthData(var healthval, double healthdata) async {
-  Uri url = Uri.parse(
-      'https://student.cloud.htl-leonding.ac.at/m.rausch-schott/fitervari/api/healthdata');
-  Map data = {"id": healthval, "value": healthdata};
-  counter++;
-  //encode Map to JSON
-  var body = json.encode(data);
-  http.Response response = await http.put(url,
-      headers: {"Content-Type": "application/json"}, body: body);
+Future<List<Workoutplan>> httppostHealthdata(
+    String urlstr, Map<String, String> specialheaders, Healthdata body) async {
+  Uri url = Uri.parse("$baseurl/healthdata");
+  Map<String, String> headermap = {"Content-Type": "application/json"};
+  if (specialheaders.isNotEmpty) {
+    headermap.addAll(specialheaders);
+  }
+  print(body.toJson());
+  http.Response response =
+      await http.post(url, headers: headermap, body: body.toJson());
+  if (response.statusCode == 200) {
+    List<dynamic> data = convert.jsonDecode(response.body);
+    List<Workoutplan> workoutplans = List<Workoutplan>.from([], growable: true);
+    for (var plan in data) {
+      workoutplans.add(Workoutplan.fromJsonListElement(plan));
+    }
+    print(workoutplans[0].exercises[0].exerciseSets);
+    return workoutplans;
+  }
   print('Response status: ${response.statusCode}');
   print('Response body: ${response.body}');
+  throw Error();
 }
 
 var counter = 0;

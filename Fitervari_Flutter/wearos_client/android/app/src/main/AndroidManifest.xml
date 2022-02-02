@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.wearos_client">
+    package="com.fitervari.wearos_client">
    <application
         android:label="wearos_client"
         android:icon="@mipmap/ic_launcher">
@@ -38,9 +38,8 @@
             android:name="flutterEmbedding"
             android:value="2" />
     </application>
-<<<<<<< Updated upstream
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-=======
     <uses-permission android:name="android.permission.INTERNET"/>
->>>>>>> Stashed changes
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION" /> 
 </manifest>
