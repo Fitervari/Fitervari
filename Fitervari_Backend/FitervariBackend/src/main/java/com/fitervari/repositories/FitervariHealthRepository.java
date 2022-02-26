@@ -1,12 +1,12 @@
 package com.fitervari.repositories;
 
-import com.fitervari.endpoints.dtos.HealthDataDTO;
-import com.fitervari.endpoints.dtos.PostHealthDataDTO;
-import com.fitervari.endpoints.dtos.ExerciseSetDTO;
-import com.fitervari.model.Fitervari.Training;
-import com.fitervari.model.Fitervari.ExerciseSet;
-import com.fitervari.model.FitervariHealth.HealthData;
-import com.fitervari.model.FitervariHealth.HealthDataType;
+import com.fitervari.endpoints.dtos.get.HealthDataDTO;
+import com.fitervari.endpoints.dtos.post.PostHealthDataDTO;
+import com.fitervari.endpoints.dtos.get.ExerciseSetDTO;
+import com.fitervari.model.fitervari.Training;
+import com.fitervari.model.fitervari.ExerciseSet;
+import com.fitervari.model.fitervariHealth.HealthData;
+import com.fitervari.model.fitervariHealth.HealthDataType;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;

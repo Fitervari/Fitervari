@@ -4,7 +4,7 @@ info:
   description: Syp Projekt als Erweiterung des Fitervari Projekts.
   version: 2.0.0
 servers:
-  - url: 'https://student.cloud.htl-leonding.ac.at/m.rausch-schott/fitervari/api'
+  - url: 'https://student.cloud.htl-leonding.ac.at/m.rausch-schott/fitervari/api/healthdata'
   - url: 'http://localhost:8080/healthdata'
 paths:
   /:

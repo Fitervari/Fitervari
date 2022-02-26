@@ -1,9 +1,14 @@
 package com.fitervari.endpoints;
 
+import com.fitervari.endpoints.dtos.post.PostDeviceDTO;
+import com.fitervari.endpoints.dtos.post.PostStartWorkoutSessionDTO;
+import com.fitervari.endpoints.dtos.post.PostWorkoutPlanDTO;
+import com.fitervari.endpoints.dtos.put.*;
 import com.fitervari.repositories.FitervariRepository;
 
 import javax.inject.Inject;
 import javax.persistence.NoResultException;
+import javax.print.attribute.standard.Media;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -30,14 +35,22 @@ public class FitervariEndpoint {
 
     @GET
     @Path("users/{userId}")
-    @Produces(MediaType.APPLICATION_JSON)
+    @Produces({MediaType.APPLICATION_JSON, MediaType.TEXT_PLAIN})
     public Response getSpecificUser(@PathParam("userId") long id) {
         try {
             var user = repo.getUsers(id);
             return Response.ok(user).build();
         } catch(NoResultException e) {
-            return Response.status(Response.Status.NOT_FOUND.getStatusCode(), "The user with the given id was not found!").build();
+            return Response.status(Response.Status.NOT_FOUND).entity("The user with the given ID was not found!").build();
         }
+    }
+
+    @DELETE
+    @Path("users/{userId}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response deleteUser(@PathParam("userId") long id){
+        var user = repo.deleteUser(id);
+        return Response.ok(user).build();
     }
 
     /*
@@ -68,6 +81,23 @@ public class FitervariEndpoint {
     public Response generateActivationTokenForUser(@PathParam("userId") long id) {
         var token = repo.genActivationTokenForUser(id);
         return Response.ok(token).build();
+    }
+
+    @POST
+    @Path("users")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response activateUser() {
+        var response = repo.activateUser("2jg23nkc00208712jkhm5hiov5wcj2:h247hdj2a,hi248zu");
+        return Response.ok(response).build();
+    }
+
+    @PUT
+    @Path("users/{userId}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response updateUser(@PathParam("userId") long userId, PutUserDTO user) {
+        var result = repo.updateUser(userId, user);
+        return Response.noContent().build();
     }
 
     /*
@@ -120,6 +150,58 @@ public class FitervariEndpoint {
         }
     }
 
+    @POST
+    @Path("users/{userId}/workoutPlans")
+    @Produces(MediaType.TEXT_PLAIN)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response addWorkoutPlanForUser(@PathParam("userId") long id, PostWorkoutPlanDTO workoutPlan) {
+        var result = repo.addWorkoutPlanForUser(id, workoutPlan);
+        return Response.status(Response.Status.CREATED).build();
+    }
+
+    @POST
+    @Path("workoutPlans/{workoutPlanId}/workoutSessions")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response addWorkoutSessionForWorkoutPlan(@PathParam("workoutPlanId") long id, PostStartWorkoutSessionDTO wos) {
+        var result = repo.addWorkoutSessionForWorkoutPlan(id, wos);
+        return Response.status(Response.Status.CREATED).entity(result).build();
+    }
+
+    @PUT
+    @Path("workoutPlans/{workoutPlanId}/workoutSessions")
+    @Produces(MediaType.TEXT_PLAIN)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response endTraining(@PathParam("workoutPlanId") long id, PutEndWorkoutSessionDTO wos) {
+        var result = repo.updateWorkoutSessionForWorkoutPlan(wos);
+        return Response.status(Response.Status.NO_CONTENT).build();
+    }
+
+    @PUT
+    @Path("workoutPlans/{workoutPlanId}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response updateWorkoutPlan(@PathParam("workoutPlanId") long id, PutWorkoutPlanDTO wop) {
+        var result = repo.updateWorkoutPlan(id, wop);
+        return Response.noContent().build();
+    }
+
+    @DELETE
+    @Path("workoutPlans/{workoutPlanId}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response deleteWorkoutPlan(@PathParam("workoutPlanId") long id) {
+        var wop = repo.deleteWorkoutPlan(id);
+        return Response.ok(wop).build();
+    }
+
+    @DELETE
+    @Path("workoutSessions/{workoutSessionId}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response deleteWorkoutSession(@PathParam("workoutSessionId") long id) {
+        var wos = repo.deleteWorkoutSession(id);
+        return Response.ok(wos).build();
+    }
+
     /*
         --------------------------------------------------------------
                                 Devices / DeviceGroups
@@ -140,5 +222,48 @@ public class FitervariEndpoint {
     public Response getAllDeviceGroups() {
         var deviceGroups = repo.getAllDeviceGroups();
         return Response.ok(deviceGroups).build();
+    }
+
+    @POST
+    @Path("devices")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response addDevice(PostDeviceDTO postDevice) {
+        var result = repo.addDevice(postDevice);
+        return Response.status(Response.Status.CREATED).build();
+    }
+
+    @PUT
+    @Path("devices/{deviceId}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response updateDevice(@PathParam("deviceId") long id, PutDeviceDTO device) {
+        var result = repo.updateDevice(id, device);
+        return Response.noContent().build();
+    }
+
+    @PUT
+    @Path("deviceGroups/{deviceGroupId}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response updateDeviceGroup(@PathParam("deviceGroupId") long id, PutDeviceGroupDTO deviceGroup) {
+        var result = repo.updateDeviceGroup(id, deviceGroup);
+        return Response.noContent().build();
+    }
+
+    @DELETE
+    @Path("devices/{deviceId}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response deleteDevice(@PathParam("deviceId") long id) {
+        var device = repo.deleteDevice(id);
+        return Response.ok(device).build();
+    }
+
+    @DELETE
+    @Path("deviceGroups/{deviceGroupId}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response deleteDeviceGroup(@PathParam("deviceGroupId") long id) {
+        var deviceGroup = repo.deleteDeviceGroup(id);
+        return Response.ok(deviceGroup).build();
     }
 }

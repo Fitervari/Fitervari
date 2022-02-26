@@ -102,10 +102,10 @@ INSERT INTO device(description, name, unique_number, devicegroup_id, studio_id)
 VALUES('Die Beinpresse wird genutzt, um die Beinmuskeln zu stärken.', 'vertikale Beinpresse', 17, 3, 2);
 
 -- INSERT Workoutplans
-INSERT INTO workoutplan(archived, name, valid_from, valid_till, customer_id)
-VALUES(false, 'Demo-Trainingsplan 1', '2020-12-25', null, 1);
-INSERT INTO workoutplan(archived, name, valid_from, valid_till, customer_id)
-VALUES(true, 'Demo-Trainingsplan 2', '2021-01-10', '2021-02-15', 2);
+INSERT INTO workoutplan(archived, name, valid_from, valid_till, description, customer_id)
+VALUES(false, 'Demo-Trainingsplan 1', '2020-12-25', null, 'Das ist ein Demo Trainingsplan.', 1);
+INSERT INTO workoutplan(archived, name, valid_from, valid_till, description, customer_id)
+VALUES(true, 'Demo-Trainingsplan 2', '2021-01-10', '2021-02-15', 'Das ist ein Demo Trainingsplan 2.',  2);
 
 -- INSERT Workouts
 INSERT INTO exercise(description, name, devicegroup_id, workoutplan_id, sort_identifier)
@@ -130,16 +130,16 @@ INSERT INTO exercise(description, name, devicegroup_id, workoutplan_id, sort_ide
 VALUES('', 'Beinpresse', 3, 1, 4);
 
 -- INSERT WorkoutSets
-INSERT INTO exerciseset(description, repetitions, exercise_id, sort_identifier) VALUES('30kg', '5', 1, 1);
-INSERT INTO exerciseset(description, repetitions, exercise_id, sort_identifier) VALUES('40kg', '10', 1, 3);
-INSERT INTO exerciseset(description, repetitions, exercise_id, sort_identifier) VALUES('10kg', '20', 1, 2);
-INSERT INTO exerciseset(description, repetitions, exercise_id, sort_identifier) VALUES('30kg', '7', 2, 1);
-INSERT INTO exerciseset(description, repetitions, exercise_id, sort_identifier) VALUES('', '100m', 7, 1);
-INSERT INTO exerciseset(description, repetitions, exercise_id, sort_identifier) VALUES('15kg', '15', 2, 2);
-INSERT INTO exerciseset(description, repetitions, exercise_id, sort_identifier) VALUES('', '20km', 8, 3);
-INSERT INTO exerciseset(description, repetitions, exercise_id, sort_identifier) VALUES('', '15km', 8, 1);
-INSERT INTO exerciseset(description, repetitions, exercise_id, sort_identifier) VALUES('', '10km', 8, 2);
-INSERT INTO exerciseset(description, repetitions, exercise_id, sort_identifier) VALUES('', '10', 3, 1);
+INSERT INTO exerciseset(description, repetitions, exercise_id, sort_identifier) VALUES('30kg', 5, 1, 1);
+INSERT INTO exerciseset(description, repetitions, exercise_id, sort_identifier) VALUES('40kg', 10, 1, 3);
+INSERT INTO exerciseset(description, repetitions, exercise_id, sort_identifier) VALUES('10kg', 20, 1, 2);
+INSERT INTO exerciseset(description, repetitions, exercise_id, sort_identifier) VALUES('30kg', 7, 2, 1);
+INSERT INTO exerciseset(description, repetitions, exercise_id, sort_identifier) VALUES('100m', 100, 7, 1);
+INSERT INTO exerciseset(description, repetitions, exercise_id, sort_identifier) VALUES('15kg', 15, 2, 2);
+INSERT INTO exerciseset(description, repetitions, exercise_id, sort_identifier) VALUES('20km', -1, 8, 3);
+INSERT INTO exerciseset(description, repetitions, exercise_id, sort_identifier) VALUES('15km', -1, 8, 1);
+INSERT INTO exerciseset(description, repetitions, exercise_id, sort_identifier) VALUES('10km', -1, 8, 2);
+INSERT INTO exerciseset(description, repetitions, exercise_id, sort_identifier) VALUES('', 10, 3, 1);
 
 -- INSERT Trainings
 INSERT INTO training(date, starttime, endtime, workoutplan_id) VALUES('2020-12-30', '12:43:33', '13:43:33', 1);
@@ -156,16 +156,16 @@ INSERT INTO healthdatatype(name) VALUES('kcal');
 
 --INSERT HealthData
 INSERT INTO healthdata(time, value, healthdatatype_id, training_id, exerciseset_id)
-VALUES('2020-12-30 10:35:33', '100', 1, 1, 1);
+VALUES('2020-12-30 10:35:33', 100, 1, 1, 1);
 INSERT INTO healthdata(time, value, healthdatatype_id, training_id, exerciseset_id)
-VALUES('2020-12-30 10:45:18', '104', 1, 1, 1);
+VALUES('2020-12-30 10:45:18', 104, 1, 1, 1);
 INSERT INTO healthdata(time, value, healthdatatype_id, training_id, exerciseset_id)
-VALUES('2020-12-30 11:55:03', '80', 2, 1, 1);
+VALUES('2020-12-30 11:55:03', 80, 2, 1, 1);
 INSERT INTO healthdata(time, value, healthdatatype_id, training_id, exerciseset_id)
-VALUES('2020-12-30 10:35:33', '14', 3, 1, 1);
+VALUES('2020-12-30 10:35:33', 14, 3, 1, 1);
 INSERT INTO healthdata(time, value, healthdatatype_id, training_id, exerciseset_id)
-VALUES('2020-12-30 10:35:33', '89', 1, 1, 2);
+VALUES('2020-12-30 10:35:33', 89, 1, 1, 2);
 INSERT INTO healthdata(time, value, healthdatatype_id, training_id, exerciseset_id)
-VALUES('2020-12-30 10:35:33', '88', 2, 1, 2);
+VALUES('2020-12-30 10:35:33', 88, 2, 1, 2);
 INSERT INTO healthdata(time, value, healthdatatype_id, training_id, exerciseset_id)
-VALUES('2020-12-30 10:35:33', '10', 3, 1, 2);
+VALUES('2020-12-30 10:35:33', 10, 3, 1, 2);
