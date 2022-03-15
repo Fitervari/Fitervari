@@ -5,7 +5,7 @@ import lombok.Data;
 import javax.persistence.*;
 import java.io.Serializable;
 
-@Entity(name="activationCode")
+/*@Entity(name="activationCode")
 @Data
 public class ActivationCode implements Serializable {
     @Id
@@ -22,3 +22,4 @@ public class ActivationCode implements Serializable {
     @ManyToOne
     private Customer customer;
 }
+ */

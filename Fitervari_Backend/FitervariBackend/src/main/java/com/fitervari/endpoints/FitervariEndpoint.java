@@ -2,16 +2,18 @@ package com.fitervari.endpoints;
 
 import com.fitervari.endpoints.dtos.post.PostDeviceDTO;
 import com.fitervari.endpoints.dtos.post.PostStartWorkoutSessionDTO;
+import com.fitervari.endpoints.dtos.post.PostUserDTO;
 import com.fitervari.endpoints.dtos.post.PostWorkoutPlanDTO;
 import com.fitervari.endpoints.dtos.put.*;
 import com.fitervari.repositories.FitervariRepository;
 
 import javax.inject.Inject;
 import javax.persistence.NoResultException;
-import javax.print.attribute.standard.Media;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 @Path("/")
 public class FitervariEndpoint {
@@ -45,12 +47,35 @@ public class FitervariEndpoint {
         }
     }
 
+    @PUT
+    @Path("users/{userId}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response updateUser(@PathParam("userId") long userId, PutUserDTO user) {
+        var result = repo.updateUser(userId, user);
+        return Response.noContent().build();
+    }
+
     @DELETE
     @Path("users/{userId}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response deleteUser(@PathParam("userId") long id){
         var user = repo.deleteUser(id);
         return Response.ok(user).build();
+    }
+
+    @POST
+    @Path("users")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response activateUser(PostUserDTO user) {
+        try {
+            var response = repo.activateUser(user);
+            return Response.created(new URI("/users/" + response.getId())).build();
+        } catch(NoResultException ex) {
+            return Response.status(Response.Status.NOT_FOUND).entity("Ether studio or city is invalid!").build();
+        } catch (URISyntaxException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     /*
@@ -81,23 +106,6 @@ public class FitervariEndpoint {
     public Response generateActivationTokenForUser(@PathParam("userId") long id) {
         var token = repo.genActivationTokenForUser(id);
         return Response.ok(token).build();
-    }
-
-    @POST
-    @Path("users")
-    @Produces(MediaType.TEXT_PLAIN)
-    public Response activateUser() {
-        var response = repo.activateUser("2jg23nkc00208712jkhm5hiov5wcj2:h247hdj2a,hi248zu");
-        return Response.ok(response).build();
-    }
-
-    @PUT
-    @Path("users/{userId}")
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response updateUser(@PathParam("userId") long userId, PutUserDTO user) {
-        var result = repo.updateUser(userId, user);
-        return Response.noContent().build();
     }
 
     /*

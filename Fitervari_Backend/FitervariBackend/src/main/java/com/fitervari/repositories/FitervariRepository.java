@@ -3,9 +3,11 @@ package com.fitervari.repositories;
 import com.fitervari.endpoints.dtos.get.*;
 import com.fitervari.endpoints.dtos.post.PostDeviceDTO;
 import com.fitervari.endpoints.dtos.post.PostStartWorkoutSessionDTO;
+import com.fitervari.endpoints.dtos.post.PostUserDTO;
 import com.fitervari.endpoints.dtos.post.PostWorkoutPlanDTO;
 import com.fitervari.endpoints.dtos.put.*;
 import com.fitervari.model.fitervari.*;
+import io.vertx.ext.auth.User;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -15,6 +17,8 @@ import javax.transaction.Transactional;
 import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 
 @ApplicationScoped
@@ -56,9 +60,9 @@ public class FitervariRepository {
         return new CityDTO(city.getId(), city.getPostalCode(), city.getCity(), new CountryDTO(country.getId(), country.getCode(), country.getName()));
     }
 
-    private List<ActivationCodeDTO> getConvertedActivationCodes(List<ActivationCode> codes) {
+    /*private List<ActivationCodeDTO> getConvertedActivationCodes(List<ActivationCode> codes) {
         return codes.stream().map(a -> new ActivationCodeDTO(a.getId(), a.getCode(), a.isValid())).collect(Collectors.toList());
-    }
+    }*/
 
     public List<UserDTO> getUsers(Long id) throws NoResultException {
         if (id == null) {
@@ -75,7 +79,9 @@ public class FitervariRepository {
                             c.getEmail(),
                             getConvertedStudio(c.getStudio()),
                             getConvertedCity(c.getCity()),
-                            getConvertedActivationCodes(c.getActivationCodes()))
+                            c.getAuthToken(),
+                            c.getActivationToken())
+                            //getConvertedActivationCodes(c.getActivationCodes()))
             ).collect(Collectors.toList());
         }
 
@@ -94,7 +100,9 @@ public class FitervariRepository {
                     customer.getEmail(),
                     getConvertedStudio(customer.getStudio()),
                     getConvertedCity(customer.getCity()),
-                    getConvertedActivationCodes(customer.getActivationCodes())
+                    customer.getAuthToken(),
+                    customer.getActivationToken()
+                    //getConvertedActivationCodes(customer.getActivationCodes())
             )
         );
     }
@@ -136,26 +144,105 @@ public class FitervariRepository {
         return user;
     }
 
+    @Transactional
+    public UserDTO activateUser(PostUserDTO user) throws NoResultException {
+
+        var cityQuery = em.createQuery("SELECT c FROM city c WHERE c.id=:id", City.class);
+        cityQuery.setParameter("id", user.getCity());
+        var city = cityQuery.getSingleResult();
+
+        var studioQuery = em.createQuery("SELECT s FROM studio s WHERE s.id=:id", Studio.class);
+        studioQuery.setParameter("id", user.getStudio());
+        var studio = studioQuery.getSingleResult();
+
+        var customer = new Customer(user.getFirstName(), user.getLastName(), user.getEmail(), user.getAddress(), user.getBirthDate(), user.getActivationToken(), studio, city);
+
+        em.persist(customer);
+
+        return new UserDTO(customer.getId(), customer.getFirstName(), customer.getLastName(), customer.getBirthDate(), customer.getAddress(), customer.getEmail(), getConvertedStudio(customer.getStudio()), getConvertedCity(customer.getCity()), customer.getAuthToken(), customer.getActivationToken());
+    }
+
     /* TODO:
         --------------------------------------------------------------
                                 TODO: Auth
 TODO:   --------------------------------------------------------------
      */
 
-    public String genAuthTokenFromActivationToken(String activationCode) {
-        return "SAMPLE AUTH TOKEN";
+    private String genToken(int length) {
+        int leftLimit = 48; // numeral '0'
+        int rightLimit = 90; // letter 'Z'
+        Random random = new Random();
+
+        return random.ints(leftLimit, rightLimit + 1)
+                .filter(i -> (i <= 57 || i >= 65))
+                .limit(length)
+                .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
+                .toString();
     }
 
+    private String genAuthToken(String activationToken) {
+        var firstSegmentStart = ThreadLocalRandom.current().nextInt(0, 9);
+        var firstSegmentEnd = ThreadLocalRandom.current().nextInt(9, 17);
+        var secondSegmentStart = ThreadLocalRandom.current().nextInt(17, 25);
+        var secondSegmentEnd = ThreadLocalRandom.current().nextInt(25, 33);
+
+        return activationToken.substring(firstSegmentStart, firstSegmentEnd)
+                + genToken(32 - (firstSegmentEnd - firstSegmentStart) - (secondSegmentEnd - secondSegmentStart))
+                + activationToken.substring(secondSegmentStart, secondSegmentEnd);
+    }
+
+    @Transactional
+    public String genAuthTokenFromActivationToken(String activationCode) throws NoResultException {
+
+        var customerQuery = em.createQuery("SELECT c FROM customer c WHERE c.activationToken=:activationToken", Customer.class);
+        customerQuery.setParameter("activationToken", activationCode);
+
+        var customer = customerQuery.getSingleResult();
+
+        var authToken = genAuthToken(activationCode);
+
+        var authTokenAlreadyExists = em.createQuery(String.format("SELECT c FROM customer c WHERE c.authToken='%s'", authToken), Customer.class).getResultList().size() > 0;
+
+        while(authTokenAlreadyExists) {
+            authToken = genAuthToken(activationCode);
+            authTokenAlreadyExists = em.createQuery(String.format("SELECT c FROM customer c WHERE c.authToken='%s'", authToken), Customer.class).getResultList().size() > 0;
+        }
+
+        customer.setAuthToken(authToken);
+
+        em.merge(customer);
+
+        return authToken;
+    }
+
+    @Transactional
     public String getAuthTokenForTrainer(String username, String password) {
         return "SAMPLE AUTH TOKEN FOR TRAINER";
     }
 
-    public String genActivationTokenForUser(long id) {
-        return "SAMPLE ACTIVATION TOKEN FOR USER: " + id;
-    }
+    @Transactional
+    public String genActivationTokenForUser(long id) throws NoResultException {
 
-    public String activateUser(String activationToken) {
-        return "ACTIVATE USER FOR TOKEN: " + activationToken;
+        var customerQuery = em.createQuery("SELECT c FROM customer c WHERE c.id=:id", Customer.class);
+        customerQuery.setParameter("id", id);
+
+        var customer = customerQuery.getSingleResult();
+
+        var token = genToken(32);
+
+        var tokenAlreadyExists = em.createQuery(String.format("SELECT c FROM customer c WHERE c.activationToken='%s'", token), Customer.class).getResultList().size() > 0;
+
+        while(tokenAlreadyExists) {
+            token = genToken(32);
+            tokenAlreadyExists = em.createQuery(String.format("SELECT c FROM customer c WHERE c.activationToken='%s'", token), Customer.class).getResultList().size() > 0;
+        }
+
+        customer.setActivationToken(token);
+        customer.setAuthToken(null);
+
+        em.merge(customer);
+
+        return token;
     }
 
     /*

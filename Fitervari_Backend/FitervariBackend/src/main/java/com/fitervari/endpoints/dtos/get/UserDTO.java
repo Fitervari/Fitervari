@@ -21,5 +21,7 @@ public class UserDTO implements Serializable {
     private String email;
     private StudioDTO studio;
     private CityDTO city;
-    private List<ActivationCodeDTO> activationCodes;
+    private String authToken;
+    private String activationToken;
+    //private List<ActivationCodeDTO> activationCodes;
 }
