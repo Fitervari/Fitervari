@@ -14,9 +14,11 @@ import 'package:web_socket_channel/io.dart';
 import 'healthdata.dart';
 import 'package:web_socket_channel/status.dart' as status;
 
+var channel = IOWebSocketChannel.connect(Uri.parse(
     'ws://student.cloud.htl-leonding.ac.at/m.rausch-schott/fitervari/api/health/1000'));
 bool exercises = false;
 bool stoped = false;
+bool timerstarted = false;
 void main() async {
   runApp(HealthApp());
 }
