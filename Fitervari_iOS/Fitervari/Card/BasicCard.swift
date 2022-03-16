@@ -11,11 +11,13 @@ struct BasicCard<Content, Background>: View where Content: View, Background: Vie
 	public var action: (() -> Void)?
 	public var content: () -> Content
 	public var background: () -> Background
+	public var roundedCorners: UIRectCorner
 	
-	init(action: (() -> Void)? = nil, content: @escaping () -> Content, background: @escaping () -> Background) {
+	init(action: (() -> Void)? = nil, roundedCorners: UIRectCorner = .allCorners, content: @escaping () -> Content, background: @escaping () -> Background) {
 		self.action = action
 		self.content = content
 		self.background = background
+		self.roundedCorners = roundedCorners
 	}
 	
 	var body: some View {
@@ -25,7 +27,7 @@ struct BasicCard<Content, Background>: View where Content: View, Background: Vie
 			content()
 				.padding(20)
 		}
-		.clipShape(RoundedRectangle(cornerRadius: 20))
+		.cornerRadius(20, corners: roundedCorners)
 		// .onTapGesture(perform: action ?? {})
 	}
 }

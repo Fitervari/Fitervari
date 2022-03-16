@@ -11,19 +11,35 @@
 		543A0CD427393C1500D36D70 /* DynamicColor in Frameworks */ = {isa = PBXBuildFile; productRef = 543A0CD327393C1500D36D70 /* DynamicColor */; };
 		543A0CD6273983BA00D36D70 /* WorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543A0CD5273983BA00D36D70 /* WorkoutView.swift */; };
 		543A3538275BE3740034019E /* FinishedWorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543A3537275BE3740034019E /* FinishedWorkoutView.swift */; };
+		543BFD4527AA0D900086DA7A /* CustomDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543BFD4427AA0D900086DA7A /* CustomDecoder.swift */; };
+		543BFD4727AA13AB0086DA7A /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 543BFD4627AA13AB0086DA7A /* Alamofire */; };
+		543BFD4927AA15570086DA7A /* HealthData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543BFD4827AA15570086DA7A /* HealthData.swift */; };
+		543BFD4B27AA16960086DA7A /* HealthData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543BFD4827AA15570086DA7A /* HealthData.swift */; };
+		5447D1E927AA010F0025F9BE /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 5447D1E827AA010F0025F9BE /* Alamofire */; };
+		5447D1EF27AA035C0025F9BE /* WorkoutPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5447D1EE27AA035C0025F9BE /* WorkoutPlan.swift */; };
+		5447D1F127AA04370025F9BE /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5447D1F027AA04370025F9BE /* Exercise.swift */; };
+		5447D1F327AA04EC0025F9BE /* ExerciseSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5447D1F227AA04EC0025F9BE /* ExerciseSet.swift */; };
 		544FCC2626F3622600DEDB79 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 544FCC2526F3622600DEDB79 /* SignInView.swift */; };
 		544FCC2826F36A8100DEDB79 /* HelloView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 544FCC2726F36A8100DEDB79 /* HelloView.swift */; };
 		544FCC2B26F36DCD00DEDB79 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 544FCC2A26F36DCD00DEDB79 /* CodeScanner */; };
+		5456F3EF27CD07B8001BD160 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5456F3EE27CD07B8001BD160 /* HistoryView.swift */; };
+		5456F3F127CD0A9A001BD160 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5456F3F027CD0A9A001BD160 /* User.swift */; };
+		5456F3F227CD0A9A001BD160 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5456F3F027CD0A9A001BD160 /* User.swift */; };
+		5456F3F427CD0CE5001BD160 /* Studio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5456F3F327CD0CE5001BD160 /* Studio.swift */; };
+		5456F3F527CD0CE5001BD160 /* Studio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5456F3F327CD0CE5001BD160 /* Studio.swift */; };
+		5456F3F727CD0DBC001BD160 /* Trainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5456F3F627CD0DBC001BD160 /* Trainer.swift */; };
+		5456F3F827CD0DBC001BD160 /* Trainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5456F3F627CD0DBC001BD160 /* Trainer.swift */; };
 		54646E8326F35DD700C8C2D5 /* FitervariApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54646E8226F35DD700C8C2D5 /* FitervariApp.swift */; };
-		54646E8526F35DD700C8C2D5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54646E8426F35DD700C8C2D5 /* ContentView.swift */; };
 		54646E8726F35DD900C8C2D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54646E8626F35DD900C8C2D5 /* Assets.xcassets */; };
 		54646E8A26F35DD900C8C2D5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54646E8926F35DD900C8C2D5 /* Preview Assets.xcassets */; };
-		54646E9426F35DD900C8C2D5 /* FitervariTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54646E9326F35DD900C8C2D5 /* FitervariTests.swift */; };
-		54646E9E26F35DD900C8C2D5 /* FitervariUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54646E9D26F35DD900C8C2D5 /* FitervariUITests.swift */; };
-		54646EA026F35DD900C8C2D5 /* FitervariUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54646E9F26F35DD900C8C2D5 /* FitervariUITestsLaunchTests.swift */; };
+		5495D06927D1F1C70076085B /* CountdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5495D06827D1F1C70076085B /* CountdownView.swift */; };
+		5495D06D27D207E60076085B /* ConfettiSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 5495D06C27D207E60076085B /* ConfettiSwiftUI */; };
+		549CDCDF27B950580062683D /* WorkoutSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549CDCDE27B950580062683D /* WorkoutSession.swift */; };
+		549CDCE027B951800062683D /* WorkoutSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549CDCDE27B950580062683D /* WorkoutSession.swift */; };
+		549CDCE127B9539A0062683D /* CustomDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543BFD4427AA0D900086DA7A /* CustomDecoder.swift */; };
 		54B5DCDF2768C89C00C18F9B /* HealthKitController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B5DCDE2768C89C00C18F9B /* HealthKitController.swift */; };
 		54BBF998276626B80067431C /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54BBF997276626B80067431C /* HealthKit.framework */; };
-		54BBF9A0276750220067431C /* ViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BBF99F276750220067431C /* ViewRouter.swift */; };
+		54BBF9A0276750220067431C /* RootNavigationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BBF99F276750220067431C /* RootNavigationModel.swift */; };
 		54BBF9A227675BF00067431C /* NavigationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BBF9A127675BF00067431C /* NavigationModel.swift */; };
 		54BBF9B42767BE3D0067431C /* Communicator in Frameworks */ = {isa = PBXBuildFile; productRef = 54BBF9B32767BE3D0067431C /* Communicator */; };
 		54BBF9B62767C1760067431C /* ConnectivityProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BBF9B52767C1760067431C /* ConnectivityProvider.swift */; };
@@ -31,15 +47,25 @@
 		54BBF9B92768049D0067431C /* Communicator in Frameworks */ = {isa = PBXBuildFile; productRef = 54BBF9B82768049D0067431C /* Communicator */; };
 		54BBF9BB27687D0E0067431C /* ConnectivityMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BBF9BA27687D0E0067431C /* ConnectivityMessage.swift */; };
 		54BBF9BC27687D0E0067431C /* ConnectivityMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BBF9BA27687D0E0067431C /* ConnectivityMessage.swift */; };
+		54BDADBB2798235C008B8DFA /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BDADBA2798235C008B8DFA /* ExtensionDelegate.swift */; };
+		54C6518427D3B62500F39B74 /* WorkoutNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C6518327D3B62500F39B74 /* WorkoutNavigationView.swift */; };
+		54C6518627D3C9C300F39B74 /* BreakViewOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C6518527D3C9C300F39B74 /* BreakViewOld.swift */; };
+		54C6518827D3DB2900F39B74 /* ExerciseListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C6518727D3DB2900F39B74 /* ExerciseListView.swift */; };
 		54C8AE3F276BE7E7008399E1 /* CommonUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C8AE3E276BE7E7008399E1 /* CommonUI.swift */; };
 		54C8AE40276BE7E7008399E1 /* CommonUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C8AE3E276BE7E7008399E1 /* CommonUI.swift */; };
 		54CBEF6426FC5E29009A7B68 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CBEF6326FC5E29009A7B68 /* MainView.swift */; };
 		54CBEF6626FC5E85009A7B68 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CBEF6526FC5E85009A7B68 /* AccountView.swift */; };
 		54CBEF6826FC5E92009A7B68 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CBEF6726FC5E92009A7B68 /* DashboardView.swift */; };
 		54CBEF6A26FC6308009A7B68 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CBEF6926FC6308009A7B68 /* Card.swift */; };
-		54CBEF6C26FC97E3009A7B68 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CBEF6B26FC97E3009A7B68 /* Color.swift */; };
 		54CC0F522710BE4100112EE3 /* BasicCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CC0F512710BE4100112EE3 /* BasicCard.swift */; };
+		54CE552227E1D366006ECD44 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = 54CE552127E1D366006ECD44 /* SwiftUICharts */; };
 		54CF60E42711C4A100E29DC5 /* TrainingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CF60E32711C4A100E29DC5 /* TrainingView.swift */; };
+		54D3781827E127A400091DCC /* HealthDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D3781727E127A400091DCC /* HealthDataView.swift */; };
+		54D3781B27E1290600091DCC /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 54D3781A27E1290600091DCC /* Charts */; };
+		54EAF25127CB869A00302EEE /* ExerciseSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5447D1F227AA04EC0025F9BE /* ExerciseSet.swift */; };
+		54EAF25227CB874E00302EEE /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5447D1F027AA04370025F9BE /* Exercise.swift */; };
+		54EAF25327CB875200302EEE /* WorkoutPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5447D1EE27AA035C0025F9BE /* WorkoutPlan.swift */; };
+		54F41C1F27D6754D003A5149 /* RootNavigationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BBF99F276750220067431C /* RootNavigationModel.swift */; };
 		54F521BB273BBEAF00AA75DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54F521BA273BBEAF00AA75DD /* Assets.xcassets */; };
 		54F521C1273BBEAF00AA75DD /* FitervariHealth WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 54F521C0273BBEAF00AA75DD /* FitervariHealth WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		54F521C6273BBEAF00AA75DD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F521C5273BBEAF00AA75DD /* ContentView.swift */; };
@@ -47,9 +73,6 @@
 		54F521CA273BBEAF00AA75DD /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F521C9273BBEAF00AA75DD /* ComplicationController.swift */; };
 		54F521CC273BBEB000AA75DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54F521CB273BBEB000AA75DD /* Assets.xcassets */; };
 		54F521CF273BBEB000AA75DD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54F521CE273BBEB000AA75DD /* Preview Assets.xcassets */; };
-		54F521DA273BBEB000AA75DD /* FitervariHealthTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F521D9273BBEB000AA75DD /* FitervariHealthTests.swift */; };
-		54F521E4273BBEB000AA75DD /* FitervariHealthUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F521E3273BBEB000AA75DD /* FitervariHealthUITests.swift */; };
-		54F521E6273BBEB000AA75DD /* FitervariHealthUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F521E5273BBEB000AA75DD /* FitervariHealthUITestsLaunchTests.swift */; };
 		54F521E9273BBEB000AA75DD /* FitervariHealth.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 54F521B8273BBEAE00AA75DD /* FitervariHealth.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		54FEC6BB276B33950002DBB1 /* WorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FEC6BA276B33950002DBB1 /* WorkoutView.swift */; };
 		54FEC6BD276B35940002DBB1 /* HelloView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FEC6BC276B35940002DBB1 /* HelloView.swift */; };
@@ -137,34 +160,45 @@
 		543A0CD0273935D000D36D70 /* StackedCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackedCard.swift; sourceTree = "<group>"; };
 		543A0CD5273983BA00D36D70 /* WorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutView.swift; sourceTree = "<group>"; };
 		543A3537275BE3740034019E /* FinishedWorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishedWorkoutView.swift; sourceTree = "<group>"; };
+		543BFD4427AA0D900086DA7A /* CustomDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDecoder.swift; sourceTree = "<group>"; };
+		543BFD4827AA15570086DA7A /* HealthData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthData.swift; sourceTree = "<group>"; };
+		5447D1EE27AA035C0025F9BE /* WorkoutPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutPlan.swift; sourceTree = "<group>"; };
+		5447D1F027AA04370025F9BE /* Exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
+		5447D1F227AA04EC0025F9BE /* ExerciseSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseSet.swift; sourceTree = "<group>"; };
 		544FCC2526F3622600DEDB79 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		544FCC2726F36A8100DEDB79 /* HelloView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelloView.swift; sourceTree = "<group>"; };
+		5456F3EE27CD07B8001BD160 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		5456F3F027CD0A9A001BD160 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		5456F3F327CD0CE5001BD160 /* Studio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Studio.swift; sourceTree = "<group>"; };
+		5456F3F627CD0DBC001BD160 /* Trainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trainer.swift; sourceTree = "<group>"; };
 		54646E7F26F35DD700C8C2D5 /* Fitervari.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fitervari.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		54646E8226F35DD700C8C2D5 /* FitervariApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitervariApp.swift; sourceTree = "<group>"; };
-		54646E8426F35DD700C8C2D5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		54646E8626F35DD900C8C2D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		54646E8926F35DD900C8C2D5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		54646E8F26F35DD900C8C2D5 /* FitervariTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FitervariTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		54646E9326F35DD900C8C2D5 /* FitervariTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitervariTests.swift; sourceTree = "<group>"; };
 		54646E9926F35DD900C8C2D5 /* FitervariUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FitervariUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		54646E9D26F35DD900C8C2D5 /* FitervariUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitervariUITests.swift; sourceTree = "<group>"; };
-		54646E9F26F35DD900C8C2D5 /* FitervariUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitervariUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		5495D06827D1F1C70076085B /* CountdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownView.swift; sourceTree = "<group>"; };
+		549CDCDE27B950580062683D /* WorkoutSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutSession.swift; sourceTree = "<group>"; };
 		54B5DCDE2768C89C00C18F9B /* HealthKitController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitController.swift; sourceTree = "<group>"; };
 		54BBF996276626B80067431C /* FitervariHealth WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "FitervariHealth WatchKit Extension.entitlements"; sourceTree = "<group>"; };
 		54BBF997276626B80067431C /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS8.3.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
-		54BBF99F276750220067431C /* ViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRouter.swift; sourceTree = "<group>"; };
+		54BBF99F276750220067431C /* RootNavigationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootNavigationModel.swift; sourceTree = "<group>"; };
 		54BBF9A127675BF00067431C /* NavigationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationModel.swift; sourceTree = "<group>"; };
 		54BBF9B52767C1760067431C /* ConnectivityProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectivityProvider.swift; sourceTree = "<group>"; };
 		54BBF9BA27687D0E0067431C /* ConnectivityMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectivityMessage.swift; sourceTree = "<group>"; };
+		54BDADBA2798235C008B8DFA /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
 		54C5EC2526F3AC9700DFFE5E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		54C6518327D3B62500F39B74 /* WorkoutNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutNavigationView.swift; sourceTree = "<group>"; };
+		54C6518527D3C9C300F39B74 /* BreakViewOld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreakViewOld.swift; sourceTree = "<group>"; };
+		54C6518727D3DB2900F39B74 /* ExerciseListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseListView.swift; sourceTree = "<group>"; };
 		54C8AE3E276BE7E7008399E1 /* CommonUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonUI.swift; sourceTree = "<group>"; };
 		54CBEF6326FC5E29009A7B68 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		54CBEF6526FC5E85009A7B68 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		54CBEF6726FC5E92009A7B68 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
 		54CBEF6926FC6308009A7B68 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
-		54CBEF6B26FC97E3009A7B68 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		54CC0F512710BE4100112EE3 /* BasicCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicCard.swift; sourceTree = "<group>"; };
 		54CF60E32711C4A100E29DC5 /* TrainingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingView.swift; sourceTree = "<group>"; };
+		54D3781727E127A400091DCC /* HealthDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthDataView.swift; sourceTree = "<group>"; };
 		54F521B8273BBEAE00AA75DD /* FitervariHealth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FitervariHealth.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		54F521BA273BBEAF00AA75DD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		54F521C0273BBEAF00AA75DD /* FitervariHealth WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "FitervariHealth WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -175,10 +209,7 @@
 		54F521CE273BBEB000AA75DD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		54F521D0273BBEB000AA75DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		54F521D5273BBEB000AA75DD /* FitervariHealthTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FitervariHealthTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		54F521D9273BBEB000AA75DD /* FitervariHealthTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitervariHealthTests.swift; sourceTree = "<group>"; };
 		54F521DF273BBEB000AA75DD /* FitervariHealthUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FitervariHealthUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		54F521E3273BBEB000AA75DD /* FitervariHealthUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitervariHealthUITests.swift; sourceTree = "<group>"; };
-		54F521E5273BBEB000AA75DD /* FitervariHealthUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitervariHealthUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		54FEC6BA276B33950002DBB1 /* WorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutView.swift; sourceTree = "<group>"; };
 		54FEC6BC276B35940002DBB1 /* HelloView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelloView.swift; sourceTree = "<group>"; };
 		54FEC6C1276B3D750002DBB1 /* KeychainHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHandler.swift; sourceTree = "<group>"; };
@@ -191,8 +222,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5495D06D27D207E60076085B /* ConfettiSwiftUI in Frameworks */,
 				54FEC6C0276B3D320002DBB1 /* KeychainAccess in Frameworks */,
+				54D3781B27E1290600091DCC /* Charts in Frameworks */,
 				543A0CD427393C1500D36D70 /* DynamicColor in Frameworks */,
+				5447D1E927AA010F0025F9BE /* Alamofire in Frameworks */,
+				54CE552227E1D366006ECD44 /* SwiftUICharts in Frameworks */,
 				544FCC2B26F36DCD00DEDB79 /* CodeScanner in Frameworks */,
 				54BBF9B42767BE3D0067431C /* Communicator in Frameworks */,
 			);
@@ -217,6 +252,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				54BBF998276626B80067431C /* HealthKit.framework in Frameworks */,
+				543BFD4727AA13AB0086DA7A /* Alamofire in Frameworks */,
 				54BBF9B92768049D0067431C /* Communicator in Frameworks */,
 				54FEC6CB276B6E610002DBB1 /* KeychainAccess in Frameworks */,
 			);
@@ -239,17 +275,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5447D1ED27AA034E0025F9BE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5447D1EE27AA035C0025F9BE /* WorkoutPlan.swift */,
+				5447D1F027AA04370025F9BE /* Exercise.swift */,
+				5447D1F227AA04EC0025F9BE /* ExerciseSet.swift */,
+				543BFD4427AA0D900086DA7A /* CustomDecoder.swift */,
+				543BFD4827AA15570086DA7A /* HealthData.swift */,
+				549CDCDE27B950580062683D /* WorkoutSession.swift */,
+				5456F3F027CD0A9A001BD160 /* User.swift */,
+				5456F3F327CD0CE5001BD160 /* Studio.swift */,
+				5456F3F627CD0DBC001BD160 /* Trainer.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		54646E7626F35DD700C8C2D5 = {
 			isa = PBXGroup;
 			children = (
 				54BBF9A3276772780067431C /* Shared */,
 				54646E8126F35DD700C8C2D5 /* Fitervari */,
-				54646E9226F35DD900C8C2D5 /* FitervariTests */,
-				54646E9C26F35DD900C8C2D5 /* FitervariUITests */,
 				54F521B9273BBEAE00AA75DD /* FitervariHealth */,
 				54F521C4273BBEAF00AA75DD /* FitervariHealth WatchKit Extension */,
-				54F521D8273BBEB000AA75DD /* FitervariHealthTests */,
-				54F521E2273BBEB000AA75DD /* FitervariHealthUITests */,
 				54646E8026F35DD700C8C2D5 /* Products */,
 				54BBF993276625C40067431C /* Frameworks */,
 			);
@@ -275,21 +323,14 @@
 			isa = PBXGroup;
 			children = (
 				54CC0F502710BE2400112EE3 /* Card */,
+				5495D06727D1F1830076085B /* Signin */,
+				5495D06A27D202A50076085B /* Main */,
+				5495D06627D1F16A0076085B /* Workout */,
 				54C5EC2526F3AC9700DFFE5E /* Info.plist */,
 				54646E8226F35DD700C8C2D5 /* FitervariApp.swift */,
-				54646E8426F35DD700C8C2D5 /* ContentView.swift */,
+				54BBF99F276750220067431C /* RootNavigationModel.swift */,
 				54646E8626F35DD900C8C2D5 /* Assets.xcassets */,
 				54646E8826F35DD900C8C2D5 /* Preview Content */,
-				544FCC2526F3622600DEDB79 /* SignInView.swift */,
-				544FCC2726F36A8100DEDB79 /* HelloView.swift */,
-				54CBEF6326FC5E29009A7B68 /* MainView.swift */,
-				54CBEF6526FC5E85009A7B68 /* AccountView.swift */,
-				54CBEF6726FC5E92009A7B68 /* DashboardView.swift */,
-				54CBEF6B26FC97E3009A7B68 /* Color.swift */,
-				54CF60E32711C4A100E29DC5 /* TrainingView.swift */,
-				543A0CD5273983BA00D36D70 /* WorkoutView.swift */,
-				543A3537275BE3740034019E /* FinishedWorkoutView.swift */,
-				54BBF99F276750220067431C /* ViewRouter.swift */,
 				54BBF9A127675BF00067431C /* NavigationModel.swift */,
 			);
 			path = Fitervari;
@@ -303,21 +344,39 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		54646E9226F35DD900C8C2D5 /* FitervariTests */ = {
+		5495D06627D1F16A0076085B /* Workout */ = {
 			isa = PBXGroup;
 			children = (
-				54646E9326F35DD900C8C2D5 /* FitervariTests.swift */,
+				54C6518327D3B62500F39B74 /* WorkoutNavigationView.swift */,
+				5495D06827D1F1C70076085B /* CountdownView.swift */,
+				543A0CD5273983BA00D36D70 /* WorkoutView.swift */,
+				54C6518527D3C9C300F39B74 /* BreakViewOld.swift */,
+				543A3537275BE3740034019E /* FinishedWorkoutView.swift */,
 			);
-			path = FitervariTests;
+			path = Workout;
 			sourceTree = "<group>";
 		};
-		54646E9C26F35DD900C8C2D5 /* FitervariUITests */ = {
+		5495D06727D1F1830076085B /* Signin */ = {
 			isa = PBXGroup;
 			children = (
-				54646E9D26F35DD900C8C2D5 /* FitervariUITests.swift */,
-				54646E9F26F35DD900C8C2D5 /* FitervariUITestsLaunchTests.swift */,
+				544FCC2726F36A8100DEDB79 /* HelloView.swift */,
+				544FCC2526F3622600DEDB79 /* SignInView.swift */,
 			);
-			path = FitervariUITests;
+			path = Signin;
+			sourceTree = "<group>";
+		};
+		5495D06A27D202A50076085B /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				54CBEF6326FC5E29009A7B68 /* MainView.swift */,
+				54CBEF6726FC5E92009A7B68 /* DashboardView.swift */,
+				54CF60E32711C4A100E29DC5 /* TrainingView.swift */,
+				54C6518727D3DB2900F39B74 /* ExerciseListView.swift */,
+				5456F3EE27CD07B8001BD160 /* HistoryView.swift */,
+				54CBEF6526FC5E85009A7B68 /* AccountView.swift */,
+				54D3781727E127A400091DCC /* HealthDataView.swift */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 		54BBF993276625C40067431C /* Frameworks */ = {
@@ -331,6 +390,7 @@
 		54BBF9A3276772780067431C /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				5447D1ED27AA034E0025F9BE /* Model */,
 				54BBF9B52767C1760067431C /* ConnectivityProvider.swift */,
 				54BBF9BA27687D0E0067431C /* ConnectivityMessage.swift */,
 				54FEC6C1276B3D750002DBB1 /* KeychainHandler.swift */,
@@ -373,6 +433,7 @@
 				54B5DCDE2768C89C00C18F9B /* HealthKitController.swift */,
 				54FEC6BA276B33950002DBB1 /* WorkoutView.swift */,
 				54FEC6BC276B35940002DBB1 /* HelloView.swift */,
+				54BDADBA2798235C008B8DFA /* ExtensionDelegate.swift */,
 			);
 			path = "FitervariHealth WatchKit Extension";
 			sourceTree = "<group>";
@@ -383,23 +444,6 @@
 				54F521CE273BBEB000AA75DD /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		54F521D8273BBEB000AA75DD /* FitervariHealthTests */ = {
-			isa = PBXGroup;
-			children = (
-				54F521D9273BBEB000AA75DD /* FitervariHealthTests.swift */,
-			);
-			path = FitervariHealthTests;
-			sourceTree = "<group>";
-		};
-		54F521E2273BBEB000AA75DD /* FitervariHealthUITests */ = {
-			isa = PBXGroup;
-			children = (
-				54F521E3273BBEB000AA75DD /* FitervariHealthUITests.swift */,
-				54F521E5273BBEB000AA75DD /* FitervariHealthUITestsLaunchTests.swift */,
-			);
-			path = FitervariHealthUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -425,6 +469,10 @@
 				543A0CD327393C1500D36D70 /* DynamicColor */,
 				54BBF9B32767BE3D0067431C /* Communicator */,
 				54FEC6BF276B3D320002DBB1 /* KeychainAccess */,
+				5447D1E827AA010F0025F9BE /* Alamofire */,
+				5495D06C27D207E60076085B /* ConfettiSwiftUI */,
+				54D3781A27E1290600091DCC /* Charts */,
+				54CE552127E1D366006ECD44 /* SwiftUICharts */,
 			);
 			productName = Fitervari;
 			productReference = 54646E7F26F35DD700C8C2D5 /* Fitervari.app */;
@@ -499,6 +547,7 @@
 			packageProductDependencies = (
 				54BBF9B82768049D0067431C /* Communicator */,
 				54FEC6CA276B6E610002DBB1 /* KeychainAccess */,
+				543BFD4627AA13AB0086DA7A /* Alamofire */,
 			);
 			productName = "FitervariHealth WatchKit Extension";
 			productReference = 54F521C0273BBEAF00AA75DD /* FitervariHealth WatchKit Extension.appex */;
@@ -591,6 +640,10 @@
 				543A0CD227393C1500D36D70 /* XCRemoteSwiftPackageReference "DynamicColor" */,
 				54BBF9B22767BE3D0067431C /* XCRemoteSwiftPackageReference "Communicator" */,
 				54FEC6BE276B3D320002DBB1 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
+				5447D1E727AA010F0025F9BE /* XCRemoteSwiftPackageReference "Alamofire" */,
+				5495D06B27D207E60076085B /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */,
+				54D3781927E1290600091DCC /* XCRemoteSwiftPackageReference "swiftui-charts" */,
+				54CE552027E1D366006ECD44 /* XCRemoteSwiftPackageReference "SwiftUICharts" */,
 			);
 			productRefGroup = 54646E8026F35DD700C8C2D5 /* Products */;
 			projectDirPath = "";
@@ -671,9 +724,15 @@
 			files = (
 				54CBEF6626FC5E85009A7B68 /* AccountView.swift in Sources */,
 				543A0CD1273935D000D36D70 /* StackedCard.swift in Sources */,
+				54C6518427D3B62500F39B74 /* WorkoutNavigationView.swift in Sources */,
 				54BBF9BB27687D0E0067431C /* ConnectivityMessage.swift in Sources */,
+				5456F3EF27CD07B8001BD160 /* HistoryView.swift in Sources */,
+				5495D06927D1F1C70076085B /* CountdownView.swift in Sources */,
+				543BFD4927AA15570086DA7A /* HealthData.swift in Sources */,
 				543A0CD6273983BA00D36D70 /* WorkoutView.swift in Sources */,
+				5447D1EF27AA035C0025F9BE /* WorkoutPlan.swift in Sources */,
 				54FEC6C5276B44200002DBB1 /* AuthenticationHandler.swift in Sources */,
+				5456F3F127CD0A9A001BD160 /* User.swift in Sources */,
 				544FCC2626F3622600DEDB79 /* SignInView.swift in Sources */,
 				54CF60E42711C4A100E29DC5 /* TrainingView.swift in Sources */,
 				54BBF9B62767C1760067431C /* ConnectivityProvider.swift in Sources */,
@@ -681,16 +740,23 @@
 				544FCC2826F36A8100DEDB79 /* HelloView.swift in Sources */,
 				543A3538275BE3740034019E /* FinishedWorkoutView.swift in Sources */,
 				54CBEF6826FC5E92009A7B68 /* DashboardView.swift in Sources */,
-				54646E8526F35DD700C8C2D5 /* ContentView.swift in Sources */,
 				54FEC6C8276B57200002DBB1 /* Common.swift in Sources */,
+				543BFD4527AA0D900086DA7A /* CustomDecoder.swift in Sources */,
 				54CBEF6426FC5E29009A7B68 /* MainView.swift in Sources */,
 				54CC0F522710BE4100112EE3 /* BasicCard.swift in Sources */,
+				54C6518827D3DB2900F39B74 /* ExerciseListView.swift in Sources */,
+				5447D1F127AA04370025F9BE /* Exercise.swift in Sources */,
 				54C8AE3F276BE7E7008399E1 /* CommonUI.swift in Sources */,
-				54BBF9A0276750220067431C /* ViewRouter.swift in Sources */,
+				54BBF9A0276750220067431C /* RootNavigationModel.swift in Sources */,
 				54FEC6C2276B3D750002DBB1 /* KeychainHandler.swift in Sources */,
+				5447D1F327AA04EC0025F9BE /* ExerciseSet.swift in Sources */,
+				54C6518627D3C9C300F39B74 /* BreakViewOld.swift in Sources */,
+				5456F3F427CD0CE5001BD160 /* Studio.swift in Sources */,
 				54646E8326F35DD700C8C2D5 /* FitervariApp.swift in Sources */,
+				54D3781827E127A400091DCC /* HealthDataView.swift in Sources */,
 				54CBEF6A26FC6308009A7B68 /* Card.swift in Sources */,
-				54CBEF6C26FC97E3009A7B68 /* Color.swift in Sources */,
+				5456F3F727CD0DBC001BD160 /* Trainer.swift in Sources */,
+				549CDCDF27B950580062683D /* WorkoutSession.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -698,7 +764,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				54646E9426F35DD900C8C2D5 /* FitervariTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -706,8 +771,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				54646E9E26F35DD900C8C2D5 /* FitervariUITests.swift in Sources */,
-				54646EA026F35DD900C8C2D5 /* FitervariUITestsLaunchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -716,17 +779,28 @@
 			buildActionMask = 2147483647;
 			files = (
 				54FEC6BB276B33950002DBB1 /* WorkoutView.swift in Sources */,
+				543BFD4B27AA16960086DA7A /* HealthData.swift in Sources */,
+				54EAF25327CB875200302EEE /* WorkoutPlan.swift in Sources */,
+				54EAF25127CB869A00302EEE /* ExerciseSet.swift in Sources */,
 				54FEC6BD276B35940002DBB1 /* HelloView.swift in Sources */,
 				54F521C8273BBEAF00AA75DD /* FitervariApp.swift in Sources */,
+				54BDADBB2798235C008B8DFA /* ExtensionDelegate.swift in Sources */,
 				54F521C6273BBEAF00AA75DD /* ContentView.swift in Sources */,
+				54F41C1F27D6754D003A5149 /* RootNavigationModel.swift in Sources */,
+				5456F3F227CD0A9A001BD160 /* User.swift in Sources */,
 				54FEC6C9276B57200002DBB1 /* Common.swift in Sources */,
 				54FEC6C6276B44200002DBB1 /* AuthenticationHandler.swift in Sources */,
+				5456F3F827CD0DBC001BD160 /* Trainer.swift in Sources */,
 				54B5DCDF2768C89C00C18F9B /* HealthKitController.swift in Sources */,
+				5456F3F527CD0CE5001BD160 /* Studio.swift in Sources */,
 				54BBF9BC27687D0E0067431C /* ConnectivityMessage.swift in Sources */,
 				54C8AE40276BE7E7008399E1 /* CommonUI.swift in Sources */,
+				549CDCE027B951800062683D /* WorkoutSession.swift in Sources */,
 				54F521CA273BBEAF00AA75DD /* ComplicationController.swift in Sources */,
 				54BBF9B72767C1760067431C /* ConnectivityProvider.swift in Sources */,
 				54FEC6C3276B3D750002DBB1 /* KeychainHandler.swift in Sources */,
+				549CDCE127B9539A0062683D /* CustomDecoder.swift in Sources */,
+				54EAF25227CB874E00302EEE /* Exercise.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -734,7 +808,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				54F521DA273BBEB000AA75DD /* FitervariHealthTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -742,8 +815,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				54F521E4273BBEB000AA75DD /* FitervariHealthUITests.swift in Sources */,
-				54F521E6273BBEB000AA75DD /* FitervariHealthUITestsLaunchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -904,7 +975,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Fitervari/Fitervari.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Fitervari/Preview Content\"";
@@ -938,7 +1009,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Fitervari/Fitervari.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Fitervari/Preview Content\"";
@@ -1349,6 +1420,14 @@
 				version = 5.0.1;
 			};
 		};
+		5447D1E727AA010F0025F9BE /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = exactVersion;
+				version = 5.5.0;
+			};
+		};
 		544FCC2926F36DCD00DEDB79 /* XCRemoteSwiftPackageReference "CodeScanner" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/twostraws/CodeScanner";
@@ -1357,12 +1436,36 @@
 				version = 1.0.7;
 			};
 		};
+		5495D06B27D207E60076085B /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/simibac/ConfettiSwiftUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.3.0;
+			};
+		};
 		54BBF9B22767BE3D0067431C /* XCRemoteSwiftPackageReference "Communicator" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/KaneCheshire/Communicator.git";
 			requirement = {
 				kind = exactVersion;
 				version = 4.1.0;
+			};
+		};
+		54CE552027E1D366006ECD44 /* XCRemoteSwiftPackageReference "SwiftUICharts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/willdale/SwiftUICharts.git";
+			requirement = {
+				kind = exactVersion;
+				version = 2.9.9;
+			};
+		};
+		54D3781927E1290600091DCC /* XCRemoteSwiftPackageReference "swiftui-charts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/spacenation/swiftui-charts.git";
+			requirement = {
+				kind = exactVersion;
+				version = 1.1.0;
 			};
 		};
 		54FEC6BE276B3D320002DBB1 /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
@@ -1381,10 +1484,25 @@
 			package = 543A0CD227393C1500D36D70 /* XCRemoteSwiftPackageReference "DynamicColor" */;
 			productName = DynamicColor;
 		};
+		543BFD4627AA13AB0086DA7A /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5447D1E727AA010F0025F9BE /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		5447D1E827AA010F0025F9BE /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5447D1E727AA010F0025F9BE /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
 		544FCC2A26F36DCD00DEDB79 /* CodeScanner */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 544FCC2926F36DCD00DEDB79 /* XCRemoteSwiftPackageReference "CodeScanner" */;
 			productName = CodeScanner;
+		};
+		5495D06C27D207E60076085B /* ConfettiSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5495D06B27D207E60076085B /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */;
+			productName = ConfettiSwiftUI;
 		};
 		54BBF9B32767BE3D0067431C /* Communicator */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -1395,6 +1513,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 54BBF9B22767BE3D0067431C /* XCRemoteSwiftPackageReference "Communicator" */;
 			productName = Communicator;
+		};
+		54CE552127E1D366006ECD44 /* SwiftUICharts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 54CE552027E1D366006ECD44 /* XCRemoteSwiftPackageReference "SwiftUICharts" */;
+			productName = SwiftUICharts;
+		};
+		54D3781A27E1290600091DCC /* Charts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 54D3781927E1290600091DCC /* XCRemoteSwiftPackageReference "swiftui-charts" */;
+			productName = Charts;
 		};
 		54FEC6BF276B3D320002DBB1 /* KeychainAccess */ = {
 			isa = XCSwiftPackageProductDependency;

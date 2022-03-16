@@ -18,6 +18,10 @@ struct WorkoutView: View {
 	@State private var secondsElapsed = 0
 	@State private var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 	
+	@EnvironmentObject private var healthKitController: HealthKitController
+	@State private var hr = -1
+	@State private var eb = 0.0
+	
     var body: some View {
 		TabView(selection: $activeTab) {
 			EqualIconWidthDomain {
@@ -31,20 +35,26 @@ struct WorkoutView: View {
 					.font(.title2)
 					
 					Label {
-						Text("190 BPM")
+						Text((hr != -1 ? String(hr) : "-") + " BPM")
 					} icon: {
 						Image(systemName: "heart.fill")
 							.foregroundColor(.red)
 					}
 					.font(.title2)
+					.onReceive(healthKitController.heartRate.assertNoFailure()) { value in
+						hr = value
+					}
 					
 					Label {
-						Text("438 Kcal")
+						Text(String(Int(eb)) + " kcal")
 					} icon: {
 						Image(systemName: "flame.fill")
 							.foregroundColor(.orange)
 					}
 					.font(.title2)
+					.onReceive(healthKitController.energyBurned.assertNoFailure()) { value in
+						eb += value
+					}
 				}
 			}
 			.tag(1)
@@ -91,6 +101,7 @@ struct WorkoutView: View {
 				.tint(.yellow)
 				
 				Button {
+					healthKitController.stopWorkout()
 					presentationMode.wrappedValue.dismiss()
 				} label: {
 					Text("Abbrechen")

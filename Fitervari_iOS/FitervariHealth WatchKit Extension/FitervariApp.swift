@@ -7,10 +7,13 @@
 
 import SwiftUI
 import HealthKit
+import WatchKit
 
 @main
 struct FitervariApp: App {
-	@StateObject private var healthKitController = HealthKitController()
+	@WKExtensionDelegateAdaptor(ExtensionDelegate.self) var delegate
+	
+	@StateObject private var healthKitController = HealthKitController.shared
 	@ObservedObject private var authenticationHandler = AuthenticationHandler.shared
     
     var body: some Scene {
@@ -18,11 +21,11 @@ struct FitervariApp: App {
             NavigationView {
 				if authenticationHandler.authenticated {
 					ContentView()
-						.environmentObject(healthKitController)
 				} else {
 					HelloView()
 				}
             }
+			.environmentObject(healthKitController)
         }
     }
 }

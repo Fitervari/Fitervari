@@ -65,3 +65,57 @@ struct EqualIconWidthDomain<Content: View>: View {
 			.labelStyle(EqualIconWidthLabelStyle())
 	}
 }
+
+public func margin(for width: Double) -> Double {
+  guard !width.isZero else { return 0 }
+  return width >= 414 ? 20 : 16
+}
+
+struct SingleAxisGeometryReader<Content: View>: View
+{
+	private struct SizeKey: PreferenceKey
+	{
+		static var defaultValue: CGFloat { 10 }
+		static func reduce(value: inout CGFloat, nextValue: () -> CGFloat)
+		{
+			value = max(value, nextValue())
+		}
+	}
+
+	@State private var size: CGFloat = SizeKey.defaultValue
+
+	var axis: Axis = .horizontal
+	var alignment: Alignment = .center
+	let content: (CGFloat)->Content
+
+	var body: some View
+	{
+		content(size)
+			.frame(maxWidth:  axis == .horizontal ? .infinity : nil,
+				   maxHeight: axis == .vertical   ? .infinity : nil,
+				   alignment: alignment)
+			.background(GeometryReader
+			{
+				proxy in
+				Color.clear.preference(key: SizeKey.self, value: axis == .horizontal ? proxy.size.width : proxy.size.height)
+			})
+			.onPreferenceChange(SizeKey.self) { size = $0 }
+	}
+}
+
+extension View {
+	func cornerRadius(_ radius: CGFloat, corners: UIRectCorner) -> some View {
+		clipShape( RoundedCorner(radius: radius, corners: corners) )
+	}
+}
+
+struct RoundedCorner: Shape {
+
+	var radius: CGFloat = .infinity
+	var corners: UIRectCorner = .allCorners
+
+	func path(in rect: CGRect) -> Path {
+		let path = UIBezierPath(roundedRect: rect, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+		return Path(path.cgPath)
+	}
+}

@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import DynamicColor
 
 struct StackedCard<Content>: View where Content: View {
     public var title: String?
@@ -31,7 +30,11 @@ struct StackedCard<Content>: View where Content: View {
         if #available(iOS 15.0, *) {
             ZStack {
                 ZStack {
-                    Color(uiColor: DynamicColor(background()).lighter(amount: 0.12))
+					// Color(hex: 0xff9463)
+					// Color(hex: 0xffaf3f)
+					Color(UIColor(red: 255/255, green: 175/255, blue: 63/255, alpha: 1))
+					// Color(uiColor: .blue)
+                    // Color(uiColor: DynamicColor(background()).lighter(amount: 0.20))
                     
                     HStack {
                         Text(stackedTitle ?? "")
@@ -56,7 +59,7 @@ struct StackedCard<Content>: View where Content: View {
                 })
                 */
                 
-                Card(title: title, action: action, content: content, background: background)
+				Card(title: title, action: action, content: content, background: background, roundedCorners: [ .bottomLeft, .bottomRight ])
                     .offset(x: 0, y: 40)
                     .padding(.bottom, 40)
             }
