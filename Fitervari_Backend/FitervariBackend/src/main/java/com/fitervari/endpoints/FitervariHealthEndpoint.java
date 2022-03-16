@@ -1,10 +1,8 @@
 package com.fitervari.endpoints;
 
-import com.fitervari.endpoints.dtos.HealthDataDTO;
-import com.fitervari.endpoints.dtos.HealthDataTypeDTO;
-import com.fitervari.endpoints.dtos.PostHealthDataDTO;
-import com.fitervari.endpoints.dtos.WorkoutSetDTO;
-import com.fitervari.model.FitervariHealth.HealthData;
+import com.fitervari.endpoints.dtos.get.HealthDataDTO;
+import com.fitervari.endpoints.dtos.post.PostHealthDataDTO;
+import com.fitervari.endpoints.dtos.get.ExerciseSetDTO;
 import com.fitervari.repositories.FitervariHealthRepository;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -30,25 +28,25 @@ public class FitervariHealthEndpoint {
         var healthData1 = new HealthDataDTO(
                 69420L,
                 LocalDateTime.now(),
-                new HealthDataTypeDTO(4L, "Puls"),
-                "127",
-                new WorkoutSetDTO(420L, "20kg", "5")
+                "Puls",
+                127,
+                new ExerciseSetDTO(420L, "20kg", 5)
         );
 
         var healthData2 = new HealthDataDTO(
                 420L,
                 LocalDateTime.now(),
-                new HealthDataTypeDTO(2L, "Blutdruck"),
-                "80",
-                new WorkoutSetDTO(69L, "5kg", "15")
+                "Blutdruck",
+                80,
+                new ExerciseSetDTO(69L, "5kg", 15)
         );
 
         var healthData3 = new HealthDataDTO(
                 69L,
                 LocalDateTime.now(),
-                new HealthDataTypeDTO(4L, "Puls"),
-                "121",
-                new WorkoutSetDTO(69L, "5kg", "15")
+                "Puls",
+                121,
+                new ExerciseSetDTO(69L, "5kg", 15)
         );
 
         var healthDataList = new LinkedList<HealthDataDTO>();
@@ -63,15 +61,16 @@ public class FitervariHealthEndpoint {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getDataForTrainingOrWorkoutSet(@DefaultValue("-1") @QueryParam("training") long training,
-                                                   @DefaultValue("-1") @QueryParam("workoutSet") long workoutSet,
+                                                   @DefaultValue("-1") @QueryParam("exerciseSet") long exerciseSet,
+                                                   @DefaultValue("-1") @QueryParam("exercise") long exercise,
                                                    @DefaultValue("-1") @QueryParam("type") long type) {
-        if(training == -1 && workoutSet == -1)
+        if(training == -1 && exerciseSet == -1 && exercise == -1)
             return Response.status(
                     Response.Status.BAD_REQUEST.getStatusCode(),
-                    "Neither training nor workoutSet specified! At least one of them needs to be specified."
+                    "Neither one of training, exercise or exerciseSet specified! At least one of them needs to be specified."
                     ).build();
 
-        List<HealthDataDTO> result = repo.getDataByCriteria(training, workoutSet, type);
+        List<HealthDataDTO> result = repo.getDataByCriteria(training, exerciseSet, exercise, type);
         return Response.ok(result).build();
     }
 
@@ -79,12 +78,13 @@ public class FitervariHealthEndpoint {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response postDataInDB(PostHealthDataDTO data) {
+
         var result = repo.postHealthData(data);
         switch(result) {
             case -1:
                 return Response.status(Response.Status.BAD_REQUEST.getStatusCode(), "Wrong type specified").build();
             case -2:
-                return Response.status(Response.Status.BAD_REQUEST.getStatusCode(), "Wrong workoutSet specified").build();
+                return Response.status(Response.Status.BAD_REQUEST.getStatusCode(), "Wrong exerciseSet specified").build();
             case -3:
                 return Response.status(Response.Status.BAD_REQUEST.getStatusCode(), "Wrong training specified").build();
             default:

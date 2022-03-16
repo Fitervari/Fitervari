@@ -1,0 +1,87 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fitervari-dev-deployment
+  namespace: student-m-rausch-schott
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fitervari-dev-backend
+  template:
+    metadata:
+      labels:
+        app: fitervari-dev-backend
+    spec:
+      containers:
+        - name: fitervari-dev-backend
+          image: registry.cloud.htl-leonding.ac.at/m.rausch-schott/fitervari-dev-backend:latest
+          imagePullPolicy: Always
+          ports:
+            - name: port8080
+              containerPort: 8080
+            - name: port5432
+              containerPort: 5432
+      imagePullSecrets:
+        - name: registry-auth-secrets
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fitervari-dev-backend-service
+  namespace: student-m-rausch-schott
+spec:
+  ports:
+    - port: 8080
+      targetPort: 8080
+      protocol: TCP
+      name: http
+  selector:
+    app: fitervari-dev-backend
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: fitervari-dev-backend-ingress
+  namespace: student-m-rausch-schott
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+spec:
+  rules:
+    - host: student.cloud.htl-leonding.ac.at
+      http:
+        paths:
+          - path: /m.rausch-schott/dev/fitervari/api(.*)$
+            pathType: Prefix
+            backend:
+              service:
+                name: fitervari-dev-backend-service
+                port:
+                  number: 8080
+
+
+--- # BusyBox Deployment
+#apiVersion: apps/v1
+#kind: Deployment
+#metadata:
+#  name: busybox-deployment
+#  labels:
+#    app: busybox
+#spec:
+#  replicas: 1
+#  strategy:
+#    type: RollingUpdate
+#  selector:
+#    matchLabels:
+#      app: busybox
+#  template:
+#    metadata:
+#      labels:
+#        app: busybox
+#    spec:
+#      containers:
+#        - name: busybox
+#          image: busybox
+#          imagePullPolicy: IfNotPresent
+
+#          command: ['sh', '-c', 'echo Container 1 is Running ; sleep 3600']

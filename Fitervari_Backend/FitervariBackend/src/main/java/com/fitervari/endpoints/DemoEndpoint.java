@@ -13,6 +13,7 @@ public class DemoEndpoint {
 
     @GET
     @Path("/hello")
+    @Produces(MediaType.TEXT_PLAIN)
     public String sayHello() {
         return "Hello";
     }
@@ -24,6 +25,7 @@ public class DemoEndpoint {
     }
 
     @PUT
+    @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Response receiveDemoData(DemoModel body) {
         this.demoData = body;

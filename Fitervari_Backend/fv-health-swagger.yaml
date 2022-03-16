@@ -2,17 +2,17 @@ openapi: 3.0.3
 info:
   title: Fitervari Health
   description: Syp Projekt als Erweiterung des Fitervari Projekts.
-  version: 1.0.0
+  version: 2.0.0
 servers:
+  - url: 'https://student.cloud.htl-leonding.ac.at/m.rausch-schott/fitervari/api/healthdata'
   - url: 'http://localhost:8080/healthdata'
-  - url: 'https://localhost:8080/api/fitervari/healthdata'
 paths:
   /:
     get:
       tags:
         - HealthApi
-      summary: "Returns the health data for training and/or workoutSet"
-      description: "Returns the health data either from a specific training or a specific workoutSet (at least of them has to be specified) and also only the specific types (if specified)."
+      summary: "Returns the health data for training and/or exerciseSet and/or exercise"
+      description: "Returns the health data either from a specific training, a specific exercise or a specific exerciseSet (at least of them has to be specified) and also only the specific types (if specified)."
       parameters:
         - in: query
           name: "training"
@@ -22,9 +22,16 @@ paths:
             type: integer
             minimum: 0
         - in: query
-          name: "workoutSet"
+          name: "exerciseSet"
           required: false
-          description: "Represents the id of a workoutSet for which the data should be returned."
+          description: "Represents the id of a exerciseSet for which the data should be returned."
+          schema:
+            type: integer
+            minimum: 0
+        - in: query
+          name: "exercise"
+          required: false
+          description: "Represents the id of a exercise for which the data should be returned."
           schema:
             type: integer
             minimum: 0
@@ -43,7 +50,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/GetHealthDataExample'
         400:
-          description: "training, workoutSet or  type not found"
+          description: "training, exercise, exerciseSet or  type not found"
     post:
       tags:
         - HealthApi
@@ -63,7 +70,7 @@ paths:
 
 components:
   schemas:
-    WorkoutSetDTO:
+    ExerciseSetDTO:
       type: object
       properties:
         id:
@@ -94,8 +101,8 @@ components:
           $ref: '#/components/schemas/HealthDataType'
         value:
           type: string
-        workoutSet:
-          $ref: '#/components/schemas/WorkoutSetDTO'
+        exerciseSet:
+          $ref: '#/components/schemas/ExerciseSetDTO'
       example:
         - id: 64271
           time: "2021-10-22 10:45"
@@ -103,7 +110,7 @@ components:
             id: 12
             name: "Puls"
           value: "112"
-          workoutSet:
+          exerciseSet:
             id: 1763
             description: "10kg Langhantel"
             repetitions: "5"
@@ -117,7 +124,7 @@ components:
             id: 12
             name: "Puls"
           value: "112"
-          workoutSet:
+          exerciseSet:
             id: 1763
             description: "10kg Langhantel"
             repetitions: "5"
@@ -127,7 +134,7 @@ components:
             id: 11
             name: "Blutdruck"
           value: "80"
-          workoutSet:
+          exerciseSet:
             id: 1420
             description: "7kg Bankdrücken"
             repetitions: "10"
@@ -136,5 +143,5 @@ components:
       example:
         type: 1
         value: '120'
-        workoutSet: 2
+        exerciseSet: 2
         training: 1
