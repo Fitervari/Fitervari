@@ -7,6 +7,7 @@
 
 import Combine
 import Foundation
+import Alamofire
 
 class AuthenticationHandler: ObservableObject {
 	static let shared = AuthenticationHandler()
@@ -33,25 +34,34 @@ class AuthenticationHandler: ObservableObject {
 			}
 	}
 	
-	func verifyAndSave(token: String) -> VoidResult<AuthenticationError> {
-		guard AuthenticationHandler.verify(token: token) else {
+	func verifyAndSave(token: String, navigationModel: RootNavigationModel) async -> VoidResult<AuthenticationError> {
+		guard let authToken = await AuthenticationHandler.verify(token: token) else {
 			return .failure(AuthenticationError.invalidToken)
 		}
 		
-		if case let .failure(error) = save(token: token) {
+		if case let .failure(error) = save(token: authToken) {
 			return .failure(AuthenticationError.couldNotSave(detail: error))
 		}
 		
+		navigationModel.currentView = .main
 		return .success
 	}
 	
-	// TODO: not yet implemented, requires API call to backend
-	static func verify(token: String?) -> Bool {
+	static func verify(token: String?) async -> String? {
 		guard token != nil else {
-			return false
+			return nil
 		}
 		
-		return true
+		return token
+		// let req = AF.request("https://student.cloud.htl-leonding.ac.at/m.rausch-schott/fitervari/api/authToken?activationToken=\(token!)", method: .get)
+		
+		/*
+		do {
+			return try await req.validate(statusCode: [200]).serializingString().value
+		} catch {
+			return nil
+		}*/
+		
 	}
 	
 	private func save(token: String?) -> VoidResult<Error> {
@@ -62,7 +72,9 @@ class AuthenticationHandler: ObservableObject {
 		}
 		
 		ConnectivityProvider.shared.sendMessageWithFallback(data: AuthTokenChangedMessage(newToken: token))
-		authenticated = (token != nil)
+		DispatchQueue.main.async {
+			self.authenticated = (token != nil)
+		}
 		return .success
 	}
 	
