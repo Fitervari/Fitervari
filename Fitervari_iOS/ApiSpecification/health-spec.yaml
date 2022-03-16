@@ -1,0 +1,147 @@
+openapi: 3.0.0
+info:
+  title: Fitervari Health
+  description: Syp Projekt als Erweiterung des Fitervari Projekts.
+  version: 2.0.0
+servers:
+  - url: 'https://student.cloud.htl-leonding.ac.at/m.rausch-schott/fitervari/api'
+paths:
+  /:
+    get:
+      tags:
+        - HealthApi
+      summary: "Returns the health data for training and/or exerciseSet and/or exercise"
+      description: "Returns the health data either from a specific training, a specific exercise or a specific exerciseSet (at least of them has to be specified) and also only the specific types (if specified)."
+      parameters:
+        - in: query
+          name: "training"
+          required: false
+          description: "Represents the id of a training for which the data should be returned."
+          schema:
+            type: integer
+            minimum: 0
+        - in: query
+          name: "exerciseSet"
+          required: false
+          description: "Represents the id of a exerciseSet for which the data should be returned."
+          schema:
+            type: integer
+            minimum: 0
+        - in: query
+          name: "exercise"
+          required: false
+          description: "Represents the id of a exercise for which the data should be returned."
+          schema:
+            type: integer
+            minimum: 0
+        - in: query
+          name: "type"
+          required: false
+          description: "Specifies the type of data to be returned."
+          schema:
+            nullable: true
+            type: integer
+            minimum: 0
+      responses:
+        200:
+          description: "Ok"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetHealthDataExample'
+        400:
+          description: "training, exercise, exerciseSet or  type not found"
+    post:
+      tags:
+        - HealthApi
+      summary: "Stores new health data"
+      description: "Adds the specified health data to the db."
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostHealtDataExample'
+      responses:
+        201:
+          description: "Health data added"
+        400:
+          description: "Malformed body"
+
+
+components:
+  schemas:
+    ExerciseSetDTO:
+      type: object
+      properties:
+        id:
+          type: number
+        description:
+          type: string
+        repetitions:
+          type: string
+      example:
+        - id: 1763
+          description: "10kg Hantel"
+          repetitions: "5"
+    HealthDataType:
+      type: object
+      properties:
+        id:
+          type: number
+        name:
+          type: string
+    HealthDataDTO:
+      type: object
+      properties:
+        id:
+          type: number
+        time:
+          type: string
+        healthDataType:
+          $ref: '#/components/schemas/HealthDataType'
+        value:
+          type: string
+        exerciseSet:
+          $ref: '#/components/schemas/ExerciseSetDTO'
+      example:
+        - id: 64271
+          time: "2021-10-22 10:45"
+          healthDataType:
+            id: 12
+            name: "Puls"
+          value: "112"
+          exerciseSet:
+            id: 1763
+            description: "10kg Langhantel"
+            repetitions: "5"
+
+    GetHealthDataExample:
+      type: object
+      example:
+        - id: 64271
+          time: "2021-10-22 10:45"
+          healthDataType:
+            id: 12
+            name: "Puls"
+          value: "112"
+          exerciseSet:
+            id: 1763
+            description: "10kg Langhantel"
+            repetitions: "5"
+        - id: 69420
+          time: "2021-12-08 17:23"
+          healthDataType:
+            id: 11
+            name: "Blutdruck"
+          value: "80"
+          exerciseSet:
+            id: 1420
+            description: "7kg Bankdrücken"
+            repetitions: "10"
+    PostHealtDataExample:
+      type: object
+      example:
+        type: 1
+        value: '120'
+        exerciseSet: 2
+        training: 1
