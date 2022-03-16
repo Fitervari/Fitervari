@@ -28,7 +28,7 @@ class _HorizontalDatePickerState extends State<HorizontalDatePicker> {
         initialDate: DateTime(DateTime.now().year, DateTime.now().month, 1),
         firstDate: DateTime(2019, 1, 1),
         lastDate: DateTime(
-            DateTime.now().year, DateTime.now().month, DateTime.now().day),
+            DateTime.now().year, DateTime.now().month, DateTime.now().day + 1),
         onDateSelected: (date) => print(date),
         leftMargin: 0,
         monthColor: Color(FFAppState().systemColor),

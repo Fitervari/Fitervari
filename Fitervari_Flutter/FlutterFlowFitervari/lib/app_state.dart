@@ -1,7 +1,13 @@
+import 'package:fitervari_flutter/custom_code/widgets/http.dart';
+import 'package:fitervari_flutter/data/healthdata.dart';
+import 'package:fitervari_flutter/data/user.dart';
+import 'package:fitervari_flutter/data/workoutplan.dart';
+import 'package:fitervari_flutter/data/workoutsession.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'flutter_flow/lat_lng.dart';
-
+import 'package:web_socket_channel/io.dart';
+import 'package:web_socket_channel/status.dart' as status;
 class FFAppState {
   static final FFAppState _instance = FFAppState._internal();
 
@@ -14,6 +20,11 @@ class FFAppState {
   }
   late final SharedPreferences prefs;
   Future initializePersistedState() async {
+    /*Map<String, dynamic> jsUser = await httpget("users/1", Map());
+    _firstname = jsUser["firstname"];
+    _lastname = jsUser["lastname"];
+    _email = jsUser["email"];
+    _userid = jsUser["id"];*/
     prefs = await SharedPreferences.getInstance();
     _firstname = prefs.getString('ff_firstname') ?? _firstname;
     _lastname = prefs.getString('ff_lastname') ?? _lastname;
@@ -79,6 +90,28 @@ class FFAppState {
     _systemColor = _value;
     setInt('ff_systemColor', _value);
   }
+
+  Future<List<Workoutplan>> _workoutplans = httpgetWorkoutplans("urlstr", {});
+  Future<List<Workoutplan>> get workoutplans => _workoutplans;
+  Workoutplan? currentworkoutplan;
+
+  Future<List<User>> _users = httpgetUser("urlstr", {});
+  Future<List<User>> get users => _users;
+  User? mainuser;
+
+  Future<List<Healthdata>> _healthdata = httpgetHealthdata("urlstr", {});
+  Future<List<Healthdata>> get healthdata => _healthdata;
+  List<Healthdata>? userHealthdata;
+
+  Future<List<WorkoutSession>> _workoutsessions = httpgetWorkoutSession("urlstr", {});
+  Future<List<WorkoutSession>> get workoutsessions => _workoutsessions;
+  List<WorkoutSession>? userworkoutsessions;
+  WorkoutSession? currentWorkoutSession;
+  IOWebSocketChannel channel = IOWebSocketChannel.connect(Uri.parse(
+    'ws://student.cloud.htl-leonding.ac.at/m.rausch-schott/fitervari/api/health/1000'));
+  bool startExercise = false;
+  bool stopExercise = false;
+  bool pauseExercise = false;
 }
 
 LatLng? _latLngFromString(String val) {

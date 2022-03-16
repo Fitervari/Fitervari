@@ -184,7 +184,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                 padding:
                                     EdgeInsetsDirectional.fromSTEB(0, 8, 0, 0),
                                 child: Text(
-                                  '${FFAppState().firstname}  ${FFAppState().lastname}',
+                                  '${FFAppState().mainuser!.firstName}  ${FFAppState().mainuser!.lastName}',
                                   style: FlutterFlowTheme.title1.override(
                                     fontFamily: 'Lexend Deca',
                                     color: Colors.white,
@@ -203,7 +203,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                 padding:
                                     EdgeInsetsDirectional.fromSTEB(0, 4, 0, 0),
                                 child: Text(
-                                  FFAppState().email,
+                                  FFAppState().mainuser!.email,
                                   style: FlutterFlowTheme.bodyText1.override(
                                     fontFamily: 'Lexend Deca',
                                     color: Colors.white,
