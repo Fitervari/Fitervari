@@ -1,5 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
+
+import 'dart:io';
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:health/health.dart';
@@ -7,6 +9,17 @@ import 'package:wearos_client/http.dart';
 import 'healthdata.dart';
 
 void main() => runApp(HealthApp());
+import 'package:wearos_client/shadowbutton.dart';
+import 'package:web_socket_channel/io.dart';
+import 'healthdata.dart';
+import 'package:web_socket_channel/status.dart' as status;
+
+    'ws://student.cloud.htl-leonding.ac.at/m.rausch-schott/fitervari/api/health/1000'));
+bool exercises = false;
+bool stoped = false;
+void main() async {
+  runApp(HealthApp());
+}
 
 class HealthApp extends StatefulWidget {
   @override
@@ -29,6 +42,7 @@ class _HealthAppState extends State<HealthApp> {
   AppState _state = AppState.DATA_NOT_FETCHED;
   int _nofSteps = 10;
   double _mgdl = 10.0;
+  int _mgdl = 10;
   late final TextEditingController _controller;
   String value = '';
   // create a HealthFactory for use in the app
@@ -117,22 +131,24 @@ class _HealthAppState extends State<HealthApp> {
       await health.requestAuthorization(types, permissions: permissions);
     }
 
-    _mgdl = 80 + Random().nextInt(140 - 80) * 1.0;
+
+    _mgdl = 80 + Random().nextInt(130 - 90);
     bool success = await health.writeHealthData(
-        _nofSteps.toDouble(), HealthDataType.STEPS, earlier, now);
+        _nofSteps * 1.0, HealthDataType.STEPS, earlier, now);
 
     if (success) {
       success = await health.writeHealthData(
-          _mgdl, HealthDataType.HEART_RATE, now, now);
+          _mgdl * 1.0, HealthDataType.HEART_RATE, now, now);
     }
-    httppostHealthdata(
-        "",
-        {},
-        Healthdata(
-            exerciseSet: 1, type: 1, value: _mgdl.toString(), training: 1));
+    h1 =
+        Healthdata(exerciseSet: exericeid, type: 1, value: _mgdl, training: exericeid);
+    httppostHealthdata("", {}, h1);
+    channel.sink.add(json.encode({"device": "watch", "healthdata": h1.toJson()}));
+
     setState(() {
       _state = success ? AppState.DATA_ADDED : AppState.DATA_NOT_ADDED;
     });
+    sleep(Duration(seconds: 2));
   }
 
   /// Fetch steps from the health plugin and show them in the app.
@@ -242,54 +258,182 @@ class _HealthAppState extends State<HealthApp> {
     return _contentNotFetched();
   }
 
+  Healthdata h1 =
+        Healthdata(exerciseSet: 1, type: 1, value: 0, training: 1);
+  int exericeid = 1;
   @override
   void initState() {
     super.initState();
-    _controller = TextEditingController();
-
-    /*WearableListener.listenForMessage((msg) {
-      print(msg);
+    channel.stream.listen((message) {
+      print(message);
+      var jd = json.decode(message);
+      if (jd["device"] == "phone") {
+        if(jd["command"] != "data"){
+          
+        }
+        if (jd["command"] == "exercisesT") {
+          exercises = true;
+          addData();
+          exericeid = jd["exerciseid"];
+        } else if (jd["command"] == "exercisesF") {
+          exercises = false;
+          addData();
+        }
+        if (jd["command"] == "stopedT") {
+          stoped = true;
+          addData();
+        } else if (jd["command"] == "stopedF") {
+          stoped = false;
+          addData();
+        }
+        if (jd["command"] == "timerstartedT") {
+          timerstarted = true;
+          addData();
+        } else if (jd["command"] == "timerstartedF") {
+          timerstarted = false;
+        }
+      }
     });
-    WearableListener.listenForDataLayer((msg) {
-      print(msg);
-    });*/
+    _controller = TextEditingController();
   }
 
   void dispose() {
     _controller.dispose();
+
+    timer?.cancel();
     super.dispose();
   }
 
+  Timer? timer;
+  bool switchedon = false;
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-          appBar: AppBar(
-            title: const Text('Health Example'),
-            actions: <Widget>[
-              IconButton(
-                icon: Icon(Icons.file_download),
-                onPressed: () {
-                  fetchData();
-                },
-              ),
-              IconButton(
-                onPressed: () {
-                  addData();
-                },
-                icon: Icon(Icons.add),
-              ),
-              IconButton(
-                onPressed: () {
-                  fetchStepData();
-                },
-                icon: Icon(Icons.nordic_walking),
-              )
-            ],
-          ),
-          body: Center(
-            child: _content(),
-          )),
+    return MediaQuery(
+      data: const MediaQueryData(size: Size(320.0, 320.0)),
+      child: MaterialApp(
+        home: Scaffold(
+            key: ValueKey<bool>(exercises),
+            body: Padding(
+              padding: const EdgeInsets.all(10),
+              child: exercises
+                  ? Column(
+                      key: ValueKey<bool>(timerstarted),
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            !stoped
+                                ? ShadowButton(
+                                    buttonColor: Colors.orange[400]!,
+                                    iconsymbol: const Icon(
+                                      Icons.pause,
+                                      color: Colors.white,
+                                      size: 30.0,
+                                    ),
+                                    buttonText: "pause",
+                                    width: 80,
+                                    hight: 50,
+                                    Tapactivation: () => {
+                                          channel.sink.add(json.encode({
+                                            "device": "watch",
+                                            "command": "pause"
+                                          })),
+                                          stoped = true,
+                                          if (timerstarted)
+                                            {
+                                              timer?.cancel()
+                                            },
+                                            addData()
+                                        })
+                                : ShadowButton(
+                                    buttonColor: Colors.orange[400]!,
+                                    iconsymbol: const Icon(
+                                      Icons.play_arrow,
+                                      color: Colors.white,
+                                      size: 30.0,
+                                    ),
+                                    buttonText: "pause",
+                                    width: 80,
+                                    hight: 50,
+                                    Tapactivation: () => {
+                                          channel.sink.add(json.encode({
+                                            "device": "watch",
+                                            "command": "start"
+                                          })),
+                                          stoped = false,
+                                          addData(),
+                                          if (!timerstarted)
+                                            {
+                                              timerstarted = true,
+                                              timer = Timer.periodic(
+                                                  Duration(seconds: 10),
+                                                  (Timer t) => addData())
+                                            }
+                                        }),
+                            ShadowButton(
+                                buttonColor: Colors.red[400]!,
+                                iconsymbol: const Icon(
+                                  Icons.stop,
+                                  color: Colors.white,
+                                  size: 30.0,
+                                ),
+                                width: 80,
+                                hight: 50,
+                                Tapactivation: () => {
+                                      channel.sink.add(json.encode({
+                                        "device": "watch",
+                                        "command": "stop"
+                                      })),
+                                      if (timerstarted)
+                                        {timerstarted = false, timer?.cancel()},
+                                      exercises = false,
+                                      stoped = false,
+                                      timerstarted = false,
+                                      addData(),
+                                    })
+                          ],
+                        ),
+                        if (!timerstarted)
+                          Center(
+                            child: ShadowButton(
+                                key: ValueKey<bool>(timerstarted),
+                                buttonColor: Colors.green[400]!,
+                                buttonText: "start",
+                                width: 160,
+                                hight: 50,
+                                Tapactivation: () => {
+                                      channel.sink.add(json.encode({
+                                        "device": "watch",
+                                        "command": "start"
+                                      })),
+                                      timerstarted = true,
+                                      addData(),
+                                      if (!timerstarted)
+                                        {
+                                          timerstarted = true,
+                                          timer = Timer.periodic(
+                                              Duration(seconds: 10),
+                                              (Timer t) => addData())
+                                        }
+                                    }),
+                          ),
+                      ],
+                    )
+                  : Center(
+                      child: Text(
+                        "Select a Workout",
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                          fontFamily: 'Lexend Deca',
+                          color: Colors.black,
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+            )),
+      ),
     );
   }
 }
@@ -814,9 +958,7 @@ class _MyAppState extends State<MyApp> {
 }/*
 import 'package:flutter/material.dart';
 import 'package:wear/wear.dart';
-=======
 //import 'package:wear/wear.dart';
->>>>>>> Stashed changes
 import 'package:wearos_client/http.dart';
 import 'http.dart';
 

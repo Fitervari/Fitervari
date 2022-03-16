@@ -6,13 +6,21 @@ import 'package:http/http.dart' as http;
 import 'package:wearos_client/healthdata.dart';
 import 'package:wearos_client/workoutplan.dart';
 
+import 'package:web_socket_channel/io.dart';
+import 'package:web_socket_channel/web_socket_channel.dart';
+import 'package:web_socket_channel/status.dart' as status;
+
 String baseurl =
     "https://student.cloud.htl-leonding.ac.at/m.rausch-schott/fitervari/api";
 String baseurl1 =
     "https://student.cloud.htl-leonding.ac.at/m.rausch-schott/fitervari/api/users/1/workoutPlans";
 
+
 void
     main() async {} /*
+
+
+/*
 void httptest() async {
   Uri url = Uri.parse(
       'https://student.cloud.htl-leonding.ac.at/m.rausch-schott/fitervari-backend-demo/demo');
@@ -26,7 +34,9 @@ void httptest() async {
   print('Response body: ${response.body}');
 }*/
 
+
 Future<List<Workoutplan>> httppostHealthdata(
+Future<void> httppostHealthdata(
     String urlstr, Map<String, String> specialheaders, Healthdata body) async {
   Uri url = Uri.parse("$baseurl/healthdata");
   Map<String, String> headermap = {"Content-Type": "application/json"};
@@ -48,6 +58,12 @@ Future<List<Workoutplan>> httppostHealthdata(
   print('Response status: ${response.statusCode}');
   print('Response body: ${response.body}');
   throw Error();
+  if (response.statusCode != 201) {
+    print('Response status: ${response.statusCode}');
+    print('Response body: ${response.body}');
+    throw Error();
+  }
+
 }
 
 var counter = 0;
@@ -72,6 +88,7 @@ Future<List<Workoutplan>> httpget(
   print('Response body: ${response.body}');
   throw Error();
 }
+
 /*
 void httptest() async {
   var url = Uri.parse('');

@@ -6,7 +6,7 @@ class Healthdata {
   final int exerciseSet;
   final int training;
   final int type;
-  final String value;
+  final int value;
   Healthdata({
     required this.exerciseSet,
     required this.training,
@@ -18,7 +18,8 @@ class Healthdata {
     int? exerciseSet,
     int? training,
     int? type,
-    String? value,
+
+    int? value,
   }) {
     return Healthdata(
       exerciseSet: exerciseSet ?? this.exerciseSet,
