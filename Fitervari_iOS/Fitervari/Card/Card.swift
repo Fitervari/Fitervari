@@ -20,8 +20,9 @@ struct Card<Content, Background>: View where Content: View, Background: View {
 	
 	public var content: () -> Content
 	public var background: () -> Background
+	public var roundedCorners: UIRectCorner
 	
-    init(title: String? = nil, subtitle: String? = nil, subtitleLocation: SubtitleLocation = .top, action: (() -> Void)? = nil, content: @escaping () -> Content, background: @escaping () -> Background) {
+	init(title: String? = nil, subtitle: String? = nil, subtitleLocation: SubtitleLocation = .top, action: (() -> Void)? = nil, content: @escaping () -> Content, background: @escaping () -> Background, roundedCorners: UIRectCorner = .allCorners) {
 		self.title = title
         self.subtitle = subtitle
 		self.action = action
@@ -29,10 +30,11 @@ struct Card<Content, Background>: View where Content: View, Background: View {
 		
 		self.content = content
 		self.background = background
+		self.roundedCorners = roundedCorners
 	}
 	
     var body: some View {
-		BasicCard(action: action) {
+		BasicCard(action: action, roundedCorners: roundedCorners) {
 			VStack {
 				if let title = title {
                     HStack {
@@ -49,7 +51,7 @@ struct Card<Content, Background>: View where Content: View, Background: View {
                     .font(.title2)
                     .foregroundColor(.white)
 					
-                    if subtitleLocation == .bottom {
+					if subtitleLocation == .bottom && subtitle != nil {
                         Spacer()
                     }
 				}
@@ -61,7 +63,7 @@ struct Card<Content, Background>: View where Content: View, Background: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                 }
                 
-                if subtitleLocation == .top {
+                if subtitleLocation == .top && subtitle != nil {
                     Spacer()
                 }
 				
