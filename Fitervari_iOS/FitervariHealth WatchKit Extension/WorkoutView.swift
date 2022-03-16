@@ -101,6 +101,7 @@ struct WorkoutView: View {
 				.tint(.yellow)
 				
 				Button {
+					healthKitController.stopWorkout()
 					presentationMode.wrappedValue.dismiss()
 				} label: {
 					Text("Abbrechen")

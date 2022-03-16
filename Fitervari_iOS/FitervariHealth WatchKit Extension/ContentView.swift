@@ -9,10 +9,16 @@ import SwiftUI
 import Combine
 
 fileprivate class ViewModel: ObservableObject {
+	@Published var trainingId: Int64? = nil
 	@Published var trainingName: String? = nil
+	
 	@Published var trainingState = false
 	
 	init() {
+		ConnectivityProvider.shared.getProvider(for: SelectedTrainingMessage.self)
+			.map(\.id)
+			.assign(to: &$trainingId)
+		
 		ConnectivityProvider.shared.getProvider(for: SelectedTrainingMessage.self)
 			.map(\.name)
 			.assign(to: &$trainingName)
@@ -32,7 +38,9 @@ struct ContentView: View {
 					
 					Button {
 						if !viewModel.trainingState {
-							healthKitController.startWorkout()
+							Task {
+								await healthKitController.startWorkout(planId: viewModel.trainingId!)
+							}
 						} else {
 							healthKitController.stopWorkout()
 						}
