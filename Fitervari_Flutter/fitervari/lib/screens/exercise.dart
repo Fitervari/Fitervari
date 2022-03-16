@@ -80,7 +80,13 @@ class _ExerciseScreenState extends State<ExerciseScreen> {
                   child: Card(
                     color: Colors.yellow,
                     child: InkWell(
-                      onTap: () => {started = true, print("fertig")},
+                      onTap: () => {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (BuildContext context) => ExerciseScreen(),
+                          ),
+                        ),
+                      },
                       child: Container(
                         height: 120,
                         width: 400,

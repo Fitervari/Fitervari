@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "982191198573",
+    "project_id": "fitervari-flutter",
+    "storage_bucket": "fitervari-flutter.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:982191198573:android:75bf062f7cdacade2e0a64",
+        "android_client_info": {
+          "package_name": "com.fitervari.wearos_client"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "982191198573-ssmhfbuuc6cg5go81941151ead12d3ud.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.fitervari.wearos_client",
+            "certificate_hash": "e9bac646d1e448ca1cf31ce0d4008318559dc5e8"
+          }
+        },
+        {
+          "client_id": "982191198573-o61io937dgqmkglpcohkkmtlnvi7as5o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCzDv6Lt0chv81zIElfr12CQr7PyHWmoOs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "982191198573-o61io937dgqmkglpcohkkmtlnvi7as5o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

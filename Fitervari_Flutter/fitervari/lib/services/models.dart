@@ -14,10 +14,10 @@ class Option {
 }
 */
 class Set {
-  late int completed;
-  late int todo;
-  late Duration? estimatedtime;
-  Set({this.completed = 0, required this.todo, this.estimatedtime});
+  int completed;
+  int todo;
+  Duration estimatedtime;
+  Set({this.completed = 0, this.todo, this.estimatedtime});
 
   Set.fromMap(Map data) {
     todo = data['todo'] ?? 0;
@@ -31,14 +31,14 @@ class Exercise {
   String id;
   String title;
   String description;
-  String? deviceids;
-  Set? set;
+  String deviceids;
+  Set set;
 
   Exercise({
-    required this.id,
-    required this.title,
+    this.id,
+    this.title,
     this.description = '',
-    required deviceids,
+    deviceids,
     this.set,
   });
 
@@ -61,11 +61,11 @@ class Plan {
   final List<Exercise> exercises;
 
   Plan(
-      {required this.id,
-      required this.title,
-      required this.description,
+      {this.id,
+      this.title,
+      this.description,
       this.img = 'default.png',
-      required this.exercises});
+      this.exercises});
 
   factory Plan.fromMap(Map data) {
     return Plan(

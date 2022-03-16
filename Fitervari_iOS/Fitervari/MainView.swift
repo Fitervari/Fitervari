@@ -20,7 +20,6 @@ struct MainView: View {
 					Image(systemName: "person")
 				}
 		}
-		.navigationBarBackButtonHidden(true)
 		.navigationBarTitleDisplayMode(.inline)
     }
 }

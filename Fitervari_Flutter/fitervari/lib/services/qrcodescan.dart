@@ -7,15 +7,15 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 
 class QRViewExample extends StatefulWidget {
-  const QRViewExample({Key? key}) : super(key: key);
+  const QRViewExample({Key key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => _QRViewExampleState();
 }
 
 class _QRViewExampleState extends State<QRViewExample> {
-  Barcode? result;
-  QRViewController? controller;
+  Barcode result;
+  QRViewController controller;
   final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
 
   // In order to get hot reload to work we need to pause the camera if the platform
@@ -24,9 +24,9 @@ class _QRViewExampleState extends State<QRViewExample> {
   void reassemble() {
     super.reassemble();
     if (Platform.isAndroid) {
-      controller!.pauseCamera();
+      controller.pauseCamera();
     }
-    controller!.resumeCamera();
+    controller.resumeCamera();
   }
 
   @override
@@ -45,7 +45,7 @@ class _QRViewExampleState extends State<QRViewExample> {
                   if (result == null)
                     ElevatedButton(
                       onPressed: () async {
-                        Navigator.pushReplacementNamed(context, '/plan');
+                        Navigator.pushReplacementNamed(context, '/training');
                       },
                       child: Text('WEITER'),
                     )
@@ -88,7 +88,7 @@ class _QRViewExampleState extends State<QRViewExample> {
                               builder: (context, snapshot) {
                                 if (snapshot.data != null) {
                                   return Text(
-                                      ':${describeEnum(snapshot.data!)}');
+                                      ':${describeEnum(snapshot.data)}');
                                 } else {
                                   return const Text('loading');
                                 }

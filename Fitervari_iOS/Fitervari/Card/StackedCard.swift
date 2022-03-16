@@ -58,6 +58,7 @@ struct StackedCard<Content>: View where Content: View {
                 
                 Card(title: title, action: action, content: content, background: background)
                     .offset(x: 0, y: 40)
+                    .padding(.bottom, 40)
             }
         } else {
         }
@@ -94,12 +95,12 @@ struct StackedCard<Content, Background>: View where Content: View, Background: V
 struct StackedCard_Previews: PreviewProvider {
     static var previews: some View {
         if #available(iOS 15.0, *) {
-            StackedCard(title: "Übung 1", stackedTitle: "Set 1/2", stackedTitle2: "10 • 11 • 12") {
+            StackedCard(title: "10x Liegestütz", stackedTitle: "Set 1/2", stackedTitle2: "A") {
                 EmptyView()
             } background: {
                 Color.orange
             }
-            .frame(height: 170)
+            .frame(height: 140)
             .padding()
         }
     }
