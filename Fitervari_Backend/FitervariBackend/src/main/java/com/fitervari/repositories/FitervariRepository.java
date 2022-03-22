@@ -20,6 +20,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @ApplicationScoped
 public class FitervariRepository {
@@ -105,6 +106,15 @@ public class FitervariRepository {
                     //getConvertedActivationCodes(customer.getActivationCodes())
             )
         );
+    }
+
+    public List<TrainingDTO> getTrainingsForUser(long userId, int month, int year) {
+        var query = em.createQuery("SELECT wp FROM workoutPlan wp WHERE customer.id = :id", WorkoutPlan.class);
+        query.setParameter("id", userId);
+        var trainings = query.getResultList().stream().flatMap(w -> w.getTrainings().stream());
+        return trainings.filter(t -> (month == -1 || t.getDate().getMonthValue() == month) && (year == -1 || t.getDate().getYear() == year))
+                .map(this::getConvertedTraining)
+                .collect(Collectors.toList());
     }
 
     @Transactional

@@ -54,7 +54,7 @@ public class FitervariHealthRepository {
             return -2;
         if(training == null)
             return -3;
-        var data = new HealthData(dto.getValue(), LocalDateTime.now(), healthType, exerciseSet, training);
+        var data = new HealthData(dto.getValue(), dto.getTime() != null ? dto.getTime() : LocalDateTime.now(), healthType, exerciseSet, training);
 
         em.persist(data);
         return 1;

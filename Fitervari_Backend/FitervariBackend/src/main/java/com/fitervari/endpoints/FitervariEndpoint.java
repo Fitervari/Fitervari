@@ -6,6 +6,7 @@ import com.fitervari.endpoints.dtos.post.PostUserDTO;
 import com.fitervari.endpoints.dtos.post.PostWorkoutPlanDTO;
 import com.fitervari.endpoints.dtos.put.*;
 import com.fitervari.repositories.FitervariRepository;
+import org.jboss.resteasy.annotations.Query;
 
 import javax.inject.Inject;
 import javax.persistence.NoResultException;
@@ -45,6 +46,14 @@ public class FitervariEndpoint {
         } catch(NoResultException e) {
             return Response.status(Response.Status.NOT_FOUND).entity("The user with the given ID was not found!").build();
         }
+    }
+
+    @GET
+    @Path("users/{userId}/workoutSessions")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getWorkoutSessionsForUser(@PathParam("userId") long userId, @DefaultValue("-1") @QueryParam("month") int month, @DefaultValue("-1") @QueryParam("year") int year) {
+        var sessions = repo.getTrainingsForUser(userId, month, year);
+        return Response.ok(sessions).build();
     }
 
     @PUT
