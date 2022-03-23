@@ -496,70 +496,70 @@ INSERT INTO healthdatatype(name) VALUES('Blutsauerstoffgehalt');
 --INSERT INTO healthdata(time, value, healthdatatype_id, training_id, exerciseset_id)
 --VALUES('2020-12-30 10:35:33', 10, 3, 1, 2);
 INSERT INTO healthdata(time, value, exerciseset_id, healthdatatype_id, training_id)
-VALUES('2022-03-03 10:40:32', 100, 1, 1, 1);
+VALUES('2022-03-03 10:40:32.238191', 100, 1, 1, 1);
 INSERT INTO healthdata(time, value, exerciseset_id, healthdatatype_id, training_id)
-VALUES('2022-03-03 10:44:32', 110, 1, 1, 1);
+VALUES('2022-03-03 10:44:32.166273', 110, 1, 1, 1);
 INSERT INTO healthdata(time, value, exerciseset_id, healthdatatype_id, training_id)
-VALUES('2022-03-03 10:48:32', 120, 1, 1, 1);
+VALUES('2022-03-03 10:48:32.032211', 120, 1, 1, 1);
 INSERT INTO healthdata(time, value, exerciseset_id, healthdatatype_id, training_id)
-VALUES('2022-03-03 10:52:32', 108, 1, 1, 1);
+VALUES('2022-03-03 10:52:32.125432', 108, 1, 1, 1);
 INSERT INTO healthdata(time, value, exerciseset_id, healthdatatype_id, training_id)
-VALUES('2022-03-03 10:56:50', 80, 2, 1, 1);
+VALUES('2022-03-03 10:56:50.543312', 80, 2, 1, 1);
 INSERT INTO healthdata(time, value, exerciseset_id, healthdatatype_id, training_id)
-VALUES('2022-03-03 11:00:31', 130, 2, 1, 1);
+VALUES('2022-03-03 11:00:31.543222', 130, 2, 1, 1);
 INSERT INTO healthdata(time, value, exerciseset_id, healthdatatype_id, training_id)
-VALUES('2022-03-03 11:04:42', 140, 2, 1, 1);
+VALUES('2022-03-03 11:04:42.20114', 140, 2, 1, 1);
 INSERT INTO healthdata(time, value, exerciseset_id, healthdatatype_id, training_id)
-VALUES('2022-03-03 11:08:42', 102, 2, 1, 1);
+VALUES('2022-03-03 11:08:42.43012', 102, 2, 1, 1);
 INSERT INTO healthdata(time, value, exerciseset_id, healthdatatype_id, training_id)
-VALUES('2022-03-03 11:12:42', 80, 2, 1, 1);
+VALUES('2022-03-03 11:12:42.497122', 80, 2, 1, 1);
 INSERT INTO healthdata(time, value, exerciseset_id, healthdatatype_id, training_id)
-VALUES('2022-03-03 11:16:42', 91, 2, 1, 1);
+VALUES('2022-03-03 11:16:42.553212', 91, 2, 1, 1);
 INSERT INTO healthdata(time, value, exerciseset_id, healthdatatype_id, training_id)
-VALUES('2022-03-03 11:20:42', 88, 2, 1, 1);
+VALUES('2022-03-03 11:20:42.197824', 88, 2, 1, 1);
 
 INSERT INTO healthdata(time, value, exerciseset_id, healthdatatype_id, training_id)
-VALUES('2022-03-03 10:40:32', 82, 1, 2, 1);
+VALUES('2022-03-03 10:40:32.197824', 82, 1, 2, 1);
 INSERT INTO healthdata(time, value, exerciseset_id, healthdatatype_id, training_id)
-VALUES('2022-03-03 10:44:32', 81, 1, 2, 1);
+VALUES('2022-03-03 10:44:32.197824', 81, 1, 2, 1);
 INSERT INTO healthdata(time, value, exerciseset_id, healthdatatype_id, training_id)
-VALUES('2022-03-03 10:48:32', 83, 1, 2, 1);
+VALUES('2022-03-03 10:48:32.197824', 83, 1, 2, 1);
 INSERT INTO healthdata(time, value, exerciseset_id, healthdatatype_id, training_id)
-VALUES('2022-03-03 10:52:32', 83, 1, 2, 1);
+VALUES('2022-03-03 10:52:32.197824', 83, 1, 2, 1);
 INSERT INTO healthdata(time, value, exerciseset_id, healthdatatype_id, training_id)
-VALUES('2022-03-03 10:56:50', 84, 2, 2, 1);
+VALUES('2022-03-03 10:56:50.197824', 84, 2, 2, 1);
 INSERT INTO healthdata(time, value, exerciseset_id, healthdatatype_id, training_id)
-VALUES('2022-03-03 11:00:31', 84, 2, 2, 1);
+VALUES('2022-03-03 11:00:31.197824', 84, 2, 2, 1);
 INSERT INTO healthdata(time, value, exerciseset_id, healthdatatype_id, training_id)
-VALUES('2022-03-03 11:04:42', 83, 2, 2, 1);
+VALUES('2022-03-03 11:04:42.197824', 83, 2, 2, 1);
 INSERT INTO healthdata(time, value, exerciseset_id, healthdatatype_id, training_id)
-VALUES('2022-03-03 11:08:42', 83, 2, 2, 1);
+VALUES('2022-03-03 11:08:42.197824', 83, 2, 2, 1);
 INSERT INTO healthdata(time, value, exerciseset_id, healthdatatype_id, training_id)
-VALUES('2022-03-03 11:12:42', 81, 2, 2, 1);
+VALUES('2022-03-03 11:12:42.197824', 81, 2, 2, 1);
 INSERT INTO healthdata(time, value, exerciseset_id, healthdatatype_id, training_id)
-VALUES('2022-03-03 11:16:42', 80, 2, 2, 1);
+VALUES('2022-03-03 11:16:42.197824', 80, 2, 2, 1);
 INSERT INTO healthdata(time, value, exerciseset_id, healthdatatype_id, training_id)
-VALUES('2022-03-03 11:20:42', 80, 2, 2, 1);
+VALUES('2022-03-03 11:20:42.197824', 80, 2, 2, 1);
 
 INSERT INTO healthdata(time, value, exerciseset_id, healthdatatype_id, training_id)
-VALUES('2022-03-03 10:40:32', 30, 1, 3, 1);
+VALUES('2022-03-03 10:40:32.197824', 30, 1, 3, 1);
 INSERT INTO healthdata(time, value, exerciseset_id, healthdatatype_id, training_id)
-VALUES('2022-03-03 10:44:32', 58, 1, 3, 1);
+VALUES('2022-03-03 10:44:32.197824', 58, 1, 3, 1);
 INSERT INTO healthdata(time, value, exerciseset_id, healthdatatype_id, training_id)
-VALUES('2022-03-03 10:48:32', 86, 1, 3, 1);
+VALUES('2022-03-03 10:48:32.197824', 86, 1, 3, 1);
 INSERT INTO healthdata(time, value, exerciseset_id, healthdatatype_id, training_id)
-VALUES('2022-03-03 10:52:32', 114, 1, 3, 1);
+VALUES('2022-03-03 10:52:32.197824', 114, 1, 3, 1);
 INSERT INTO healthdata(time, value, exerciseset_id, healthdatatype_id, training_id)
-VALUES('2022-03-03 10:56:50', 126, 2, 3, 1);
+VALUES('2022-03-03 10:56:50.197824', 126, 2, 3, 1);
 INSERT INTO healthdata(time, value, exerciseset_id, healthdatatype_id, training_id)
-VALUES('2022-03-03 11:00:31', 165, 2, 3, 1);
+VALUES('2022-03-03 11:00:31.197824', 165, 2, 3, 1);
 INSERT INTO healthdata(time, value, exerciseset_id, healthdatatype_id, training_id)
-VALUES('2022-03-03 11:04:42', 190, 2, 3, 1);
+VALUES('2022-03-03 11:04:42.197824', 190, 2, 3, 1);
 INSERT INTO healthdata(time, value, exerciseset_id, healthdatatype_id, training_id)
-VALUES('2022-03-03 11:08:42', 192, 2, 3, 1);
+VALUES('2022-03-03 11:08:42.197824', 192, 2, 3, 1);
 INSERT INTO healthdata(time, value, exerciseset_id, healthdatatype_id, training_id)
-VALUES('2022-03-03 11:12:42', 211, 2, 3, 1);
+VALUES('2022-03-03 11:12:42.197824', 211, 2, 3, 1);
 INSERT INTO healthdata(time, value, exerciseset_id, healthdatatype_id, training_id)
-VALUES('2022-03-03 11:16:42', 230, 2, 3, 1);
+VALUES('2022-03-03 11:16:42.197824', 230, 2, 3, 1);
 INSERT INTO healthdata(time, value, exerciseset_id, healthdatatype_id, training_id)
-VALUES('2022-03-03 11:20:42', 238, 2, 3, 1);
+VALUES('2022-03-03 11:20:42.197824', 238, 2, 3, 1);

@@ -113,7 +113,7 @@ public class FitervariRepository {
         query.setParameter("id", userId);
         var trainings = query.getResultList().stream().flatMap(w -> w.getTrainings().stream());
         return trainings.filter(t -> (month == -1 || t.getDate().getMonthValue() == month) && (year == -1 || t.getDate().getYear() == year))
-                .map(this::getConvertedTraining)
+                .map(this::getConvertedTrainingWithHealthData)
                 .collect(Collectors.toList());
     }
 
@@ -310,6 +310,25 @@ TODO:   --------------------------------------------------------------
                 training.getStartTime(),
                 training.getEndTime(),
                 getConvertedWorkoutPlan(training.getWorkoutPlan())
+        );
+    }
+
+    private TrainingDTO getConvertedTrainingWithHealthData(Training training) {
+        return new TrainingDTO(
+                training.getId(),
+                training.getDate(),
+                training.getStartTime(),
+                training.getEndTime(),
+                getConvertedWorkoutPlan(training.getWorkoutPlan()),
+                training.getHealthData().stream().map(h ->
+                        new HealthDataDTO(
+                                h.getId(),
+                                h.getTime(),
+                                h.getHealthDataType().getName(),
+                                h.getValue(),
+                                getConvertedExerciseSet(h.getExerciseSet())
+                        )
+                ).collect(Collectors.toList())
         );
     }
 

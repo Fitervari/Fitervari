@@ -19,7 +19,16 @@ public class TrainingDTO {
     private LocalTime endTime;
     private WorkoutPlanDTO workoutPlan;
     private List<HealthDataDTO> healthData;
-
+/*
+    public TrainingDTO(long id, LocalDate date, LocalTime startTime, LocalTime endTime, WorkoutPlanDTO workoutPlan, List<HealthDataDTO> healthData) {
+        this.id = id;
+        this.date = date;
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.workoutPlan = workoutPlan;
+        this.healthData = healthData;
+    }
+*/
     public TrainingDTO(long id, LocalDate date, LocalTime startTime, LocalTime endTime, List<HealthDataDTO> healthData) {
         this.id = id;
         this.date = date;
