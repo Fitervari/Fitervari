@@ -9,18 +9,17 @@ import SwiftUI
 import Alamofire
 
 fileprivate class ViewModel: ObservableObject {
-	@Published var sessions: [WorkoutSession] = []
+	@Published var sessions: [WorkoutSessionDetailed]?
 	
-	init() {
-		/*
-		UserAPI.getUserWorkoutPlans(userId: "me") { data, error in
-			if let data = data {
-				self.trainings = data
-			}
+	init(month: Month) {
+		AF.request("https://student.cloud.htl-leonding.ac.at/m.rausch-schott/fitervari/api/users/1/workoutSessions", method: .get, headers: [ "Authorization": "Bearer \(AuthenticationHandler.shared.token!)" ]).responseDecodable(of: [WorkoutSessionDetailed].self, decoder: CustomDecoder()) { res in
+			debugPrint(res)
+			self.sessions = res.value!
 		}
-		*/
-		
-		AF.request("https://student.cloud.htl-leonding.ac.at/m.rausch-schott/fitervari/api/workoutPlans/1/workoutSessions", method: .get, headers: [ "Authorization": "Bearer \(AuthenticationHandler.shared.token!)" ]).responseDecodable(of: [WorkoutSession].self, decoder: CustomDecoder()) { res in
+	}
+	
+	func reload(month: Month) {
+		AF.request("https://student.cloud.htl-leonding.ac.at/m.rausch-schott/fitervari/api/users/1/workoutSessions", method: .get, headers: [ "Authorization": "Bearer \(AuthenticationHandler.shared.token!)" ]).responseDecodable(of: [WorkoutSessionDetailed].self, decoder: CustomDecoder()) { res in
 			debugPrint(res)
 			self.sessions = res.value!
 		}
@@ -30,6 +29,8 @@ fileprivate class ViewModel: ObservableObject {
 struct HistoryView: View {
 	@State private var date: Date = Date()
 	@State private var pickerSheetVisible = false
+	
+	@ObservedObject private var viewModel = ViewModel(month: Month(Date()))
 	
 	static let dateFormatter: DateFormatter = {
 		let formatter = DateFormatter()
@@ -44,7 +45,7 @@ struct HistoryView: View {
 			if #available(iOS 15.0, *) {
 				WeekView(week: weeks.first(where: { w in
 					w.interval.contains(date)
-				})!, weeks: weeks, date: $date)
+				})!, weeks: weeks, date: $date, sessions: $viewModel.sessions)
 			}
 		}
 		.navigationTitle(HistoryView.dateFormatter.string(from: date))
@@ -68,6 +69,7 @@ struct HistoryView: View {
 					if #available(iOS 15.0, *) {
 						Button {
 							pickerSheetVisible = false
+							viewModel.reload(month: Month(date))
 						} label: {
 							Text("Fertig")
 								.frame(maxWidth: .infinity)
@@ -124,15 +126,14 @@ struct WeekView: View {
 	@EnvironmentObject private var accountModel: AccountModel
 	@Environment(\.defaultMinListRowHeight) private var minRowHeight
 	
-	@ObservedObject private var viewModel = ViewModel()
-	
 	@State private var navigate = false
+	@State private var session: WorkoutSessionDetailed?
 	
 	var week: Week
 	var weeks: [Week]
 	
 	@Binding var date: Date
-	@State var sessions: [WorkoutSession]? = [ WorkoutSession(date: "", startTime: "") ] // startTime: Date()) ]
+	@Binding fileprivate var sessions: [WorkoutSessionDetailed]?
 	
 	static let dateFormatter: DateFormatter = {
 		let formatter = DateFormatter()
@@ -162,7 +163,7 @@ struct WeekView: View {
 			}
 			.padding(.horizontal, margin(for: UIScreen.main.bounds.width))
 			
-		} else if sessions!.isEmpty {
+		} else if sessions!.filter({ session in week.interval.contains(session.date2) }).isEmpty {
 			VStack {
 				WeekSelector(weeks: weeks, date: $date)
 				
@@ -235,6 +236,7 @@ struct WeekView: View {
 					}
 					*/
 					
+					/*
 					if week.interval.contains(Calendar.current.date(from: DateComponents(year: 2022, month: 3, day: 3))!) {
 						if viewModel.sessions.count != 0 {
 							StackedCard(title: "Oberkörper 1", stackedTitle: "Do, 3. Mär 2022", stackedTitle2: "10:32 - 12:40") { //(16:30-16:45)
@@ -258,8 +260,32 @@ struct WeekView: View {
 							}
 						}
 					}
+					 */
 					
-					NavigationLink(destination: HealthDataView(sessions: self.viewModel.sessions), isActive: $navigate) {
+					ForEach(sessions!.filter({ session in week.interval.contains(session.date2) }), id: \.id) { session in
+						StackedCard(title: session.workoutPlan.name, stackedTitle: "\(WeekView.dateFormatter.string(from: session.date2))", stackedTitle2: "\(session.startTime) - \(session.endTime ?? "")") {
+							VStack {
+								/*
+								HStack(spacing: 0) {
+									Text("Tag 1/4: ")
+										.bold()
+									
+									Text("Brust, Bizeps, Bauch")
+								}
+								.foregroundColor(.white)
+								.frame(maxWidth: .infinity, alignment: .leading)
+								 */
+							}
+						} background: {
+							Color.accentColor // Color.green
+						}
+						.onTapGesture {
+							self.session = session
+							navigate = true
+						}
+					}
+					
+					NavigationLink(destination: HealthDataView(session: session), isActive: $navigate) {
 						EmptyView()
 					}
 					

@@ -63,6 +63,7 @@ struct AccountView: View {
 							title: Text("Fehler"),
 							message: Text("Überprüfe ob du einen Email Client installiert hast")
 						)
+						// TODO: paste into clipboard
 					}
 				}
 			}

@@ -8,6 +8,14 @@
 import SwiftUI
 import Combine
 
+class WorkoutViewModel: ObservableObject {
+	@Published var training: WorkoutPlan
+	
+	init(training: WorkoutPlan) {
+		self.training = training
+	}
+}
+
 struct WorkoutView: View {
 	// iOS 15 & above: @Environment(\.dismiss) private var dismiss
 	@Environment(\.presentationMode) var presentationMode
@@ -18,9 +26,27 @@ struct WorkoutView: View {
 	@State private var secondsElapsed = 0
 	@State private var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 	
+	@State private var idx = 0
+	@State private var setIdx = 0
+	
+	// @State private var navigate = false
+	
+	@State private var breakTime: Int? = nil
+	
+	var training: WorkoutPlan?
+	// @Binding var trainingState: Bool
+	
 	@EnvironmentObject private var healthKitController: HealthKitController
 	@State private var hr = -1
 	@State private var eb = 0.0
+	
+	init(training: WorkoutPlan?) {
+		self.training = training
+		
+		if let training = training {
+			HealthKitController.shared.exerciseSet = training.exercises[idx].exerciseSets[setIdx].id
+		}
+	}
 	
     var body: some View {
 		TabView(selection: $activeTab) {
@@ -62,43 +88,90 @@ struct WorkoutView: View {
 			VStack {
 				Spacer()
 				
-				Text("2 Sets")
-				
-				Text("15x Crunches Arme seitlich")
-					.bold()
-					.font(.title3)
+				if(!paused) {
+					if(training!.exercises[idx].exerciseSets.count >= 2) {
+						Text("Set \(setIdx + 1) von \(training!.exercises[idx].exerciseSets.count)")
+					}
+					
+					Text("\(training!.exercises[idx].exerciseSets[setIdx].repetitions)x \(training!.exercises[idx].name)")
+						.bold()
+						.font(.title3)
+					
+					// Text("Arme • ") Text("Matte")
+					
+				} else {
+					BreakView(initialTime: breakTime)
+				}
 				
 				Spacer()
 				
 				Button {
-					//
+					if !paused {
+						if(setIdx == (training!.exercises[idx].exerciseSets.count - 1) || training!.exercises[idx].exerciseSets.count == 0) {
+							if(idx == (training!.exercises.count - 1)) {
+								/*
+								let session = WorkoutSession(date: "", startTime: "", endTime: "") // TODO: fix!
+								// let session = WorkoutSession(date: Date(), startTime: startDate, endTime: Date())
+								
+								let req = AF.request("https://student.cloud.htl-leonding.ac.at/m.rausch-schott/fitervari/api/workoutPlans/\(workoutModel.workoutPlan.id)/workoutSessions", method: .post, parameters: session, encoder: URLEncodedFormParameterEncoder(encoder: URLEncodedFormEncoder(dateEncoding: .iso8601), destination: .httpBody), headers: [ "Authorization": "Bearer \(AuthenticationHandler.shared.token!)" ])
+								
+								Task {
+									try await req.serializingDecodable(WorkoutSession.self, decoder: CustomDecoder()).value
+								}
+								*/
+								
+								healthKitController.stopWorkout()
+								presentationMode.wrappedValue.dismiss()
+							} else {
+								idx += 1
+								setIdx = 0
+								
+								healthKitController.exerciseSet = training!.exercises[idx].exerciseSets[setIdx].id
+								
+								timer.upstream.connect().cancel()
+								breakTime = 20
+								paused.toggle()
+							}
+						} else {
+							setIdx += 1
+							
+							healthKitController.exerciseSet = training!.exercises[idx].exerciseSets[setIdx].id
+							
+							timer.upstream.connect().cancel()
+							breakTime = 20
+							paused.toggle()
+						}
+					} else {
+						timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+						paused.toggle()
+					}
+					
 				} label: {
-					Text("Weiter")
+					Text(!paused ? "Weiter" : "Fortfahren")
 				}
 				.tint(.green)
 			}
 			.tag(2)
 			
 			VStack {
+				/*
 				Button {
 					//
 				} label: {
 					Text("Zurück")
 				}
 				.tint(.blue)
+				*/
 				
-				Button {
-					if !paused {
+				if(!paused) {
+					Button {
 						timer.upstream.connect().cancel()
-					} else {
-						timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+						paused.toggle()
+					} label: {
+						Text("Pause")
 					}
-					
-					paused.toggle()
-				} label: {
-					Text(!paused ? "Pause" : "Fortfahren")
+					.tint(.yellow)
 				}
-				.tint(.yellow)
 				
 				Button {
 					healthKitController.stopWorkout()
@@ -120,6 +193,7 @@ struct WorkoutView: View {
     }
 }
 
+/*
 struct WorkoutView_Previews: PreviewProvider {
     static var previews: some View {
 		NavigationView {
@@ -127,3 +201,4 @@ struct WorkoutView_Previews: PreviewProvider {
 		}
     }
 }
+*/

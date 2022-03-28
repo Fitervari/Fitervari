@@ -72,6 +72,7 @@ struct TrainingView: View {
 					
 					Spacer()
 					
+					/*
 					VStack(spacing: 3) {
 						
 						
@@ -126,6 +127,7 @@ struct TrainingView: View {
 							.buttonStyle(.borderedProminent)
 						}
 					}
+					*/
 					
 					Spacer()
 						.frame(height: 15)

@@ -141,7 +141,7 @@ struct WorkoutView: View {
 					if !paused {
 						if(setIdx == (workoutModel.workoutPlan.exercises[idx].exerciseSets.count - 1) || workoutModel.workoutPlan.exercises[idx].exerciseSets.count == 0) {
 							if(idx == (workoutModel.workoutPlan.exercises.count - 1)) {
-								let session = WorkoutSession(date: "", startTime: "", endTime: "") // TODO: fix!
+								let session = WorkoutSession(date: "", date2: "", startTime: "", endTime: "") // TODO: fix!
 								// let session = WorkoutSession(date: Date(), startTime: startDate, endTime: Date())
 								
 								let req = AF.request("https://student.cloud.htl-leonding.ac.at/m.rausch-schott/fitervari/api/workoutPlans/\(workoutModel.workoutPlan.id)/workoutSessions", method: .post, parameters: session, encoder: URLEncodedFormParameterEncoder(encoder: URLEncodedFormEncoder(dateEncoding: .iso8601), destination: .httpBody), headers: [ "Authorization": "Bearer \(AuthenticationHandler.shared.token!)" ])

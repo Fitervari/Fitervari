@@ -9,19 +9,14 @@ import SwiftUI
 import Combine
 
 fileprivate class ViewModel: ObservableObject {
-	@Published var trainingId: Int64? = nil
-	@Published var trainingName: String? = nil
+	@Published var training: WorkoutPlan? = nil
 	
 	@Published var trainingState = false
 	
 	init() {
 		ConnectivityProvider.shared.getProvider(for: SelectedTrainingMessage.self)
-			.map(\.id)
-			.assign(to: &$trainingId)
-		
-		ConnectivityProvider.shared.getProvider(for: SelectedTrainingMessage.self)
-			.map(\.name)
-			.assign(to: &$trainingName)
+			.map(\.training)
+			.assign(to: &$training)
 	}
 }
 
@@ -32,14 +27,14 @@ struct ContentView: View {
     
     var body: some View {
 		ZStack {
-			if let trainingName = viewModel.trainingName {
+			if let training = viewModel.training {
 				VStack {
-					Text("Training: \(trainingName)")
+					Text("Training: \(training.name!)")
 					
 					Button {
 						if !viewModel.trainingState {
 							Task {
-								await healthKitController.startWorkout(planId: viewModel.trainingId!)
+								await healthKitController.startWorkout(planId: training.id)
 							}
 						} else {
 							healthKitController.stopWorkout()
@@ -61,7 +56,7 @@ struct ContentView: View {
 					.scenePadding()
 			}
 			
-			NavigationLink(destination: WorkoutView(), isActive: $viewModel.trainingState) {
+			NavigationLink(destination: WorkoutView(training: self.viewModel.training), isActive: $viewModel.trainingState) {
 				EmptyView()
 			}
 			.opacity(0)

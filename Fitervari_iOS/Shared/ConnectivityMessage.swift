@@ -16,8 +16,10 @@ struct SetWorkoutStateMessage: Codable {
 }
 
 struct SelectedTrainingMessage: Codable {
-	var id: Int64?
-	var name: String?
+	var training: WorkoutPlan?
+	
+	// var id: Int64?
+	// var name: String?
 }
 
 struct WorkoutDataMessage: Codable {

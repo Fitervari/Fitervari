@@ -33,6 +33,8 @@ class HealthKitController: ObservableObject {
 	let heartRate = PassthroughSubject<Int, Error>()
 	let energyBurned = PassthroughSubject<Double, Error>()
 	
+	var exerciseSet: Int64 = -1
+	
 	private init() {
 		healthStore.requestAuthorization(toShare: writing, read: reading) { success, error in
 			//
@@ -93,16 +95,44 @@ class HealthKitController: ObservableObject {
 			formatter.timeZone = TimeZone(secondsFromGMT: 0)
 			formatter.dateFormat = "yyyy-MM-dd"
 			
-			let session = WorkoutSession(date: formatter.string(from: date), startTime: "10:20") // Date()) TODO: fix!
+			let otherFormatter = DateFormatter()
+			otherFormatter.locale = Locale(identifier: "en_US_POSIX")
+			otherFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+			otherFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS"
+			
+			let timeFormatter = DateFormatter()
+			timeFormatter.locale = Locale(identifier: "en_US_POSIX")
+			timeFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+			timeFormatter.dateFormat = "hh:mm"
+			
+			let session = WorkoutSession(date: formatter.string(from: date), date2: otherFormatter.string(from: date), startTime: timeFormatter.string(from: date)) // Date()) TODO: fix!
 			
 			print(formatter.string(from: date))
 			
 			let req = AF.request("https://student.cloud.htl-leonding.ac.at/m.rausch-schott/fitervari/api/workoutPlans/\(planId)/workoutSessions", method: .post, parameters: session, encoder: JSONParameterEncoder.default)
 			
-			FSession = try await req.serializingDecodable(WorkoutSession.self, decoder: CustomDecoder()).value
-			debugPrint(FSession)
+			/*
+			try await withCheckedContinuation { (continuation: CheckedContinuation<Void, Never>) in
+				AF.request("https://student.cloud.htl-leonding.ac.at/m.rausch-schott/fitervari/api/workoutPlans/\(planId)/workoutSessions", method: .post, parameters: session, encoder: JSONParameterEncoder.default).responseDecodable(of: WorkoutSession.self, decoder: OtherCustomDecoder()) { res in
+					debugPrint(res)
+					// self.trainings = res.value!
+				}
+				
+				/*
+				req.responseString(completionHandler: { response in
+					print(response.value!)
+					continuation.resume()
+					//continuation.resume(with: Result.success(""))
+					fatalError()
+				})
+				 */
+			}
+			 */
+			
+			FSession = try await req.serializingDecodable(WorkoutSession.self, decoder: OtherCustomDecoder()).value
 			
 		} catch {
+			debugPrint(error)
 			fatalError()
 		}
 		
@@ -125,7 +155,18 @@ class HealthKitController: ObservableObject {
 							self.heartRate.send(Int(data))
 							// self.hrSamples[Date()] = Int(data)
 							
-							let data = HealthData(type: "Puls", value: Int64(data), time: Date(), training: self.FSession!.id!) //, training: self.FSession!.id!, exerciseSet: 1)
+							print("session id: \(self.FSession!.id!)")
+							print("set: \(self.exerciseSet)")
+							
+							let timeFormatter = DateFormatter()
+							timeFormatter.locale = Locale(identifier: "en_US_POSIX")
+							timeFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+							timeFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS"
+							
+							let data = HealthData(type: 1, value: Int64(data), time: timeFormatter.string(from: Date()), training: self.FSession!.id!, exerciseSet: self.exerciseSet) //, training: self.FSession!.id!, exerciseSet: 1)
+							
+							// print(data)
+							
 							
 							AF.request("https://student.cloud.htl-leonding.ac.at/m.rausch-schott/fitervari/api/healthdata", method: .post, parameters: data, encoder: JSONParameterEncoder.default)
 								.validate()
@@ -181,7 +222,13 @@ class HealthKitController: ObservableObject {
 	}
 	
 	func stopWorkout() {
-		FSession!.endTime = "" // TODO: fix!
+		let date = Date()
+		let timeFormatter = DateFormatter()
+		timeFormatter.locale = Locale(identifier: "en_US_POSIX")
+		timeFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+		timeFormatter.dateFormat = "hh:mm"
+		
+		FSession!.endTime = timeFormatter.string(from: date) // TODO: fix!
 		// FSession!.endTime = Date()
 		
 		AF.request("https://student.cloud.htl-leonding.ac.at/m.rausch-schott/fitervari/api/workoutSessions/\(FSession!.id!)", method: .put, parameters: FSession, encoder: JSONParameterEncoder.default)

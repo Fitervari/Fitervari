@@ -10,15 +10,15 @@ import Charts
 import SwiftUICharts
 
 struct HealthDataView: View {
-	var sessions: [WorkoutSession]
+	var session: WorkoutSessionDetailed?
 	
     var body: some View {
-		let values = sessions[0].healthData!
+		let values = session!.healthData!
 			.filter({ hd in
 				hd.type == "Puls"
 			})
 		
-		let kvalues = sessions[0].healthData!
+		let kvalues = session!.healthData!
 			.filter({ hd in
 				hd.type == "kcal"
 			})
@@ -90,7 +90,7 @@ struct HealthDataView: View {
 		.navigationTitle("Gesundheitsdaten")
     }
 	
-	func getXLabels(data: [HealthData]) -> [String] {
+	func getXLabels(data: [HealthDataProcessed]) -> [String] {
 		let dateFormatter = DateFormatter()
 		dateFormatter.dateFormat = "mm:ss"
 		
@@ -98,19 +98,31 @@ struct HealthDataView: View {
 		let fMiddleIndex = (data.startIndex + middleIndex) / 2
 		let lMiddleIndex = (data.endIndex + middleIndex) / 2
 		
-		return [
-			dateFormatter.string(from: data.first!.time),
-			dateFormatter.string(from: data[fMiddleIndex].time),
-			dateFormatter.string(from: data[middleIndex].time),
-			dateFormatter.string(from: data[lMiddleIndex].time),
-			dateFormatter.string(from: data.last!.time),
-		]
+		if data.count < 3 {
+			return []
+		} else if data.count == 4 {
+			return [
+				dateFormatter.string(from: data.first!.time),
+				dateFormatter.string(from: data[fMiddleIndex].time),
+				// dateFormatter.string(from: data[middleIndex].time),
+				dateFormatter.string(from: data[lMiddleIndex].time),
+				dateFormatter.string(from: data.last!.time),
+			]
+		} else {
+			return [
+				dateFormatter.string(from: data.first!.time),
+				dateFormatter.string(from: data[fMiddleIndex].time),
+				dateFormatter.string(from: data[middleIndex].time),
+				dateFormatter.string(from: data[lMiddleIndex].time),
+				dateFormatter.string(from: data.last!.time),
+			]
+		}
 	}
 }
 
 struct PulseGraphView: View {
 	var data: LineChartData
-	var rawData: [HealthData]
+	var rawData: [HealthDataProcessed]
 	
 	var body: some View {
 		LineChart(chartData: data)

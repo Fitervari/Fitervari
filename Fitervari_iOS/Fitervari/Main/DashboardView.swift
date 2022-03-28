@@ -44,13 +44,21 @@ struct DashboardView: View {
 		ScrollView {
 			if #available(iOS 15.0, *) {
 				ForEach(viewModel.trainings, id: \.id) { training in
-					Card(title: "Pyramidentraining Woche 1-4") {
+					// "Pyramidentraining Woche 1-4"
+					Card(title: "\(training.name!)") {
 						VStack {
 							HStack(spacing: 0) {
+								/*
 								Text("Tag 1/4: ")
 									.bold()
+								 */
 								
+								/*
+								training.exercises.map { exercise in
+									exercise.exerciseSets.first.
+								}
 								Text("Brust, Bizeps, Bauch")
+								 */
 							}
 							.foregroundColor(.white)
 							.frame(maxWidth: .infinity, alignment: .leading)
@@ -63,9 +71,14 @@ struct DashboardView: View {
 					}
 					.frame(height: 170)
 					.onTapGesture {
-						ConnectivityProvider.shared.sendMessage(data: SelectedTrainingMessage(id: training.id, name: training.name))
+						ConnectivityProvider.shared.sendMessage(data: SelectedTrainingMessage(training: training))
 						self.selected = training
 						navigate = true
+					}
+					.onChange(of: navigate) { [navigate] newValue in
+						if navigate && !newValue {
+							ConnectivityProvider.shared.sendMessage(data: SelectedTrainingMessage(training: nil))
+						}
 					}
 				}
                 
