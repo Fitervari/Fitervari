@@ -23,6 +23,10 @@ struct HealthDataView: View {
 				hd.type == "kcal"
 			})
 		
+		let rvalues = values.map { d in
+			d.value
+		}
+		
 		let kvalcum = kvalues.reduce(into: []) { $0.append(($0.last ?? 0) + $1.value) }
 		
 		let dp = values.map { val -> LineChartDataPoint in
@@ -39,7 +43,7 @@ struct HealthDataView: View {
 		
 		VStack {
 			if(dp.count > 0) {
-				PulseGraphView(data: LineChartData.init(dataSets: LineDataSet(dataPoints: dp, legendTitle: "Puls", style: LineStyle(lineType: .curvedLine, strokeStyle: Stroke(lineWidth: 2))), metadata: ChartMetadata(title: "Puls"), xAxisLabels: getXLabels(data: values), chartStyle: LineChartStyle(infoBoxPlacement: .header, xAxisLabelsFrom: .chartData()))) //, rawData: values)
+				PulseGraphView(data: LineChartData.init(dataSets: LineDataSet(dataPoints: dp, legendTitle: "Puls", style: LineStyle(lineType: .curvedLine, strokeStyle: Stroke(lineWidth: 2))), metadata: ChartMetadata(title: "Puls"), xAxisLabels: getXLabels(data: values), chartStyle: LineChartStyle(infoBoxPlacement: .header, xAxisLabelsFrom: .chartData(), baseline: .minimumWithMaximum(of: rvalues.min()! - 10), topLine: .maximum(of: rvalues.max()! + 10))))
 			} else {
 				Text("Für die Metrik Puls sind keine Gesundheitsdaten verfügbar.")
 					.frame(maxWidth: .infinity, alignment: .topLeading)
