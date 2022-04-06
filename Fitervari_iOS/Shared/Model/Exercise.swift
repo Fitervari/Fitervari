@@ -11,6 +11,6 @@ struct Exercise: Codable {
 	var id: Int64
 	var name: String
 	var description: String?
-	// var repetitions: Int
+	var deviceGroup: DeviceGroup
 	var exerciseSets: [ExerciseSet]
 }

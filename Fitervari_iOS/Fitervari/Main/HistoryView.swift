@@ -7,20 +7,42 @@
 
 import SwiftUI
 import Alamofire
+import RefreshableScrollView
 
 fileprivate class ViewModel: ObservableObject {
 	@Published var sessions: [WorkoutSessionDetailed]?
 	
+	var month: Month
+	
 	init(month: Month) {
+		self.month = month
 		AF.request("https://student.cloud.htl-leonding.ac.at/m.rausch-schott/fitervari/api/users/1/workoutSessions", method: .get, headers: [ "Authorization": "Bearer \(AuthenticationHandler.shared.token!)" ]).responseDecodable(of: [WorkoutSessionDetailed].self, decoder: CustomDecoder()) { res in
-			debugPrint(res)
+			// debugPrint(res)
 			self.sessions = res.value!
 		}
 	}
 	
 	func reload(month: Month) {
+		self.month = month
+		AF.request("https://student.cloud.htl-leonding.ac.at/m.rausch-schott/fitervari/api/users/1/workoutSessions", method: .get, headers: [ "Authorization": "Bearer \(AuthenticationHandler.shared.token!)" ]).responseDecodable(of: [WorkoutSessionDetailed].self, decoder: CustomDecoder()) { res in
+			// debugPrint(res)
+			self.sessions = res.value!
+		}
+	}
+	
+	/*
+	func refresh(refreshControl: UIRefreshControl) {
 		AF.request("https://student.cloud.htl-leonding.ac.at/m.rausch-schott/fitervari/api/users/1/workoutSessions", method: .get, headers: [ "Authorization": "Bearer \(AuthenticationHandler.shared.token!)" ]).responseDecodable(of: [WorkoutSessionDetailed].self, decoder: CustomDecoder()) { res in
 			debugPrint(res)
+			self.sessions = res.value!
+			refreshControl.endRefreshing()
+		}
+	}
+	 */
+	
+	func refresh() {
+		AF.request("https://student.cloud.htl-leonding.ac.at/m.rausch-schott/fitervari/api/users/1/workoutSessions", method: .get, headers: [ "Authorization": "Bearer \(AuthenticationHandler.shared.token!)" ]).responseDecodable(of: [WorkoutSessionDetailed].self, decoder: CustomDecoder()) { res in
+			// debugPrint(res)
 			self.sessions = res.value!
 		}
 	}
@@ -45,7 +67,7 @@ struct HistoryView: View {
 			if #available(iOS 15.0, *) {
 				WeekView(week: weeks.first(where: { w in
 					w.interval.contains(date)
-				})!, weeks: weeks, date: $date, sessions: $viewModel.sessions)
+				})!, weeks: weeks, date: $date, viewModel: viewModel)
 			}
 		}
 		.navigationTitle(HistoryView.dateFormatter.string(from: date))
@@ -54,6 +76,12 @@ struct HistoryView: View {
 				pickerSheetVisible.toggle()
 			} label: {
 				Image(systemName: "calendar")
+			}
+			
+			Button {
+				viewModel.refresh()
+			} label: {
+				Image(systemName: "arrow.clockwise.circle")
 			}
 		}
 		.sheet(isPresented: $pickerSheetVisible) {
@@ -133,7 +161,9 @@ struct WeekView: View {
 	var weeks: [Week]
 	
 	@Binding var date: Date
-	@Binding fileprivate var sessions: [WorkoutSessionDetailed]?
+	@ObservedObject fileprivate var viewModel: ViewModel
+	
+	// @Binding fileprivate var sessions: [WorkoutSessionDetailed]?
 	
 	static let dateFormatter: DateFormatter = {
 		let formatter = DateFormatter()
@@ -146,6 +176,23 @@ struct WeekView: View {
 			VStack {
 				WeekSelector(weeks: weeks, date: $date)
 				
+				if #available(iOS 15.0, *) {
+					Button {
+						viewModel.refresh()
+					} label: {
+						HStack {
+							Text("Neu laden")
+							Spacer()
+							Image(systemName: "arrow.clockwise")
+								.font(Font.body.weight(.semibold))
+						}
+						.frame(maxWidth: .infinity)
+					}
+					.tint(.gray)
+					.controlSize(.large)
+					.buttonStyle(.borderedProminent)
+				}
+				
 				Spacer()
 				Text("Für diese Woche sind keine Daten verfügbar.")
 					.foregroundColor(.gray)
@@ -153,9 +200,26 @@ struct WeekView: View {
 			}
 			.padding(.horizontal, margin(for: UIScreen.main.bounds.width))
 			
-		} else if sessions == nil {
+		} else if viewModel.sessions == nil {
 			VStack {
 				WeekSelector(weeks: weeks, date: $date)
+				
+				if #available(iOS 15.0, *) {
+					Button {
+						viewModel.refresh()
+					} label: {
+						HStack {
+							Text("Neu laden")
+							Spacer()
+							Image(systemName: "arrow.clockwise")
+								.font(Font.body.weight(.semibold))
+						}
+						.frame(maxWidth: .infinity)
+					}
+					.tint(.gray)
+					.controlSize(.large)
+					.buttonStyle(.borderedProminent)
+				}
 				
 				Spacer()
 				ProgressView()
@@ -163,9 +227,26 @@ struct WeekView: View {
 			}
 			.padding(.horizontal, margin(for: UIScreen.main.bounds.width))
 			
-		} else if sessions!.filter({ session in week.interval.contains(session.date2) }).isEmpty {
+		} else if viewModel.sessions!.filter({ session in week.interval.contains(session.date2) }).isEmpty {
 			VStack {
 				WeekSelector(weeks: weeks, date: $date)
+				
+				if #available(iOS 15.0, *) {
+					Button {
+						viewModel.refresh()
+					} label: {
+						HStack {
+							Text("Neu laden")
+							Spacer()
+							Image(systemName: "arrow.clockwise")
+								.font(Font.body.weight(.semibold))
+						}
+						.frame(maxWidth: .infinity)
+					}
+					.tint(.gray)
+					.controlSize(.large)
+					.buttonStyle(.borderedProminent)
+				}
 				
 				Spacer()
 				Text("In dieser Woche fanden keine Trainings statt.")
@@ -177,7 +258,26 @@ struct WeekView: View {
 		} else {
 			ScrollView {
 				VStack(alignment: .leading, spacing: 20) {
-					WeekSelector(weeks: weeks, date: $date)
+					VStack {
+						WeekSelector(weeks: weeks, date: $date)
+						
+						if #available(iOS 15.0, *) {
+							Button {
+								viewModel.refresh()
+							} label: {
+								HStack {
+									Text("Neu laden")
+									Spacer()
+									Image(systemName: "arrow.clockwise")
+										.font(Font.body.weight(.semibold))
+								}
+								.frame(maxWidth: .infinity)
+							}
+							.tint(.gray)
+							.controlSize(.large)
+							.buttonStyle(.borderedProminent)
+						}
+					}
 					
 					/*
 					ForEach(0..<7) { dayOffset in
@@ -262,8 +362,8 @@ struct WeekView: View {
 					}
 					 */
 					
-					ForEach(sessions!.filter({ session in week.interval.contains(session.date2) }), id: \.id) { session in
-						StackedCard(title: session.workoutPlan.name, stackedTitle: "\(WeekView.dateFormatter.string(from: session.date2))", stackedTitle2: "\(session.startTime) - \(session.endTime ?? "")") {
+					ForEach(viewModel.sessions!.filter({ session in week.interval.contains(session.date2) }), id: \.id) { session in
+						StackedCard(title: session.workoutPlan.name, stackedTitle: "\(WeekView.dateFormatter.string(from: session.date2))", stackedTitle2: session.endTime == nil ? "\(session.startTime)" : "\(session.startTime) - \(session.endTime!)") {
 							VStack {
 								/*
 								HStack(spacing: 0) {
@@ -285,7 +385,7 @@ struct WeekView: View {
 						}
 					}
 					
-					NavigationLink(destination: HealthDataView(session: session), isActive: $navigate) {
+					NavigationLink(destination: HealthDataView(session: $session), isActive: $navigate) {
 						EmptyView()
 					}
 					
@@ -295,6 +395,11 @@ struct WeekView: View {
 				.frame(maxWidth: .infinity, alignment: .topLeading)
 				.padding(.horizontal, margin(for: UIScreen.main.bounds.width))
 			}
+			/*
+			.onRefresh(spinningColor: .gray, text: "", textColor: .gray, backgroundColor: .white) { refreshControl in
+				viewModel.refresh(refreshControl: refreshControl)
+			}
+			*/
 		}
 	}
 }
@@ -326,10 +431,10 @@ struct MonthIterator: IteratorProtocol, Sequence {
 		var calendar = Calendar.current
 		calendar.minimumDaysInFirstWeek = 1
 		
-		let currentDate = calendar.date(from: DateComponents(year: month.year, month: month.month))
-		
 		self.calendar = calendar
 		self.month = month
+		
+		let currentDate = calendar.date(from: DateComponents(year: month.year, month: month.month))
 		
 		if currentDate != nil {
 			if calendar.dateComponents([ .weekday ], from: currentDate!).weekday! == calendar.firstWeekday {

@@ -9,9 +9,9 @@ import SwiftUI
 import Alamofire
 
 class WorkoutModel: ObservableObject {
-	@Published var workoutPlan: WorkoutPlan
+	@Published var workoutPlan: WorkoutPlanWithDate
 	
-	init(workoutPlan: WorkoutPlan) {
+	init(workoutPlan: WorkoutPlanWithDate) {
 		self.workoutPlan = workoutPlan
 	}
 }
@@ -47,8 +47,11 @@ struct WorkoutView: View {
 						StackedCard(title: "\(workoutModel.workoutPlan.exercises[idx].exerciseSets[setIdx].repetitions)x \(workoutModel.workoutPlan.exercises[idx].name)", stackedTitle: "Set \(setIdx + 1) von \(workoutModel.workoutPlan.exercises[idx].exerciseSets.count)") {
 							VStack {
 								HStack(spacing: 0) {
-									Text("Arme • ")
-									Text("Matte")
+									if let description = workoutModel.workoutPlan.exercises[idx].description {
+										Text("\(workoutModel.workoutPlan.exercises[idx].deviceGroup.name) • \(description)")
+									} else {
+										Text("\(workoutModel.workoutPlan.exercises[idx].deviceGroup.name)")
+									}
 								}
 								.foregroundColor(.white)
 								.frame(maxWidth: .infinity, alignment: .leading)
@@ -141,15 +144,7 @@ struct WorkoutView: View {
 					if !paused {
 						if(setIdx == (workoutModel.workoutPlan.exercises[idx].exerciseSets.count - 1) || workoutModel.workoutPlan.exercises[idx].exerciseSets.count == 0) {
 							if(idx == (workoutModel.workoutPlan.exercises.count - 1)) {
-								let session = WorkoutSession(date: "", date2: "", startTime: "", endTime: "") // TODO: fix!
-								// let session = WorkoutSession(date: Date(), startTime: startDate, endTime: Date())
-								
-								let req = AF.request("https://student.cloud.htl-leonding.ac.at/m.rausch-schott/fitervari/api/workoutPlans/\(workoutModel.workoutPlan.id)/workoutSessions", method: .post, parameters: session, encoder: URLEncodedFormParameterEncoder(encoder: URLEncodedFormEncoder(dateEncoding: .iso8601), destination: .httpBody), headers: [ "Authorization": "Bearer \(AuthenticationHandler.shared.token!)" ])
-								
-								Task {
-									try await req.serializingDecodable(WorkoutSession.self, decoder: CustomDecoder()).value
-								}
-								
+								commitWorkout()
 								UIApplication.shared.isIdleTimerDisabled = false
 								navigate = true
 							} else {
@@ -157,14 +152,14 @@ struct WorkoutView: View {
 								setIdx = 0
 								
 								timer.upstream.connect().cancel()
-								breakTime = 90
+								breakTime = 20 // 90
 								paused.toggle()
 							}
 						} else {
 							setIdx += 1
 							
 							timer.upstream.connect().cancel()
-							breakTime = 90
+							breakTime = 20 // 90
 							paused.toggle()
 						}
 					} else {
@@ -195,6 +190,7 @@ struct WorkoutView: View {
 		.navigationBarTitleDisplayMode(.inline)
 		.toolbar {
 			Button {
+				commitWorkout()
 				UIApplication.shared.isIdleTimerDisabled = false
 				timer.upstream.connect().cancel()
 				
@@ -207,6 +203,37 @@ struct WorkoutView: View {
 			.foregroundColor(.red)
 		}
     }
+	
+	func commitWorkout() {
+		let date = Date()
+		let formatter = DateFormatter()
+		formatter.locale = Locale(identifier: "en_US_POSIX")
+		formatter.timeZone = TimeZone(secondsFromGMT: 0)
+		formatter.dateFormat = "yyyy-MM-dd"
+		
+		let otherFormatter = DateFormatter()
+		otherFormatter.locale = Locale(identifier: "en_US_POSIX")
+		otherFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+		otherFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS"
+		
+		let timeFormatter = DateFormatter()
+		timeFormatter.locale = Locale(identifier: "en_US_POSIX")
+		timeFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+		timeFormatter.dateFormat = "hh:mm"
+		
+		let session = WorkoutSession(date: formatter.string(from: date), date2: otherFormatter.string(from: date), startTime: timeFormatter.string(from: startDate), endTime: timeFormatter.string(from: date)) // Date()) TODO: fix!
+		
+		// let req = AF.request("https://student.cloud.htl-leonding.ac.at/m.rausch-schott/fitervari/api/workoutPlans/\(planId)/workoutSessions", method: .post, parameters: session, encoder: JSONParameterEncoder.default)
+		
+		// let session = WorkoutSession(date: "", date2: "", startTime: "", endTime: "") // TODO: fix!
+		// let session = WorkoutSession(date: Date(), startTime: startDate, endTime: Date())
+		
+		let req = AF.request("https://student.cloud.htl-leonding.ac.at/m.rausch-schott/fitervari/api/workoutPlans/\(workoutModel.workoutPlan.id)/workoutSessions", method: .post, parameters: session, encoder: URLEncodedFormParameterEncoder(encoder: URLEncodedFormEncoder(dateEncoding: .iso8601), destination: .httpBody), headers: [ "Authorization": "Bearer \(AuthenticationHandler.shared.token!)" ])
+		
+		Task {
+			try await req.serializingDecodable(WorkoutSession.self, decoder: OtherCustomDecoder()).value
+		}
+	}
 }
 
 /*

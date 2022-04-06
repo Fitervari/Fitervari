@@ -39,5 +39,5 @@ struct WorkoutSessionDetailed: Codable {
 	// var endTime: Date?
 	
 	var workoutPlan: WorkoutPlan
-	var healthData: [HealthDataProcessed]?
+	var healthData: [HealthDataProcessed]
 }

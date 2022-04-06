@@ -11,7 +11,6 @@ struct User: Codable {
 	var id: Int64
 	var firstname: String
 	var lastname: String
-	var trainer: Trainer
 	var studio: Studio
 	var creationDate: Date
 }

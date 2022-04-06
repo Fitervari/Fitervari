@@ -10,15 +10,15 @@ import Charts
 import SwiftUICharts
 
 struct HealthDataView: View {
-	var session: WorkoutSessionDetailed?
+	@Binding var session: WorkoutSessionDetailed?
 	
     var body: some View {
-		let values = session!.healthData!
+		let values = session!.healthData
 			.filter({ hd in
 				hd.type == "Puls"
 			})
 		
-		let kvalues = session!.healthData!
+		let kvalues = session!.healthData
 			.filter({ hd in
 				hd.type == "kcal"
 			})

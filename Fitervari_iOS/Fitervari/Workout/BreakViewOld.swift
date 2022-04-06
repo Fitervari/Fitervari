@@ -15,6 +15,28 @@ struct BreakView: View {
 	
 	var body: some View {
 		BasicCard {
+			HStack {
+				Text("PAUSE")
+					.font(.title)
+				
+				Spacer()
+					.frame(width: 20)
+				
+				Text(getDisplayTime(initialTime: initialTime, timeOffset: timeOffset))
+					.font(.largeTitle)
+					// .foregroundColor(paused ? .gray : .black) // missing dark mode support
+					.onReceive(timer) { _ in
+						timeOffset += 1
+						
+						if initialTime != nil && initialTime! - timeOffset == 0 {
+							timer.upstream.connect().cancel()
+						}
+					}
+			}
+			.foregroundColor(.white)
+			.animation(.easeInOut, value: timeOffset)
+			
+			/*
 			Text(getDisplayTime(initialTime: initialTime, timeOffset: timeOffset))
 				.font(.largeTitle)
 				.foregroundColor(.white)
@@ -27,6 +49,7 @@ struct BreakView: View {
 						timer.upstream.connect().cancel()
 					}
 				}
+			 */
 		} backgroundColor: {
 			Color.blue
 		}

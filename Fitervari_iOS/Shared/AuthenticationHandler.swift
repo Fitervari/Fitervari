@@ -9,8 +9,12 @@ import Combine
 import Foundation
 import Alamofire
 
+let API_ROOT = "https://student.cloud.htl-leonding.ac.at/m.rausch-schott/fitervari/api"
+
 class AuthenticationHandler: ObservableObject {
 	static let shared = AuthenticationHandler()
+	
+	final let URL = "\(API_ROOT)/authToken"
 	
 	private var observerCancellable: AnyCancellable?
 	
@@ -53,7 +57,7 @@ class AuthenticationHandler: ObservableObject {
 		}
 		
 		return token
-		// let req = AF.request("https://student.cloud.htl-leonding.ac.at/m.rausch-schott/fitervari/api/authToken?activationToken=\(token!)", method: .get)
+		// let req = AF.request("\(URL)?activationToken=\(token!)", method: .get)
 		
 		/*
 		do {

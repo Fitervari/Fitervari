@@ -27,11 +27,12 @@
 		5456F3F227CD0A9A001BD160 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5456F3F027CD0A9A001BD160 /* User.swift */; };
 		5456F3F427CD0CE5001BD160 /* Studio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5456F3F327CD0CE5001BD160 /* Studio.swift */; };
 		5456F3F527CD0CE5001BD160 /* Studio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5456F3F327CD0CE5001BD160 /* Studio.swift */; };
-		5456F3F727CD0DBC001BD160 /* Trainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5456F3F627CD0DBC001BD160 /* Trainer.swift */; };
-		5456F3F827CD0DBC001BD160 /* Trainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5456F3F627CD0DBC001BD160 /* Trainer.swift */; };
 		54646E8326F35DD700C8C2D5 /* FitervariApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54646E8226F35DD700C8C2D5 /* FitervariApp.swift */; };
 		54646E8726F35DD900C8C2D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54646E8626F35DD900C8C2D5 /* Assets.xcassets */; };
 		54646E8A26F35DD900C8C2D5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54646E8926F35DD900C8C2D5 /* Preview Assets.xcassets */; };
+		547AA27327F43CEA00E44B7E /* RefreshableScrollView in Frameworks */ = {isa = PBXBuildFile; productRef = 547AA27227F43CEA00E44B7E /* RefreshableScrollView */; };
+		5495794E27F37A3B00B058CE /* DeviceGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5495794D27F37A3B00B058CE /* DeviceGroup.swift */; };
+		5495794F27F37A3B00B058CE /* DeviceGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5495794D27F37A3B00B058CE /* DeviceGroup.swift */; };
 		5495D06927D1F1C70076085B /* CountdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5495D06827D1F1C70076085B /* CountdownView.swift */; };
 		5495D06D27D207E60076085B /* ConfettiSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 5495D06C27D207E60076085B /* ConfettiSwiftUI */; };
 		549CDCDF27B950580062683D /* WorkoutSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549CDCDE27B950580062683D /* WorkoutSession.swift */; };
@@ -170,13 +171,13 @@
 		5456F3EE27CD07B8001BD160 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		5456F3F027CD0A9A001BD160 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		5456F3F327CD0CE5001BD160 /* Studio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Studio.swift; sourceTree = "<group>"; };
-		5456F3F627CD0DBC001BD160 /* Trainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trainer.swift; sourceTree = "<group>"; };
 		54646E7F26F35DD700C8C2D5 /* Fitervari.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fitervari.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		54646E8226F35DD700C8C2D5 /* FitervariApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitervariApp.swift; sourceTree = "<group>"; };
 		54646E8626F35DD900C8C2D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		54646E8926F35DD900C8C2D5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		54646E8F26F35DD900C8C2D5 /* FitervariTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FitervariTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		54646E9926F35DD900C8C2D5 /* FitervariUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FitervariUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5495794D27F37A3B00B058CE /* DeviceGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceGroup.swift; sourceTree = "<group>"; };
 		5495D06827D1F1C70076085B /* CountdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownView.swift; sourceTree = "<group>"; };
 		549CDCDE27B950580062683D /* WorkoutSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutSession.swift; sourceTree = "<group>"; };
 		54B5DCDE2768C89C00C18F9B /* HealthKitController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitController.swift; sourceTree = "<group>"; };
@@ -226,6 +227,7 @@
 				54FEC6C0276B3D320002DBB1 /* KeychainAccess in Frameworks */,
 				54D3781B27E1290600091DCC /* Charts in Frameworks */,
 				543A0CD427393C1500D36D70 /* DynamicColor in Frameworks */,
+				547AA27327F43CEA00E44B7E /* RefreshableScrollView in Frameworks */,
 				5447D1E927AA010F0025F9BE /* Alamofire in Frameworks */,
 				54CE552227E1D366006ECD44 /* SwiftUICharts in Frameworks */,
 				544FCC2B26F36DCD00DEDB79 /* CodeScanner in Frameworks */,
@@ -286,7 +288,7 @@
 				549CDCDE27B950580062683D /* WorkoutSession.swift */,
 				5456F3F027CD0A9A001BD160 /* User.swift */,
 				5456F3F327CD0CE5001BD160 /* Studio.swift */,
-				5456F3F627CD0DBC001BD160 /* Trainer.swift */,
+				5495794D27F37A3B00B058CE /* DeviceGroup.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -473,6 +475,7 @@
 				5495D06C27D207E60076085B /* ConfettiSwiftUI */,
 				54D3781A27E1290600091DCC /* Charts */,
 				54CE552127E1D366006ECD44 /* SwiftUICharts */,
+				547AA27227F43CEA00E44B7E /* RefreshableScrollView */,
 			);
 			productName = Fitervari;
 			productReference = 54646E7F26F35DD700C8C2D5 /* Fitervari.app */;
@@ -644,6 +647,7 @@
 				5495D06B27D207E60076085B /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */,
 				54D3781927E1290600091DCC /* XCRemoteSwiftPackageReference "swiftui-charts" */,
 				54CE552027E1D366006ECD44 /* XCRemoteSwiftPackageReference "SwiftUICharts" */,
+				547AA27127F43CEA00E44B7E /* XCRemoteSwiftPackageReference "RefreshableScrollView" */,
 			);
 			productRefGroup = 54646E8026F35DD700C8C2D5 /* Products */;
 			projectDirPath = "";
@@ -740,6 +744,7 @@
 				543A3538275BE3740034019E /* FinishedWorkoutView.swift in Sources */,
 				54CBEF6826FC5E92009A7B68 /* DashboardView.swift in Sources */,
 				54FEC6C8276B57200002DBB1 /* Common.swift in Sources */,
+				5495794E27F37A3B00B058CE /* DeviceGroup.swift in Sources */,
 				543BFD4527AA0D900086DA7A /* CustomDecoder.swift in Sources */,
 				54CBEF6426FC5E29009A7B68 /* MainView.swift in Sources */,
 				54CC0F522710BE4100112EE3 /* BasicCard.swift in Sources */,
@@ -754,7 +759,6 @@
 				54646E8326F35DD700C8C2D5 /* FitervariApp.swift in Sources */,
 				54D3781827E127A400091DCC /* HealthDataView.swift in Sources */,
 				54CBEF6A26FC6308009A7B68 /* Card.swift in Sources */,
-				5456F3F727CD0DBC001BD160 /* Trainer.swift in Sources */,
 				549CDCDF27B950580062683D /* WorkoutSession.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -785,11 +789,11 @@
 				54F521C8273BBEAF00AA75DD /* FitervariApp.swift in Sources */,
 				54BDADBB2798235C008B8DFA /* ExtensionDelegate.swift in Sources */,
 				54F521C6273BBEAF00AA75DD /* ContentView.swift in Sources */,
+				5495794F27F37A3B00B058CE /* DeviceGroup.swift in Sources */,
 				54F41C1F27D6754D003A5149 /* RootNavigationModel.swift in Sources */,
 				5456F3F227CD0A9A001BD160 /* User.swift in Sources */,
 				54FEC6C9276B57200002DBB1 /* Common.swift in Sources */,
 				54FEC6C6276B44200002DBB1 /* AuthenticationHandler.swift in Sources */,
-				5456F3F827CD0DBC001BD160 /* Trainer.swift in Sources */,
 				54B5DCDF2768C89C00C18F9B /* HealthKitController.swift in Sources */,
 				5456F3F527CD0CE5001BD160 /* Studio.swift in Sources */,
 				54BBF9BC27687D0E0067431C /* ConnectivityMessage.swift in Sources */,
@@ -1436,6 +1440,14 @@
 				version = 1.0.7;
 			};
 		};
+		547AA27127F43CEA00E44B7E /* XCRemoteSwiftPackageReference "RefreshableScrollView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/TariqAlmazyad/RefreshableScrollView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		5495D06B27D207E60076085B /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/simibac/ConfettiSwiftUI.git";
@@ -1498,6 +1510,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 544FCC2926F36DCD00DEDB79 /* XCRemoteSwiftPackageReference "CodeScanner" */;
 			productName = CodeScanner;
+		};
+		547AA27227F43CEA00E44B7E /* RefreshableScrollView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 547AA27127F43CEA00E44B7E /* XCRemoteSwiftPackageReference "RefreshableScrollView" */;
+			productName = RefreshableScrollView;
 		};
 		5495D06C27D207E60076085B /* ConfettiSwiftUI */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -8,9 +8,10 @@
 import SwiftUI
 import Communicator
 import Alamofire
+import RefreshableScrollView
 
 fileprivate class ViewModel: ObservableObject {
-	@Published var trainings: [WorkoutPlan] = []
+	@Published var trainings: [WorkoutPlanWithDate] = []
 	
 	init() {
 		/*
@@ -21,8 +22,25 @@ fileprivate class ViewModel: ObservableObject {
 		}
 		*/
 		
-		AF.request("https://student.cloud.htl-leonding.ac.at/m.rausch-schott/fitervari/api/users/1/workoutPlans", method: .get, headers: [ "Authorization": "Bearer \(AuthenticationHandler.shared.token!)" ]).responseDecodable(of: [WorkoutPlan].self, decoder: CustomDecoder()) { res in
+		AF.request("https://student.cloud.htl-leonding.ac.at/m.rausch-schott/fitervari/api/users/1/workoutPlans", method: .get, headers: [ "Authorization": "Bearer \(AuthenticationHandler.shared.token!)" ]).responseDecodable(of: [WorkoutPlanWithDate].self, decoder: OtherCustomDecoder()) { res in
+			// debugPrint(res)
+			self.trainings = res.value!
+		}
+	}
+	
+	/*
+	func refresh(refreshControl: UIRefreshControl) {
+		AF.request("https://student.cloud.htl-leonding.ac.at/m.rausch-schott/fitervari/api/users/1/workoutPlans", method: .get, headers: [ "Authorization": "Bearer \(AuthenticationHandler.shared.token!)" ]).responseDecodable(of: [WorkoutPlanWithDate].self, decoder: OtherCustomDecoder()) { res in
 			debugPrint(res)
+			self.trainings = res.value!
+			refreshControl.endRefreshing()
+		}
+	}
+	*/
+	
+	func refresh() {
+		AF.request("https://student.cloud.htl-leonding.ac.at/m.rausch-schott/fitervari/api/users/1/workoutPlans", method: .get, headers: [ "Authorization": "Bearer \(AuthenticationHandler.shared.token!)" ]).responseDecodable(of: [WorkoutPlanWithDate].self, decoder: OtherCustomDecoder()) { res in
+			// debugPrint(res)
 			self.trainings = res.value!
 		}
 	}
@@ -31,7 +49,7 @@ fileprivate class ViewModel: ObservableObject {
 struct DashboardView: View {
 	@ObservedObject private var viewModel = ViewModel()
 	
-	@State private var selected: WorkoutPlan? = nil
+	@State private var selected: WorkoutPlanWithDate? = nil
 	@State private var navigate = false
 	
 	static let dateFormatter: DateFormatter = {
@@ -81,13 +99,33 @@ struct DashboardView: View {
 						}
 					}
 				}
-                
+				
 				NavigationLink(destination: TrainingView(training: self.$selected), isActive: $navigate) {
-                    EmptyView()
-                }
+					EmptyView()
+				}
 			}
 		}
 		.navigationTitle("\(DashboardView.dateFormatter.string(from: Date()))")
+		.toolbar {
+			Button {
+				viewModel.refresh()
+			} label: {
+				Image(systemName: "arrow.clockwise.circle")
+			}
+			
+			/*
+			Button {
+				pickerSheetVisible.toggle()
+			} label: {
+				Image(systemName: "calendar")
+			}
+			 */
+		}
+		/*
+		.onRefresh(spinningColor: .gray, text: "", textColor: .gray, backgroundColor: .white) { refreshControl in
+			viewModel.refresh(refreshControl: refreshControl)
+		}
+		*/
     }
 }
 

@@ -35,9 +35,15 @@ struct TrainingView: View {
 	@EnvironmentObject private var navigationModel: RootNavigationModel
 	
 	@ObservedObject private var viewModel = ViewModel()
-	@Binding var training: WorkoutPlan?
+	@Binding var training: WorkoutPlanWithDate?
 	
 	@State private var navigate = false
+	
+	static let dateFormatter: DateFormatter = {
+		let formatter = DateFormatter()
+		formatter.dateFormat = "dd.MM.yyyy"
+		return formatter
+	}()
     
     var body: some View {
         ZStack {
@@ -51,22 +57,26 @@ struct TrainingView: View {
 					Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec feugiat lacus nisl, ut ultrices ante laoreet sit amet. Morbi ultricies enim ut neque molestie egestas. Aliquam finibus condimentum venenatis. Nullam eu tortor metus. Morbi nec erat efficitur lectus imperdiet laoreet. Curabitur viverra ut justo vitae lacinia. Sed non turpis nec erat iaculis mollis.")
 					 */
 					
-					Text("Keine Beschreibung vorhanden.")
+					Text(training!.description ?? "Keine Beschreibung vorhanden.")
 						.foregroundColor(.gray)
 					
 					Spacer()
 						.frame(height: 15)
 					
 					VStack(alignment: .leading, spacing: 5) {
-						Text("Fortschritt:")
+						// Text("Fortschritt:")
 						
-						Text("Muskelgruppen:")
+						// Text("Muskelgruppen:")
 						
-						Text("Tage / Woche: ")
+						// Text("Tage / Woche: ")
 						
-						Text("Gültig ab: ")
+						Text("Gültig ab: \(TrainingView.dateFormatter.string(from: training!.validFrom))")
 						
-						Text("Gültig bis:") //
+						if let validTill = training?.validTill {
+							Text("Gültig bis: \(TrainingView.dateFormatter.string(from: validTill))")
+						} else {
+							Text("Gültig bis: \("n/a")")
+						}
 					}
 					.frame(maxWidth: .infinity, alignment: .topLeading)
 					

@@ -9,7 +9,7 @@ import SwiftUI
 import Combine
 
 fileprivate class ViewModel: ObservableObject {
-	@Published var training: WorkoutPlan? = nil
+	@Published var training: WorkoutPlanWithDate? = nil
 	
 	@Published var trainingState = false
 	

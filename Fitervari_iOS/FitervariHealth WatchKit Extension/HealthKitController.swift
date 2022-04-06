@@ -101,8 +101,6 @@ class HealthKitController: ObservableObject {
 			otherFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS"
 			
 			let timeFormatter = DateFormatter()
-			timeFormatter.locale = Locale(identifier: "en_US_POSIX")
-			timeFormatter.timeZone = TimeZone(secondsFromGMT: 0)
 			timeFormatter.dateFormat = "hh:mm"
 			
 			let session = WorkoutSession(date: formatter.string(from: date), date2: otherFormatter.string(from: date), startTime: timeFormatter.string(from: date)) // Date()) TODO: fix!
@@ -224,8 +222,6 @@ class HealthKitController: ObservableObject {
 	func stopWorkout() {
 		let date = Date()
 		let timeFormatter = DateFormatter()
-		timeFormatter.locale = Locale(identifier: "en_US_POSIX")
-		timeFormatter.timeZone = TimeZone(secondsFromGMT: 0)
 		timeFormatter.dateFormat = "hh:mm"
 		
 		FSession!.endTime = timeFormatter.string(from: date) // TODO: fix!

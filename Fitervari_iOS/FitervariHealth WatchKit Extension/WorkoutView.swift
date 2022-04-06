@@ -33,14 +33,14 @@ struct WorkoutView: View {
 	
 	@State private var breakTime: Int? = nil
 	
-	var training: WorkoutPlan?
+	var training: WorkoutPlanWithDate?
 	// @Binding var trainingState: Bool
 	
 	@EnvironmentObject private var healthKitController: HealthKitController
 	@State private var hr = -1
 	@State private var eb = 0.0
 	
-	init(training: WorkoutPlan?) {
+	init(training: WorkoutPlanWithDate?) {
 		self.training = training
 		
 		if let training = training {

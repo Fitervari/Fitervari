@@ -10,7 +10,7 @@ import Foundation
 enum RootView {
     case signin
 	case main
-	case workout(plan: WorkoutPlan)
+	case workout(plan: WorkoutPlanWithDate)
 }
 
 class RootNavigationModel: ObservableObject {
