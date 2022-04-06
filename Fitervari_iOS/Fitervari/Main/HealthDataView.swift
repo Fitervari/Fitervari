@@ -23,71 +23,44 @@ struct HealthDataView: View {
 				hd.type == "kcal"
 			})
 		
-		/*
-		let avg = values.reduce(0.0) {
-			return $0 + $1/Double(values.count)
-		}
-		*/
+		let kvalcum = kvalues.reduce(into: []) { $0.append(($0.last ?? 0) + $1.value) }
 		
 		let dp = values.map { val -> LineChartDataPoint in
 			let dateFormatter = DateFormatter()
 			dateFormatter.dateFormat = "mm:ss"
-			return LineChartDataPoint(value: Double(val.value), xAxisLabel: dateFormatter.string(from: val.time))
+			return LineChartDataPoint(value: val.value) //, xAxisLabel: dateFormatter.string(from: val.time))
 		}
 		
-		let kdp = kvalues.map { val -> LineChartDataPoint in
+		let kdp = kvalcum.map { val -> LineChartDataPoint in
 			let dateFormatter = DateFormatter()
 			dateFormatter.dateFormat = "mm:ss"
-			return LineChartDataPoint(value: Double(val.value), xAxisLabel: dateFormatter.string(from: val.time))
+			return LineChartDataPoint(value: val) // , xAxisLabel: dateFormatter.string(from: val.time))
 		}
 		
 		VStack {
-			/*
-			Text("MINIMUM: \(Int(round(values.min()!)))")
-				.frame(maxWidth: .infinity, alignment: .leading)
-			Text("MAXIMUM: \(Int(round(values.max()!)))")
-				.frame(maxWidth: .infinity, alignment: .leading)
-			Text("AVERAGE: \(Int(round(avg)))")
-				.frame(maxWidth: .infinity, alignment: .leading)
-			 */
-			
-			/*
-			LineChart(chartData: LineChartData.init(dataSets: LineDataSet(dataPoints: dp), metadata: ChartMetadata(title: "Puls")))
-				.aspectRatio(3, contentMode: .fit)
-			
-			LineChart(chartData: LineChartData.init(dataSets: LineDataSet(dataPoints: kdp), metadata: ChartMetadata(title: "Kcal")))
-				.headerBox(chartData: LineChartData.init(dataSets: LineDataSet(dataPoints: kdp), metadata: ChartMetadata(title: "Kcal")))
-				.aspectRatio(3, contentMode: .fit)
-			 */
-			
-			PulseGraphView(data: LineChartData.init(dataSets: LineDataSet(dataPoints: dp, legendTitle: "Puls", style: LineStyle(lineType: .curvedLine, strokeStyle: Stroke(lineWidth: 2))), metadata: ChartMetadata(title: "Puls"), xAxisLabels: getXLabels(data: values), chartStyle: LineChartStyle(infoBoxPlacement: .header, xAxisLabelsFrom: .chartData())), rawData: values)
-			
-			// Spacer()
-//				.frame(height: 60)
-			
-			// CaloriesGraphView(data: LineChartData.init(dataSets: LineDataSet(dataPoints: kdp), metadata: ChartMetadata(title: "Kalorien (in kcal)"), chartStyle: LineChartStyle(infoBoxPlacement: .header, markerType: .full(attachment: .point), xAxisLabelsFrom: .chartData(rotation: .degrees(0)), baseline: .minimumWithMaximum(of: 5000))))
+			if(dp.count > 0) {
+				PulseGraphView(data: LineChartData.init(dataSets: LineDataSet(dataPoints: dp, legendTitle: "Puls", style: LineStyle(lineType: .curvedLine, strokeStyle: Stroke(lineWidth: 2))), metadata: ChartMetadata(title: "Puls"), xAxisLabels: getXLabels(data: values), chartStyle: LineChartStyle(infoBoxPlacement: .header, xAxisLabelsFrom: .chartData()))) //, rawData: values)
+			} else {
+				Text("Für die Metrik Puls sind keine Gesundheitsdaten verfügbar.")
+					.frame(maxWidth: .infinity, alignment: .topLeading)
+			}
 			
 			Spacer()
-				.frame(height: 300)
+				.frame(height: 60)
 			
-			/*
-			Spacer()
-				.frame(height: 100)
+			if(kdp.count > 0) {
+				CaloriesGraphView(data: LineChartData.init(dataSets: LineDataSet(dataPoints: kdp, legendTitle: "Kalorien", style: LineStyle(lineType: .curvedLine, strokeStyle: Stroke(lineWidth: 2))), metadata: ChartMetadata(title: "Kalorien"), xAxisLabels: getXLabels(data: kvalues), chartStyle: LineChartStyle(infoBoxPlacement: .header, xAxisLabelsFrom: .chartData())))
+			} else {
+				Text("Für die Metrik Kalorien sind keine Gesundheitsdaten verfügbar.")
+					.frame(maxWidth: .infinity, alignment: .topLeading)
+			}
 			
-			
-			Chart(data:
-				values.map { v in
-					CGFloat(v / values.max()!)
-				}
-			)
-			.chartStyle(
-				AreaChartStyle(.quadCurve, fill: Color.blue)
-			)
-			.aspectRatio(3, contentMode: .fit)
-			 */
+			//Spacer()
+				//.frame(height: 300)
 		}
 		.padding(margin(for: UIScreen.main.bounds.width))
 		.navigationTitle("Gesundheitsdaten")
+		.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
     }
 	
 	func getXLabels(data: [HealthDataProcessed]) -> [String] {
@@ -122,7 +95,7 @@ struct HealthDataView: View {
 
 struct PulseGraphView: View {
 	var data: LineChartData
-	var rawData: [HealthDataProcessed]
+	// var rawData: [HealthDataProcessed]
 	
 	var body: some View {
 		LineChart(chartData: data)
@@ -139,13 +112,13 @@ struct PulseGraphView: View {
 	}
 }
 
-/*
 struct CaloriesGraphView: View {
 	var data: LineChartData
 	
 	var body: some View {
 		FilledLineChart(chartData: data)
-			.touchOverlay(chartData: data, unit: .suffix(of: "kcal"))
+			.touchOverlay(chartData: data, unit: .suffix(of: "cal"))
+			// 	.averageLine(chartData: data, markerName: "Durchschnitt", lineColour: .primary, strokeStyle: StrokeStyle(lineWidth: 2, dash: [5,10]))
 			.yAxisGrid(chartData: data)
 			.xAxisGrid(chartData: data)
 			.yAxisLabels(chartData: data)
@@ -155,7 +128,6 @@ struct CaloriesGraphView: View {
 			//.aspectRatio(3, contentMode: .fit)
 	}
 }
-*/
 
 /*
 struct HealthDataView_Previews: PreviewProvider {

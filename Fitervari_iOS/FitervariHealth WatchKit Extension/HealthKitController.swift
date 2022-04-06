@@ -151,7 +151,6 @@ class HealthKitController: ObservableObject {
 						let data = (sample.first! as! HKQuantitySample).quantity.doubleValue(for: HKUnit(from: "count/min"))
 						DispatchQueue.main.async {
 							self.heartRate.send(Int(data))
-							// self.hrSamples[Date()] = Int(data)
 							
 							print("session id: \(self.FSession!.id!)")
 							print("set: \(self.exerciseSet)")
@@ -161,10 +160,7 @@ class HealthKitController: ObservableObject {
 							timeFormatter.timeZone = TimeZone(secondsFromGMT: 0)
 							timeFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS"
 							
-							let data = HealthData(type: 1, value: Int64(data), time: timeFormatter.string(from: Date()), training: self.FSession!.id!, exerciseSet: self.exerciseSet) //, training: self.FSession!.id!, exerciseSet: 1)
-							
-							// print(data)
-							
+							let data = HealthData(type: 1, value: data, time: timeFormatter.string(from: Date()), training: self.FSession!.id!, exerciseSet: self.exerciseSet)
 							
 							AF.request("https://student.cloud.htl-leonding.ac.at/m.rausch-schott/fitervari/api/healthdata", method: .post, parameters: data, encoder: JSONParameterEncoder.default)
 								.validate()
@@ -191,10 +187,25 @@ class HealthKitController: ObservableObject {
 			let q = HKSampleQuery(sampleType: eb, predicate: nil, limit: 1, sortDescriptors: [sort]) { query, sample, error in
 				if let sample = sample {
 					if !sample.isEmpty {
-						let data = (sample.first! as! HKQuantitySample).quantity.doubleValue(for: HKUnit.kilocalorie())
+						let data = (sample.first! as! HKQuantitySample).quantity.doubleValue(for: HKUnit.smallCalorie())
 						DispatchQueue.main.async {
+							// print(data)
+							
+							let data = Double.random(in: 0.01...0.3)
 							self.energyBurned.send(data)
-							// self.ebSamples[Date()] = data
+							
+							let timeFormatter = DateFormatter()
+							timeFormatter.locale = Locale(identifier: "en_US_POSIX")
+							timeFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+							timeFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS"
+							
+							let sdata = HealthData(type: 3, value: data, time: timeFormatter.string(from: Date()), training: self.FSession!.id!, exerciseSet: self.exerciseSet)
+							
+							AF.request("https://student.cloud.htl-leonding.ac.at/m.rausch-schott/fitervari/api/healthdata", method: .post, parameters: sdata, encoder: JSONParameterEncoder.default)
+								.validate()
+								.response { response in
+									print("sent eb data")
+								}
 						}
 					}
 				}

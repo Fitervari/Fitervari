@@ -9,7 +9,7 @@ import Foundation
 
 struct HealthData: Codable {
 	var type: Int64
-	var value: Int64
+	var value: Double
 	var time: String
 	var training: Int64
 	var exerciseSet: Int64
@@ -17,6 +17,6 @@ struct HealthData: Codable {
 
 struct HealthDataProcessed: Codable {
 	var type: String
-	var value: Int64
+	var value: Double
 	var time: Date
 }
