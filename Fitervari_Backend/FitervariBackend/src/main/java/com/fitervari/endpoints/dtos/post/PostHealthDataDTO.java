@@ -19,7 +19,7 @@ public class PostHealthDataDTO implements Serializable {
 
     private long type;
     private LocalDateTime time;
-    private long value;
+    private double value;
     private long training;
     private long exerciseSet;
 }

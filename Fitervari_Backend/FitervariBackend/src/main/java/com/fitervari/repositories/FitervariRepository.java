@@ -1,26 +1,23 @@
 package com.fitervari.repositories;
 
 import com.fitervari.endpoints.dtos.get.*;
-import com.fitervari.endpoints.dtos.post.PostDeviceDTO;
-import com.fitervari.endpoints.dtos.post.PostStartWorkoutSessionDTO;
-import com.fitervari.endpoints.dtos.post.PostUserDTO;
-import com.fitervari.endpoints.dtos.post.PostWorkoutPlanDTO;
+import com.fitervari.endpoints.dtos.post.*;
 import com.fitervari.endpoints.dtos.put.*;
 import com.fitervari.model.fitervari.*;
-import io.vertx.ext.auth.User;
+import io.quarkus.logging.Log;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.LockModeType;
 import javax.persistence.NoResultException;
 import javax.transaction.Transactional;
-import java.util.Comparator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Random;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 @ApplicationScoped
 public class FitervariRepository {
@@ -267,6 +264,7 @@ TODO:   --------------------------------------------------------------
                 woP.getValidFrom(),
                 woP.getValidTill(),
                 woP.getName(),
+                woP.getDescription(),
                 woP.isArchived(),
                 woP.getExercises().stream()
                         .sorted(Comparator.comparingInt(Exercise::getSortIdentifier))
@@ -307,6 +305,7 @@ TODO:   --------------------------------------------------------------
         return new TrainingDTO(
                 training.getId(),
                 training.getDate(),
+                training.getDate2(),
                 training.getStartTime(),
                 training.getEndTime(),
                 getConvertedWorkoutPlan(training.getWorkoutPlan())
@@ -317,6 +316,7 @@ TODO:   --------------------------------------------------------------
         return new TrainingDTO(
                 training.getId(),
                 training.getDate(),
+                training.getDate2(),
                 training.getStartTime(),
                 training.getEndTime(),
                 getConvertedWorkoutPlan(training.getWorkoutPlan()),
@@ -358,6 +358,7 @@ TODO:   --------------------------------------------------------------
         return new TrainingDTO(
                 t.getId(),
                 t.getDate(),
+                t.getDate2(),
                 t.getStartTime(),
                 t.getEndTime(),
                 getConvertedWorkoutPlan(t.getWorkoutPlan()),
@@ -384,6 +385,7 @@ TODO:   --------------------------------------------------------------
                 new TrainingDTO(
                         t.getId(),
                         t.getDate(),
+                        t.getDate2(),
                         t.getStartTime(),
                         t.getEndTime(),
                         t.getHealthData().stream().map(h ->
@@ -430,8 +432,8 @@ TODO:   --------------------------------------------------------------
         }
 
         var newWorkoutPlan = new WorkoutPlan(
-                workoutPlan.getValidFrom(),
-                workoutPlan.getValidTo(),
+                workoutPlan.getValidFrom().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(),
+                workoutPlan.getValidTill().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(),
                 workoutPlan.getName(),
                 workoutPlan.getDescription(),
                 workoutPlan.isArchived(),
@@ -450,7 +452,7 @@ TODO:   --------------------------------------------------------------
 
         var woP = workoutPlanQuery.getSingleResult();
 
-        var training = new Training(wos.getDate(), wos.getStartTime(), woP);
+        var training = new Training(wos.getDate(), LocalDateTime.now(), wos.getStartTime(), woP);
         em.persist(training);
 
         return getConvertedTraining(training);
@@ -471,9 +473,9 @@ TODO:   --------------------------------------------------------------
 
     @Transactional
     public WorkoutPlan updateWorkoutPlan(long id, PutWorkoutPlanDTO newWop) throws NoResultException {
-        var userQuery = em.createQuery("SELECT c FROM customer c WHERE c.id=:id", Customer.class);
-        userQuery.setParameter("id", newWop.getUser());
-        var user = userQuery.getSingleResult();
+        //var userQuery = em.createQuery("SELECT c FROM customer c WHERE c.id=:id", Customer.class);
+        //userQuery.setParameter("id", newWop.getUser());
+        //var user = userQuery.getSingleResult();
 
         var wopQuery = em.createQuery("SELECT w FROM workoutPlan w WHERE w.id=:id", WorkoutPlan.class);
         wopQuery.setParameter("id", id);
@@ -482,9 +484,109 @@ TODO:   --------------------------------------------------------------
         wop.setArchived(newWop.isArchived());
         wop.setName(newWop.getName());
         wop.setDescription(newWop.getDescription());
-        wop.setValidFrom(newWop.getValidFrom());
-        wop.setValidTill(newWop.getValidTill());
-        wop.setCustomer(user);
+        wop.setValidFrom(newWop.getValidFrom().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+        wop.setValidTill(newWop.getValidTill().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+
+        AtomicInteger exerciseSortIdentifier = new AtomicInteger();
+
+        /*newWop.getExercises().forEach(e -> {
+            var exercise = wop.getExercises().stream().filter(ex -> ex.getId() == e.getId()).findFirst();
+
+            var dg = wop.getExercises().stream().map(Exercise::getDeviceGroup).filter(dg1 -> dg1.getId() == e.getDeviceGroup().getId()).findFirst();
+            DeviceGroup deviceGroup;
+
+            if(dg.isEmpty()) {
+                deviceGroup = new DeviceGroup(
+                        e.getDeviceGroup().getName(),
+                        e.getDeviceGroup().getDescription(),
+                        e.getDeviceGroup().getDevices().stream().map(d ->
+                                new Device(d.getUniqueNumber())
+                        ).collect(Collectors.toList())
+                );
+            } else {
+                deviceGroup = dg.get();
+            }
+
+            List<ExerciseSet> exerciseSets = new LinkedList<>();
+
+            if(e.getExerciseSets() != null) {
+                exerciseSets = wop.getExercises().stream().map(Exercise::getExerciseSets)
+                        .filter(exs ->
+                                e.getExerciseSets().stream().anyMatch(exs1 -> exs.stream().anyMatch(exs2 -> exs1.getId() == exs2.getId()))
+                        ).flatMap(Collection::stream).collect(Collectors.toList());
+            }
+            if(exercise.isPresent()) {
+                exercise.get().setName(e.getName());
+                exercise.get().setDescription(e.getDescription());
+                exercise.get().setSortIdentifier(exerciseSortIdentifier.getAndIncrement());
+                exercise.get().setDeviceGroup(deviceGroup);
+                exercise.get().setExerciseSets(exerciseSets);
+                exercise.get().setWorkoutPlan(wop);
+
+                em.merge(exercise);
+            } else {
+                var exercise1 = new Exercise(
+                        e.getName(),
+                        e.getDescription(),
+                        exerciseSortIdentifier.getAndIncrement(),
+                        deviceGroup,
+                        wop
+                );
+                wop.getExercises().add(exercise1);
+
+                em.persist(exercise1);
+            }
+        });
+
+        wop.getExercises().removeIf(e -> {
+            var condition = newWop.getExercises().stream().noneMatch(ex -> ex.getId() == e.getId());
+            if(!condition) {
+                e.setWorkoutPlan(null);
+                return true;
+            } else {
+                return false;
+            }
+        });
+            /*var condition = ex.getId() != e.getId();
+            if(condition) {
+                //em.remove(e.getDeviceGroup());
+                return true;
+            } else
+                return false;
+        }));*/
+        wop.getExercises().clear();
+
+        //em.persist(wop);
+
+        wop.getExercises().addAll(newWop.getExercises().stream().map(e ->
+        {
+            var deviceGroup =  new DeviceGroup(
+                    e.getDeviceGroup().getName(),
+                    e.getDeviceGroup().getDescription(),
+                    e.getDeviceGroup().getDevices().stream().map(d ->
+                            new Device(d.getUniqueNumber())
+                    ).collect(Collectors.toList())
+            );
+
+            //em.merge(deviceGroup);
+
+            var exercise = new Exercise(
+                    e.getName(),
+                    e.getDescription(),
+                    exerciseSortIdentifier.getAndIncrement(),
+                    deviceGroup
+            );
+
+            Log.debug("Exercise: " + exercise);
+
+            em.persist(exercise);
+
+            //em.lock(exercise, LockModeType.NONE);
+
+            return exercise;
+
+        }).collect(Collectors.toList()));
+        //wop.setCustomer(user);
 
         em.merge(wop);
 
@@ -567,6 +669,15 @@ TODO:   --------------------------------------------------------------
         em.persist(device);
 
         return device;
+    }
+
+    @Transactional
+    public DeviceGroup addDeviceGroup(PostDeviceGroupDTO postDeviceGroup) {
+        var deviceGroup = new DeviceGroup(postDeviceGroup.getName(), postDeviceGroup.getDescription());
+
+        em.persist(deviceGroup);
+
+        return deviceGroup;
     }
 
     @Transactional

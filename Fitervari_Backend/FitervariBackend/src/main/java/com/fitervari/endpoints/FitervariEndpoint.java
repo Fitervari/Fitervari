@@ -1,12 +1,8 @@
 package com.fitervari.endpoints;
 
-import com.fitervari.endpoints.dtos.post.PostDeviceDTO;
-import com.fitervari.endpoints.dtos.post.PostStartWorkoutSessionDTO;
-import com.fitervari.endpoints.dtos.post.PostUserDTO;
-import com.fitervari.endpoints.dtos.post.PostWorkoutPlanDTO;
+import com.fitervari.endpoints.dtos.post.*;
 import com.fitervari.endpoints.dtos.put.*;
 import com.fitervari.repositories.FitervariRepository;
-import org.jboss.resteasy.annotations.Query;
 
 import javax.inject.Inject;
 import javax.persistence.NoResultException;
@@ -266,6 +262,16 @@ public class FitervariEndpoint {
     public Response updateDeviceGroup(@PathParam("deviceGroupId") long id, PutDeviceGroupDTO deviceGroup) {
         var result = repo.updateDeviceGroup(id, deviceGroup);
         return Response.noContent().build();
+    }
+
+    @POST
+    @Path("deviceGroups")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response insertDeviceGroup(PostDeviceGroupDTO deviceGroup) {
+        var newDeviceGroup = repo.addDeviceGroup(deviceGroup);
+
+        return Response.status(Response.Status.CREATED).entity(newDeviceGroup).build();
     }
 
     @DELETE

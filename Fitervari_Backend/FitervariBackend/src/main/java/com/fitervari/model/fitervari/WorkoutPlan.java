@@ -31,13 +31,13 @@ public class WorkoutPlan implements Serializable {
     @Column(name="archived", nullable = false)
     private boolean archived;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Customer customer;
 
-    @OneToMany(mappedBy = "workoutPlan")
+    @OneToMany(mappedBy = "workoutPlan", cascade = CascadeType.ALL)
     private List<Exercise> exercises;
 
-    @OneToMany(mappedBy = "workoutPlan")
+    @OneToMany(mappedBy = "workoutPlan", cascade = CascadeType.ALL)
     private List<Training> trainings;
 
     public WorkoutPlan() {

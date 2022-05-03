@@ -61,3 +61,5 @@ spec:
                 name: fitervari-keycloak-service
                 port:
                   number: 8080
+
+                  

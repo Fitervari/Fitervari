@@ -19,7 +19,7 @@ public class HealthDataType {
     @Column(name="name", nullable = false)
     private String name;
 
-    @OneToMany(mappedBy = "healthDataType")
+    @OneToMany(mappedBy = "healthDataType", cascade = CascadeType.ALL)
     private List<HealthData> healthData;
 
     public long getId() {

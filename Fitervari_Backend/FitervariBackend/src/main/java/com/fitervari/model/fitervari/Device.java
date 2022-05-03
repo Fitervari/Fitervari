@@ -23,10 +23,10 @@ public class Device implements Serializable {
     @Column(name="unique_number", nullable = false)
     private int uniqueNumber;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Studio studio;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private DeviceGroup deviceGroup;
 
     public Device() {
@@ -34,6 +34,10 @@ public class Device implements Serializable {
 
     public Device(long id, int uniqueNumber) {
         this.id = id;
+        this.uniqueNumber = uniqueNumber;
+    }
+
+    public Device(int uniqueNumber) {
         this.uniqueNumber = uniqueNumber;
     }
 

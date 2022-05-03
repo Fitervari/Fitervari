@@ -21,7 +21,7 @@ public class Country implements Serializable {
     @Column(name="name", nullable = false)
     private String name;
 
-    @OneToMany(mappedBy = "country")
+    @OneToMany(mappedBy = "country", cascade = CascadeType.ALL)
     private List<City> cities;
 
 }

@@ -15,7 +15,7 @@ public class WorkoutPlanDTO implements Serializable {
     private long id;
     private LocalDate validFrom;
     private LocalDate validTill;
-    private String name;
+    private String name, description;
     private boolean archived;
     private List<ExerciseDTO> exercises;
 }

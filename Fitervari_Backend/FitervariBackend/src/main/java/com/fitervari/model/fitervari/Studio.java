@@ -21,12 +21,12 @@ public class Studio implements Serializable {
     @Column(name="address", nullable = false)
     private String address;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private City city;
 
-    @OneToMany(mappedBy = "studio")
+    @OneToMany(mappedBy = "studio", cascade = CascadeType.ALL)
     private List<Device> devices;
 
-    @OneToMany(mappedBy = "studio")
+    @OneToMany(mappedBy = "studio", cascade = CascadeType.ALL)
     private List<Customer> customers;
 }

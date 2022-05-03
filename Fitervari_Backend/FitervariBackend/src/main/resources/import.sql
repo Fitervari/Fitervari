@@ -55,39 +55,7 @@ VALUES('Alsterdorfer Straße 99', '2096-11-30', 'patrick.mayer@outlook.de', 'Pat
 INSERT INTO customer(address, birthdate, email, firstname, lastname, city_id, studio_id, activation_token)
 VALUES('Scharten 161', '2010-08-12', 'ju.strasser10@gmail.com', 'Julia', 'Strasser', 7, 3, '4452ca34b985550e03ee7a53c42af8ad');
 
--- INSERT ActivationCodes
---INSERT INTO activationcode(code, valid, customer_id)
---VALUES ('aawh3982hu2h225089hhv4we875=', true, 1);
---INSERT INTO activationcode(code, valid, customer_id)
---VALUES ('0853af768ca4ae8086b96a8db0acf8be', false, 1);
---INSERT INTO activationcode(code, valid, customer_id)
---VALUES ('g2b3def0a16f2959c98b7882ba45f421', false, 1);
---INSERT INTO activationcode(code, valid, customer_id)
---VALUES ('98f38f2f12b2e7205514aff1106969bc', true, 2);
---INSERT INTO activationcode(code, valid, customer_id)
---VALUES ('603d3c7f6b97bc5a474d4d2d40078ce2', true, 3);
---INSERT INTO activationcode(code, valid, customer_id)
---VALUES ('635eb51948fb362707283b2ded20d414', true, 4);
---INSERT INTO activationcode(code, valid, customer_id)
---VALUES ('4452ca34b985550e03ee7a53c42af8ad', false, 2);
---INSERT INTO activationcode(code, valid,customer_id)
---VALUES ('a05f74f92d9800ca1ef3d1f9b4203a2b', false, 2);
---INSERT INTO activationcode(code, valid, customer_id)
---VALUES ('81b1099281434aa2af89eb696a11e7b2', true, 5);
---INSERT INTO activationcode(code, valid, customer_id)
---VALUES ('e29143ec90eb3dee3b19688757a4f91c', false, 3);
---INSERT INTO activationcode(code, valid,customer_id)
---VALUES ('ec1ff1c34fd0eaaae77411d48f387daf', false, 3);
---INSERT INTO activationcode(code, valid, customer_id)
---VALUES ('2313abf64e71f0072400fa32aba5be15', true, 6);
-
 -- INSERT Devicegroups
---INSERT INTO devicegroup(name, description) VALUES('Monkeybar', 'Eine Monkeybar ist eine um 90 Grad gedrehte Hantelbank.');
---INSERT INTO devicegroup(name, description) VALUES('Trainingsmatte', 'Eine Trainingsmatte wird genutzt, um auf weicherem Untergrund trainieren zu können.');
---INSERT INTO devicegroup(name, description) VALUES('Beinpresse', 'Die Beinpresse wird genutzt, um die Beinmuskeln zu stärken.');
---INSERT INTO devicegroup(name, description) VALUES('Laufband', 'Ein Laufband ist als Ersatz zum physischen Laufen gedacht bzw. wenn das Wetter nichts anderes zulässt.');
---INSERT INTO devicegroup(name, description) VALUES('Indoorbike', 'Ein Indoorbike ist als Ersatz zum physischen Rad fahren gedacht bzw. wenn das Wetter nichts anderes zulässt.');
---INSERT INTO devicegroup(name, description) VALUES('Ergometer', 'Auch Fahrradergometer wird ebenfalls ähnlich wie das Indoorbike genutzt.');
 INSERT INTO devicegroup(name, description)
 VALUES('Schulterpresse', 'Mit einer Schulterpresse trainiert man die Muskulatur der Schultern. Die meisten Schulterpresse verfügen über komfortable, extragroße Griffe mit verschiedenen möglichen Griffpositionen, die für die meisten Trainierenden geeignet sind.');
 INSERT INTO devicegroup(name, description)
@@ -120,14 +88,6 @@ INSERT INTO devicegroup(name, description)
 VALUES('Matte', 'Für Kniebeugen, Liegestütz, ...');
 
 -- INSERT Devices
---INSERT INTO device(description, name, unique_number, devicegroup_id, studio_id)
---VALUES('Die Monkeybar ist quasi eine um 90 Grad gedrehte Hantelbank.', 'Monkeybar Mini', 22, 1, 1);
---INSERT INTO device(description, name, unique_number, devicegroup_id, studio_id)
---VALUES('Die Beinpresse wird genutzt, um die Beinmuskeln zu stärken.', '45 Grad Beinpresse', 15, 3, 1);
---INSERT INTO device(description, name, unique_number, devicegroup_id, studio_id)
---VALUES('Die Fußplatte bewegt sich parallel zum Boden.', 'horizontale Beinpresse', 16, 3, 2);
---INSERT INTO device(description, name, unique_number, devicegroup_id, studio_id)
---VALUES('Die Beinpresse wird genutzt, um die Beinmuskeln zu stärken.', 'vertikale Beinpresse', 17, 3, 2);
 INSERT INTO device(description, name, unique_number, devicegroup_id, studio_id) VALUES (null, 'Schulterpresse', 12, 1, 2);
 INSERT INTO device(description, name, unique_number, devicegroup_id, studio_id) VALUES (null, 'Schulterpresse', 13, 1, 2);
 INSERT INTO device(description, name, unique_number, devicegroup_id, studio_id) VALUES (null, 'Schulterpresse', 14, 1, 2);
@@ -181,10 +141,6 @@ INSERT INTO device(description, name, unique_number, devicegroup_id, studio_id) 
 
 
 -- INSERT Workoutplans
---INSERT INTO workoutplan(archived, name, valid_from, valid_till, description, customer_id)
---VALUES(false, 'Demo-Trainingsplan 1', '2020-12-25', null, 'Das ist ein Demo Trainingsplan.', 1);
---INSERT INTO workoutplan(archived, name, valid_from, valid_till, description, customer_id)
---VALUES(true, 'Demo-Trainingsplan 2', '2021-01-10', '2021-02-15', 'Das ist ein Demo Trainingsplan 2.',  2);
 INSERT INTO workoutplan(archived, description, name, valid_from, valid_till, customer_id)
 VALUES (false, 'Training der Brust, des Bizeps und des Trizeps.', 'Oberkörper 1', '2020-03-01', '2020-03-08', 1);
 INSERT INTO workoutplan(archived, description, name, valid_from, valid_till, customer_id)
@@ -195,26 +151,6 @@ INSERT INTO workoutplan(archived, description, name, valid_from, valid_till, cus
 VALUES (false, 'Training des ganzen Körpers.', 'Ganzkörpertraining', '2022-03-13', '2022-03-21', 4);
 
 -- INSERT Workouts
---INSERT INTO exercise(description, name, devicegroup_id, workoutplan_id, sort_identifier)
---VALUES('', 'Beinpresse', 3, 1, 1);
---INSERT INTO exercise(description, name, devicegroup_id, workoutplan_id, sort_identifier)
---VALUES('', 'Beinpresse', 3, 1, 2);
---INSERT INTO exercise(description, name, devicegroup_id, workoutplan_id, sort_identifier)
---VALUES('', 'Liegestütze', 2, 1, 5);
---INSERT INTO exercise(description, name, devicegroup_id, workoutplan_id, sort_identifier)
---VALUES('', 'Push Ups', 2, 2, 1);
---INSERT INTO exercise(description, name, devicegroup_id, workoutplan_id, sort_identifier)
---VALUES('', 'Laufen', 4, 1, 9);
---INSERT INTO exercise(description, name, devicegroup_id, workoutplan_id, sort_identifier)
---VALUES('', 'Gehen', 4, 1, 3);
---INSERT INTO exercise(description, name, devicegroup_id, workoutplan_id, sort_identifier)
---VALUES('', 'Sprint', 4, 1, 6);
---INSERT INTO exercise(description, name, devicegroup_id, workoutplan_id, sort_identifier)
---VALUES('', 'Rad fahren', 5, 1, 7);
---INSERT INTO exercise(description, name, devicegroup_id, workoutplan_id, sort_identifier)
---VALUES('', 'Beinpresse', 3, 1, 8);
---INSERT INTO exercise(description, name, devicegroup_id, workoutplan_id, sort_identifier)
---VALUES('', 'Beinpresse', 3, 1, 4);
 INSERT INTO exercise(description, name, sort_identifier, devicegroup_id, workoutplan_id)
 VALUES (null, 'Langhantel Schrägbankdrücken', 0, 12, 1);
 INSERT INTO exercise(description, name, sort_identifier, devicegroup_id, workoutplan_id)
@@ -294,16 +230,6 @@ INSERT INTO exercise(description, name, sort_identifier, devicegroup_id, workout
 VALUES (null, 'Dips', 9, 2, 4);
 
 -- INSERT WorkoutSets
---INSERT INTO exerciseset(description, repetitions, exercise_id, sort_identifier) VALUES('30kg', 5, 1, 1);
---INSERT INTO exerciseset(description, repetitions, exercise_id, sort_identifier) VALUES('40kg', 10, 1, 3);
---INSERT INTO exerciseset(description, repetitions, exercise_id, sort_identifier) VALUES('10kg', 20, 1, 2);
---INSERT INTO exerciseset(description, repetitions, exercise_id, sort_identifier) VALUES('30kg', 7, 2, 1);
---INSERT INTO exerciseset(description, repetitions, exercise_id, sort_identifier) VALUES('100m', 100, 7, 1);
---INSERT INTO exerciseset(description, repetitions, exercise_id, sort_identifier) VALUES('15kg', 15, 2, 2);
---INSERT INTO exerciseset(description, repetitions, exercise_id, sort_identifier) VALUES('20km', -1, 8, 3);
---INSERT INTO exerciseset(description, repetitions, exercise_id, sort_identifier) VALUES('15km', -1, 8, 1);
---INSERT INTO exerciseset(description, repetitions, exercise_id, sort_identifier) VALUES('10km', -1, 8, 2);
---INSERT INTO exerciseset(description, repetitions, exercise_id, sort_identifier) VALUES('', 10, 3, 1);
 INSERT INTO exerciseset(description, repetitions, sort_identifier, exercise_id) VALUES ('70kg', 12, 0, 1);
 INSERT INTO exerciseset(description, repetitions, sort_identifier, exercise_id) VALUES ('75kg', 10, 1, 1);
 INSERT INTO exerciseset(description, repetitions, sort_identifier, exercise_id) VALUES ('80kg', 8, 2, 1);
@@ -461,15 +387,10 @@ INSERT INTO exerciseset(description, repetitions, sort_identifier, exercise_id) 
 
 
 -- INSERT Trainings
---INSERT INTO training(date, starttime, endtime, workoutplan_id) VALUES('2020-12-30', '12:43:33', '13:43:33', 1);
---INSERT INTO training(date, starttime, endtime, workoutplan_id) VALUES('2021-01-5', '09:21:10', '12:43:33', 1);
---INSERT INTO training(date, starttime, endtime, workoutplan_id) VALUES('2021-01-10', '22:22:22', '22:59:50', 1);
---INSERT INTO training(date, starttime, endtime, workoutplan_id) VALUES('2021-01-10', '01:00:00', '01:49:10', 2);
---INSERT INTO training(date, starttime, endtime, workoutplan_id) VALUES('2021-01-15', '12:10:00', '12:14:56', 2);
-INSERT INTO training(date, endtime, starttime, workoutplan_id) VALUES('2022-03-03', '10:32:53', '12:40:33', 1);
-INSERT INTO training(date, endtime, starttime, workoutplan_id) VALUES('2022-03-04', '8:00:53', '10:20:10', 2);
-INSERT INTO training(date, endtime, starttime, workoutplan_id) VALUES('2022-03-05', '10:32:00', '12:40:48', 3);
-INSERT INTO training(date, endtime, starttime, workoutplan_id) VALUES('2022-03-13', '18:15:21', '20:40:19', 4);
+INSERT INTO training(date, date2, endtime, starttime, workoutplan_id) VALUES('2022-03-03', '2022-03-03T00:00:00.00', '10:32:53', '12:40:33', 1);
+INSERT INTO training(date, date2, endtime, starttime, workoutplan_id) VALUES('2022-03-04', '2022-03-04T00:00:00.00', '8:00:53', '10:20:10', 2);
+INSERT INTO training(date, date2, endtime, starttime, workoutplan_id) VALUES('2022-03-05', '2022-03-05T00:00:00.00',  '10:32:00', '12:40:48', 3);
+INSERT INTO training(date, date2, endtime, starttime, workoutplan_id) VALUES('2022-03-13', '2022-03-13T00:00:00.00',  '18:15:21', '20:40:19', 4);
 
 
 
@@ -481,20 +402,6 @@ INSERT INTO healthdatatype(name) VALUES('Blutsauerstoffgehalt');
 
 
 --INSERT HealthData
---INSERT INTO healthdata(time, value, healthdatatype_id, training_id, exerciseset_id)
---VALUES('2020-12-30 10:35:33', 100, 1, 1, 1);
---INSERT INTO healthdata(time, value, healthdatatype_id, training_id, exerciseset_id)
---VALUES('2020-12-30 10:45:18', 104, 1, 1, 1);
---INSERT INTO healthdata(time, value, healthdatatype_id, training_id, exerciseset_id)
---VALUES('2020-12-30 11:55:03', 80, 2, 1, 1);
---INSERT INTO healthdata(time, value, healthdatatype_id, training_id, exerciseset_id)
---VALUES('2020-12-30 10:35:33', 14, 3, 1, 1);
---INSERT INTO healthdata(time, value, healthdatatype_id, training_id, exerciseset_id)
---VALUES('2020-12-30 10:35:33', 89, 1, 1, 2);
---INSERT INTO healthdata(time, value, healthdatatype_id, training_id, exerciseset_id)
---VALUES('2020-12-30 10:35:33', 88, 2, 1, 2);
---INSERT INTO healthdata(time, value, healthdatatype_id, training_id, exerciseset_id)
---VALUES('2020-12-30 10:35:33', 10, 3, 1, 2);
 INSERT INTO healthdata(time, value, exerciseset_id, healthdatatype_id, training_id)
 VALUES('2022-03-03 10:40:32.238191', 100, 1, 1, 1);
 INSERT INTO healthdata(time, value, exerciseset_id, healthdatatype_id, training_id)

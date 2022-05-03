@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.LinkedList;
 import java.util.List;
 
 @Entity(name="deviceGroup")
@@ -21,11 +22,11 @@ public class DeviceGroup implements Serializable {
     @Column(name="description")
     private String description;
 
-    @OneToOne(mappedBy = "deviceGroup", fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "deviceGroup", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     @Transient
     private Exercise exercise;
 
-    @OneToMany(mappedBy = "deviceGroup")
+    @OneToMany(mappedBy = "deviceGroup", cascade = CascadeType.ALL)
     private List<Device> devices;
 
     public DeviceGroup() {
@@ -36,5 +37,16 @@ public class DeviceGroup implements Serializable {
         this.name = name;
         this.description = description;
         this.devices = devices;
+    }
+
+    public DeviceGroup(String name, String description, List<Device> devices) {
+        this.name = name;
+        this.description = description;
+        this.devices = devices;
+    }
+
+    public DeviceGroup(String name, String description) {
+        this.name = name;
+        this.description = description;
     }
 }
