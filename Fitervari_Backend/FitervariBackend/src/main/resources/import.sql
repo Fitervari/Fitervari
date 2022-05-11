@@ -1,3 +1,10 @@
+-- INSERT Trainers
+INSERT INTO trainer(username, password) VALUES('MarkusS', '69420');
+INSERT INTO trainer(username, password) VALUES('ManuelRS', 'PWD766123g');
+INSERT INTO trainer(username, password) VALUES('StefanA', 'StefAnz');
+INSERT INTO trainer(username, password) VALUES('TobiasK', 'Kern');
+INSERT INTO trainer(username, password) VALUES('GottfriedWeiss', 'GfW712Hf02bdf');
+
 
 -- INSERT Countries
 INSERT INTO country(code, name)
@@ -47,7 +54,7 @@ VALUES('Karl-Schachinger-Straße 13', 'INJOY Eferding', 3);
 
 -- INSERT Customers
 INSERT INTO customer(address, birthdate, email, firstname, lastname, city_id, studio_id, activation_token)
-VALUES('Grießmayerstraße 23', '1995-04-22', 'p.mayr@gmx.at', 'Peter', 'Mayr', 1, 1, '2313abf64e71f0072400fa32aba5be15');
+VALUES('Grießmayerstraße 23', '1995-04-22', 'p.gruber@gmx.at', 'Peter', 'Gruber', 1, 1, '2313abf64e71f0072400fa32aba5be15');
 INSERT INTO customer(address, birthdate, email, firstname, lastname, city_id, studio_id, activation_token, auth_token)
 VALUES('Karl-Schachinger-Straße 4', '2000-02-22', 'k.lehner@outlook.at', 'Klaus', 'Lehner', 3, 2, 'g2b3def0a16f2959c98b7882ba45f421', '98f38f2f12b2e7205514aff1106969bc');
 INSERT INTO customer(address, birthdate, email, firstname, lastname, city_id, studio_id, activation_token)
@@ -143,8 +150,8 @@ INSERT INTO device(description, name, unique_number, devicegroup_id, studio_id) 
 -- INSERT Workoutplans
 INSERT INTO workoutplan(archived, description, name, valid_from, valid_till, customer_id)
 VALUES (false, 'Training der Brust, des Bizeps und des Trizeps.', 'Oberkörper 1', '2020-03-01', '2020-03-08', 1);
-INSERT INTO workoutplan(archived, description, name, valid_from, valid_till, customer_id)
-VALUES (false, 'Training der Beine sowie der Waden.', 'Beine', '2020-03-08', '2020-03-16', 1);
+--INSERT INTO workoutplan(archived, description, name, valid_from, valid_till, customer_id)
+--VALUES (false, 'Training der Beine sowie der Waden.', 'Beine', '2020-03-08', '2020-03-16', 1);
 INSERT INTO workoutplan(archived, description, name, valid_from, valid_till, customer_id)
 VALUES (false, 'Training des Rücken, der Schultern und des Bauchs.', 'Oberkörper 2', '2020-03-16', '2020-03-14', 1);
 INSERT INTO workoutplan(archived, description, name, valid_from, valid_till, customer_id)
@@ -155,8 +162,8 @@ INSERT INTO exercise(description, name, sort_identifier, devicegroup_id, workout
 VALUES (null, 'Langhantel Schrägbankdrücken', 0, 12, 1);
 INSERT INTO exercise(description, name, sort_identifier, devicegroup_id, workoutplan_id)
 VALUES (null, 'Kurzhantel Flachbankdrücken', 1, 13, 1);
-INSERT INTO exercise(description, name, sort_identifier, devicegroup_id, workoutplan_id)
-VALUES (null, 'Fliegende Schrägbank', 2, 14, 1);
+--INSERT INTO exercise(description, name, sort_identifier, devicegroup_id, workoutplan_id)
+--VALUES (null, 'Fliegende Schrägbank', 2, 14, 1);
 INSERT INTO exercise(description, name, sort_identifier, devicegroup_id, workoutplan_id)
 VALUES (null, 'Dips', 3, 2, 1);
 INSERT INTO exercise(description, name, sort_identifier, devicegroup_id, workoutplan_id)
@@ -387,10 +394,10 @@ INSERT INTO exerciseset(description, repetitions, sort_identifier, exercise_id) 
 
 
 -- INSERT Trainings
-INSERT INTO training(date, date2, endtime, starttime, workoutplan_id) VALUES('2022-03-03', '2022-03-03T00:00:00.00', '10:32:53', '12:40:33', 1);
-INSERT INTO training(date, date2, endtime, starttime, workoutplan_id) VALUES('2022-03-04', '2022-03-04T00:00:00.00', '8:00:53', '10:20:10', 2);
-INSERT INTO training(date, date2, endtime, starttime, workoutplan_id) VALUES('2022-03-05', '2022-03-05T00:00:00.00',  '10:32:00', '12:40:48', 3);
-INSERT INTO training(date, date2, endtime, starttime, workoutplan_id) VALUES('2022-03-13', '2022-03-13T00:00:00.00',  '18:15:21', '20:40:19', 4);
+INSERT INTO training(date, date2, endtime, starttime, workoutplan_id) VALUES('2022-03-03', '2022-03-03T00:00:00.001', '10:32:53', '12:40:33', 1);
+INSERT INTO training(date, date2, endtime, starttime, workoutplan_id) VALUES('2022-03-04', '2022-03-04T00:00:00.001', '8:00:53', '10:20:10', 2);
+INSERT INTO training(date, date2, endtime, starttime, workoutplan_id) VALUES('2022-03-05', '2022-03-05T00:00:00.001',  '10:32:00', '12:40:48', 3);
+INSERT INTO training(date, date2, endtime, starttime, workoutplan_id) VALUES('2022-03-13', '2022-03-13T00:00:00.001',  '18:15:21', '20:40:19', 4);
 
 
 

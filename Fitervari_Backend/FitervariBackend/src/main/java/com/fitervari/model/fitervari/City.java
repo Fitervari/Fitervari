@@ -21,9 +21,9 @@ public class City implements Serializable {
     @Column(name="city", nullable = false)
     private String city;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     private Country country;
 
-    @OneToMany(mappedBy = "city", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "city", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Studio> studios;
 }

@@ -31,7 +31,7 @@ public class Training implements Serializable {
     @Column(name="endTime")
     private LocalTime endTime;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     private WorkoutPlan workoutPlan;
 
     @OneToMany(mappedBy = "training", cascade = CascadeType.ALL)

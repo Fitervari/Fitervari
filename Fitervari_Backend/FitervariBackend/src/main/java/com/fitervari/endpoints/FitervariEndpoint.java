@@ -2,8 +2,10 @@ package com.fitervari.endpoints;
 
 import com.fitervari.endpoints.dtos.post.*;
 import com.fitervari.endpoints.dtos.put.*;
+import com.fitervari.model.fitervari.*;
 import com.fitervari.repositories.FitervariRepository;
 
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.NoResultException;
 import javax.ws.rs.*;
@@ -13,6 +15,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 
 @Path("/")
+@ApplicationScoped
 public class FitervariEndpoint {
 
     @Inject
@@ -113,6 +116,29 @@ public class FitervariEndpoint {
         return Response.ok(token).build();
     }
 
+    @GET
+    @Path("auth/{activationToken}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response activateUser(@PathParam("activationToken") String token) {
+        var user = repo.resolveUser(token);
+        return Response.ok(user).build();
+    }
+
+    @POST
+    @Path("auth/trainer")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response authenticateUser(Trainer trainerObj) {
+        var trainer = repo.validateTrainer(trainerObj.getUsername(), trainerObj.getPassword());
+
+        if(trainer == null)
+            return Response.status(Response.Status.FORBIDDEN).build();
+
+        return Response.ok(trainer).build();
+    }
+
+
+
     /*
         --------------------------------------------------------------
                                 WorkoutPlans
@@ -165,11 +191,11 @@ public class FitervariEndpoint {
 
     @POST
     @Path("users/{userId}/workoutPlans")
-    @Produces(MediaType.TEXT_PLAIN)
+    @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Response addWorkoutPlanForUser(@PathParam("userId") long id, PostWorkoutPlanDTO workoutPlan) {
         var result = repo.addWorkoutPlanForUser(id, workoutPlan);
-        return Response.status(Response.Status.CREATED).build();
+        return Response.status(Response.Status.CREATED).entity(result).build();
     }
 
     @POST

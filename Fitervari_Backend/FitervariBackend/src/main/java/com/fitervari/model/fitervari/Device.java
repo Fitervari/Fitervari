@@ -2,6 +2,7 @@ package com.fitervari.model.fitervari;
 
 import lombok.Data;
 
+import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -14,7 +15,7 @@ public class Device implements Serializable {
     @Column(name="id", nullable = false)
     private long id;
 
-    @Column(name="name", nullable = false)
+    @Column(name="name")
     private String name;
 
     @Column(name="description")
@@ -23,10 +24,12 @@ public class Device implements Serializable {
     @Column(name="unique_number", nullable = false)
     private int uniqueNumber;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
+    @JsonbTransient
     private Studio studio;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonbTransient
     private DeviceGroup deviceGroup;
 
     public Device() {

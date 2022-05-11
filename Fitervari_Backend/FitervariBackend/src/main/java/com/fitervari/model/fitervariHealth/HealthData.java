@@ -32,7 +32,7 @@ public class HealthData {
     @Column(name="time", nullable = false)
     private LocalDateTime time;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.DETACH)
     private ExerciseSet exerciseSet;
 
     @ManyToOne(cascade = CascadeType.ALL)

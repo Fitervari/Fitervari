@@ -1,5 +1,6 @@
 package com.fitervari.model.fitervari;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
@@ -26,11 +27,11 @@ public class Exercise implements Serializable {
     @Column(name="sort_identifier")
     private int sortIdentifier;
 
-    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToOne(cascade = CascadeType.ALL)
     @LazyCollection(LazyCollectionOption.FALSE)
     private DeviceGroup deviceGroup;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private WorkoutPlan workoutPlan;
 
     @OneToMany(mappedBy = "exercise", cascade = CascadeType.ALL)
@@ -46,6 +47,14 @@ public class Exercise implements Serializable {
         this.description = description;
         this.sortIdentifier = sortIdentifier;
         this.deviceGroup = deviceGroup;
+    }
+
+    public Exercise(String name, String description, int sortIdentifier, DeviceGroup deviceGroup, List<ExerciseSet> exerciseSets) {
+        this.name = name;
+        this.description = description;
+        this.sortIdentifier = sortIdentifier;
+        this.deviceGroup = deviceGroup;
+        this.exerciseSets = exerciseSets;
     }
 
     public Exercise(String name, String description, int sortIdentifier, DeviceGroup deviceGroup) {

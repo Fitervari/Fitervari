@@ -2,6 +2,7 @@ package com.fitervari.model.fitervari;
 
 import lombok.Data;
 
+import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.LinkedList;

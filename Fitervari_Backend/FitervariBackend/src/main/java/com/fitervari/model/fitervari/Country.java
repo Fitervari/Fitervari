@@ -1,7 +1,9 @@
 package com.fitervari.model.fitervari;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
+import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
@@ -21,7 +23,7 @@ public class Country implements Serializable {
     @Column(name="name", nullable = false)
     private String name;
 
-    @OneToMany(mappedBy = "country", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "country", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<City> cities;
 
 }

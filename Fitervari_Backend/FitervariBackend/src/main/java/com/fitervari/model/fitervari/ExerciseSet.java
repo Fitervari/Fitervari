@@ -25,9 +25,18 @@ public class ExerciseSet implements Serializable {
     @Column(name="sort_identifier")
     private int sortIdentifier;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Exercise exercise;
 
     @OneToMany(mappedBy = "exerciseSet", cascade = CascadeType.ALL)
     private List<HealthData> healthData;
+
+    public ExerciseSet() {
+    }
+
+    public ExerciseSet(long repetitions, String description, int sortIdentifier) {
+        this.repetitions = repetitions;
+        this.description = description;
+        this.sortIdentifier = sortIdentifier;
+    }
 }

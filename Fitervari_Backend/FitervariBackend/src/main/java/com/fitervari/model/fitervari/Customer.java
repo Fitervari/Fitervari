@@ -37,13 +37,13 @@ public class Customer implements Serializable {
     @Column(name="activation_token")
     private String activationToken;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     private Studio studio;
 
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
     private List<WorkoutPlan> workoutPlans;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     private City city;
 
     /*@OneToMany(mappedBy = "customer")

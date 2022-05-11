@@ -2,6 +2,7 @@ package com.fitervari.model.fitervari;
 
 import lombok.Data;
 
+import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
@@ -21,12 +22,13 @@ public class Studio implements Serializable {
     @Column(name="address", nullable = false)
     private String address;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     private City city;
 
-    @OneToMany(mappedBy = "studio", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "studio", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Device> devices;
 
-    @OneToMany(mappedBy = "studio", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "studio")
+    @JsonbTransient
     private List<Customer> customers;
 }

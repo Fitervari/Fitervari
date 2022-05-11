@@ -18,6 +18,7 @@ import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 @ApplicationScoped
 public class FitervariRepository {
@@ -169,10 +170,10 @@ public class FitervariRepository {
         return new UserDTO(customer.getId(), customer.getFirstName(), customer.getLastName(), customer.getBirthDate(), customer.getAddress(), customer.getEmail(), getConvertedStudio(customer.getStudio()), getConvertedCity(customer.getCity()), customer.getAuthToken(), customer.getActivationToken());
     }
 
-    /* TODO:
+    /*
         --------------------------------------------------------------
-                                TODO: Auth
-TODO:   --------------------------------------------------------------
+                                Auth
+        --------------------------------------------------------------
      */
 
     private String genToken(int length) {
@@ -227,6 +228,20 @@ TODO:   --------------------------------------------------------------
         return "SAMPLE AUTH TOKEN FOR TRAINER";
     }
 
+    public Trainer validateTrainer(String username, String password) {
+        var trainerQuery = em.createQuery("SELECT t FROM trainer t WHERE t.username=:user AND t.password=:password", Trainer.class);
+        trainerQuery.setParameter("user", username);
+        trainerQuery.setParameter("password", password);
+
+        var trainerList = trainerQuery.getResultList();
+
+        if(trainerList.size() > 0) {
+            return trainerList.get(0);
+        }
+
+        return null;
+    }
+
     @Transactional
     public String genActivationTokenForUser(long id) throws NoResultException {
 
@@ -250,6 +265,15 @@ TODO:   --------------------------------------------------------------
         em.merge(customer);
 
         return token;
+    }
+
+    public UserDTO resolveUser(String token) {
+        var customerQuery = em.createQuery("SELECT c FROM customer c WHERE c.activationToken=:token", Customer.class);
+        customerQuery.setParameter("token", token);
+
+        var customer = customerQuery.getSingleResult();
+
+        return new UserDTO(customer.getId(), customer.getFirstName(), customer.getLastName(), customer.getBirthDate(), customer.getAddress(), customer.getEmail(), getConvertedStudio(customer.getStudio()), getConvertedCity(customer.getCity()), customer.getAuthToken(), customer.getActivationToken());
     }
 
     /*
@@ -402,7 +426,7 @@ TODO:   --------------------------------------------------------------
     }
 
     @Transactional
-    public WorkoutPlan addWorkoutPlanForUser(long userId, PostWorkoutPlanDTO workoutPlan) throws NoResultException {
+    public WorkoutPlanDTO addWorkoutPlanForUser(long userId, PostWorkoutPlanDTO workoutPlan) throws NoResultException {
         var customerQuery = em.createQuery("SELECT c FROM customer c WHERE c.id =:id", Customer.class);
 
         customerQuery.setParameter("id", userId);
@@ -414,24 +438,35 @@ TODO:   --------------------------------------------------------------
         var i = 0;
 
         for (var exercise : workoutPlan.getExercises()) {
+
+            var dgQuery = em.createQuery("SELECT dg FROM deviceGroup dg WHERE dg.id=:id", DeviceGroup.class);
+
+            dgQuery.setParameter("id", exercise.getDeviceGroup().getId());
+
+            var dg = dgQuery.getSingleResult();
+
+            if(dg == null) {
+                dg = new DeviceGroup(
+                        exercise.getDeviceGroup().getName(),
+                        exercise.getDeviceGroup().getDescription(),
+                        exercise.getDeviceGroup().getDevices().stream().map(d -> new Device(d.getUniqueNumber())
+                        ).collect(Collectors.toList())
+                );
+            }
+
             exercises.add(new Exercise(
                     exercise.getId(),
                     exercise.getName(),
                     exercise.getDescription(),
                     i,
-                    new DeviceGroup(
-                            exercise.getDeviceGroup().getId(),
-                            exercise.getDeviceGroup().getName(),
-                            exercise.getDeviceGroup().getDescription(),
-                            exercise.getDeviceGroup().getDevices().stream().map(d ->
-                                    new Device(d.getId(), d.getUniqueNumber())
-                            ).collect(Collectors.toList())
-                    )
+                    dg
             ));
             i++;
         }
 
         var newWorkoutPlan = new WorkoutPlan(
+                //workoutPlan.getValidFrom(),
+                //workoutPlan.getValidTill(),
                 workoutPlan.getValidFrom().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(),
                 workoutPlan.getValidTill().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(),
                 workoutPlan.getName(),
@@ -442,7 +477,7 @@ TODO:   --------------------------------------------------------------
         );
 
         em.persist(newWorkoutPlan);
-        return newWorkoutPlan;
+        return getConvertedWorkoutPlan(newWorkoutPlan);
     }
 
     @Transactional
@@ -484,8 +519,10 @@ TODO:   --------------------------------------------------------------
         wop.setArchived(newWop.isArchived());
         wop.setName(newWop.getName());
         wop.setDescription(newWop.getDescription());
-        wop.setValidFrom(newWop.getValidFrom().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
-        wop.setValidTill(newWop.getValidTill().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+        wop.setValidFrom(newWop.getValidFrom());
+        wop.setValidTill(newWop.getValidTill());
+        //wop.setValidFrom(newWop.getValidFrom().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+        //wop.setValidTill(newWop.getValidTill().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
 
         AtomicInteger exerciseSortIdentifier = new AtomicInteger();
 
@@ -554,9 +591,14 @@ TODO:   --------------------------------------------------------------
             } else
                 return false;
         }));*/
+
+        wop.getExercises().forEach(e -> em.remove(e));
         wop.getExercises().clear();
 
+        //em.merge(wop);
+
         //em.persist(wop);
+
 
         wop.getExercises().addAll(newWop.getExercises().stream().map(e ->
         {
@@ -570,16 +612,25 @@ TODO:   --------------------------------------------------------------
 
             //em.merge(deviceGroup);
 
+            AtomicInteger exerciseSetSortIdentifier = new AtomicInteger();
+
             var exercise = new Exercise(
                     e.getName(),
                     e.getDescription(),
                     exerciseSortIdentifier.getAndIncrement(),
-                    deviceGroup
+                    deviceGroup,
+                    e.getExerciseSets().stream().map(es -> {
+                        var exs = new ExerciseSet(es.getRepetitions(), es.getDescription(), exerciseSetSortIdentifier.getAndIncrement());
+
+                        //em.persist(exs);
+                        return exs;
+                    }).collect(Collectors.toList())
             );
+
 
             Log.debug("Exercise: " + exercise);
 
-            em.persist(exercise);
+            //em.persist(exercise);
 
             //em.lock(exercise, LockModeType.NONE);
 
@@ -588,7 +639,13 @@ TODO:   --------------------------------------------------------------
         }).collect(Collectors.toList()));
         //wop.setCustomer(user);
 
-        em.merge(wop);
+        wop.getExercises().forEach(e -> {
+            e.setWorkoutPlan(wop);
+            e.getExerciseSets().forEach(es -> es.setExercise(e));
+            e.getDeviceGroup().getDevices().forEach(d -> d.setDeviceGroup(e.getDeviceGroup()));
+        });
+
+        em.persist(wop);
 
         return wop;
     }
